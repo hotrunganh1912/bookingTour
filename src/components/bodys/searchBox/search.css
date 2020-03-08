@@ -1,0 +1,42 @@
+.black-warp {
+  /* position: relative; */
+  /* background: linear-gradient(to top, #000000 42%, #ffffff 100%); */
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+  opacity: 0.7;
+}
+
+.warp-box {
+  overflow: hidden;
+}
+
+.box-search {
+  position: relative;
+  /* transform: translate(0, -69px); */
+  transform: translate(0, -79px);
+  transition: all 0.4s;
+  /* z-index: 1; */
+}
+
+.border-search {
+  padding: 25px;
+  transition: all 1s;
+}
+.warp-box:hover .black-warp {
+  background: linear-gradient(to top, #000000 42%, #ffffff 100%);
+}
+.warp-box:hover {
+  box-shadow: 0px 7px 9px black;
+}
+.warp-box:hover .box-search {
+  transform: translate(0, -300px);
+}
+.warp-box:hover .border-search {
+  background-color: white;
+}
+.image-bg {
+  height: 500px;
+  background-image: url("../../../image/lodging.png");
+  /* background: rgba(0, 0, 0, 0.4); */
+}

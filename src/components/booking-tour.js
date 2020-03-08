@@ -1,9 +1,7 @@
 import React from "react";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
-  Link,
   browerHistory
 } from "react-router-dom";
 import Contact from "./hearders/contact";
@@ -29,7 +27,6 @@ class Main extends React.Component {
               <Route exact path="/payment">
                 <Payment />
               </Route>
-           
           </div>
           <Footer />
         </div>

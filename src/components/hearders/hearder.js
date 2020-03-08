@@ -1,8 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Contact from "./contact";
-import Payment from "./payment";
-import Home from "../bodys/home/home";
+import { Link } from "react-router-dom";
 
 class Hearder extends React.Component {
   render() {

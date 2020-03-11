@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBox from "../searchBox/searchBox";
 import ListBoxTour from "../listTour/listBoxTour";
+import Detail from  './detail/detail'
 class Home extends React.Component {
   render() {
     return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class Hearder extends React.Component {
+class Header extends React.Component {
   render() {
     return (
       <header className="main-header bg-light shadow-sm z-2">
@@ -53,4 +53,4 @@ class Hearder extends React.Component {
   }
 }
 
-export default Hearder;
+export default Header;

@@ -7,23 +7,30 @@ import {
 import Contact from "./headers/contact";
 import Payment from "./headers/payment";
 import Home from "./bodys/home/home";
-import Hearder from "./headers/header";
+import Header from "./headers/header";
 import Footer from "./footer/footer";
+import Detail from "./bodys/home/detail/detail"
 
 class Main extends React.Component {
   render() {
     return (
       <Router history={browerHistory}>
         <div className="my-body">
-          <Hearder />
+          <Header />
           <div className="content">
             <Route exact path="/contact"></Route>
             <Route exact path="/">
               <Home />
             </Route>
+
             <Route exact path="/home">
               <Home />
             </Route>
+
+           <Route exact path="/detail">
+              <Detail/>
+            </Route>
+
             <Route exact path="/payment">
               <Payment />
             </Route>

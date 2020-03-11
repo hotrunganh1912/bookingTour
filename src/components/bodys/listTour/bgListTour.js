@@ -47,7 +47,7 @@ class BgListTour extends Component {
     return (
       // list tour
       <div className=" container px-0 my-5">
-        <div className="d-flex  justify-content-between">
+        <div className="d-flex  justify-content-between title-and-seeMove">
           <h5 className="bg-danger p-2 rounded text-white">{this.props.titleName}</h5>
           <a className="text-right" href="#">
             Xem Thêm ...

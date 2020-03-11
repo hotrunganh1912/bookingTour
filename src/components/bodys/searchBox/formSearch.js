@@ -1,6 +1,25 @@
 import React from "react";
 
 class FormSearch extends React.Component {
+  handleForcus = e => {
+    e.target.type = "date";
+    console.log(this);
+  };
+
+  handleUnforcus = e => {
+    if (e.target.value === "") {
+      e.target.type = "text";
+    } else {
+      e.target.type = "date";
+    }
+  };
+  componentDidMount() {
+    window.addEventListener("keydown", e => {
+      if (e.keyCode === 9) e.preventDefault();
+      console.log("e.keyCode :", e.keyCode);
+    });
+  }
+
   render() {
     return (
       <div className="row border-search mx-auto w-75 rounded">
@@ -20,7 +39,8 @@ class FormSearch extends React.Component {
             id="dateStart"
             placeholder="Thời Gian Đi?"
             name="dateStart"
-            onfocus="(this.type='date')"
+            onFocus={this.handleForcus}
+            onBlur={this.handleUnforcus}
           />
         </div>
         <div className="col-md-4 my-1">
@@ -30,7 +50,8 @@ class FormSearch extends React.Component {
             id="dateReturn"
             placeholder="Thời Gian Về?"
             name="dateReturn"
-            onfocus="(this.type='date')"
+            onFocus={this.handleForcus}
+            onBlur={this.handleUnforcus}
           />
         </div>
         <div className="col-md-4 text-right  my-1">

@@ -73,11 +73,11 @@ class TourDetailHeadLine extends Component {
             <div className="row">
               <div className="col-6 form-advisory">
                 <div className="form-group">
-                  <label for="name">Họ Tên</label>
+                  <label htmlFor="name">Họ Tên</label>
                   <input type="text" className="form-control" id="name" />
                 </div>
                 <div className="form-group">
-                  <label for="phone-number">Điện Thoại</label>
+                  <label htmlFor="phone-number">Điện Thoại</label>
                   <input
                     type="text"
                     className="form-control"
@@ -85,7 +85,7 @@ class TourDetailHeadLine extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="pwd">Nội dung tư vấn</label>
+                  <label htmlFor="pwd">Nội dung tư vấn</label>
                   <textarea type="text" className="form-control"></textarea>
                 </div>
                 <button type="submit" className="btn btn-primary">

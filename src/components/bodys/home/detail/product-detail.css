@@ -16,7 +16,6 @@ body {
 
 .detail-tour {
     background-color: #fff;
-    /* margin-left: 15px; */
 }
 
 .detail-tour .img-overview .img-capital img {
@@ -58,14 +57,10 @@ body {
     width: 100%;
 }
 
-/* .info-price .desktop-booking-form {
-    position: relative;
-} */
-
  .desktop-booking-form .booking-form {
     background-color: #fff;
     position: fixed;
-    top: 78px;
+    top: 175px;
     right: 150px;
 }
 

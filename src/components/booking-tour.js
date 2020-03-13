@@ -10,6 +10,7 @@ import Home from "./bodys/home/home";
 import Header from "./headers/header";
 import Footer from "./footer/footer";
 import Detail from "./bodys/home/detail/detail"
+import LoginRegister from "./bodys/home/Login-Logout/login";
 
 class Main extends React.Component {
   render() {
@@ -25,6 +26,10 @@ class Main extends React.Component {
 
             <Route exact path="/home">
               <Home />
+            </Route>
+
+            <Route exact path="/login">
+              <LoginRegister />
             </Route>
 
            <Route exact path="/detail">

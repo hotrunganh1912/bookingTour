@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class FormBoxTour extends Component {
   render() {
@@ -38,7 +39,10 @@ class FormBoxTour extends Component {
                 <i className="fas fa-plane"></i> {transit.join(", ")}
               </div>
               <div className="content-infor text-right">
-                <a href="#"> Chi Tiết...</a>
+                {/* <a href="#"> Chi Tiết...</a> */}
+                <Link to="/detail">
+                  Chi tiết...
+                </Link>
               </div>
             </div>
           </div>

@@ -37,12 +37,9 @@ class Header extends React.Component {
                   </Link>
                 </li>
                 <li className="nav-item py-2">
-                  <a
-                    className="nav-link text-center border-left border-right px-3  bg-light"
-                    href="#"
-                  >
-                    <i className="far fa-user"></i>
-                  </a>
+                  <Link className="nav-link text-center  bg-light" to="/login">
+                    Đăng Nhập
+                  </Link>
                 </li>
               </ul>
             </div>

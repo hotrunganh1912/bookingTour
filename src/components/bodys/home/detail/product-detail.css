@@ -64,6 +64,15 @@ body {
     right: 150px;
 }
 
+.desktop-booking-form .booking-form .date-input {
+    background-color: #5879ac5c;
+    font-size: 0.8rem;
+}
+
+.btn-general {
+    background-color: #5879ac5c;
+}
+
 .totalPrice {
     font-size: 1rem;
 }

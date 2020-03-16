@@ -1,14 +1,17 @@
-import React, {Component} from 'react';
-import './login.css';
+import React, { Component } from 'react';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import './login.css';
 
 class LoginRegister extends Component {
     constructor () {
         super();
         this.state = {
             activeSignin: "active",
-            activeSignup: ""
+            activeSignup: "",
+            username: [],
+            email: [],
+            password: []
         }
     }
 
@@ -25,8 +28,37 @@ class LoginRegister extends Component {
             activeSignin: ""
         });
     }
+
+    onSignup = (data, dataUsers = []) => {
+        let { username, email, password } = this.state;
+        console.log(data);
+
+        let dataUsername = {...data.username};
+        let dataEmail = {...data.email};
+        let dataPassword = {...data.password};
+        username.push(dataUsername);
+        email.push(dataEmail);
+        password.push(dataPassword);
+
+        let dataUser = {
+            username: username[0].value,
+            email: email[0].value,
+            password: password[0].value
+        };
+        dataUsers.push(dataUser)
+        console.log('dataUsers', dataUsers);
+        alert('SignUp Success');
+        this.setState({
+            activeSignin: "active",
+            activeSignup: "",
+            username: username,
+            email: email,
+            password: password
+        });
+        localStorage.setItem(username[0].value, JSON.stringify(dataUsers));
+    }
   render() {
-      let { activeSignin, activeSignup } = this.state;
+    let { activeSignin, activeSignup } = this.state;
     return (
       <div className="container-fluid">
         <div className="row justify-content-md-center">
@@ -50,7 +82,7 @@ class LoginRegister extends Component {
               <div className="panel-body">
                 <div className="row">
                   <div className="col-lg-12">
-                    { (activeSignin === "active") ? <SignIn /> : <SignUp /> }
+                    { (activeSignin === "active") ? <SignIn /> : <SignUp onSubmit={this.onSignup}/> }
                     </div>
                 </div>
               </div>

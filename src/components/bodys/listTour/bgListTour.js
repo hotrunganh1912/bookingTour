@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import FormBoxTour from "./formBoxTour";
-import * as link from "../../../configuration";
+import * as link from "../../../config/configuration";
 import axios from "axios";
 
 class BgListTour extends Component {
@@ -15,7 +15,7 @@ class BgListTour extends Component {
   componentDidMount() {
     console.log(this.props.style);
     axios
-      .get(link.host + `/tours?style=${this.props.styleTour}`)
+      .get(link.host + `/tours?style=${this.props.styleTour}&&_limit=3`)
       .then(res => {
         this.setState({ tours: res.data });
       })

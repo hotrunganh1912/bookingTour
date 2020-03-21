@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-
 class NotFound extends Component {
-  componentDidMount() {
-    setTimeout(() => {
-      window.location = "/home";
-    }, 3000);
-  }
   render() {
     return (
       <div className="container">

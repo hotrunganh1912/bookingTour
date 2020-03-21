@@ -12,6 +12,7 @@ import Header from "./headers/header";
 import Footer from "./footer/footer";
 import Detail from "./bodys/home/detail/detail";
 import NotFouund from "./bodys/home/notFound/404NotFound";
+import SignIn from "./bodys/home/login-Logout/login";
 
 class Main extends React.Component {
   render() {

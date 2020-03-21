@@ -2,14 +2,16 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Route,
-  browerHistory
+  browerHistory,
+  Switch
 } from "react-router-dom";
-import Contact from "./headers/contact";
+// import Contact from "./headers/contact";
 import Payment from "./headers/payment";
 import Home from "./bodys/home/home";
 import Header from "./headers/header";
 import Footer from "./footer/footer";
-import Detail from "./bodys/home/detail/detail"
+import Detail from "./bodys/home/detail/detail";
+import NotFouund from "./bodys/home/notFound/404NotFound";
 
 class Main extends React.Component {
   render() {
@@ -18,22 +20,28 @@ class Main extends React.Component {
         <div className="my-body">
           <Header />
           <div className="content">
-            <Route exact path="/contact"></Route>
-            <Route exact path="/">
-              <Home />
-            </Route>
+            <Switch>
+              <Route exact path="/contact"></Route>
+              <Route exact path="/">
+                <Home />
+              </Route>
 
-            <Route exact path="/home">
-              <Home />
-            </Route>
+              <Route exact path="/home">
+                <Home />
+              </Route>
 
-           <Route exact path="/detail">
-              <Detail/>
-            </Route>
+              <Route exact path="/detail">
+                <Detail />
+              </Route>
 
-            <Route exact path="/payment">
-              <Payment />
-            </Route>
+              <Route exact path="/payment">
+                <Payment />
+              </Route>
+
+              <Route exact path="*">
+                <NotFouund />
+              </Route>
+            </Switch>
           </div>
           <Footer />
         </div>

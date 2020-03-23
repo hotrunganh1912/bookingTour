@@ -12,15 +12,6 @@ class BgListTour extends Component {
 
   // get  data
   componentDidMount() {
-    // console.log(this.props.style);
-    // axios
-    //   .get(link.host + `/tours?style=`)
-    //   .then(res => {
-    //     this.setState({ tours: res.data });
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
 
     callApi(`tours?style=${this.props.styleTour}&&_limit=3`, "Get", null).then(
       res => {

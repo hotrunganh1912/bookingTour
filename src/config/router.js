@@ -6,6 +6,12 @@ export default [
     isProtected: false
   },
   {
+    title: "Register Page | Booking",
+    component: "./bodys/login-logout/register",
+    path: "/register",
+    isProtected: false
+  },
+  {
     title: "Home Page |Booking",
     component: "./bodys/home/home",
     path: "/home",

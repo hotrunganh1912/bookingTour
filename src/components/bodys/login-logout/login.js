@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./login.css";
 import callApi from "../../../common/callAPI";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../../action/users";
 // import { createHashHistory } from "history";
@@ -31,7 +31,11 @@ class Login extends Component {
         // });
         alert("Đăng Nhập Thành Công");
         this.props.dispatchLogin();
-      } else alert("Đăng Nhập Thất Bại");
+      } else {
+        this.inputPassWord.current.value = "";
+        this.inputUsersName.current.value = "";
+        alert("Đăng Nhập Thất Bại");
+      }
     });
     e.preventDefault();
   };
@@ -55,12 +59,12 @@ class Login extends Component {
             <h3 className="text-center">Đăng Nhập</h3>
 
             <div className="form-group">
-              <label>Gmail: </label>
+              <label>Users Name: </label>
               <input
                 ref={this.inputUsersName}
                 type="text"
                 className="form-control"
-                placeholder="Enter email"
+                placeholder="User email"
               />
             </div>
 
@@ -74,24 +78,11 @@ class Login extends Component {
               />
             </div>
 
-            <div className="form-group">
-              <div className="custom-control custom-checkbox">
-                <input
-                  type="checkbox"
-                  className="custom-control-input"
-                  id="customCheck1"
-                />
-                <label className="custom-control-label" htmlFor="customCheck1">
-                  Remember me
-                </label>
-              </div>
-            </div>
-
             <button type="submit" className="btn btn-primary btn-block">
               Login
             </button>
             <p className="forgot-password text-right mt-3">
-              Chưa Có Tài khoản <a href="#"> Tạo Tài Khoản</a>
+              Chưa Có Tài khoản <Link to="/register">Tạo Tài Khoản</Link>
             </p>
           </form>
         </div>

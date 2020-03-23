@@ -1,6 +1,10 @@
 import React from "react";
 
 class FormSearch extends React.Component {
+  constructor() {
+    super();
+    this.inputSearch = React.createRef();
+  }
   handleForcus = e => {
     e.target.type = "date";
     console.log(this);
@@ -16,7 +20,7 @@ class FormSearch extends React.Component {
   componentDidMount() {
     window.addEventListener("keydown", e => {
       if (e.keyCode === 9) e.preventDefault();
-      console.log("e.keyCode :", e.keyCode);
+      // console.log(this.inputSearch.current.value);
     });
   }
 
@@ -26,6 +30,7 @@ class FormSearch extends React.Component {
         <div className="col-12">
           <input
             type="text"
+            ref={this.inputSearch}
             className="form-control w-100 my-2"
             id="placeWantToGo"
             placeholder="Bạn Muốn Đi Đâu?"

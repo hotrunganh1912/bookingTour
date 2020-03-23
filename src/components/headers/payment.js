@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 
-class Payment extends Component {
-  render() {
-    return <div>Payment</div>;
-  }
-}
+  const Payment = props => {
+  return <div>Payment</div>;
+};
 
 export default Payment;

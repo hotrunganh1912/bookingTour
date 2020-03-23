@@ -1,45 +1,37 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  browerHistory
-} from "react-router-dom";
-import Contact from "./headers/contact";
-import Payment from "./headers/payment";
-import Home from "./bodys/home/home";
-import Header from "./headers/header";
-import Footer from "./footer/footer";
-import Detail from "./bodys/home/detail/detail"
+import React, { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-class Main extends React.Component {
-  render() {
-    return (
-      <Router history={browerHistory}>
+import routes from "../config/router";
+import Footer from "./footer/footer";
+import Header from "./headers/header";
+
+function Main() {
+  return (
+    <Suspense fallback={<div>loading...</div>}>
+      <Router>
         <div className="my-body">
           <Header />
           <div className="content">
-            <Route exact path="/contact"></Route>
-            <Route exact path="/">
-              <Home />
-            </Route>
+            <Switch>
+              {routes.map((config, i) => {
+                const component = lazy(() => import(`${config.component}`));
 
-            <Route exact path="/home">
-              <Home />
-            </Route>
-
-           <Route exact path="/detail">
-              <Detail/>
-            </Route>
-
-            <Route exact path="/payment">
-              <Payment />
-            </Route>
+                return (
+                  <Route
+                    key={"routes" + i}
+                    exact
+                    path={config.path}
+                    component={component}
+                  />
+                );
+              })}
+            </Switch>
           </div>
           <Footer />
         </div>
       </Router>
-    );
-  }
+    </Suspense>
+  );
 }
 
 export default Main;

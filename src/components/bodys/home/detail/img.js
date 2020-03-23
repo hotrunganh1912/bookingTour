@@ -5,7 +5,7 @@ class ImageCap extends Component {
     return (
       <div className="w-100">
         <div className="img-capital">
-            <img src="https://q-cf.bstatic.com/images/hotel/max1024x768/190/190495348.jpg" />
+            <img alt=""  src="https://q-cf.bstatic.com/images/hotel/max1024x768/190/190495348.jpg" />
         </div>
         <div className="col-12 info-journeys">
           <span className="time-join">

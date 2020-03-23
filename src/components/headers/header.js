@@ -1,15 +1,40 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { logOut } from "../../action/users";
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpne: false
+    };
+  }
+  handlerClickShowMenu = () => {
+    this.setState({
+      isOpne: !this.state.isOpne
+    });
+  };
+
+  handerlerLogOut = e => {
+    if (window.confirm("Bạn Muốn Log Out")) {
+      this.props.dispatchLogOut();
+    }
+    alert("Đăng Xuất Thành Công");
+    e.preventDefault();
+
+    // this.props.history.goBack();
+  };
+
   render() {
     return (
       <header className="main-header bg-light shadow-sm z-2">
         <div className="container p-0 ">
           <nav className="navbar navbar-expand-lg navbar-light p-0 ">
-            <a className="navbar-brand py-3" href="#">
+            <Link className="navbar-brand py-3" to="/home">
               Logo
-            </a>
+            </Link>
+
             <button
               className="navbar-toggler"
               type="button"
@@ -18,11 +43,15 @@ class Header extends React.Component {
               aria-controls="navbarSupportedContent"
               aria-expanded="false"
               aria-label="Toggle navigation"
+              onClick={this.handlerClickShowMenu}
             >
               <span className="navbar-toggler-icon"></span>
             </button>
             <div
-              className="collapse navbar-collapse  bg-light"
+              data-menu="menu"
+              className={`collapse navbar-collapse  bg-light${
+                this.state.isOpne ? " show" : ""
+              }`}
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav ml-auto ">
@@ -36,14 +65,41 @@ class Header extends React.Component {
                     Tour
                   </Link>
                 </li>
-                <li className="nav-item py-2">
-                  <a
-                    className="nav-link text-center border-left border-right px-3  bg-light"
-                    href="#"
-                  >
-                    <i className="far fa-user"></i>
-                  </a>
-                </li>
+                {this.props.dataLogin.users.loggedIn ||
+                localStorage.getItem("Token") !== null ? (
+                  <li className="nav-item py-2 dropdown">
+                    <a
+                      className="nav-link text-center border-left border-right px-3  bg-light dropdown-toggle"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      // href="#"
+                    >
+                      <i className="far fa-user"></i>
+                    </a>
+                    <div
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <a
+                        onClick={this.handerlerLogOut}
+                        className="dropdown-item"
+                        href="#LogOut"
+                      >
+                        Log Out
+                      </a>
+                    </div>
+                  </li>
+                ) : (
+                  <li className="nav-item py-2">
+                    <Link
+                      className="nav-link text-center  bg-light"
+                      to="/login"
+                    >
+                      Đăng Nhập
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
           </nav>
@@ -53,4 +109,17 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => {
+  console.log("state  :", state);
+  return {
+    dataLogin: state
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchLogOut: () => dispatch(logOut())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

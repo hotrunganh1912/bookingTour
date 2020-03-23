@@ -1,8 +1,16 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 class FormBoxTour extends Component {
   render() {
-    let { image, city, country, timeJoin, price, calendar, transit } = this.props.data
+    let {
+      image,
+      city,
+      country,
+      timeJoin,
+      price,
+      calendar,
+      transit
+    } = this.props.data;
     return (
       <div className="w-100 box-list-tour-warp">
         <div className="box-element-tour ">
@@ -38,7 +46,7 @@ class FormBoxTour extends Component {
                 <i className="fas fa-plane"></i> {transit.join(", ")}
               </div>
               <div className="content-infor text-right">
-                <a href="#"> Chi Tiết...</a>
+                <Link to="/detail/12">Chi Tiết...</Link>
               </div>
             </div>
           </div>

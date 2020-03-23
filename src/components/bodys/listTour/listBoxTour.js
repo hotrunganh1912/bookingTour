@@ -4,7 +4,9 @@ import BgListTour from "./bgListTour";
 
 class ListBoxTour extends Component {
   render() {
-    return <BgListTour titleName={this.props.titleName} />;
+    return (
+      <BgListTour titleName={this.props.titleName} styleTour={this.props.styleTour} />
+    );
   }
 }
 

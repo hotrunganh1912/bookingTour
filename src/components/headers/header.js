@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { logOut } from "../../action/users";
 
 class Header extends React.Component {
   constructor() {
@@ -12,6 +14,14 @@ class Header extends React.Component {
     this.setState({
       isOpne: !this.state.isOpne
     });
+  };
+
+  handerlerLogOut = e => {
+    if (confirm("Bạn Muốn Log Out")) {
+      this.props.dispatchLogOut();
+    }
+    alert("Đăng Xuất Thành Công");
+    e.preventDefault();
   };
 
   render() {
@@ -53,14 +63,41 @@ class Header extends React.Component {
                     Tour
                   </Link>
                 </li>
-                <li className="nav-item py-2">
-                  <a
-                    className="nav-link text-center border-left border-right px-3  bg-light"
-                    href="#"
-                  >
-                    <i className="far fa-user"></i>
-                  </a>
-                </li>
+                {this.props.dataLogin.users.loggedIn ||
+                localStorage.getItem("Token") !== null ? (
+                  <li className="nav-item py-2 dropdown">
+                    <a
+                      className="nav-link text-center border-left border-right px-3  bg-light dropdown-toggle"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      // href="#"
+                    >
+                      <i className="far fa-user"></i>
+                    </a>
+                    <div
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <a
+                        onClick={this.handerlerLogOut}
+                        className="dropdown-item"
+                        href="LogOut"
+                      >
+                        Log Out
+                      </a>
+                    </div>
+                  </li>
+                ) : (
+                  <li className="nav-item py-2">
+                    <Link
+                      className="nav-link text-center  bg-light"
+                      to="/login"
+                    >
+                      Đăng Nhập
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
           </nav>
@@ -70,4 +107,17 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => {
+  console.log("state  :", state);
+  return {
+    dataLogin: state
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchLogOut: () => dispatch(logOut())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

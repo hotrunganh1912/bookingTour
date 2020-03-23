@@ -12,7 +12,8 @@ import Header from "./headers/header";
 import Footer from "./footer/footer";
 import Detail from "./bodys/home/detail/detail";
 import NotFouund from "./bodys/home/notFound/404NotFound";
-import SignIn from "./bodys/home/login-Logout/login";
+import Login from "./bodys/login-logout/login";
+// import SignIn from "./bodys/home/login-Logout/login";
 
 class Main extends React.Component {
   render() {
@@ -37,6 +38,10 @@ class Main extends React.Component {
 
               <Route exact path="/payment">
                 <Payment />
+              </Route>
+
+              <Route exact path="/login">
+                <Login />
               </Route>
 
               <Route exact path="*">

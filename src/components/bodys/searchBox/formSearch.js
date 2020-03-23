@@ -20,7 +20,7 @@ class FormSearch extends React.Component {
   componentDidMount() {
     window.addEventListener("keydown", e => {
       if (e.keyCode === 9) e.preventDefault();
-      console.log(this.inputSearch.current.value);
+      // console.log(this.inputSearch.current.value);
     });
   }
 

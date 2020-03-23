@@ -14,15 +14,21 @@ export default [
   {
     title: "Home Page |Booking",
     component: "./bodys/home/home",
-    path: "/home",
+    path: "/",
     isProtected: false
   },
   {
-    title: "Dashboard |Booking",
-    component: "Dashboard",
-    path: "/dashboard",
+    title: "Home Page |Booking",
+    component: "./bodys/home/home",
+    path: "/",
     isProtected: false
   },
+  // {
+  //   title: "Tour |Booking",
+  //   component: "./bodys/listTour/bgListTour",
+  //   path: "/tour",
+  //   isProtected: false
+  // },
   {
     title: "Functions",
     component: "./headers/payment",

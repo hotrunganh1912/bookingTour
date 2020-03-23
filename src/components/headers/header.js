@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logOut } from "../../action/users";
 
 class Header extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isOpne: false
     };
@@ -17,11 +17,13 @@ class Header extends React.Component {
   };
 
   handerlerLogOut = e => {
-    if (confirm("Bạn Muốn Log Out")) {
+    if (window.confirm("Bạn Muốn Log Out")) {
       this.props.dispatchLogOut();
     }
     alert("Đăng Xuất Thành Công");
     e.preventDefault();
+
+    // this.props.history.goBack();
   };
 
   render() {
@@ -82,7 +84,7 @@ class Header extends React.Component {
                       <a
                         onClick={this.handerlerLogOut}
                         className="dropdown-item"
-                        href="LogOut"
+                        href="#LogOut"
                       >
                         Log Out
                       </a>

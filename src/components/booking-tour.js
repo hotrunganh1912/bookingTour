@@ -1,59 +1,37 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  browerHistory,
-  Switch
-} from "react-router-dom";
-// import Contact from "./headers/contact";
-import Payment from "./headers/payment";
-import Home from "./bodys/home/home";
-import Header from "./headers/header";
-import Footer from "./footer/footer";
-import Detail from "./bodys/home/detail/detail";
-import NotFouund from "./bodys/home/notFound/404NotFound";
-import Login from "./bodys/login-logout/login";
-// import SignIn from "./bodys/home/login-Logout/login";
+import React, { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-class Main extends React.Component {
-  render() {
-    return (
-      <Router history={browerHistory}>
+import routes from "../config/router";
+import Footer from "./footer/footer";
+import Header from "./headers/header";
+
+function Main() {
+  return (
+    <Suspense fallback={<div>loading...</div>}>
+      <Router>
         <div className="my-body">
           <Header />
           <div className="content">
             <Switch>
-              <Route exact path="/contact"></Route>
-              <Route exact path="/">
-                <Home />
-              </Route>
+              {routes.map((config, i) => {
+                const component = lazy(() => import(`${config.component}`));
 
-              <Route exact path="/home">
-                <Home />
-              </Route>
-
-              <Route exact path="/detail">
-                <Detail />
-              </Route>
-
-              <Route exact path="/payment">
-                <Payment />
-              </Route>
-
-              <Route exact path="/login">
-                <Login />
-              </Route>
-
-              <Route exact path="*">
-                <NotFouund />
-              </Route>
+                return (
+                  <Route
+                    key={"routes" + i}
+                    exact
+                    path={config.path}
+                    component={component}
+                  />
+                );
+              })}
             </Switch>
           </div>
           <Footer />
         </div>
       </Router>
-    );
-  }
+    </Suspense>
+  );
 }
 
 export default Main;

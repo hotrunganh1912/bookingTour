@@ -4,7 +4,7 @@ import callApi from "../../../common/callAPI";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../../action/users";
-import { createHashHistory } from "history";
+// import { createHashHistory } from "history";
 
 class Login extends Component {
   constructor(props) {
@@ -43,9 +43,9 @@ class Login extends Component {
       this.props.dataLogin.users.loggedIn ||
       localStorage.getItem("Token") !== null
     ) {
-      const history = createHashHistory();
-      console.log("props :", history);
-      return <Redirect to="/" />;
+      window.console.log("props :", this.props);
+      this.props.history.goBack();
+      return null;
     }
 
     return (

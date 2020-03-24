@@ -19,8 +19,9 @@ class Header extends React.Component {
   handerlerLogOut = e => {
     if (window.confirm("Bạn Muốn Log Out")) {
       this.props.dispatchLogOut();
+      alert("Đăng Xuất Thành Công");
     }
-    alert("Đăng Xuất Thành Công");
+
     e.preventDefault();
 
     // this.props.history.goBack();
@@ -91,14 +92,24 @@ class Header extends React.Component {
                     </div>
                   </li>
                 ) : (
-                  <li className="nav-item py-2">
-                    <Link
-                      className="nav-link text-center  bg-light"
-                      to="/login"
-                    >
-                      Đăng Nhập
-                    </Link>
-                  </li>
+                  <>
+                    <li className="nav-item py-2">
+                      <Link
+                        className="nav-link text-center  bg-light"
+                        to="/register"
+                      >
+                        Đăng Ký
+                      </Link>
+                    </li>
+                    <li className="nav-item py-2">
+                      <Link
+                        className="nav-link text-center  bg-light"
+                        to="/login"
+                      >
+                        Đăng Nhập
+                      </Link>
+                    </li>
+                  </>
                 )}
               </ul>
             </div>

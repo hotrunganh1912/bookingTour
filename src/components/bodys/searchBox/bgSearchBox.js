@@ -2,6 +2,9 @@ import React from "react";
 import FormSearch from "./formSearch";
 
 class BgSearchBox extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div className="container bg-light  p-0 ">
@@ -10,7 +13,7 @@ class BgSearchBox extends React.Component {
           {/* <h1>Find</h1> */}
           <div className="m-auto box-search">
             {/* box-search  */}
-            <FormSearch />
+            <FormSearch {...this.props} />
             {/* end box-search  */}
           </div>
         </div>

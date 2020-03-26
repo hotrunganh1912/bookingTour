@@ -1,27 +1,28 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
 class ImageCap extends Component {
   render() {
-    return (
+    return this.props.dataTour ? (
       <div className="w-100">
         <div className="img-capital">
-            <img alt=""  src="https://q-cf.bstatic.com/images/hotel/max1024x768/190/190495348.jpg" />
+          <img alt="" src={" " + this.props.dataTour.image} />
         </div>
         <div className="col-12 info-journeys">
           <span className="time-join">
-            <i className="far fa-clock"></i>1 Ngày
+            <i className="far fa-clock"></i>
+            {" " + this.props.dataTour.timeJoin}
           </span>
           <span className="transit">
             <i className="fas fa-plane"></i>
-            Máy bay
+            {" " + this.props.dataTour.transit.join(", ")}
           </span>
           <span className="tour-code">
             Mã Tour:
-            <b className="text-primary">T01012</b>
+            <b className="text-primary">{" " + this.props.dataTour.id}</b>
           </span>
         </div>
       </div>
-    );
+    ) : null;
   }
 }
 

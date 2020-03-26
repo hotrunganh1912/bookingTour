@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 class FormBoxTour extends Component {
   render() {
     let {
+      id,
       image,
       city,
       country,
@@ -37,7 +38,11 @@ class FormBoxTour extends Component {
               </div>
               <div className="content-infor">
                 <i className="fa fa-dollar-sign" aria-hidden="true"></i>
-                {price}
+                {" " +
+                  Number(price).toLocaleString("it-IT", {
+                    style: "currency",
+                    currency: "VND"
+                  })}
               </div>
               <div className="content-infor">
                 <i className="far fa-calendar-alt"></i> {calendar}
@@ -46,7 +51,7 @@ class FormBoxTour extends Component {
                 <i className="fas fa-plane"></i> {transit.join(", ")}
               </div>
               <div className="content-infor text-right">
-                <Link to="/detail/12">Chi Tiết...</Link>
+                <Link to={`/detail/${id}`}>Chi Tiết...</Link>
               </div>
             </div>
           </div>

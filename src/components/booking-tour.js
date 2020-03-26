@@ -5,8 +5,7 @@ import routes from "../config/router";
 import Footer from "./footer/footer";
 import Header from "./headers/header";
 
-
-function Main() {
+function Main(props) {
   return (
     <Suspense fallback={<div>loading...</div>}>
       <Router>

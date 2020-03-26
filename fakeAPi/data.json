@@ -1,0 +1,198 @@
+{
+  "tours": [
+    {
+      "id": 1,
+      "image": "https://www.vietnambooking.com/wp-content/uploads/2020/03/chuabaidinh.jpg",
+      "city": "Ninh Bình",
+      "country": "Việt Nam",
+      "timeJoin": "5 ngày 4 đêm",
+      "price": " 5000000",
+      "calendar": "Tháng 3",
+      "transit": [
+        "Máy Bay",
+        "xe Hơi"
+      ],
+      "style": "discount"
+    },
+    {
+      "id": 2,
+      "image": "https://www.vietnambooking.com/wp-content/uploads/2019/11/bach-dinh.jpg",
+      "city": "Vũng Tàu",
+      "country": "Việt Nam",
+      "timeJoin": "3 ngày 2 đêm",
+      "price": " 2000000",
+      "calendar": "Tháng 4",
+      "transit": [
+        "Máy Bay",
+        "xe Hơi"
+      ],
+      "style": "discount"
+    },
+    {
+      "id": 3,
+      "image": "https://dalattrongtoi.com/media/upload/images/HO%20VO%20CUC.png",
+      "city": "Đà Lạt",
+      "country": "Việt Nam",
+      "timeJoin": "3 ngày 2 đêm",
+      "price": " 6000000",
+      "calendar": "Tháng 5",
+      "transit": [
+        "Máy Bay",
+        "xe Hơi"
+      ],
+      "style": "discount"
+    },
+    {
+      "id": 4,
+      "image": "https://tuanvinhtravel.com/wp-content/uploads/2019/12/hue-travel-traveltoindochina-1558085779-1400x467.png",
+      "city": "Huế",
+      "country": "Việt Nam",
+      "timeJoin": "3 ngày 2 đêm",
+      "price": " 3000000",
+      "calendar": "Tháng 8",
+      "transit": [
+        "Máy Bay",
+        "xe Hơi"
+      ],
+      "style": "discount"
+    },
+    {
+      "id": 5,
+      "image": "https://saigontourist.net/uploads/destination/NuocNgoai/Thailand/Pattaya/koh-larn-island_187552616.jpg",
+      "city": "JOMTIEN",
+      "country": "Thái Lan",
+      "timeJoin": "3 ngày 2 đêm",
+      "price": " 6000000",
+      "calendar": "Tháng 8",
+      "transit": [
+        "Máy Bay",
+        "xe Hơi"
+      ],
+      "style": "foreign"
+    },
+    {
+      "id": 6,
+      "image": "https://www.saigontourist.net/uploads/destination/NuocNgoai/singapore/SEA-AQUARIUM-SINGAPORE_387303955.jpg",
+      "city": "Sentosa",
+      "country": "SINGAPORE",
+      "timeJoin": "7 ngày 2 đêm",
+      "price": " 12000000",
+      "calendar": "Tháng 8",
+      "transit": [
+        "Máy Bay",
+        "xe Hơi"
+      ],
+      "style": "foreign"
+    },
+    {
+      "id": 7,
+      "image": "https://saigontourist.net/uploads/destination/NuocNgoai/DaiLoan/Yangmingshan_1052724335.jpg",
+      "city": "CAO HÙNG",
+      "country": "Đài Loan ",
+      "timeJoin": "4 ngày 2 đêm",
+      "price": " 12000000",
+      "calendar": "Tháng 5",
+      "transit": [
+        "Máy Bay",
+        "xe Hơi"
+      ],
+      "style": "foreign"
+    },
+    {
+      "id": 8,
+      "image": "https://saigontourist.net/uploads/destination/NuocNgoai/HanQuoc/Gyeongbok_496628263.jpg",
+      "city": "INCHEON",
+      "country": "Hàn Quốc",
+      "timeJoin": "4 ngày 2 đêm",
+      "price": " 18000000",
+      "calendar": "Tháng 2",
+      "transit": [
+        "Máy Bay",
+        "xe Hơi"
+      ],
+      "style": "hot"
+    },
+    {
+      "id": 9,
+      "image": "https://saigontourist.net/uploads/destination/NuocNgoai/Thailand/Koh-Hey-Phuket_716208781.jpg",
+      "city": "PHUKET",
+      "country": "Thái Lan",
+      "timeJoin": "4 ngày 3 đêm",
+      "price": " 12000000",
+      "calendar": "Tháng 3",
+      "transit": [
+        "Máy Bay",
+        "xe Hơi"
+      ],
+      "style": "hot"
+    },
+    {
+      "id": 10,
+      "image": "https://saigontourist.net/uploads/destination/NuocNgoai/Indonesia/Tanah-Lot-Temple-Bali-Indonesia.jpg",
+      "city": "BALI",
+      "country": "INDONESIA",
+      "timeJoin": "5 ngày 3 đêm",
+      "price": " 15000000",
+      "calendar": "Tháng 8",
+      "transit": [
+        "Máy Bay",
+        "xe Hơi"
+      ],
+      "style": "hot"
+    }
+  ],
+  "Users": [
+    {
+      "id": 1,
+      "firtName": "Anh",
+      "lastName": "Ho",
+      "usersName": "Anh.Ho",
+      "password": "admin",
+      "role": "admin",
+      "gmail": "abc@gmail.com"
+    },
+    {
+      "id": 2,
+      "firtName": "Anh",
+      "lastName": "menber",
+      "usersName": "Anh.menber",
+      "password": "menber",
+      "role": "menber",
+      "gmail": "abcd@gmail.com"
+    },
+    {
+      "id": "e6eca138-af4a-4944-b66b-2645748b7b6a",
+      "firtName": "",
+      "lastName": "Anh.Ho",
+      "usersName": "aaaaaaaaaaaaaa",
+      "password": "admin",
+      "role": "menber",
+      "gmail": "aaa"
+    },
+    {
+      "id": "1db04919-8a8e-4122-ade0-316d1dac064b",
+      "firtName": "",
+      "lastName": "Anh.Ho",
+      "usersName": "",
+      "password": "admin",
+      "role": "menber",
+      "gmail": ""
+    },
+    {
+      "id": "fd623622-4bce-456f-89be-ac8965c2665a",
+      "firtName": "",
+      "lastName": "Anh.Ho",
+      "usersName": "sadasdas",
+      "password": "admin",
+      "role": "menber",
+      "gmail": "asdsad"
+    }
+  ],
+  "Detail": [
+    {
+      "id": "1",
+      "idTour": "1",
+      "conten": "<h3 class= \"text-primary mt-4 \">Du lịch Ninh Bình - cảnh vật hữu tình xứng danh tiên cảnh</h3><div class= \"tourSchedule \"><p>Ninh Bình với nhiều danh thắng đẹp cả về cảnh quan và ý nghĩa lịchsử, đã trở thành điểm đến được nhiều du khách lựa chọn. Nói nơiđây là 1 Việt Nam thu nhỏ quả không sai bởi nó hòa quyện toàn bộđặc trưng văn hóa, thiên nhiên và lịch sử. Cùng iVIVU khám phá điểm đặc trưng này, tại sao không?</p></div></div><div class= \"tourDetailheadLine \"><h3 class= \"text-primary mt-4 \">Những trải nghiệm thú vị trong chương trình</h3><div class= \"tourSchedule \"><p>Đến vùng đất Cố đô đừng bỏ lỡ...</p><p>- <strong> Chùa Bái Đính:</strong>Ngôi chùa lớn nhất và nắm giữ nhiều kỷ lục nhất Việt Nam.</p><p>- <strong> Du Lịch Sinh Thái Tràng An:</strong>Phong cảnh thiên nhiên hoang sơ, tuyệt đẹp của Tràng An đã đượcUNESCO công nhận là di sản thiên nhiên và di sản văn hóa thế giới.Khung cảnh nơi đây được tạo nên từ dòng sông chạy uốn lượn qua các dãy núi đá vôi, tạo thành vô vàn những hang động tự nhiên huyềnảo, kỳ bí.</p><p>- <strong> Hang Múa:</strong>từ trên đỉnh núi Múa có thể ngắm toàn cảnh khu vực Tam Cốc với vẻ đẹp được khách Tây ca ngợi đẹp không kém những điểm ngắm từ trêncao khác tại Việt Nam như là đèo Mã Pí Lèng (Hà Giang), Lìm Mông(Yên Bái) hay Mai Châu (Hoà Bình).</p></div>",
+    }
+  ]
+}

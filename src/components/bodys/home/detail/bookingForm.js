@@ -1,19 +1,35 @@
-import React, {Component} from 'react';
-
+import React, { Component } from "react";
+import * as funcCommon from "../../../../common/funcCommon";
 class BookingForm extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="col-12 desktop-booking-form">
-        <div className="booking-form">
+        <div
+          style={{ top: `${this.props.spaceTop}px` }}
+          className={`booking-form border m-2 rounded`}
+        >
+          <h3 className=" w-100 text-center m-2">Đặt Vé</h3>
           <div className="d-flex pt-4 pr-2">
             <span className="col-8">Chọn ngày khởi hành</span>
-            <span
+            <select className="DateCheckinText form-control">
+              <option value="1616716800000">
+                {funcCommon.formatDate(1616716800000)}
+              </option>
+              <option value="1616716800000">
+                {funcCommon.formatDate(1616716800000)}
+              </option>
+            </select>
+            {/* <span
               readOnly
               className="form-control col-4 btn date-input"
               value="10-03-2020"
-            >
-              <span className="DateCheckinText">04-03-2020</span>
-            </span>
+            > */}
+            {/* <span className="">04-03-2020</span> */}
+            {/* </span> */}
           </div>
 
           <div className="d-flex pt-4 pr-2">

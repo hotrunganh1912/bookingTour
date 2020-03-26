@@ -1,13 +1,12 @@
 import React from "react";
 
 class FormSearch extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.inputSearch = React.createRef();
   }
   handleForcus = e => {
     e.target.type = "date";
-    console.log(this);
   };
 
   handleUnforcus = e => {
@@ -17,11 +16,20 @@ class FormSearch extends React.Component {
       e.target.type = "date";
     }
   };
+
+  handerKeyUpFormSearch = e => {
+    console.log("props :", this.props.match.path);
+    let currentPath = this.props.match.path;
+    if (e.keyCode === 9 && (currentPath == "/" || currentPath == "/home"))
+      e.preventDefault();
+  };
+
   componentDidMount() {
-    window.addEventListener("keydown", e => {
-      if (e.keyCode === 9) e.preventDefault();
-      // console.log(this.inputSearch.current.value);
-    });
+    window.addEventListener("keydown", this.handerKeyUpFormSearch);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("keydown", this.handerKeyUpFormSearch);
   }
 
   render() {

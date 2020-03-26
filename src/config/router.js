@@ -36,19 +36,19 @@ export default [
   //   isProtected: false
   // },
   {
-    title: "Functions",
+    title: "Home Payment |Booking",
     component: "./headers/payment",
     path: "/payment",
     isProtected: false
   },
   {
-    title: "Functions",
+    title: "Home Detail |Booking",
     component: "./bodys/home/detail/detail",
-    path: "/detail",
+    path: "/detail/:id",
     isProtected: false
   },
   {
-    title: "Not Found",
+    title: "Not Found |Booking",
     component: "./bodys/home/notFound/404NotFound",
     path: "*",
     isProtected: false

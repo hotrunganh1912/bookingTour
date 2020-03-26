@@ -92,7 +92,7 @@ class Register extends Component {
       <div className="container ">
         <div className="border p-3 w-75 mx-auto rounded-lg bg-white login-bg ">
           <form onSubmit={this.handleSubmit}>
-            <h3 className="text-center">Đăng Nhập</h3>
+            <h3 className="text-center">Đăng Ký</h3>
 
             <div className="form-group">
               <label>User Name: </label>

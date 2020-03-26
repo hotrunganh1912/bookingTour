@@ -7,7 +7,8 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpne: false
+      isOpne: false,
+      scrolled: false
     };
   }
   handlerClickShowMenu = () => {
@@ -21,15 +22,31 @@ class Header extends React.Component {
       this.props.dispatchLogOut();
       alert("Đăng Xuất Thành Công");
     }
-
     e.preventDefault();
-
-    // this.props.history.goBack();
   };
+
+  handerScrollAtHeader = () => {
+    const isTop = window.scrollY > 80;
+    isTop
+      ? this.setState({ scrolled: true })
+      : this.setState({ scrolled: false });
+  };
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.handerScrollAtHeader);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handerScrollAtHeader);
+  }
 
   render() {
     return (
-      <header className="main-header bg-light shadow-sm z-2">
+      <header
+        className={`main-header bg-light z-2 ${
+          this.state.scrolled ? "shadow-lg" : ""
+        }`}
+      >
         <div className="container p-0 ">
           <nav className="navbar navbar-expand-lg navbar-light p-0 ">
             <Link className="navbar-brand py-3" to="/home">

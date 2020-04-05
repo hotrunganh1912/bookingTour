@@ -4,6 +4,7 @@ import callApi from "../../../common/callAPI";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../../action/users";
+import FormError from './FormError';
 // import { createHashHistory } from "history";
 
 class Login extends Component {
@@ -11,9 +12,68 @@ class Login extends Component {
     super(props);
     // this.textInput = React.createRef();
     // this.state = { isLogin: false };
+    this.state = {
+      username: {
+        errorMessage: ''
+      },
+      password: {
+        errorMessage: ''
+      }
+    };
     this.inputUsersName = React.createRef();
     this.inputPassWord = React.createRef();
   }
+
+  validateInput = (type, checkingText) => {
+    // let dataUser = JSON.parse(localStorage.getItem(checkingText));
+    if (checkingText === '') {
+      return {errorMessage: 'must enter information'};
+    }
+
+    if (type === 'username') {
+      const regexp = /^[a-zA-Z ]+$/;
+      const checkingResult = regexp.exec(checkingText);
+      if (checkingResult !== null) {
+        return {errorMessage: ''};
+      } else {
+        return {
+          errorMessage: 'The user only uses words and no special characters',
+        };
+      }
+    }
+
+    if (type === 'password') {
+      const regexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+      const checkingResult = regexp.exec(checkingText);
+      if (checkingResult !== null) {
+        return {errorMessage: ''};
+      } else {
+        return {
+          errorMessage:
+            'password must be at least 6 characters long and be a letter',
+        };
+      }
+    }
+  };
+
+  getValueInput = (name) => {
+    switch (name) {
+      case 'username':
+        return this.inputUsersName.current.value;
+      case 'password':
+        return this.inputPassWord.current.value;
+      default:
+        break;
+    }
+  };
+
+  handleInputValidation = (e) => {
+    const {name} = e.target;
+    const {errorMessage} = this.validateInput(name, this.getValueInput(name));
+    const newState = {...this.state[name]};
+    newState.errorMessage = errorMessage;
+    this.setState({[name]: newState});
+  };
 
   handleSubmit = e => {
     callApi(
@@ -65,7 +125,11 @@ class Login extends Component {
                 type="text"
                 className="form-control"
                 placeholder="User email"
+                name="username"
+                onChange={this.handleInput}
+                onKeyUp={this.handleInputValidation}
               />
+              <FormError errorMessage={this.state.username.errorMessage} />
             </div>
 
             <div className="form-group">
@@ -75,7 +139,11 @@ class Login extends Component {
                 className="form-control"
                 placeholder="Enter password"
                 ref={this.inputPassWord}
+                name="password"
+                onChange={this.handleInput}
+                onKeyUp={this.handleInputValidation}
               />
+              <FormError errorMessage={this.state.password.errorMessage} />
             </div>
 
             <button type="submit" className="btn btn-primary btn-block">

@@ -1,17 +1,38 @@
-import React, { Component } from "react";
-import "./login.css";
-import callApi from "../../../common/callAPI";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { login } from "../../../action/users";
+import React, {Component} from 'react';
+import './login.css';
+import callApi from '../../../common/callAPI';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {login} from '../../../action/users';
+import FormError from './FormError';
 // import { createHashHistory } from "history";
-import { v4 as uuidv4 } from "uuid";
+import {v4 as uuidv4} from 'uuid';
 
 class Register extends Component {
   constructor(props) {
     super(props);
     // this.textInput = React.createRef();
     // this.state = { isLogin: false };
+    this.state = {
+      username: {
+        errorMessage: '',
+      },
+      email: {
+        errorMessage: '',
+      },
+      firstname: {
+        errorMessage: '',
+      },
+      lastname: {
+        errorMessage: '',
+      },
+      password: {
+        errorMessage: '',
+      },
+      confirmPassword: {
+        errorMessage: '',
+      },
+    };
 
     this.inputUsersName = React.createRef();
     this.inputEmail = React.createRef();
@@ -24,36 +45,156 @@ class Register extends Component {
   checkUsersNameDuplicate = () => {
     callApi(
       `users?usersName=${this.inputUsersName.current.value}`,
-      "Get",
+      'Get',
       null
-    ).then(res => {
+    ).then((res) => {
       if (res.data.length === 0) {
         this.handleLogin();
         return false;
       } else {
-        alert("User Name đã tồn tại");
+        alert('User Name đã tồn tại');
         return true;
       }
     });
   };
 
   checkEmaillicate = () => {
-    callApi(`users?gmail=${this.inputEmail.current.value}`, "Get", null).then(
-      res => {
+    callApi(`users?gmail=${this.inputEmail.current.value}`, 'Get', null).then(
+      (res) => {
         if (res.data.length === 0) {
           this.checkUsersNameDuplicate();
           return false;
         } else {
-          alert("Email đã tồn tại");
+          alert('Email đã tồn tại');
           return true;
         }
       }
     );
   };
 
-  handleSubmit = e => {
-    this.checkEmaillicate();
+  validateInput = (type, checkingText) => {
+    // let dataUser = JSON.parse(localStorage.getItem(checkingText));
+    if (checkingText === '') {
+      return {errorMessage: 'must enter information'};
+    }
+
+    if (type === 'username') {
+      const regexp = /^[a-zA-Z ]+$/;
+      const checkingResult = regexp.exec(checkingText);
+      if (checkingResult !== null) {
+        return {errorMessage: ''};
+      } else {
+        return {
+          errorMessage: 'The user only uses words and no special characters',
+        };
+      }
+    }
+
+    if (type === 'email') {
+      const regexp = /\S+@\S+\.\S+/;
+      const checkingResult = regexp.exec(checkingText);
+      if (checkingResult !== null) {
+        return {errorMessage: ''};
+      } else {
+        return {
+          errorMessage: 'email must be Ex:abc@abc.com',
+        };
+      }
+    }
+
+    if (type === 'firstname') {
+      const regexp = /^[a-zA-Z ]+$/;
+      const checkingResult = regexp.exec(checkingText);
+      if (checkingResult !== null) {
+        return {errorMessage: ''};
+      } else {
+        return {
+          errorMessage: 'First Name only uses words and no special characters',
+        };
+      }
+    }
+
+    if (type === 'lastname') {
+      const regexp = /^[a-zA-Z ]+$/;
+      const checkingResult = regexp.exec(checkingText);
+      if (checkingResult !== null) {
+        return {errorMessage: ''};
+      } else {
+        return {
+          errorMessage: 'Last Name only uses words and no special characters',
+        };
+      }
+    }
+
+    if (type === 'password') {
+      const regexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+      const checkingResult = regexp.exec(checkingText);
+      if (checkingResult !== null) {
+        return {errorMessage: ''};
+      } else {
+        return {
+          errorMessage:
+            'password must be at least 6 characters long and be a letter',
+        };
+      }
+    }
+
+    if (type === 'confirmPassword') {
+      const regexPass = this.inputPassWord.current.value;
+      if (checkingText === regexPass) {
+        return {errorMessage: ''};
+      } else {
+        return {
+          errorMessage: 'password is incorrect',
+        };
+      }
+    }
+  };
+
+  getValueInput = (name) => {
+    switch (name) {
+      case 'username':
+        return this.inputUsersName.current.value;
+      case 'email':
+        return this.inputEmail.current.value;
+      case 'firstname':
+        return this.inputFirtName.current.value;
+      case 'lastname':
+        return this.inputLastName.current.value;
+      case 'password':
+        return this.inputPassWord.current.value;
+      case 'confirmPassword':
+        return this.inputPassWordAgain.current.value;
+      default:
+        break;
+    }
+  };
+
+  handleInputValidation = (e) => {
+    const {name} = e.target;
+    const {errorMessage} = this.validateInput(name, this.getValueInput(name));
+    const newState = {...this.state[name]};
+    newState.errorMessage = errorMessage;
+    this.setState({[name]: newState});
+  };
+
+  handleSubmit = (e) => {
     e.preventDefault();
+    const username = this.inputUsersName.current.value;
+    const email = this.inputEmail.current.value;
+    const password = this.inputPassWord.current.value;
+    const confirmPassword = this.inputPassWordAgain.current.value;
+
+    if (
+      username !== '' &&
+      email !== '' &&
+      password !== '' &&
+      confirmPassword !== ''
+    ) {
+      this.checkEmaillicate();
+    } else {
+      alert('Phải nhập đầy đủ thông tin');
+    }
   };
 
   handleLogin = () => {
@@ -63,27 +204,27 @@ class Register extends Component {
       lastName: this.inputLastName.current.value,
       usersName: this.inputUsersName.current.value,
       password: this.inputPassWord.current.value,
-      role: "menber",
-      gmail: this.inputEmail.current.value
+      role: 'menber',
+      gmail: this.inputEmail.current.value,
     };
 
-    callApi(`users`, "Post", user).then(res => {
+    callApi(`users`, 'Post', user).then((res) => {
       if (res.status === 201) {
-        localStorage.setItem("Token", JSON.stringify(res.data));
-        alert("Tạo Tài Khoản Thành Công");
+        localStorage.setItem('Token', JSON.stringify(res.data));
+        alert('Tạo Tài Khoản Thành Công');
         this.props.dispatchLogin();
-      } else alert("Tạo Tài Khoản Thất  Bại");
+      } else alert('Tạo Tài Khoản Thất  Bại');
     });
   };
 
   render() {
-    console.log("hear :", this.props.dataLogin.loggedIn);
+    console.log('hear :', this.props.dataLogin.loggedIn);
 
     if (
       this.props.dataLogin.users.loggedIn ||
-      localStorage.getItem("Token") !== null
+      localStorage.getItem('Token') !== null
     ) {
-      window.console.log("props :", this.props);
+      window.console.log('props :', this.props);
       this.props.history.goBack();
       return null;
     }
@@ -101,7 +242,11 @@ class Register extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Enter User Name"
+                name="username"
+                onChange={this.handleInput}
+                onKeyUp={this.handleInputValidation}
               />
+              <FormError errorMessage={this.state.username.errorMessage} />
             </div>
 
             <div className="form-group">
@@ -111,7 +256,11 @@ class Register extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Enter email"
+                name="email"
+                onChange={this.handleInput}
+                onKeyUp={this.handleInputValidation}
               />
+              <FormError errorMessage={this.state.email.errorMessage} />
             </div>
 
             <div className="form-group">
@@ -121,7 +270,11 @@ class Register extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Enter First Name"
+                name="firstname"
+                onChange={this.handleInput}
+                onKeyUp={this.handleInputValidation}
               />
+              <FormError errorMessage={this.state.firstname.errorMessage} />
             </div>
 
             <div className="form-group">
@@ -131,7 +284,11 @@ class Register extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Enter Last Name"
+                name="lastname"
+                onChange={this.handleInput}
+                onKeyUp={this.handleInputValidation}
               />
+              <FormError errorMessage={this.state.lastname.errorMessage} />
             </div>
 
             <div className="form-group">
@@ -141,7 +298,11 @@ class Register extends Component {
                 className="form-control"
                 placeholder="Enter password"
                 ref={this.inputPassWord}
+                name="password"
+                onChange={this.handleInput}
+                onKeyUp={this.handleInputValidation}
               />
+              <FormError errorMessage={this.state.password.errorMessage} />
             </div>
 
             <div className="form-group">
@@ -151,6 +312,12 @@ class Register extends Component {
                 className="form-control"
                 placeholder="Enter password"
                 ref={this.inputPassWordAgain}
+                name="confirmPassword"
+                onChange={this.handleInput}
+                onKeyUp={this.handleInputValidation}
+              />
+              <FormError
+                errorMessage={this.state.confirmPassword.errorMessage}
               />
             </div>
 
@@ -167,16 +334,16 @@ class Register extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log("state  :", state);
+const mapStateToProps = (state) => {
+  console.log('state  :', state);
   return {
-    dataLogin: state
+    dataLogin: state,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchLogin: () => dispatch(login())
+    dispatchLogin: () => dispatch(login()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

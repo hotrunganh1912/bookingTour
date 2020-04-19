@@ -6,13 +6,22 @@
       "city": "Ninh Bình",
       "country": "Việt Nam",
       "timeJoin": "5 ngày 4 đêm",
-      "price": " 5000000",
+      "price": 5000000,
       "calendar": "Tháng 3",
       "transit": [
         "Máy Bay",
         "xe Hơi"
       ],
-      "style": "discount"
+      "style": "discount",
+      "timeStart": [
+        1587859200000,
+        1588204800000,
+        1590796800000,
+        1593475200000,
+        1596067200000,
+        1595635200000,
+        1593734400000
+      ]
     },
     {
       "id": 2,
@@ -20,7 +29,7 @@
       "city": "Vũng Tàu",
       "country": "Việt Nam",
       "timeJoin": "3 ngày 2 đêm",
-      "price": " 2000000",
+      "price": 2000000,
       "calendar": "Tháng 4",
       "transit": [
         "Máy Bay",
@@ -34,7 +43,7 @@
       "city": "Đà Lạt",
       "country": "Việt Nam",
       "timeJoin": "3 ngày 2 đêm",
-      "price": " 6000000",
+      "price": 6000000,
       "calendar": "Tháng 5",
       "transit": [
         "Máy Bay",
@@ -48,7 +57,7 @@
       "city": "Huế",
       "country": "Việt Nam",
       "timeJoin": "3 ngày 2 đêm",
-      "price": " 3000000",
+      "price": 3000000,
       "calendar": "Tháng 8",
       "transit": [
         "Máy Bay",
@@ -62,7 +71,7 @@
       "city": "JOMTIEN",
       "country": "Thái Lan",
       "timeJoin": "3 ngày 2 đêm",
-      "price": " 6000000",
+      "price": 6000000,
       "calendar": "Tháng 8",
       "transit": [
         "Máy Bay",
@@ -76,7 +85,7 @@
       "city": "Sentosa",
       "country": "SINGAPORE",
       "timeJoin": "7 ngày 2 đêm",
-      "price": " 12000000",
+      "price": 12000000,
       "calendar": "Tháng 8",
       "transit": [
         "Máy Bay",
@@ -90,7 +99,7 @@
       "city": "CAO HÙNG",
       "country": "Đài Loan ",
       "timeJoin": "4 ngày 2 đêm",
-      "price": " 12000000",
+      "price": 12000000,
       "calendar": "Tháng 5",
       "transit": [
         "Máy Bay",
@@ -104,7 +113,7 @@
       "city": "INCHEON",
       "country": "Hàn Quốc",
       "timeJoin": "4 ngày 2 đêm",
-      "price": " 18000000",
+      "price": 18000000,
       "calendar": "Tháng 2",
       "transit": [
         "Máy Bay",
@@ -118,7 +127,7 @@
       "city": "PHUKET",
       "country": "Thái Lan",
       "timeJoin": "4 ngày 3 đêm",
-      "price": " 12000000",
+      "price": 12000000,
       "calendar": "Tháng 3",
       "transit": [
         "Máy Bay",
@@ -132,7 +141,7 @@
       "city": "BALI",
       "country": "INDONESIA",
       "timeJoin": "5 ngày 3 đêm",
-      "price": " 15000000",
+      "price": 15000000,
       "calendar": "Tháng 8",
       "transit": [
         "Máy Bay",
@@ -186,13 +195,22 @@
       "password": "admin",
       "role": "menber",
       "gmail": "asdsad"
+    },
+    {
+      "id": "b173b5e3-7d87-408b-bdc4-b9a495fe33d7",
+      "firtName": "",
+      "lastName": "Anh.Ho",
+      "usersName": "adsdada",
+      "password": "admin",
+      "role": "menber",
+      "gmail": "sdaddadaa"
     }
   ],
   "Detail": [
     {
       "id": "1",
       "idTour": "1",
-      "conten": "<h3 class= \"text-primary mt-4 \">Du lịch Ninh Bình - cảnh vật hữu tình xứng danh tiên cảnh</h3><div class= \"tourSchedule \"><p>Ninh Bình với nhiều danh thắng đẹp cả về cảnh quan và ý nghĩa lịchsử, đã trở thành điểm đến được nhiều du khách lựa chọn. Nói nơiđây là 1 Việt Nam thu nhỏ quả không sai bởi nó hòa quyện toàn bộđặc trưng văn hóa, thiên nhiên và lịch sử. Cùng iVIVU khám phá điểm đặc trưng này, tại sao không?</p></div></div><div class= \"tourDetailheadLine \"><h3 class= \"text-primary mt-4 \">Những trải nghiệm thú vị trong chương trình</h3><div class= \"tourSchedule \"><p>Đến vùng đất Cố đô đừng bỏ lỡ...</p><p>- <strong> Chùa Bái Đính:</strong>Ngôi chùa lớn nhất và nắm giữ nhiều kỷ lục nhất Việt Nam.</p><p>- <strong> Du Lịch Sinh Thái Tràng An:</strong>Phong cảnh thiên nhiên hoang sơ, tuyệt đẹp của Tràng An đã đượcUNESCO công nhận là di sản thiên nhiên và di sản văn hóa thế giới.Khung cảnh nơi đây được tạo nên từ dòng sông chạy uốn lượn qua các dãy núi đá vôi, tạo thành vô vàn những hang động tự nhiên huyềnảo, kỳ bí.</p><p>- <strong> Hang Múa:</strong>từ trên đỉnh núi Múa có thể ngắm toàn cảnh khu vực Tam Cốc với vẻ đẹp được khách Tây ca ngợi đẹp không kém những điểm ngắm từ trêncao khác tại Việt Nam như là đèo Mã Pí Lèng (Hà Giang), Lìm Mông(Yên Bái) hay Mai Châu (Hoà Bình).</p></div>",
+      "conten": "<h3 class= \"text-primary mt-4 \">Du lịch Ninh Bình - cảnh vật hữu tình xứng danh tiên cảnh</h3><div class= \"tourSchedule \"><p>Ninh Bình với nhiều danh thắng đẹp cả về cảnh quan và ý nghĩa lịchsử, đã trở thành điểm đến được nhiều du khách lựa chọn. Nói nơiđây là 1 Việt Nam thu nhỏ quả không sai bởi nó hòa quyện toàn bộđặc trưng văn hóa, thiên nhiên và lịch sử. Cùng iVIVU khám phá điểm đặc trưng này, tại sao không?</p></div></div><div class= \"tourDetailheadLine \"><h3 class= \"text-primary mt-4 \">Những trải nghiệm thú vị trong chương trình</h3><div class= \"tourSchedule \"><p>Đến vùng đất Cố đô đừng bỏ lỡ...</p><p>- <strong> Chùa Bái Đính:</strong>Ngôi chùa lớn nhất và nắm giữ nhiều kỷ lục nhất Việt Nam.</p><p>- <strong> Du Lịch Sinh Thái Tràng An:</strong>Phong cảnh thiên nhiên hoang sơ, tuyệt đẹp của Tràng An đã đượcUNESCO công nhận là di sản thiên nhiên và di sản văn hóa thế giới.Khung cảnh nơi đây được tạo nên từ dòng sông chạy uốn lượn qua các dãy núi đá vôi, tạo thành vô vàn những hang động tự nhiên huyềnảo, kỳ bí.</p><p>- <strong> Hang Múa:</strong>từ trên đỉnh núi Múa có thể ngắm toàn cảnh khu vực Tam Cốc với vẻ đẹp được khách Tây ca ngợi đẹp không kém những điểm ngắm từ trêncao khác tại Việt Nam như là đèo Mã Pí Lèng (Hà Giang), Lìm Mông(Yên Bái) hay Mai Châu (Hoà Bình).</p></div>"
     }
   ]
 }

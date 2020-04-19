@@ -55,7 +55,7 @@ class TourDetailHeadLine extends Component {
               lạc.
             </p>
             <div className="row p-3">
-              <div className="col-md-6 form-advisory mx-auto">
+              <div className="col-md-6 form-advisory">
                 <div className="form-group">
                   <label htmlFor="name">Họ Tên</label>
                   <input type="text" className="form-control" id="name" />

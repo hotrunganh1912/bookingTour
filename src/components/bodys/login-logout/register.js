@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import './login.css';
-import callApi from '../../../common/callAPI';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {login} from '../../../action/users';
-import FormError from './FormError';
+import React, { Component } from "react";
+import "./login.css";
+import callApi from "../../../common/callAPI";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { login } from "../../../action/users";
+import FormError from "./FormError";
 // import { createHashHistory } from "history";
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 class Register extends Component {
   constructor(props) {
@@ -15,22 +15,22 @@ class Register extends Component {
     // this.state = { isLogin: false };
     this.state = {
       username: {
-        errorMessage: '',
+        errorMessage: "",
       },
       email: {
-        errorMessage: '',
+        errorMessage: "",
       },
       firstname: {
-        errorMessage: '',
+        errorMessage: "",
       },
       lastname: {
-        errorMessage: '',
+        errorMessage: "",
       },
       password: {
-        errorMessage: '',
+        errorMessage: "",
       },
       confirmPassword: {
-        errorMessage: '',
+        errorMessage: "",
       },
     };
 
@@ -45,27 +45,27 @@ class Register extends Component {
   checkUsersNameDuplicate = () => {
     callApi(
       `users?usersName=${this.inputUsersName.current.value}`,
-      'Get',
+      "Get",
       null
     ).then((res) => {
       if (res.data.length === 0) {
         this.handleLogin();
         return false;
       } else {
-        alert('User Name đã tồn tại');
+        alert("User Name đã tồn tại");
         return true;
       }
     });
   };
 
   checkEmaillicate = () => {
-    callApi(`users?gmail=${this.inputEmail.current.value}`, 'Get', null).then(
+    callApi(`users?gmail=${this.inputEmail.current.value}`, "Get", null).then(
       (res) => {
         if (res.data.length === 0) {
           this.checkUsersNameDuplicate();
           return false;
         } else {
-          alert('Email đã tồn tại');
+          alert("Email đã tồn tại");
           return true;
         }
       }
@@ -74,78 +74,78 @@ class Register extends Component {
 
   validateInput = (type, checkingText) => {
     // let dataUser = JSON.parse(localStorage.getItem(checkingText));
-    if (checkingText === '') {
-      return {errorMessage: 'must enter information'};
+    if (checkingText === "") {
+      return { errorMessage: "must enter information" };
     }
 
-    if (type === 'username') {
-      const regexp = /^[a-zA-Z ]+$/;
+    if (type === "username") {
+      const regexp = /^[a-zA-Z0-9.]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return {errorMessage: ''};
+        return { errorMessage: "" };
       } else {
         return {
-          errorMessage: 'The user only uses words and no special characters',
+          errorMessage: "The user only uses words and no special characters",
         };
       }
     }
 
-    if (type === 'email') {
+    if (type === "email") {
       const regexp = /\S+@\S+\.\S+/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return {errorMessage: ''};
+        return { errorMessage: "" };
       } else {
         return {
-          errorMessage: 'email must be Ex:abc@abc.com',
+          errorMessage: "email must be Ex:abc@abc.com",
         };
       }
     }
 
-    if (type === 'firstname') {
+    if (type === "firstname") {
       const regexp = /^[a-zA-Z ]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return {errorMessage: ''};
+        return { errorMessage: "" };
       } else {
         return {
-          errorMessage: 'First Name only uses words and no special characters',
+          errorMessage: "First Name only uses words and no special characters",
         };
       }
     }
 
-    if (type === 'lastname') {
+    if (type === "lastname") {
       const regexp = /^[a-zA-Z ]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return {errorMessage: ''};
+        return { errorMessage: "" };
       } else {
         return {
-          errorMessage: 'Last Name only uses words and no special characters',
+          errorMessage: "Last Name only uses words and no special characters",
         };
       }
     }
 
-    if (type === 'password') {
+    if (type === "password") {
       const regexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return {errorMessage: ''};
+        return { errorMessage: "" };
       } else {
         return {
           errorMessage:
-            'password must be at least 6 characters long and be a letter',
+            "password must be at least 6 characters long and be a letter",
         };
       }
     }
 
-    if (type === 'confirmPassword') {
+    if (type === "confirmPassword") {
       const regexPass = this.inputPassWord.current.value;
       if (checkingText === regexPass) {
-        return {errorMessage: ''};
+        return { errorMessage: "" };
       } else {
         return {
-          errorMessage: 'password is incorrect',
+          errorMessage: "password is incorrect",
         };
       }
     }
@@ -153,17 +153,17 @@ class Register extends Component {
 
   getValueInput = (name) => {
     switch (name) {
-      case 'username':
+      case "username":
         return this.inputUsersName.current.value;
-      case 'email':
+      case "email":
         return this.inputEmail.current.value;
-      case 'firstname':
+      case "firstname":
         return this.inputFirtName.current.value;
-      case 'lastname':
+      case "lastname":
         return this.inputLastName.current.value;
-      case 'password':
+      case "password":
         return this.inputPassWord.current.value;
-      case 'confirmPassword':
+      case "confirmPassword":
         return this.inputPassWordAgain.current.value;
       default:
         break;
@@ -171,11 +171,11 @@ class Register extends Component {
   };
 
   handleInputValidation = (e) => {
-    const {name} = e.target;
-    const {errorMessage} = this.validateInput(name, this.getValueInput(name));
-    const newState = {...this.state[name]};
+    const { name } = e.target;
+    const { errorMessage } = this.validateInput(name, this.getValueInput(name));
+    const newState = { ...this.state[name] };
     newState.errorMessage = errorMessage;
-    this.setState({[name]: newState});
+    this.setState({ [name]: newState });
   };
 
   handleSubmit = (e) => {
@@ -186,14 +186,14 @@ class Register extends Component {
     const confirmPassword = this.inputPassWordAgain.current.value;
 
     if (
-      username !== '' &&
-      email !== '' &&
-      password !== '' &&
-      confirmPassword !== ''
+      username !== "" &&
+      email !== "" &&
+      password !== "" &&
+      confirmPassword !== ""
     ) {
       this.checkEmaillicate();
     } else {
-      alert('Phải nhập đầy đủ thông tin');
+      alert("Phải nhập đầy đủ thông tin");
     }
   };
 
@@ -204,27 +204,27 @@ class Register extends Component {
       lastName: this.inputLastName.current.value,
       usersName: this.inputUsersName.current.value,
       password: this.inputPassWord.current.value,
-      role: 'menber',
+      role: "menber",
       gmail: this.inputEmail.current.value,
     };
 
-    callApi(`users`, 'Post', user).then((res) => {
+    callApi(`users`, "Post", user).then((res) => {
       if (res.status === 201) {
-        localStorage.setItem('Token', JSON.stringify(res.data));
-        alert('Tạo Tài Khoản Thành Công');
+        localStorage.setItem("Token", JSON.stringify(res.data));
+        alert("Tạo Tài Khoản Thành Công");
         this.props.dispatchLogin();
-      } else alert('Tạo Tài Khoản Thất  Bại');
+      } else alert("Tạo Tài Khoản Thất  Bại");
     });
   };
 
   render() {
-    console.log('hear :', this.props.dataLogin.loggedIn);
+    console.log("hear :", this.props.dataLogin.loggedIn);
 
     if (
       this.props.dataLogin.users.loggedIn ||
-      localStorage.getItem('Token') !== null
+      localStorage.getItem("Token") !== null
     ) {
-      window.console.log('props :', this.props);
+      window.console.log("props :", this.props);
       this.props.history.goBack();
       return null;
     }
@@ -335,7 +335,7 @@ class Register extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state  :', state);
+  console.log("state  :", state);
   return {
     dataLogin: state,
   };

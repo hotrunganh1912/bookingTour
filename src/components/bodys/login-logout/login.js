@@ -4,7 +4,7 @@ import callApi from "../../../common/callAPI";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../../action/users";
-import FormError from './FormError';
+import FormError from "./FormError";
 // import { createHashHistory } from "history";
 
 class Login extends Component {
@@ -14,11 +14,11 @@ class Login extends Component {
     // this.state = { isLogin: false };
     this.state = {
       username: {
-        errorMessage: ''
+        errorMessage: "",
       },
       password: {
-        errorMessage: ''
-      }
+        errorMessage: "",
+      },
     };
     this.inputUsersName = React.createRef();
     this.inputPassWord = React.createRef();
@@ -26,31 +26,31 @@ class Login extends Component {
 
   validateInput = (type, checkingText) => {
     // let dataUser = JSON.parse(localStorage.getItem(checkingText));
-    if (checkingText === '') {
-      return {errorMessage: 'must enter information'};
+    if (checkingText === "") {
+      return { errorMessage: "must enter information" };
     }
 
-    if (type === 'username') {
-      const regexp = /^[a-zA-Z ]+$/;
+    if (type === "username") {
+      const regexp = /^[a-zA-Z0-9.]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return {errorMessage: ''};
+        return { errorMessage: "" };
       } else {
         return {
-          errorMessage: 'The user only uses words and no special characters',
+          errorMessage: "The user only uses words and no special characters",
         };
       }
     }
 
-    if (type === 'password') {
+    if (type === "password") {
       const regexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return {errorMessage: ''};
+        return { errorMessage: "" };
       } else {
         return {
           errorMessage:
-            'password must be at least 6 characters long and be a letter',
+            "password must be at least 6 characters long and be a letter",
         };
       }
     }
@@ -58,9 +58,9 @@ class Login extends Component {
 
   getValueInput = (name) => {
     switch (name) {
-      case 'username':
+      case "username":
         return this.inputUsersName.current.value;
-      case 'password':
+      case "password":
         return this.inputPassWord.current.value;
       default:
         break;
@@ -68,19 +68,19 @@ class Login extends Component {
   };
 
   handleInputValidation = (e) => {
-    const {name} = e.target;
-    const {errorMessage} = this.validateInput(name, this.getValueInput(name));
-    const newState = {...this.state[name]};
+    const { name } = e.target;
+    const { errorMessage } = this.validateInput(name, this.getValueInput(name));
+    const newState = { ...this.state[name] };
     newState.errorMessage = errorMessage;
-    this.setState({[name]: newState});
+    this.setState({ [name]: newState });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     callApi(
       `users?usersName=${this.inputUsersName.current.value}`,
       "Get",
       null
-    ).then(res => {
+    ).then((res) => {
       if (
         res.data[0] &&
         res.data[0].password === this.inputPassWord.current.value
@@ -159,16 +159,16 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   console.log("state  :", state);
   return {
-    dataLogin: state
+    dataLogin: state,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchLogin: () => dispatch(login())
+    dispatchLogin: () => dispatch(login()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

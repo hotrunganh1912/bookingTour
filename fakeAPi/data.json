@@ -6,21 +6,30 @@
       "city": "Ninh Bình",
       "country": "Việt Nam",
       "timeJoin": "5 ngày 4 đêm",
-      "price": " 5000000",
+      "price": 5000000,
       "calendar": "Tháng 3",
       "transit": [
         "Máy Bay",
         "xe Hơi"
       ],
-      "style": "discount"
+      "style": "discount",
+      "timeStart": [
+        1587859200000,
+        1588204800000,
+        1590796800000,
+        1593475200000,
+        1596067200000,
+        1595635200000,
+        1593734400000
+      ]
     },
     {
       "id": 2,
       "image": "https://www.vietnambooking.com/wp-content/uploads/2019/11/bach-dinh.jpg",
       "city": "Vũng Tàu",
       "country": "Việt Nam",
-      "timeJoin": "2 ngày 1 đêm",
-      "price": " 2000000",
+      "timeJoin": "3 ngày 2 đêm",
+      "price": 2000000,
       "calendar": "Tháng 4",
       "transit": [
         "Máy Bay",
@@ -34,7 +43,7 @@
       "city": "Đà Lạt",
       "country": "Việt Nam",
       "timeJoin": "3 ngày 2 đêm",
-      "price": " 6000000",
+      "price": 6000000,
       "calendar": "Tháng 5",
       "transit": [
         "Máy Bay",
@@ -48,7 +57,7 @@
       "city": "Huế",
       "country": "Việt Nam",
       "timeJoin": "3 ngày 2 đêm",
-      "price": " 3000000",
+      "price": 3000000,
       "calendar": "Tháng 8",
       "transit": [
         "Máy Bay",
@@ -62,7 +71,7 @@
       "city": "JOMTIEN",
       "country": "Thái Lan",
       "timeJoin": "3 ngày 2 đêm",
-      "price": " 6000000",
+      "price": 6000000,
       "calendar": "Tháng 8",
       "transit": [
         "Máy Bay",
@@ -76,7 +85,7 @@
       "city": "Sentosa",
       "country": "SINGAPORE",
       "timeJoin": "7 ngày 2 đêm",
-      "price": " 12000000",
+      "price": 12000000,
       "calendar": "Tháng 8",
       "transit": [
         "Máy Bay",
@@ -90,7 +99,7 @@
       "city": "CAO HÙNG",
       "country": "Đài Loan ",
       "timeJoin": "4 ngày 2 đêm",
-      "price": " 12000000",
+      "price": 12000000,
       "calendar": "Tháng 5",
       "transit": [
         "Máy Bay",
@@ -104,7 +113,7 @@
       "city": "INCHEON",
       "country": "Hàn Quốc",
       "timeJoin": "4 ngày 2 đêm",
-      "price": " 18000000",
+      "price": 18000000,
       "calendar": "Tháng 2",
       "transit": [
         "Máy Bay",
@@ -118,7 +127,7 @@
       "city": "PHUKET",
       "country": "Thái Lan",
       "timeJoin": "4 ngày 3 đêm",
-      "price": " 12000000",
+      "price": 12000000,
       "calendar": "Tháng 3",
       "transit": [
         "Máy Bay",
@@ -132,7 +141,7 @@
       "city": "BALI",
       "country": "INDONESIA",
       "timeJoin": "5 ngày 3 đêm",
-      "price": " 15000000",
+      "price": 15000000,
       "calendar": "Tháng 8",
       "transit": [
         "Máy Bay",
@@ -143,31 +152,13 @@
   ],
   "Users": [
     {
-      "id": "a6f8b87f-10c1-47a0-8245-54f6b3994af2",
-      "firtName": "nguyen",
-      "lastName": "vu",
-      "usersName": "anhvu",
-      "password": "abc123",
-      "role": "menber",
-      "gmail": "nguyenanhvu@gmail.com"
-    },
-    {
-      "id": "d5296e64-b166-4824-8fdc-b77982967367",
-      "firtName": "a",
-      "lastName": "abc",
-      "usersName": "anhvunguyen",
-      "password": "a12345",
-      "role": "menber",
-      "gmail": "nguyenanhvu.abc@gmail.com"
-    },
-    {
-      "id": "52ec3dd8-4377-4f40-af99-14cb7ff12a28",
-      "firtName": "anh",
-      "lastName": "nguyen",
-      "usersName": "abcd",
+      "id": "5a0eab9e-6c73-4706-a434-725c9086a19f",
+      "firtName": "Anh",
+      "lastName": "Ho",
+      "usersName": "Anh.Ho",
       "password": "anh123",
       "role": "menber",
-      "gmail": "abcd@abc.com"
+      "gmail": "admin@gmail.com"
     }
   ],
   "Detail": [

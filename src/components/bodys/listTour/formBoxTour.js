@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import * as funcCommon from "../../../common/funcCommon";
 class FormBoxTour extends Component {
+  renderTimeStart(array) {
+    for (let i = 0; i < array.length; i++) {
+      console.log("Date.now() - array[i]", Date.now(), "-", array[i]);
+      if (Date.now() < array[i]) {
+        return funcCommon.formatDate(array[i]);
+      }
+    }
+    return this.props.data.calendar;
+  }
   render() {
     let {
       id,
@@ -10,8 +20,10 @@ class FormBoxTour extends Component {
       timeJoin,
       price,
       calendar,
-      transit
+      transit,
+      timeStart
     } = this.props.data;
+    // console.log("this.props.data :", this.props.data);
     return (
       <div className="w-100 box-list-tour-warp">
         <div className="box-element-tour ">
@@ -45,7 +57,8 @@ class FormBoxTour extends Component {
                   })}
               </div>
               <div className="content-infor">
-                <i className="far fa-calendar-alt"></i> {calendar}
+                <i className="far fa-calendar-alt"></i>{" "}
+                {timeStart ? this.renderTimeStart(timeStart) : calendar}
               </div>
               <div className="content-infor">
                 <i className="fas fa-plane"></i> {transit.join(", ")}

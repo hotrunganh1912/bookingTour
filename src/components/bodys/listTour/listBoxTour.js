@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./listTour.css";
 import BgListTour from "./bgListTour";
 
 class ListBoxTour extends Component {

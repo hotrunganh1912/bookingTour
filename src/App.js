@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import "./listTour.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Main from "./components/booking-tour";
 // import  Main  from "./components/booking-tour";

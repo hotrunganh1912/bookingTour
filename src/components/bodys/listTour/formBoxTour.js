@@ -25,7 +25,7 @@ class FormBoxTour extends Component {
     } = this.props.data;
     // console.log("this.props.data :", this.props.data);
     return (
-      <div className="w-100 box-list-tour-warp">
+      <div className="box-list-tour-warp">
         <div className="box-element-tour ">
           <div className="image-list-e-w">
             <img

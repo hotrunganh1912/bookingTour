@@ -1,4 +1,4 @@
-import React, { ueState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import TourSearch from "./tourSearch";
 import BosxRsSearch from "./boxRsSearch";
 import "./tourSearch.css";
@@ -11,15 +11,31 @@ const BgTour = (props) => {
 
   const typeTour = props.data.search.typeTour;
   const dateStart = props.data.search.dateStart;
-  //   console.log(" q:", q);
+
+  const [data, setData] = useState(0);
+  const [rsNull, setRsNull] = useState(false);
+
+  console.log("rsNull :", rsNull);
+
+  const pullData = async () => {
+    setRsNull(false);
+    setData(0);
+    await callApi(
+      `tours?${q === "" ? "" : "q=" + handerDatataSearch(q)}${
+        typeTour === "" ? "" : "&&style=" + typeTour
+      }`,
+      "Get",
+      null
+    ).then((res) => {
+      if (res.data.lenght > 0) setData(res.data);
+      else setRsNull(true);
+      console.log("res !== [] :", res.data.lenght > 0);
+    });
+  };
 
   useEffect(() => {
-    callApi(`tours?q=${handerDatataSearch(q)}&&style=${typeTour}`).then(
-      (res) => {
-        console.log("res :", res.data);
-      }
-    );
-  }, [q, typeTour]);
+    pullData();
+  }, [q, typeTour, dateStart]);
 
   const checkDateStart = (date) => {};
 
@@ -38,7 +54,14 @@ const BgTour = (props) => {
   return (
     <div className="container">
       <TourSearch />
-      <BosxRsSearch />
+      {/* {console.log("data ", data)} */}
+      {data && data !== 0 ? (
+        <BosxRsSearch data={data} />
+      ) : rsNull ? (
+        <div>Không tìm thấy kết quả...</div>
+      ) : (
+        <div>pending...</div>
+      )}
     </div>
   );
 };

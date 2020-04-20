@@ -1,9 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
+import { setDataSearch } from "../../../action/search";
+import { withRouter } from "react-router-dom";
 
 class FormSearch extends React.Component {
   constructor(props) {
     super(props);
     this.inputSearch = React.createRef();
+    this.selectType = React.createRef();
+    this.dateStart = React.createRef();
   }
   handleForcus = (e) => {
     e.target.type = "date";
@@ -32,57 +37,81 @@ class FormSearch extends React.Component {
     window.removeEventListener("keydown", this.handerKeyUpFormSearch);
   }
 
+  getDataAndDispatch = () => {
+    let date =
+      this.dateStart.current.value === ""
+        ? ""
+        : new Date(this.dateStart.current.value).getTime();
+    let data = {
+      q: this.inputSearch.current.value,
+      typeTour: this.selectType.current.value,
+      dateStart: date,
+    };
+    this.props.getDataSearch(data);
+
+    return this.props.history.push("/tour");
+  };
+
   render() {
     return (
-      <form>
-        <div className="row border-search mx-auto w-75 rounded">
-          <div className="col-12">
-            <input
-              type="text"
-              ref={this.inputSearch}
-              className="form-control w-100 my-2"
-              id="placeWantToGo"
-              placeholder="Bạn Muốn Đi Đâu?"
-              name="placeWantToGo"
-            />
-          </div>
-          <div className="col-md-4  my-1">
-            <input
-              type="text"
-              className="form-control"
-              id="dateStart"
-              placeholder="Thời Gian Đi?"
-              name="dateStart"
-              onFocus={this.handleForcus}
-              onBlur={this.handleUnforcus}
-            />
-          </div>
-          <div className="col-md-4 my-1">
-            <select className="form-control" id="dateReturn" name="dateReturn">
-              <option value="">Chọn type tour</option>
-              <option className="my-options" value="hot">
-                Tour Hot
-              </option>
-              <option className="my-options" value="discount">
-                Giảm Giá
-              </option>
-              <option className="my-options" value="foreign">
-                Tour Nước Ngoài
-              </option>
-            </select>
-          </div>
-          <div className="col-md-4 text-right  my-1">
-            <button
-              type="submit"
-              className="btn btn-outline-primary w-100 mr-auto"
-            >
-              Tìm Kiếm
-            </button>
-          </div>
+      <div className="row border-search mx-auto w-75 rounded">
+        <div className="col-12">
+          <input
+            type="text"
+            ref={this.inputSearch}
+            className="form-control w-100 my-2"
+            id="placeWantToGo"
+            placeholder="Bạn Muốn Đi Đâu?"
+            name="placeWantToGo"
+          />
         </div>
-      </form>
+        <div className="col-md-4  my-1">
+          <input
+            ref={this.dateStart}
+            type="text"
+            className="form-control"
+            id="dateStart"
+            placeholder="Thời Gian Đi?"
+            name="dateStart"
+            onFocus={this.handleForcus}
+            onBlur={this.handleUnforcus}
+          />
+        </div>
+        <div className="col-md-4 my-1">
+          <select
+            ref={this.selectType}
+            className="form-control"
+            id="dateReturn"
+            name="dateReturn"
+          >
+            <option value="">Chọn type tour</option>
+            <option className="my-options" value="hot">
+              Tour Hot
+            </option>
+            <option className="my-options" value="discount">
+              Giảm Giá
+            </option>
+            <option className="my-options" value="foreign">
+              Tour Nước Ngoài
+            </option>
+          </select>
+        </div>
+        <div className="col-md-4 text-right  my-1">
+          <button
+            className="btn btn-outline-primary w-100 mr-auto"
+            onClick={this.getDataAndDispatch}
+          >
+            Tìm Kiếm
+          </button>
+        </div>
+      </div>
     );
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getDataSearch: (data) => dispatch(setDataSearch(data)),
+  };
+};
 
-export default FormSearch;
+export default connect(null, mapDispatchToProps)(withRouter(FormSearch));

@@ -5,11 +5,11 @@ class FormSearch extends React.Component {
     super(props);
     this.inputSearch = React.createRef();
   }
-  handleForcus = e => {
+  handleForcus = (e) => {
     e.target.type = "date";
   };
 
-  handleUnforcus = e => {
+  handleUnforcus = (e) => {
     if (e.target.value === "") {
       e.target.type = "text";
     } else {
@@ -17,10 +17,10 @@ class FormSearch extends React.Component {
     }
   };
 
-  handerKeyUpFormSearch = e => {
+  handerKeyUpFormSearch = (e) => {
     console.log("props :", this.props.match.path);
     let currentPath = this.props.match.path;
-    if (e.keyCode === 9 && (currentPath == "/" || currentPath == "/home"))
+    if (e.keyCode === 9 && (currentPath === "/" || currentPath === "/home"))
       e.preventDefault();
   };
 
@@ -34,45 +34,53 @@ class FormSearch extends React.Component {
 
   render() {
     return (
-      <div className="row border-search mx-auto w-75 rounded">
-        <div className="col-12">
-          <input
-            type="text"
-            ref={this.inputSearch}
-            className="form-control w-100 my-2"
-            id="placeWantToGo"
-            placeholder="Bạn Muốn Đi Đâu?"
-            name="placeWantToGo"
-          />
+      <form>
+        <div className="row border-search mx-auto w-75 rounded">
+          <div className="col-12">
+            <input
+              type="text"
+              ref={this.inputSearch}
+              className="form-control w-100 my-2"
+              id="placeWantToGo"
+              placeholder="Bạn Muốn Đi Đâu?"
+              name="placeWantToGo"
+            />
+          </div>
+          <div className="col-md-4  my-1">
+            <input
+              type="text"
+              className="form-control"
+              id="dateStart"
+              placeholder="Thời Gian Đi?"
+              name="dateStart"
+              onFocus={this.handleForcus}
+              onBlur={this.handleUnforcus}
+            />
+          </div>
+          <div className="col-md-4 my-1">
+            <select className="form-control" id="dateReturn" name="dateReturn">
+              <option value="">Chọn type tour</option>
+              <option className="my-options" value="hot">
+                Tour Hot
+              </option>
+              <option className="my-options" value="discount">
+                Giảm Giá
+              </option>
+              <option className="my-options" value="foreign">
+                Tour Nước Ngoài
+              </option>
+            </select>
+          </div>
+          <div className="col-md-4 text-right  my-1">
+            <button
+              type="submit"
+              className="btn btn-outline-primary w-100 mr-auto"
+            >
+              Tìm Kiếm
+            </button>
+          </div>
         </div>
-        <div className="col-md-4  my-1">
-          <input
-            type="text"
-            className="form-control"
-            id="dateStart"
-            placeholder="Thời Gian Đi?"
-            name="dateStart"
-            onFocus={this.handleForcus}
-            onBlur={this.handleUnforcus}
-          />
-        </div>
-        <div className="col-md-4 my-1">
-          <input
-            type="text"
-            className="form-control"
-            id="dateReturn"
-            placeholder="Thời Gian Về?"
-            name="dateReturn"
-            onFocus={this.handleForcus}
-            onBlur={this.handleUnforcus}
-          />
-        </div>
-        <div className="col-md-4 text-right  my-1">
-          <button className="btn btn-outline-primary w-100 mr-auto">
-            Tìm Kiếm
-          </button>
-        </div>
-      </div>
+      </form>
     );
   }
 }

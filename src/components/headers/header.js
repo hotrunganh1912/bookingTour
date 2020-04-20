@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logOut } from "../../action/users";
 
@@ -8,16 +8,16 @@ class Header extends React.Component {
     super(props);
     this.state = {
       isOpne: false,
-      scrolled: false
+      scrolled: false,
     };
   }
   handlerClickShowMenu = () => {
     this.setState({
-      isOpne: !this.state.isOpne
+      isOpne: !this.state.isOpne,
     });
   };
 
-  handerlerLogOut = e => {
+  handerlerLogOut = (e) => {
     if (window.confirm("Bạn Muốn Log Out")) {
       this.props.dispatchLogOut();
       alert("Đăng Xuất Thành Công");
@@ -48,9 +48,14 @@ class Header extends React.Component {
         }`}
       >
         <div className="container p-0 ">
-          <nav className="navbar navbar-expand-lg navbar-light p-0 ">
+          <nav className="navbar navbar-expand-lg navbar-light p-2 ">
             <Link className="navbar-brand py-3" to="/home">
-              Logo
+              <img
+                style={{ maxWidth: "50px" }}
+                className="m-0 p-0"
+                src="https://banner2.cleanpng.com/20180611/hoc/kisspng-flight-air-travel-travel-agent-computer-icons-5b1ebcfcd51d97.4045414315287411168729.jpg"
+                alt="iconas"
+              />
             </Link>
 
             <button
@@ -86,15 +91,16 @@ class Header extends React.Component {
                 {this.props.dataLogin.users.loggedIn ||
                 localStorage.getItem("Token") !== null ? (
                   <li className="nav-item py-2 dropdown">
-                    <a
+                    <Link
                       className="nav-link text-center border-left border-right px-3  bg-light dropdown-toggle"
                       data-toggle="dropdown"
                       aria-haspopup="true"
                       aria-expanded="false"
+                      to="/home"
                       // href="#"
                     >
                       <i className="far fa-user"></i>
-                    </a>
+                    </Link>
                     <div
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
@@ -137,16 +143,16 @@ class Header extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   console.log("state  :", state);
   return {
-    dataLogin: state
+    dataLogin: state,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchLogOut: () => dispatch(logOut())
+    dispatchLogOut: () => dispatch(logOut()),
   };
 };
 

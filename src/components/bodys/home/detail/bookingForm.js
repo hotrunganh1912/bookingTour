@@ -8,7 +8,7 @@ class BookingForm extends Component {
       numberOfChildrenTicker: 0,
       currentPriceTicker: 0,
       currentPriceChildrenTicker: 0,
-      curentSumPrice: 0
+      curentSumPrice: 0,
     };
   }
 
@@ -17,13 +17,16 @@ class BookingForm extends Component {
     let data = null;
 
     if (arrayTime) {
-      data = arrayTime.map((e, i) => {
-        return (
-          <option key={"option" + i} className="text-center" value={`${e}`}>
-            {funcCommon.formatDate(e)}
-          </option>
-        );
-      });
+      data = arrayTime
+        .sort((x, y) => x - y)
+        .filter((x) => x >= Date.now())
+        .map((e, i) => {
+          return (
+            <option key={"option" + i} className="text-center" value={`${e}`}>
+              {funcCommon.formatDate(e)}
+            </option>
+          );
+        });
     }
 
     return data === null ? (
@@ -46,7 +49,7 @@ class BookingForm extends Component {
     object === "children"
       ? currentNumberOfChildrenTicker > 0 &&
         (await this.setState({
-          numberOfChildrenTicker: --currentNumberOfChildrenTicker
+          numberOfChildrenTicker: --currentNumberOfChildrenTicker,
         }))
       : currentNumberOfTicker > 1 &&
         (await this.setState({ numberOfTicker: --currentNumberOfTicker }));
@@ -66,7 +69,7 @@ class BookingForm extends Component {
     object === "children"
       ? currentNumberOfChildrenTicker < 20 &&
         (await this.setState({
-          numberOfChildrenTicker: ++currentNumberOfChildrenTicker
+          numberOfChildrenTicker: ++currentNumberOfChildrenTicker,
         }))
       : currentNumberOfTicker < 20 &&
         (await this.setState({ numberOfTicker: ++currentNumberOfTicker }));
@@ -78,19 +81,19 @@ class BookingForm extends Component {
     this.props.dataTour.price &&
       (await this.setState({
         currentPriceTicker:
-          this.props.dataTour.price * this.state.numberOfTicker
+          this.props.dataTour.price * this.state.numberOfTicker,
       }));
 
     this.props.dataTour.price &&
       (await this.setState({
         currentPriceChildrenTicker:
-          this.props.dataTour.price * this.state.numberOfChildrenTicker
+          this.props.dataTour.price * this.state.numberOfChildrenTicker,
       }));
 
     await this.setState({
       curentSumPrice:
         this.state.currentPriceChildrenTicker * 0.75 +
-        this.state.currentPriceTicker
+        this.state.currentPriceTicker,
     });
   };
 

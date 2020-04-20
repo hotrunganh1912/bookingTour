@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import FormBoxTour from "./formBoxTour";
 import callApi from "../../../common/callAPI";
+import { Link } from "react-router-dom";
 
 class BgListTour extends Component {
   constructor() {
     super();
     this.state = {
-      tours: []
+      tours: [],
     };
   }
 
   // get  data
   componentDidMount() {
-
     callApi(`tours?style=${this.props.styleTour}&&_limit=3`, "Get", null).then(
-      res => {
+      (res) => {
         this.setState({ tours: res.data });
       }
     );
@@ -24,14 +24,14 @@ class BgListTour extends Component {
     let datas = this.state.tours;
     return (
       // list tour
-      <div className=" container px-0 my-5">
+      <div className=" container px-0 my-5 p-2">
         <div className="d-flex  justify-content-between title-and-seeMove">
           <h5 className="bg-danger p-2 rounded text-white">
             {this.props.titleName}
           </h5>
-          <a className="text-right" href="#">
+          <Link className="text-right" to="/home">
             Xem Thêm ...
-          </a>
+          </Link>
         </div>
         <div className="mover-list bg-light p-3 rounded d-flex list-all-e-tour">
           {/* display  box  */}

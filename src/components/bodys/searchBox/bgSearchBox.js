@@ -2,9 +2,6 @@ import React from "react";
 import FormSearch from "./formSearch";
 
 class BgSearchBox extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="container bg-light  p-0 ">

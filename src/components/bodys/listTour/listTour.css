@@ -2,11 +2,46 @@
   /* background-color: tomato; */
   width: 300px;
   height: 400px;
-  overflow: hidden;               
+  overflow: hidden;
 }
 .list-all-e-tour {
   overflow: auto;
 }
+
+/* .list-all-e-tour::-webkit-scrollbar {
+  height: 4px; 
+  width: 4px; 
+  border: 1px solid #d5d5d5;
+}
+.list-all-e-tour::-webkit-scrollbar-thumb:horizontal {
+  background: #000;
+}
+
+.list-all-e-tour::-webkit-scrollbar-button:horizontal {
+  width: 2px;
+  height: 10px;
+  background: #000000;
+} */
+/*
+.list-all-e-tour::-webkit-scrollbar-track {
+  background: #ddd;
+}
+.list-all-e-tour::-webkit-scrollbar-thumb {
+  background: #666;
+} */
+/* 
+.list-all-e-tour::-webkit-scrollbar {
+  width: 15px;
+} */
+/* 
+.list-all-e-tour::-webkit-scrollbar-thumb {
+  background: #666;
+}
+
+.list-all-e-tour::-webkit-scrollbar-track {
+  background: #ddd;
+} */
+
 /* .mover-list {
 } */
 .box-list-tour-warp {
@@ -24,7 +59,7 @@
   /* transform: translate(0, -200px); */
 }
 
-.title-and-seeMove{
+.title-and-seeMove {
   transform: translate(0, 30px);
 }
 

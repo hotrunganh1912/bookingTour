@@ -2,10 +2,6 @@ import React from "react";
 import SearchBox from "../searchBox/searchBox";
 import ListBoxTour from "../listTour/listBoxTour";
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>

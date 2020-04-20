@@ -10,15 +10,15 @@ class Detail extends Component {
     super(props);
     this.state = {
       dataTour: "",
-      spaceTop: 175
+      spaceTop: 175,
     };
   }
 
-  componentDidMount() {
-    callApi(`tours/?id=${this.props.match.params.id}`, "Get", null).then(
-      res => {
+  async componentDidMount() {
+    await callApi(`tours/?id=${this.props.match.params.id}`, "Get", null).then(
+      (res) => {
         this.setState({
-          dataTour: res.data
+          dataTour: res.data,
         });
       }
     );
@@ -41,7 +41,7 @@ class Detail extends Component {
   }
 
   render() {
-    return (
+    return this.state.dataTour ? (
       <div className="container">
         <div className="row">
           <div className="title-tour col-12 mt-3">
@@ -56,7 +56,7 @@ class Detail extends Component {
         <div className="row  offSetTopFromBooking">
           <div className="col-12">
             <div className="row">
-              <div className="detail-tour col-lg-8 col-12 my-2">
+              <div className="detail-tour col-lg-7 col-xl-8 col-12  my-2">
                 <div className="row img-overview">
                   <ImageCap
                     dataTour={this.state.dataTour[0] && this.state.dataTour[0]}
@@ -74,6 +74,8 @@ class Detail extends Component {
           </div>
         </div>
       </div>
+    ) : (
+      <div className="container">sever... (check connect)</div>
     );
   }
 }

@@ -6,8 +6,8 @@ export default function callApi(endPoin, method = "GET", data) {
   return axios({
     method: method,
     url: `${Congig.host}/${endPoin}`,
-    data: data
-  }).catch(err => {
+    data: data,
+  }).catch((err) => {
     console.log("err :", err);
   });
 }

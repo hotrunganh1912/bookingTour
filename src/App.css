@@ -59,3 +59,10 @@ ul li:first-child a.char-before::before {
 .color-footer {
   background-color: #231f20;
 }
+
+.page-link:disabled,
+.page-link:disabled:hover {
+  background-color: #0000001f;
+  color: black;
+  text-decoration: line-through;
+}

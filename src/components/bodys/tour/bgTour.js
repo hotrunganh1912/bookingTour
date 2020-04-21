@@ -147,7 +147,7 @@ const BgTour = (props) => {
               position: "relative",
               top: "-113px",
             }}
-            className="mover-list bg-light flex-wrap flex-grow p-3 rounded d-flex list-all-e-tour justify-content-center"
+            className="mover-list bg-light flex-wrap flex-grow p-3 rounded d-flex list-all-e-tour justify-content-around"
           >
             {/* {console.log("pagination() :", )} */}
             <BosxRsSearch data={pagination()} />

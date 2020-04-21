@@ -4,7 +4,7 @@ import * as funcCommon from "../../../common/funcCommon";
 class FormBoxTour extends Component {
   renderTimeStart(array) {
     for (let i = 0; i < array.length; i++) {
-      console.log("Date.now() - array[i]", Date.now(), "-", array[i]);
+      // console.log("Date.now() - array[i]", Date.now(), "-", array[i]);
       if (Date.now() < array[i]) {
         return funcCommon.formatDate(array[i]);
       }
@@ -21,7 +21,7 @@ class FormBoxTour extends Component {
       price,
       calendar,
       transit,
-      timeStart
+      timeStart,
     } = this.props.data;
     // console.log("this.props.data :", this.props.data);
     return (
@@ -53,7 +53,7 @@ class FormBoxTour extends Component {
                 {" " +
                   Number(price).toLocaleString("it-IT", {
                     style: "currency",
-                    currency: "VND"
+                    currency: "VND",
                   })}
               </div>
               <div className="content-infor">
@@ -63,8 +63,10 @@ class FormBoxTour extends Component {
               <div className="content-infor">
                 <i className="fas fa-plane"></i> {transit.join(", ")}
               </div>
-              <div className="content-infor text-right">
-                <Link to={`/detail/${id}`}>Chi Tiết...</Link>
+              <div tabIndex="-1" className=" content-infor text-right">
+                <Link tabIndex="-1" to={`/detail/${id}`}>
+                  Chi Tiết...
+                </Link>
               </div>
             </div>
           </div>

@@ -4,9 +4,32 @@ import { connect } from "react-redux";
 import { setDataSearch } from "../../../action/search";
 
 const TourSearch = (props) => {
+  const dateSearchDefaul = props.dateStart
+    ? new Date(props.dateStart).toISOString().substr(0, 10)
+    : "";
+
+  console.log("typeTour=>>>>> :", props.typeTour);
   const inputSearch = useRef("");
   const selectType = useRef("");
   const dateStart = useRef("");
+  const dataOptional = [
+    {
+      title: "Chọn type tour",
+      value: "",
+    },
+    {
+      title: "Tour Hot",
+      value: "hot",
+    },
+    {
+      title: "Giảm Giá",
+      value: "discount",
+    },
+    {
+      title: "Tour Nước Ngoài",
+      value: "foreign",
+    },
+  ];
 
   const handleForcus = (e) => {
     e.target.type = "date";
@@ -21,6 +44,7 @@ const TourSearch = (props) => {
   };
 
   const getDataAndDispatch = () => {
+    if (props.statusGetData === "connectError") props.wasGetDataFail();
     let date =
       dateStart.current.value === ""
         ? ""
@@ -41,8 +65,6 @@ const TourSearch = (props) => {
             <img src={pane} className="d-block w-100" alt="..." />
           </div>
         </div>
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="sr-only">Next</span>
       </div>
       <div className="search-sec">
         <div className="container">
@@ -56,17 +78,19 @@ const TourSearch = (props) => {
                     className="form-control search-slt"
                     name="q"
                     placeholder="Bạn Muốn Đi Đâu"
+                    defaultValue={props.q}
                   />
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-12 p-0">
                   <input
                     ref={dateStart}
-                    type="text"
+                    type={dateSearchDefaul === "" ? "text" : "date"}
                     className="form-control search-slt"
                     placeholder="Thời Gian Đi"
                     name="dateStart"
                     onFocus={handleForcus}
                     onBlur={handleUnforcus}
+                    defaultValue={dateSearchDefaul}
                   />
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-12 p-0">
@@ -75,21 +99,39 @@ const TourSearch = (props) => {
                     name="typeTour"
                     className="form-control search-slt"
                     id="exampleFormControlSelect1"
+                    defaultValue={props.typeTour}
                   >
-                    <option value="">Chọn type tour</option>
-                    <option value="hot">Tour Hot</option>
-                    <option value="discount">Giảm Giá</option>
-                    <option value="foreign">Tour Nước Ngoài</option>
+                    {dataOptional.map((e, i) => (
+                      <option key={dataOptional + i} value={e.value}>
+                        {e.title}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                  <button
-                    onClick={getDataAndDispatch}
-                    type="button"
-                    className="btn btn-primary wrn-btn"
-                  >
-                    Search
-                  </button>
+                  {props.statusGetData !== "pending" ? (
+                    <button
+                      onClick={getDataAndDispatch}
+                      type="button"
+                      className="btn btn-primary wrn-btn "
+                    >
+                      Search
+                    </button>
+                  ) : (
+                    <button
+                      disabled={true}
+                      onClick={getDataAndDispatch}
+                      type="button"
+                      className="btn btn-primary wrn-btn "
+                    >
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      -<span>Loading...</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

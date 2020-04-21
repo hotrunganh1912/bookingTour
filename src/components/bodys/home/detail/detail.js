@@ -4,6 +4,8 @@ import "./product-detail.css";
 import BookingForm from "./bookingForm";
 import TourDetailHeadLine from "./tourDetailHeadLine";
 import callApi from "../../../../common/callAPI";
+import Waiting from "../../../../common/waiting";
+import CheckConnect from "../../../../common/checkConnect";
 
 class Detail extends Component {
   constructor(props) {
@@ -17,9 +19,14 @@ class Detail extends Component {
   async componentDidMount() {
     await callApi(`tours/?id=${this.props.match.params.id}`, "Get", null).then(
       (res) => {
-        this.setState({
-          dataTour: res.data,
-        });
+        if (res && res.data)
+          this.setState({
+            dataTour: res.data,
+          });
+        else
+          this.setState({
+            dataTour: "0",
+          });
       }
     );
     window.addEventListener("scroll", this.handerScrollAtBooking);
@@ -41,7 +48,9 @@ class Detail extends Component {
   }
 
   render() {
-    return this.state.dataTour ? (
+    return this.state.dataTour &&
+      this.state.dataTour !== "0" &&
+      this.state.dataTour !== "" ? (
       <div className="container">
         <div className="row">
           <div className="title-tour col-12 mt-3">
@@ -74,8 +83,14 @@ class Detail extends Component {
           </div>
         </div>
       </div>
+    ) : this.state.dataTour === "" ? (
+      <div className="container">
+        <Waiting />
+      </div>
     ) : (
-      <div className="container">sever... (check connect)</div>
+      <div className="container">
+        <CheckConnect />
+      </div>
     );
   }
 }

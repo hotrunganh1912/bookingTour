@@ -5,39 +5,77 @@ import "./tourSearch.css";
 import callApi from "../../../common/callAPI";
 import { connect } from "react-redux";
 import { removeAccents } from "../../../common/funcCommon";
+import Waiting from "../../../common/waiting";
+import NotFindData from "../../../common/notFindata";
+import CheckConnect from "../../../common/checkConnect";
 
 const BgTour = (props) => {
-  const q = props.data.search.q;
+  console.log("props :", props);
 
+  const q = props.data.search.q;
   const typeTour = props.data.search.typeTour;
   const dateStart = props.data.search.dateStart;
 
+  const [countFail, setCountFail] = useState(0);
   const [data, setData] = useState(0);
-  const [rsNull, setRsNull] = useState(false);
 
-  console.log("rsNull :", rsNull);
-
-  const pullData = async () => {
-    setRsNull(false);
-    setData(0);
-    await callApi(
-      `tours?${q === "" ? "" : "q=" + handerDatataSearch(q)}${
-        typeTour === "" ? "" : "&&style=" + typeTour
-      }`,
-      "Get",
-      null
-    ).then((res) => {
-      if (res.data.lenght > 0) setData(res.data);
-      else setRsNull(true);
-      console.log("res !== [] :", res.data.lenght > 0);
-    });
-  };
+  const [rsGetData, setRsGetData] = useState("pending");
 
   useEffect(() => {
-    pullData();
-  }, [q, typeTour, dateStart]);
+    let isUnmounting = false;
 
-  const checkDateStart = (date) => {};
+    const checkDateStart = (tours) => {
+      return tours.filter((tour) => {
+        for (let i = 0; i < tour.timeStart.length; i++) {
+          console.log(
+            `${tour.city} tour.timeStart[i] >= dateStart`,
+            tour.timeStart[i] >= dateStart
+          );
+          if (tour.timeStart[i] >= dateStart) return true;
+        }
+        return false;
+      });
+    };
+
+    const pullData = async () => {
+      setRsGetData("pending");
+      setData(0);
+      await callApi(
+        `tours?${q === "" ? "" : "q=" + handerDatataSearch(q)}${
+          typeTour === "" ? "" : "&&style=" + typeTour
+        }`,
+        "Get",
+        null
+      ).then((res) => {
+        if (res) {
+          if (res.data.length > 0) {
+            if (!isUnmounting) {
+              const filterData =
+                dateStart !== "" ? checkDateStart(res.data) : res.data;
+              if (filterData && filterData.length > 0) {
+                console.log("filterData :", filterData);
+                setData(filterData);
+                setRsGetData("getFinish");
+              } else setRsGetData("null");
+            }
+          } else setRsGetData("null");
+        } else {
+          setRsGetData("connectError");
+        }
+      });
+    };
+
+    pullData();
+
+    return () => {
+      isUnmounting = true;
+    };
+  }, [q, typeTour, dateStart, countFail]);
+
+  const wasGetDataFail = () => {
+    console.log("set ");
+    setCountFail(countFail + 1);
+  };
 
   const handerDatataSearch = (q) => {
     let char = q
@@ -53,14 +91,32 @@ const BgTour = (props) => {
 
   return (
     <div className="container">
-      <TourSearch />
-      {/* {console.log("data ", data)} */}
-      {data && data !== 0 ? (
-        <BosxRsSearch data={data} />
-      ) : rsNull ? (
-        <div>Không tìm thấy kết quả...</div>
-      ) : (
-        <div>pending...</div>
+      <TourSearch
+        statusGetData={rsGetData}
+        wasGetDataFail={wasGetDataFail}
+        q={q}
+        typeTour={typeTour}
+        dateStart={dateStart}
+      />
+      {rsGetData === "pending" && (
+        <Waiting custome={{ position: "relative", top: "-90px" }} />
+      )}
+      {rsGetData === "getFinish" && (
+        <div
+          style={{
+            position: "relative",
+            top: "-113px",
+          }}
+          className="mover-list bg-light flex-wrap flex-grow p-3 rounded d-flex list-all-e-tour justify-content-center"
+        >
+          <BosxRsSearch data={data} />
+        </div>
+      )}
+      {rsGetData === "null" && (
+        <NotFindData custome={{ position: "relative", top: "-90px" }} />
+      )}
+      {rsGetData === "connectError" && (
+        <CheckConnect custome={{ position: "relative", top: "-90px" }} />
       )}
     </div>
   );

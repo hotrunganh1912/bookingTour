@@ -8,6 +8,6 @@ export default function callApi(endPoin, method = "GET", data) {
     url: `${Congig.host}/${endPoin}`,
     data: data,
   }).catch((err) => {
-    console.log("err :", err);
+    console.error("err :", err);
   });
 }

@@ -4,11 +4,22 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import routes from "../config/router";
 import Footer from "./footer/footer";
 import Header from "./headers/header";
+import Waiting from "../common/waiting";
 
+const AddTitle = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) => {
+      return (document.title = rest.title) && <Component {...props} />;
+    }}
+  />
+);
 
 function Main(props) {
   return (
-    <Suspense fallback={<div>loading...</div>}>
+    <Suspense
+      fallback={<Waiting custome={{ position: "relative", top: "300px" }} />}
+    >
       <Router>
         <div className="my-body">
           <Header />
@@ -18,9 +29,10 @@ function Main(props) {
                 const component = lazy(() => import(`${config.component}`));
 
                 return (
-                  <Route
+                  <AddTitle
                     key={"routes" + i}
                     exact
+                    title={config.title}
                     path={config.path}
                     component={component}
                   />

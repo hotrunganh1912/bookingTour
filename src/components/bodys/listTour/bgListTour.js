@@ -47,7 +47,7 @@ class BgListTour extends Component {
             className="text-right"
             to={"#"}
             onClick={this.getDataAndDispatch}
-            tabindex="NULL"
+            tabIndex="NULL"
           >
             Xem Thêm ...
           </Link>

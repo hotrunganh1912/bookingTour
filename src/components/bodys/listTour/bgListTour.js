@@ -1,26 +1,40 @@
 import React, { Component } from "react";
-import FormBoxTour from "./formBoxTour";
 import callApi from "../../../common/callAPI";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { setDataSearch } from "../../../action/search";
 import Waiting from "../../../common/waiting";
+import Slider from "../../../common/slider/slider";
 
 class BgListTour extends Component {
   constructor() {
     super();
     this.state = {
       tours: [],
+      isUnmounting: false,
     };
   }
 
   // get  data
   componentDidMount() {
-    callApi(`tours?style=${this.props.styleTour}&&_limit=3`, "Get", null).then(
-      (res) => {
-        if (res) this.setState({ tours: res.data });
-      }
-    );
+    this.setState({ isUnmounting: false });
+
+    callApi(
+      `tours?style=${this.props.styleTour}&_limit=${this.props.limit}`,
+      "Get",
+      null
+    ).then((res) => {
+      if (res && res.data && !this.state.isUnmounting)
+        this.setState({ tours: res.data });
+    });
+    // callApi(`tours`, "Get", null).then((res) => {
+    //   if (res && res.data && !this.state.isUnmounting)
+    //     this.setState({ tours: res.data });
+    // });
+  }
+
+  componentWillUnmount() {
+    this.setState({ isUnmounting: true });
   }
 
   getDataAndDispatch = () => {
@@ -40,7 +54,7 @@ class BgListTour extends Component {
       // list tour
       <div className=" container px-0 my-5 p-2">
         <div className="d-flex  justify-content-between title-and-seeMove">
-          <h5 className="bg-danger p-2 rounded text-white">
+          <h5 className="bg-danger p-2 pb-3 rounded text-white">
             {this.props.titleName}
           </h5>
           <Link
@@ -52,12 +66,13 @@ class BgListTour extends Component {
             Xem Thêm ...
           </Link>
         </div>
-        <div className="mover-list bg-light p-3 justify-content-between rounded d-flex list-all-e-tour">
+        <div>
           {/* display  box  */}
           {datas && datas.length > 0 ? (
-            datas.map((data, i) => {
-              return <FormBoxTour key={"FormBoxTour" + i} data={data} />;
-            })
+            // datas.map((data, i) => {
+            //   return <FormBoxTour key={"FormBoxTour" + i} data={data} />;
+            // })
+            <Slider data={datas} />
           ) : (
             <Waiting />
           )}

@@ -1,22 +1,22 @@
-import React, { Component } from "react";
+import React, { Component, memo } from "react";
 import callApi from "../../../../common/callAPI";
 
 class TourDetailHeadLine extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contentData: ""
+      contentData: "",
     };
   }
 
   componentDidMount() {
     console.log("props :", this.props.match.params.id);
     callApi(`Detail?idTour=${this.props.match.params.id}`, "Get", null).then(
-      res => {
+      (res) => {
         if (res.data[0]) {
           console.log("res.data :", res.data[0].conten);
           this.setState({
-            contentData: res.data[0].conten
+            contentData: res.data[0].conten,
           });
         } else {
           console.error("error :", "ko data  404");
@@ -47,7 +47,7 @@ class TourDetailHeadLine extends Component {
           </div>
         </div>
 
-        <div className="tourDetailheadLine">
+        {/* <div className="tourDetailheadLine">
           <h3 className="text-primary mt-4">Tư vấn ngay</h3>
           <div className="tourSchedule">
             <p>
@@ -78,10 +78,10 @@ class TourDetailHeadLine extends Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
 }
 
-export default TourDetailHeadLine;
+export default memo(TourDetailHeadLine);

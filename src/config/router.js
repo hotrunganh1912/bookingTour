@@ -36,13 +36,13 @@ export default [
     isProtected: false,
   },
   {
-    title: "Home Payment |Booking",
+    title: "Payment |Booking",
     component: "./headers/payment",
     path: "/payment",
     isProtected: false,
   },
   {
-    title: "Home Detail |Booking",
+    title: "Detail Tour |Booking",
     component: "./bodys/home/detail/detail",
     path: "/detail/:id",
     isProtected: false,

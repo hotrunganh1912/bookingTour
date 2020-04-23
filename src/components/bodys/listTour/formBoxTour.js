@@ -25,7 +25,17 @@ class FormBoxTour extends Component {
     } = this.props.data;
     // console.log("this.props.data :", this.props.data);
     return (
-      <div className="box-list-tour-warp">
+      <div
+        style={{
+          transform: `translate(  ${
+            this.props.isToLeft
+              ? -1 * this.props.currentMove
+              : -1 * this.props.currentMove + 364
+          }px, 0) `,
+          transition: "all 1.5s",
+        }}
+        className="box-list-tour-warp"
+      >
         <div className="box-element-tour ">
           <div className="image-list-e-w">
             <img

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, memo } from "react";
 import ImageCap from "./img";
 import "./product-detail.css";
 import BookingForm from "./bookingForm";
@@ -6,6 +6,7 @@ import TourDetailHeadLine from "./tourDetailHeadLine";
 import callApi from "../../../../common/callAPI";
 import Waiting from "../../../../common/waiting";
 import CheckConnect from "../../../../common/checkConnect";
+import BgComment from "../../../../common/comment/bg-comment";
 
 class Detail extends Component {
   constructor(props) {
@@ -65,7 +66,7 @@ class Detail extends Component {
         <div className="row  offSetTopFromBooking">
           <div className="col-12">
             <div className="row">
-              <div className="detail-tour col-lg-7 col-xl-8 col-12  my-2">
+              <div className="detail-tour col-lg-7 col-xl-8 col-12 pb-3 mb-2 border">
                 <div className="row img-overview">
                   <ImageCap
                     dataTour={this.state.dataTour[0] && this.state.dataTour[0]}
@@ -78,6 +79,7 @@ class Detail extends Component {
                   />
                   <TourDetailHeadLine {...this.props} />
                 </div>
+                <BgComment />
               </div>
             </div>
           </div>
@@ -95,4 +97,4 @@ class Detail extends Component {
   }
 }
 
-export default Detail;
+export default memo(Detail);

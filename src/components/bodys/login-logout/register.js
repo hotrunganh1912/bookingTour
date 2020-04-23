@@ -209,7 +209,7 @@ class Register extends Component {
     };
 
     callApi(`users`, "Post", user).then((res) => {
-      if (res.status === 201) {
+      if (res && res.status === 201) {
         localStorage.setItem("Token", JSON.stringify(res.data));
         alert("Tạo Tài Khoản Thành Công");
         this.props.dispatchLogin();

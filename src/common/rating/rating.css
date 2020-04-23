@@ -1,0 +1,7 @@
+.start-was-checked {
+  font-size: 20px;
+  color: yellow;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: orange;
+  text-shadow: 0 0 4px #927c3c;
+}

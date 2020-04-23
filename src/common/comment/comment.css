@@ -1,0 +1,5 @@
+.comment-orther,
+.comment-orther:disabled:focus {
+  background-color: white !important;
+  box-shadow: 0 0 2px black !important;
+}

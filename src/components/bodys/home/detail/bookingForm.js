@@ -108,7 +108,7 @@ class BookingForm extends Component {
       <div className="col-12 desktop-booking-form">
         <div
           style={{ top: `${this.props.spaceTop}px` }}
-          className={`booking-form border m-2 rounded`}
+          className={`booking-form border rounded`}
         >
           <h3 className=" w-100 text-center m-2">Đặt Vé</h3>
           <div className="d-flex pt-4 pr-2">

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import callApi from "../../../common/callAPI";
-import { Link, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { setDataSearch } from "../../../action/search";
-import Waiting from "../../../common/waiting";
-import Slider from "../../../common/slider/slider";
+import React, {Component} from 'react';
+import callApi from '../../../common/callAPI';
+import {Link, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {setDataSearch} from '../../../action/search';
+import Waiting from '../../../common/waiting';
+import Slider from '../../../common/slider/slider';
 
 class BgListTour extends Component {
   constructor() {
@@ -17,15 +17,15 @@ class BgListTour extends Component {
 
   // get  data
   componentDidMount() {
-    this.setState({ isUnmounting: false });
+    this.setState({isUnmounting: false});
 
     callApi(
       `tours?style=${this.props.styleTour}&_limit=${this.props.limit}`,
-      "Get",
+      'Get',
       null
     ).then((res) => {
       if (res && res.data && !this.state.isUnmounting)
-        this.setState({ tours: res.data });
+        this.setState({tours: res.data});
     });
     // callApi(`tours`, "Get", null).then((res) => {
     //   if (res && res.data && !this.state.isUnmounting)
@@ -34,18 +34,18 @@ class BgListTour extends Component {
   }
 
   componentWillUnmount() {
-    this.setState({ isUnmounting: true });
+    this.setState({isUnmounting: true});
   }
 
   getDataAndDispatch = () => {
     let data = {
-      q: "",
+      q: '',
       typeTour: this.props.styleTour,
-      dateStart: "",
+      dateStart: '',
     };
     this.props.getDataSearch(data);
 
-    return this.props.history.push("/tour");
+    return this.props.history.push('/tour');
   };
 
   render() {
@@ -57,14 +57,6 @@ class BgListTour extends Component {
           <h5 className="bg-danger p-2 pb-3 rounded text-white">
             {this.props.titleName}
           </h5>
-          <Link
-            className="text-right"
-            to={"#"}
-            onClick={this.getDataAndDispatch}
-            tabIndex="NULL"
-          >
-            Xem Thêm ...
-          </Link>
         </div>
         <div>
           {/* display  box  */}
@@ -77,6 +69,16 @@ class BgListTour extends Component {
             <Waiting />
           )}
           {/* end display  box  */}
+        </div>
+        <div className="d-flex justify-content-end mt-2">
+          <Link
+            className="btn btn-outline-info"
+            to={'#'}
+            onClick={this.getDataAndDispatch}
+            tabIndex="NULL"
+          >
+            Xem Thêm
+          </Link>
         </div>
       </div>
       // end list tour

@@ -36,7 +36,10 @@
   background-color: white;
 }
 .image-bg {
-  height: 500px;
-  background-image: url("../../../image/lodging.png");
+  height: 600px;
+  background-image: url("../../../image/dulichvn1.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 0 -100px;
   /* background: rgba(0, 0, 0, 0.4); */
 }

@@ -43,7 +43,7 @@ class Header extends React.Component {
   render() {
     return (
       <header
-        className={`main-header bg-light z-2 ${
+        className={`main-header bg-dark z-2 ${
           this.state.scrolled ? "shadow-lg" : ""
         }`}
       >
@@ -68,23 +68,23 @@ class Header extends React.Component {
               aria-label="Toggle navigation"
               onClick={this.handlerClickShowMenu}
             >
-              <span className="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon text-white"></span>
             </button>
             <div
               data-menu="menu"
-              className={`collapse navbar-collapse  bg-light${
+              className={`collapse navbar-collapse  bg-dark${
                 this.state.isOpne ? " show" : ""
               }`}
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav ml-auto ">
                 <li className="nav-item py-2">
-                  <Link className="nav-link text-center  bg-light" to="/home">
+                  <Link className="nav-link text-center text-white bg-dark" to="/home">
                     Trang Chủ
                   </Link>
                 </li>
                 <li className="nav-item py-2">
-                  <Link className="nav-link text-center  bg-light" to="/tour">
+                  <Link className="nav-link text-center text-white bg-dark" to="/tour">
                     Tour
                   </Link>
                 </li>
@@ -92,7 +92,7 @@ class Header extends React.Component {
                 localStorage.getItem("Token") !== null ? (
                   <li className="nav-item py-2 dropdown">
                     <Link
-                      className="nav-link text-center border-left border-right px-3  bg-light dropdown-toggle"
+                      className="nav-link text-center border-left border-right px-3 text-white bg-dark dropdown-toggle"
                       data-toggle="dropdown"
                       aria-haspopup="true"
                       aria-expanded="false"
@@ -102,15 +102,15 @@ class Header extends React.Component {
                       <i className="far fa-user"></i>
                     </Link>
                     <div
-                      className="dropdown-menu"
+                      className="dropdown-menu bg-dark"
                       aria-labelledby="dropdownMenuButton"
                     >
                       <a
                         onClick={this.handerlerLogOut}
-                        className="dropdown-item"
+                        className="dropdown-item text-white bg-dark"
                         href="#LogOut"
                       >
-                        Log Out
+                        LOG OUT
                       </a>
                     </div>
                   </li>
@@ -118,7 +118,7 @@ class Header extends React.Component {
                   <>
                     <li className="nav-item py-2">
                       <Link
-                        className="nav-link text-center  bg-light"
+                        className="nav-link text-center text-white bg-dark"
                         to="/register"
                       >
                         Đăng Ký
@@ -126,7 +126,7 @@ class Header extends React.Component {
                     </li>
                     <li className="nav-item py-2">
                       <Link
-                        className="nav-link text-center  bg-light"
+                        className="nav-link text-center text-white bg-dark"
                         to="/login"
                       >
                         Đăng Nhập

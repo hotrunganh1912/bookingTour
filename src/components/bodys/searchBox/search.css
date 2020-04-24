@@ -43,3 +43,30 @@
   background-position: 0 -100px;
   /* background: rgba(0, 0, 0, 0.4); */
 }
+
+.tour-hot {
+  width: 6rem;
+  height: 7rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tour-sale {
+  width: 6rem;
+  height: 7rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tour-foreign {
+  width: 6rem;
+  height: 7rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

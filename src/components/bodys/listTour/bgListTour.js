@@ -50,12 +50,26 @@ class BgListTour extends Component {
 
   render() {
     let datas = this.state.tours;
+    const {titleName} = this.props;
+    console.log('titleName', titleName);
+    let classTitle = '';
+    if (titleName) {
+      if (titleName === 'Tour Hot') {
+        classTitle = 'bg-danger';
+      }
+      if (titleName === 'Giảm Giá') {
+        classTitle = 'bg-success';
+      }
+      if (titleName === 'Nước Ngoài') {
+        classTitle = 'bg-info';
+      }
+    }
     return (
       // list tour
       <div className=" container px-0 my-5 p-2">
         <div className="d-flex justify-content-between title-and-seeMove">
-          <h5 className="bg-danger p-2 pb-3 rounded text-white">
-            {this.props.titleName}
+          <h5 className={`${classTitle} p-2 pb-3 rounded text-white`}>
+            {titleName}
           </h5>
         </div>
         <div>

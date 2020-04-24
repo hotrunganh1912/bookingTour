@@ -8,7 +8,7 @@ const BoxRsSearch = (props) => {
   const datas = props.data;
   return (
     <>
-      <h1 className="w-100 text-center"> Kết Quả Tìm được </h1>
+      <h1 className="w-100 text-center"> Kết Quả Tìm Được </h1>
       {datas !== 0 &&
         datas.map((data, i) => {
           return <FormBoxTour key={"FormBoxTour" + i} data={data} />;

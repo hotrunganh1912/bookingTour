@@ -129,7 +129,7 @@ const BgTour = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="container-fulid">
       <TourSearch
         statusGetData={rsGetData}
         wasGetDataFail={wasGetDataFail}
@@ -147,11 +147,12 @@ const BgTour = (props) => {
               position: "relative",
               top: "-113px",
             }}
-            className="mover-list bg-light flex-wrap flex-grow p-3 rounded d-flex list-all-e-tour resize-flex"
+            className="container mover-list bg-light flex-wrap flex-grow p-3 rounded d-flex list-all-e-tour resize-flex"
           >
             {/* {console.log("pagination() :", )} */}
             <BosxRsSearch data={pagination()} />
           </div>
+          <div className="container">
           <MyPagination
             nextPage={nextPage}
             prePage={prePage}
@@ -159,6 +160,7 @@ const BgTour = (props) => {
             _limit={_limit}
             currentPage={currentPage}
           />
+          </div>
         </>
       )}
       {rsGetData === "null" && (

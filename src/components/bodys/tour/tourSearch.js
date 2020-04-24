@@ -1,53 +1,54 @@
-import React, { useRef } from "react";
-import pane from "../../../image/lodging.png";
-import { connect } from "react-redux";
-import { setDataSearch } from "../../../action/search";
+import React, {useRef} from 'react';
+import pane from '../../../image/dulichvn1.png';
+import {connect} from 'react-redux';
+import {setDataSearch} from '../../../action/search';
+import './tourSearch.css';
 
 const TourSearch = (props) => {
   const dateSearchDefaul = props.dateStart
     ? new Date(props.dateStart).toISOString().substr(0, 10)
-    : "";
+    : '';
 
-  console.log("typeTour=>>>>> :", props.typeTour);
-  const inputSearch = useRef("");
-  const selectType = useRef("");
-  const dateStart = useRef("");
+  console.log('typeTour=>>>>> :', props.typeTour);
+  const inputSearch = useRef('');
+  const selectType = useRef('');
+  const dateStart = useRef('');
   const dataOptional = [
     {
-      title: "Chọn type tour",
-      value: "",
+      title: 'Chọn type tour',
+      value: '',
     },
     {
-      title: "Tour Hot",
-      value: "hot",
+      title: 'Tour Hot',
+      value: 'hot',
     },
     {
-      title: "Giảm Giá",
-      value: "discount",
+      title: 'Giảm Giá',
+      value: 'discount',
     },
     {
-      title: "Tour Nước Ngoài",
-      value: "foreign",
+      title: 'Tour Nước Ngoài',
+      value: 'foreign',
     },
   ];
 
   const handleForcus = (e) => {
-    e.target.type = "date";
+    e.target.type = 'date';
   };
 
   const handleUnforcus = (e) => {
-    if (e.target.value === "") {
-      e.target.type = "text";
+    if (e.target.value === '') {
+      e.target.type = 'text';
     } else {
-      e.target.type = "date";
+      e.target.type = 'date';
     }
   };
 
   const getDataAndDispatch = () => {
-    if (props.statusGetData === "connectError") props.wasGetDataFail();
+    if (props.statusGetData === 'connectError') props.wasGetDataFail();
     let date =
-      dateStart.current.value === ""
-        ? ""
+      dateStart.current.value === ''
+        ? ''
         : new Date(dateStart.current.value).getTime();
     let data = {
       q: inputSearch.current.value,
@@ -58,16 +59,16 @@ const TourSearch = (props) => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="">
+      <div className="img-search">
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src={pane} className="d-block w-100" alt="..." />
+            {/* <img src={pane} className="d-block w-100" alt="..." /> */}
           </div>
         </div>
       </div>
-      <div className="search-sec">
-        <div className="container">
+      <div className="container">
+        <div className="search-sec">
           <div className="row">
             <div className="col-lg-12">
               <div className="row">
@@ -84,7 +85,7 @@ const TourSearch = (props) => {
                 <div className="col-lg-3 col-md-3 col-sm-12 p-0">
                   <input
                     ref={dateStart}
-                    type={dateSearchDefaul === "" ? "text" : "date"}
+                    type={dateSearchDefaul === '' ? 'text' : 'date'}
                     className="form-control search-slt"
                     placeholder="Thời Gian Đi"
                     name="dateStart"
@@ -109,7 +110,7 @@ const TourSearch = (props) => {
                   </select>
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                  {props.statusGetData !== "pending" ? (
+                  {props.statusGetData !== 'pending' ? (
                     <button
                       onClick={getDataAndDispatch}
                       type="button"

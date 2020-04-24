@@ -51,14 +51,14 @@ class FormBoxTour extends Component {
           <div className="list-e-content rounded">
             <div className="content-infor-warp">
               <div className="content-infor text-center my-0">
-                <h2>{city}</h2>
+                <h2 className="text-success text-uppercase">{city}</h2>
                 <i className="fas fa-globe-africa"></i>
                 <h5 className="text-danger">{country}</h5>
               </div>
-              <div className="content-infor">
+              <div className="content-infor text-success">
                 <i className="far fa-clock"></i> {timeJoin}
               </div>
-              <div className="content-infor">
+              <div className="content-infor text-danger">
                 <i className="fa fa-dollar-sign" aria-hidden="true"></i>
                 {" " +
                   Number(price).toLocaleString("it-IT", {
@@ -66,16 +66,16 @@ class FormBoxTour extends Component {
                     currency: "VND",
                   })}
               </div>
-              <div className="content-infor">
+              <div className="content-infor text-success">
                 <i className="far fa-calendar-alt"></i>{" "}
                 {timeStart ? this.renderTimeStart(timeStart) : calendar}
               </div>
-              <div className="content-infor">
+              <div className="content-infor text-success">
                 <i className="fas fa-plane"></i> {transit.join(", ")}
               </div>
               <div tabIndex="-1" className=" content-infor text-right">
-                <Link tabIndex="-1" to={`/detail/${id}`}>
-                  Chi Tiết...
+                <Link tabIndex="-1" to={`/detail/${id}`} className="btn btn-outline-success">
+                  Chi Tiết
                 </Link>
               </div>
             </div>

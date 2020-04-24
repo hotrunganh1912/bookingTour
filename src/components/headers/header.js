@@ -77,9 +77,9 @@ class Header extends React.Component {
               }`}
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav ml-auto ">
+              <ul className="navbar-nav ml-auto">
                 <li className="nav-item py-2">
-                  <Link className="nav-link text-center text-white bg-dark" to="/home">
+                  <Link className="nav-link text-center text-white title-tour bg-dark" to="/home">
                     Trang Chủ
                   </Link>
                 </li>

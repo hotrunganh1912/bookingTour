@@ -53,7 +53,7 @@ class BgListTour extends Component {
     return (
       // list tour
       <div className=" container px-0 my-5 p-2">
-        <div className="d-flex  justify-content-between title-and-seeMove">
+        <div className="d-flex justify-content-between title-and-seeMove">
           <h5 className="bg-danger p-2 pb-3 rounded text-white">
             {this.props.titleName}
           </h5>

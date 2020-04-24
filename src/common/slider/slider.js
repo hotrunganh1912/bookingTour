@@ -87,7 +87,7 @@ const Slider = (props) => {
             minWidth: "445px",
           }}
           // justify-content-around
-          className={`mover-list bg-light p-3 rounded d-flex  ${
+          className={`mover-list bg-white p-3 rounded d-flex  ${
             data.length === 10 ? "" : "justify-content-around"
           }`}
         >

@@ -68,11 +68,11 @@ class Header extends React.Component {
               aria-label="Toggle navigation"
               onClick={this.handlerClickShowMenu}
             >
-              <span className="navbar-toggler-icon text-white"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
             <div
               data-menu="menu"
-              className={`collapse navbar-collapse  bg-dark${
+              className={`collapse navbar-collapse text-white bg-dark${
                 this.state.isOpne ? " show" : ""
               }`}
               id="navbarSupportedContent"
@@ -102,7 +102,7 @@ class Header extends React.Component {
                       <i className="far fa-user"></i>
                     </Link>
                     <div
-                      className="dropdown-menu bg-dark"
+                      className="dropdown-menu text-white bg-dark"
                       aria-labelledby="dropdownMenuButton"
                     >
                       <a

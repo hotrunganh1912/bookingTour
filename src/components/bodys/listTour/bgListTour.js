@@ -53,15 +53,19 @@ class BgListTour extends Component {
     const {titleName} = this.props;
     console.log('titleName', titleName);
     let classTitle = '';
+    let classColor = '';
     if (titleName) {
       if (titleName === 'Tour Hot') {
         classTitle = 'bg-danger';
+        classColor = 'btn-outline-danger';
       }
       if (titleName === 'Giảm Giá') {
         classTitle = 'bg-success';
+        classColor = 'btn-outline-success';
       }
       if (titleName === 'Nước Ngoài') {
         classTitle = 'bg-info';
+        classColor = 'btn-outline-info';
       }
     }
     return (
@@ -86,7 +90,7 @@ class BgListTour extends Component {
         </div>
         <div className="d-flex justify-content-end mt-2">
           <Link
-            className="btn btn-outline-info"
+            className={`btn ${classColor}`}
             to={'#'}
             onClick={this.getDataAndDispatch}
             tabIndex="NULL"

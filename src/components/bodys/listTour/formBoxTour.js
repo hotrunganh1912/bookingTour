@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import * as funcCommon from "../../../common/funcCommon";
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import * as funcCommon from '../../../common/funcCommon';
+import './lisTour.css';
 class FormBoxTour extends Component {
   renderTimeStart(array) {
     for (let i = 0; i < array.length; i++) {
@@ -32,11 +33,11 @@ class FormBoxTour extends Component {
               ? -1 * this.props.currentMove
               : -1 * this.props.currentMove + 364
           }px, 0) `,
-          transition: "all 1.5s",
+          transition: 'all 1.5s',
         }}
         className="box-list-tour-warp"
       >
-        <div className="box-element-tour ">
+        <div className="box-element-tour">
           <div className="image-list-e-w">
             <img
               className="image-list-e rounded"
@@ -60,26 +61,41 @@ class FormBoxTour extends Component {
               </div>
               <div className="content-infor text-danger">
                 <i className="fa fa-dollar-sign" aria-hidden="true"></i>
-                {" " +
-                  Number(price).toLocaleString("it-IT", {
-                    style: "currency",
-                    currency: "VND",
+                {' ' +
+                  Number(price).toLocaleString('it-IT', {
+                    style: 'currency',
+                    currency: 'VND',
                   })}
               </div>
               <div className="content-infor text-success">
-                <i className="far fa-calendar-alt"></i>{" "}
+                <i className="far fa-calendar-alt"></i>{' '}
                 {timeStart ? this.renderTimeStart(timeStart) : calendar}
               </div>
               <div className="content-infor text-success">
-                <i className="fas fa-plane"></i> {transit.join(", ")}
+                <i className="fas fa-plane"></i> {transit.join(', ')}
               </div>
               <div tabIndex="-1" className=" content-infor text-right">
-                <Link tabIndex="-1" to={`/detail/${id}`} className="btn btn-outline-success">
+                <Link
+                  tabIndex="-1"
+                  to={`/detail/${id}`}
+                  className="btn btn-outline-success"
+                >
                   Chi Tiết
                 </Link>
               </div>
             </div>
           </div>
+        </div>
+        <div className="content-price">
+          <a tabIndex="-1" href={`/detail/${id}`} className="link-price">
+            <div className="price-tour">
+              {' ' +
+                Number(price).toLocaleString('it-IT', {
+                  style: 'currency',
+                  currency: 'VND',
+                })}
+            </div>
+          </a>
         </div>
       </div>
     );

@@ -51,7 +51,6 @@ class BgListTour extends Component {
   render() {
     let datas = this.state.tours;
     return (
-      // list tour
       <div className=" container px-0 my-5 p-2">
         <div className="d-flex  justify-content-between title-and-seeMove">
           <h5 className="bg-danger p-2 pb-3 rounded text-white">
@@ -67,19 +66,9 @@ class BgListTour extends Component {
           </Link>
         </div>
         <div>
-          {/* display  box  */}
-          {datas && datas.length > 0 ? (
-            // datas.map((data, i) => {
-            //   return <FormBoxTour key={"FormBoxTour" + i} data={data} />;
-            // })
-            <Slider data={datas} />
-          ) : (
-            <Waiting />
-          )}
-          {/* end display  box  */}
+          {datas && datas.length > 0 ? <Slider data={datas} /> : <Waiting />}
         </div>
       </div>
-      // end list tour
     );
   }
 }

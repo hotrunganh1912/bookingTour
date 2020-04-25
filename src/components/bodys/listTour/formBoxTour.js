@@ -73,7 +73,7 @@ class FormBoxTour extends Component {
               <div className="content-infor">
                 <i className="fas fa-plane"></i> {transit.join(", ")}
               </div>
-              <div tabIndex="-1" className=" content-infor text-right">
+              <div className=" content-infor text-right">
                 <Link tabIndex="-1" to={`/detail/${id}`}>
                   Chi Tiết...
                 </Link>

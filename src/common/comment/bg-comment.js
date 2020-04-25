@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import WriteComment from "./write-comment";
 import ShowOtherComment from "./show-orther-comment";
 import { useState } from "react";
@@ -8,20 +8,31 @@ import Waiting from "../waiting";
 import { withRouter } from "react-router-dom";
 import "./comment.css";
 import ChartRating from "./Chart-rating";
+import MyPagination from "../my-pagination";
 
 const BgComment = (props) => {
+  const _limit = 6;
+  const scrollToRef = (ref) => {
+    window.scrollTo(0, ref.current.offsetTop -300);
+  };
+  const [currentPage, setCurrentPage] = useState(1);
+  const [indexDataRender, setIndexDataRender] = useState(0);
+
   const [currentPoni, setCurrentPoni] = useState(0);
   const [statusSendComment, setStatusSendComment] = useState("nomal");
 
-  const [isShowComment, setIsShowComment] = useState(true);
-
-  console.log("currentPoni :", currentPoni);
+  const [isShowComment, setIsShowComment] = useState(false);
 
   const [dataComment, setDataComent] = useState("begin");
 
+  const myRef = useRef(null);
+
   useEffect(() => {
     let isUnmounting = false;
-    callApi(`Comments/?idTour=${props.match.params.id}&_sort=time&_order=desc`, "Get").then((res) => {
+    callApi(
+      `Comments/?idTour=${props.match.params.id}&_sort=time&_order=desc`,
+      "Get"
+    ).then((res) => {
       setStatusSendComment("nomal");
       if (res && res.status === 200 && res.data.length > 0 && !isUnmounting) {
         setDataComent(res.data);
@@ -31,7 +42,6 @@ const BgComment = (props) => {
   }, [props.match.params.id]);
 
   const getDataForChar = () => {
-    console.log(":run  getDataForChar");
     if (dataComment === "begin" || dataComment.length <= 0)
       return {
         a: 0,
@@ -92,10 +102,15 @@ const BgComment = (props) => {
       setStatusSendComment("nomal");
       if (res && res.status === 201) {
         alert("Comment Thành Công ");
-        let newDataComentt = [{ ...res.data }, ...dataComment];
+        let newDataComentt =
+          dataComment === "begin"
+            ? [{ ...res.data }]
+            : [{ ...res.data }, ...dataComment];
         setDataComent("begin");
         setDataComent(newDataComentt);
         setIsShowComment(false);
+        setCurrentPage(1);
+        setIndexDataRender(0);
       } else alert("Comment Thất Bại");
     });
   };
@@ -108,10 +123,47 @@ const BgComment = (props) => {
     return setIsShowComment(!isShowComment);
   };
 
+  const nextPage = (number) => {
+    setIndexDataRender(number * _limit);
+    setCurrentPage(currentPage + 1);
+    scrollToRef(myRef);
+  };
+  const prePage = (number) => {
+    setIndexDataRender((number - 2) * _limit);
+    setCurrentPage(currentPage - 1);
+    scrollToRef(myRef);
+  };
+
+  const pagination = () => {
+    // const [indexDataRender, setindexDataRender] = useState(0);
+    // const [data, setData] = useState(0);
+    let datanew = [];
+    if (dataComment.length <= 0) return;
+    let end =
+      indexDataRender + _limit >= dataComment.length
+        ? dataComment.length
+        : indexDataRender + _limit;
+
+    if (dataComment.length === 1) return dataComment;
+    for (let i = indexDataRender; i < end; i++) {
+      datanew.push(dataComment[i]);
+    }
+    return datanew;
+  };
+
   return (
     <div>
-      {<ChartRating data={getDataForChar()} />}
-      {dataComment !== "begin" ? (
+      {dataComment === "begin" || dataComment.length <= 0 ? (
+        <>
+          <ChartRating washadcomment={false} data={getDataForChar()} />
+          <h5 className="w-100 text-center text-danger">
+            Tour Chưa Được Đánh Giá
+          </h5>
+        </>
+      ) : (
+        <ChartRating washadcomment={true} data={getDataForChar()} />
+      )}
+      {dataComment !== "begin" || dataComment.length > 0 ? (
         <>
           <div className="border-top w-50 mx-auto"></div>
           <h5 className="mx-2 my-3">KHÁCH HÀNG NHẬN XÉT</h5>
@@ -119,24 +171,37 @@ const BgComment = (props) => {
       ) : (
         ""
       )}
-      {/* toggerWriteAndRedComment */}
-      <button
-        onClick={toggerWriteAndRedComment}
-        className={`mx-2 btn ${
-          isShowComment ? "btn-primary" : "btn-outline-primary"
-        }`}
-      >
-        Viết Comment
-      </button>
-      <button
-        onClick={toggerWriteAndRedComment}
-        className={`mx-2 btn  ${
-          !isShowComment ? "btn-primary" : "btn-outline-primary"
-        }`}
-      >
-        Đọc Comment
-      </button>
+      <div className="mb-3">
+        {/* <button
+          onClick={toggerWriteAndRedComment}
+          className={`mx-2 btn ${
+            isShowComment ? "btn-primary" : "btn-outline-primary"
+          }`}
+        >
+          Viết Comment
+        </button>
+        <button
+          onClick={toggerWriteAndRedComment}
+          disabled={
+            dataComment.length <= 0 || dataComment === "begin" ? true : false
+          }
+          className={`mx-2 btn  ${
+            !isShowComment ? "btn-primary" : "btn-outline-primary"
+          }`}
+        >
+          Đọc Comment
+        </button> */}
 
+        <button
+          style={{ minHeight: "31px", minWidth: "123px" }}
+          onClick={toggerWriteAndRedComment}
+          className={`mx-2 btn ${
+            isShowComment ? "btn-primary" : "btn-outline-primary"
+          }`}
+        >
+          {`${isShowComment ? "Đóng" : " Viết Nhận Xét"}`}
+        </button>
+      </div>
       {statusSendComment !== "pending" ? (
         isShowComment ? (
           <WriteComment
@@ -149,11 +214,23 @@ const BgComment = (props) => {
       ) : (
         <Waiting custome={{ minHeight: "299px" }} />
       )}
-      {!isShowComment && dataComment !== "begin"
-        ? dataComment.map((e, i) => {
+      <div className="m-0 p-0" ref={myRef}></div>
+      {dataComment !== "begin" && dataComment.length > 0 ? (
+        <>
+          {pagination().map((e, i) => {
             return <ShowOtherComment key={"dataComment" + i} dataComment={e} />;
-          })
-        : ""}
+          })}
+          <MyPagination
+            nextPage={nextPage}
+            prePage={prePage}
+            data={dataComment}
+            _limit={_limit}
+            currentPage={currentPage}
+          />
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

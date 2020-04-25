@@ -10,11 +10,9 @@ class TourDetailHeadLine extends Component {
   }
 
   componentDidMount() {
-    console.log("props :", this.props.match.params.id);
     callApi(`Detail?idTour=${this.props.match.params.id}`, "Get", null).then(
       (res) => {
         if (res.data[0]) {
-          console.log("res.data :", res.data[0].conten);
           this.setState({
             contentData: res.data[0].conten,
           });

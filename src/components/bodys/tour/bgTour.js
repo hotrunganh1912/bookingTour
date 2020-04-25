@@ -11,7 +11,6 @@ import CheckConnect from "../../../common/checkConnect";
 import MyPagination from "../../../common/my-pagination";
 
 const BgTour = (props) => {
-  console.log("props :", props);
   const _limit = 6;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -32,10 +31,6 @@ const BgTour = (props) => {
     const checkDateStart = (tours) => {
       return tours.filter((tour) => {
         for (let i = 0; i < tour.timeStart.length; i++) {
-          console.log(
-            `${tour.city} tour.timeStart[i] >= dateStart`,
-            tour.timeStart[i] >= dateStart
-          );
           if (tour.timeStart[i] >= dateStart) return true;
         }
         return false;
@@ -55,11 +50,9 @@ const BgTour = (props) => {
         if (res) {
           if (res.data.length > 0) {
             if (!isUnmounting) {
-              console.log("res=>>>> :", res);
               const filterData =
                 dateStart !== "" ? checkDateStart(res.data) : res.data;
               if (filterData && filterData.length > 0) {
-                console.log("filterData :", filterData);
                 setData(filterData);
                 setRsGetData("getFinish");
                 setIndexDataRender(0);
@@ -81,7 +74,6 @@ const BgTour = (props) => {
   }, [q, typeTour, dateStart, countFail]);
 
   const wasGetDataFail = () => {
-    console.log("set ");
     setCountFail(countFail + 1);
   };
 
@@ -92,7 +84,6 @@ const BgTour = (props) => {
       .split(" ")
       .filter((x) => x !== "")
       .join("");
-    console.log("removeAccents(char); :", removeAccents(char));
 
     return removeAccents(char);
   };
@@ -107,7 +98,6 @@ const BgTour = (props) => {
   };
 
   const pagination = () => {
-    console.log("indexDataRender ", indexDataRender);
     // const [indexDataRender, setindexDataRender] = useState(0);
     // const [data, setData] = useState(0);
     let datanew = [];
@@ -118,13 +108,9 @@ const BgTour = (props) => {
         : indexDataRender + _limit;
 
     if (data.length === 1) return data;
-    console.log("indexDataRender :", indexDataRender);
-    console.log("end :", end);
     for (let i = indexDataRender; i < end; i++) {
       datanew.push(data[i]);
     }
-    console.log("data ", data);
-    console.log("datanew ", datanew);
     return datanew;
   };
 
@@ -147,7 +133,9 @@ const BgTour = (props) => {
               position: "relative",
               top: "-113px",
             }}
-            className="mover-list bg-light flex-wrap flex-grow p-3 rounded d-flex list-all-e-tour resize-flex"
+            className={`mover-list bg-light flex-wrap flex-grow p-3 rounded d-flex list-all-e-tour resize-flex ${
+              data.length % 3 === 0 ? "justify-content-md-between" : ""
+            }`}
           >
             {/* {console.log("pagination() :", )} */}
             <BosxRsSearch data={pagination()} />

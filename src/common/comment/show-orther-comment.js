@@ -5,40 +5,61 @@ const ShowOtherComment = (props) => {
   let { contexTitle, context, starPoin, userPost, time } = props.dataComment;
 
   return (
-    <div className="container my-2">
-      <div style={{ borderRadius: "33px" }} className="card">
-        <div className="card-body">
+    <div className="container ">
+      <div
+        style={{
+          height: "5px",
+          backgroundColor: "#eae9e9",
+          borderRadius: "10px",
+        }}
+        className="w-100 mx-auto"
+      ></div>
+      {/* <div className="w-100 border-top mx-auto"></div> */}
+      <div className="card border-0">
+        <div className="custome-card-body">
+          <div>
+            <BgRating
+              custome={{ position: " absolute", top: "10px", right: "15px" }}
+              poinDefaul={starPoin}
+            />
+          </div>
           <div className="row">
-            <div className="col-md-2">
+            <div className=" custome-image-height col-md-2 text-center">
               <img
                 src="https://image.ibb.co/jw55Ex/def_face.jpg"
-                className="img img-rounded img-fluid"
+                className="rbs-image-425 img img-rounded comment-img mb-2"
                 alt="avata"
               />
-              <p className="text-secondary text-center">
-                {new Date(time).toLocaleDateString("en-GB")}
+
+              <p className="text-center rbs-comment-425">
+                <strong style={{ fontSize: "14px" }}>{userPost}</strong>
+                <br />
+                <i
+                  style={{ position: "relative", top: "-9px" }}
+                  className="comment-date text-secondary"
+                >
+                  {new Date(time).toLocaleDateString("en-GB")}
+                </i>
               </p>
             </div>
             <div className="col-md-10">
-              <div style={{ textTransform: "capitalize" }} className="mb-2">
-                <strong className="text-primary">{userPost}</strong>:{" "}
-                {contexTitle}
-                <BgRating
-                  custome={{ display: "inherit", float: "right" }}
-                  poinDefaul={starPoin}
-                />
+              <div
+                // FONTWEIGHT
+                style={{ textTransform: "capitalize", fontWeight: 900 }}
+                className="m-0 p-0"
+              >
+                - {contexTitle} -
               </div>
-              <div className="clearfix"></div>
-              <p
+              {/* <div className="clearfix"></div> */}
+              <span
                 style={{
-                  minHeight: "87px",
-                  border: "1px solid",
-                  padding: "5px",
+                  padding: "7px",
                   borderRadius: "11px",
+                  margin: 0,
                 }}
               >
                 {context}
-              </p>
+              </span>
             </div>
           </div>
         </div>

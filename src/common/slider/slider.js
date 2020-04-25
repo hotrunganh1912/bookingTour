@@ -81,14 +81,17 @@ const Slider = (props) => {
         )}
 
         <div
-          style={{
-            overflow: "hidden",
-            justifyContent: "flex-start",
-            minWidth: "445px",
-          }}
+          style={
+            data.length === 10
+              ? {
+                  overflow: "hidden",
+                  justifyContent: "flex-start",
+                }
+              : { overflow: "overlay" }
+          }
           // justify-content-around
           className={`mover-list bg-light p-3 rounded d-flex  ${
-            data.length === 10 ? "" : "justify-content-around"
+            data.length === 10 ? "" : "justify-content-between"
           }`}
         >
           {data.length > 0 &&

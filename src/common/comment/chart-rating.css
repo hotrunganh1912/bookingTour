@@ -1,12 +1,13 @@
 .warp-full-rating-parent {
   margin-top: 10px;
   height: 10px;
-  background-color: burlywood;
+  border-radius: 5px;
+  background-color: #adb5bd;
 }
 .warp-full-rating-childrent {
   margin-top: 10px;
   height: 10px;
-  background-color: burlywood;
+  border-radius: 5px;
 }
 .show-sum-poin {
   margin: 20px 0 0;
@@ -14,4 +15,13 @@
   font-size: 47px;
   color: #fe302e;
   font-weight: 500;
+}
+
+.midiumStar {
+  font-size: x-small;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  color: #000000ab;
+  transform: translate(2px, 10px);
 }

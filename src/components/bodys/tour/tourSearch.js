@@ -8,7 +8,6 @@ const TourSearch = (props) => {
     ? new Date(props.dateStart).toISOString().substr(0, 10)
     : "";
 
-  console.log("typeTour=>>>>> :", props.typeTour);
   const inputSearch = useRef("");
   const selectType = useRef("");
   const dateStart = useRef("");

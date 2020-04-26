@@ -1,32 +1,32 @@
 import React, { useState, useEffect } from "react";
 import FormBoxTour from "../../components/bodys/listTour/formBoxTour";
+import "./slider.css";
 
 const Slider = (props) => {
   const data = [...props.data] || [];
+  let mytimeOut;
 
   const [currentMove, setCurrentMove] = useState(0);
-  const [maxMove] = useState(364 * (data.length - 4));
+  const [maxMove] = useState(364 * (data.length - 3));
   const [isHover, setIsHover] = useState(false);
   const [isToLeft, setIsLeft] = useState(true);
 
   useEffect(() => {
-    if (data.length !== 10) return;
+    if (data.length <= 5) return;
     let interval = setInterval(() => {
       if (isHover) return;
       if (isToLeft) {
-        console.log("left");
-        if (currentMove >= maxMove) {
+        if (currentMove <= -maxMove) {
           setIsLeft(false);
           return;
         }
-        setCurrentMove(currentMove + 364);
+        setCurrentMove(currentMove - 364);
       } else {
-        console.log("right");
-        if (currentMove <= 364) {
+        if (currentMove >= 0) {
           setIsLeft(true);
           return;
         }
-        setCurrentMove(currentMove - 364);
+        setCurrentMove(currentMove + 364);
       }
     }, 2000);
     return () => clearInterval(interval);
@@ -40,14 +40,21 @@ const Slider = (props) => {
     setIsHover(true);
   };
 
-  const handerClickNext = () => {
-    if (currentMove < 364) return;
-    setCurrentMove(currentMove - 364);
+  const handerClickPrev = () => {
+    if (currentMove <= -maxMove) return;
+    clearTimeout(mytimeOut);
+    mytimeOut = setTimeout(() => {
+      setCurrentMove(currentMove - 364);
+    }, 300);
   };
 
-  const handerClickPrev = () => {
-    if (currentMove >= maxMove) return;
-    setCurrentMove(currentMove + 364);
+  const handerClickNext = () => {
+    console.log("currentMove :>> ", currentMove);
+    if (currentMove >= 0) return;
+    clearTimeout(mytimeOut);
+    mytimeOut = setTimeout(() => {
+      setCurrentMove(currentMove + 364);
+    }, 300);
   };
 
   return (
@@ -57,15 +64,15 @@ const Slider = (props) => {
         onMouseOver={handerHover}
         style={{
           position: "relative",
+          overflow: "hidden",
         }}
-        className=""
       >
-        {data.length !== 10 ? (
+        {data.length < 6 ? (
           ""
         ) : (
           <a
             onClick={handerClickNext}
-            className="carousel-control-prev my-auto"
+            className="carousel-control-prev my-auto hover-next-prev"
             href="#prev"
             style={{
               height: "80%",
@@ -73,6 +80,9 @@ const Slider = (props) => {
             }}
           >
             <span
+              style={{
+                transform: "translate(50px, 0)",
+              }}
               className="carousel-control-prev-icon"
               aria-hidden="true"
             ></span>
@@ -82,7 +92,7 @@ const Slider = (props) => {
 
         <div
           style={
-            data.length === 10
+            data.length >= 6
               ? {
                   overflow: "hidden",
                   justifyContent: "flex-start",
@@ -91,27 +101,28 @@ const Slider = (props) => {
           }
           // justify-content-around
           className={`mover-list bg-light p-3 rounded d-flex  ${
-            data.length === 10 ? "" : "justify-content-between"
+            data.length >= 6 ? "" : "justify-content-between"
           }`}
         >
           {data.length > 0 &&
-            data.map((data, i) => (
+            data.map((e, i) => (
               //   <Card currentMove={currentMove} key={"data" + i} title={e} />
               <FormBoxTour
+                lenght={data.length}
                 key={"FormBoxTour" + i}
                 isToLeft={isToLeft}
-                data={data}
+                data={e}
                 currentMove={currentMove}
               />
             ))}
         </div>
 
-        {data.length !== 10 ? (
+        {data.length < 6 ? (
           ""
         ) : (
           <a
             onClick={handerClickPrev}
-            className="carousel-control-next my-auto"
+            className="carousel-control-next my-auto hover-next-prev"
             href="#next"
             style={{
               height: "80%",
@@ -119,6 +130,9 @@ const Slider = (props) => {
             }}
           >
             <span
+              style={{
+                transform: "translate(-38px, 0)",
+              }}
               className="carousel-control-next-icon"
               aria-hidden="true"
             ></span>

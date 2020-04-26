@@ -20,7 +20,7 @@ class BgListTour extends Component {
     this.setState({ isUnmounting: false });
 
     callApi(
-      `tours?style=${this.props.styleTour}&_limit=${this.props.limit}`,
+      `tours?tag_like=${this.props.styleTour}&_limit=${this.props.limit}`,
       "Get",
       null
     ).then((res) => {

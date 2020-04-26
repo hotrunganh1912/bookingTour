@@ -42,7 +42,7 @@ const BgTour = (props) => {
       setData(0);
       await callApi(
         `tours?${q === "" ? "" : "q=" + handerDatataSearch(q)}${
-          typeTour === "" ? "" : "&&style=" + typeTour
+          typeTour === "" ? "" : "&tag_like=" + typeTour
         }`,
         "Get",
         null
@@ -134,7 +134,11 @@ const BgTour = (props) => {
               top: "-113px",
             }}
             className={`mover-list bg-light flex-wrap flex-grow p-3 rounded d-flex list-all-e-tour resize-flex ${
-              data.length % 3 === 0 ? "justify-content-md-between" : ""
+              data.length % 3 === 0
+                ? "justify-content-md-between"
+                : (data.length + 1) % 3 === 0
+                ? "justify-content-md-center"
+                : ""
             }`}
           >
             {/* {console.log("pagination() :", )} */}

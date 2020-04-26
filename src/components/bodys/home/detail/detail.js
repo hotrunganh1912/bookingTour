@@ -7,6 +7,7 @@ import callApi from "../../../../common/callAPI";
 import Waiting from "../../../../common/waiting";
 import CheckConnect from "../../../../common/checkConnect";
 import BgComment from "../../../../common/comment/bg-comment";
+import NotFound from "../notFound/404NotFound";
 
 class Detail extends Component {
   constructor(props) {
@@ -49,7 +50,11 @@ class Detail extends Component {
   }
 
   render() {
-    return this.state.dataTour &&
+    return this.state.dataTour.length === 0 &&
+      this.state.dataTour !== "" &&
+      this.state.dataTour !== "0" ? (
+      <NotFound />
+    ) : this.state.dataTour &&
       this.state.dataTour !== "0" &&
       this.state.dataTour !== "" ? (
       <div className="container">

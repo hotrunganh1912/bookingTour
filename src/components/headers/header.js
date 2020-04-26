@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logOut } from "../../action/users";
+import ICON from "../../image/ICON.png";
 
 class Header extends React.Component {
   constructor(props) {
@@ -51,9 +52,9 @@ class Header extends React.Component {
           <nav className="navbar navbar-expand-lg navbar-light p-2 ">
             <Link className="navbar-brand py-3" to="/home">
               <img
-                style={{ maxWidth: "50px" }}
+                style={{ maxWidth: "31px" }}
                 className="m-0 p-0"
-                src="https://banner2.cleanpng.com/20180611/hoc/kisspng-flight-air-travel-travel-agent-computer-icons-5b1ebcfcd51d97.4045414315287411168729.jpg"
+                src={ICON}
                 alt="iconas"
               />
             </Link>

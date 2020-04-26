@@ -380,60 +380,6 @@
         "vietnam",
         "discount"
       ]
-    },
-    {
-      "id": 16,
-      "image": "https://instagram.fdad3-3.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/61406165_403401900254747_1862212665196696901_n.jpg?_nc_ht=instagram.fdad3-3.fna.fbcdn.net&_nc_cat=111&_nc_ohc=GrHf30uekpEAX9KOgfF&oh=fc1e7ea3c712207cda941da209768b93&oe=5ED08824",
-      "city": "Đà Lạt",
-      "country": "Việt Nam",
-      "timeJoin": "4 ngày 3 đêm",
-      "price": 4000000,
-      "calendar": "Tháng 7",
-      "transit": [
-        "xe Hơi",
-        "xe khách"
-      ],
-      "timeStart": [
-        1584896400000,
-        1642093200000,
-        1580576400000,
-        1633280400000,
-        1671382800000,
-        1583686800000,
-        1611334800000
-      ],
-      "tag": [
-        "dalat",
-        "vietnam",
-        "discount"
-      ]
-    },
-    {
-      "id": 17,
-      "image": "https://instagram.fdad3-3.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/61406165_403401900254747_1862212665196696901_n.jpg?_nc_ht=instagram.fdad3-3.fna.fbcdn.net&_nc_cat=111&_nc_ohc=GrHf30uekpEAX9KOgfF&oh=fc1e7ea3c712207cda941da209768b93&oe=5ED08824",
-      "city": "Đà Lạt",
-      "country": "Việt Nam",
-      "timeJoin": "4 ngày 3 đêm",
-      "price": 4000000,
-      "calendar": "Tháng 7",
-      "transit": [
-        "xe Hơi",
-        "xe khách"
-      ],
-      "timeStart": [
-        1584896400000,
-        1642093200000,
-        1580576400000,
-        1633280400000,
-        1671382800000,
-        1583686800000,
-        1611334800000
-      ],
-      "tag": [
-        "dalat",
-        "vietnam",
-        "discount"
-      ]
     }
   ],
   "Users": [

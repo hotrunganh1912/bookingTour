@@ -49,10 +49,3 @@ export function removeAccents(str) {
   }
   return str;
 }
-
-export function isLoginCheck() {
-  return this.props.dataLogin.users.loggedIn ||
-    localStorage.getItem("Token") !== null
-    ? true
-    : false;
-}

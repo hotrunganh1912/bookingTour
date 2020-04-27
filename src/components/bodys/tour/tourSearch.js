@@ -61,7 +61,7 @@ const TourSearch = (props) => {
       <div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src={pane} className="d-block w-100" alt="..." />
+            <img src={pane} className="" alt="..." />
           </div>
         </div>
       </div>

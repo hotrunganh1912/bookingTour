@@ -31,7 +31,7 @@ class BgSearchBox extends React.Component {
       );
     });
     return (
-      <div className="container bg-light search-box p-0 ">
+      <div className="container-fulid bg-light search-box p-0 ">
         <div className="w-100 black-warp warp-box mx-0">
           <div className="image-bg"></div>
           {/* <h1>Find</h1> */}

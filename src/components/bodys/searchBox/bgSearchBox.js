@@ -1,6 +1,5 @@
 import React from "react";
 import FormSearch from "./formSearch";
-import callApi from "../../../common/callAPI";
 import { connect } from "react-redux";
 import { setDataSearch } from "../../../action/search";
 import { withRouter } from "react-router-dom";
@@ -28,30 +27,6 @@ const dataSearchBoxs = [
 ];
 
 class BgSearchBox extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      tours: [],
-      isUnmounting: false,
-    };
-  }
-
-  componentDidMount() {
-    this.setState({ isUnmounting: false });
-    callApi(
-      `tours?style=${this.props.styleTour}&_limit=${this.props.limit}`,
-      "Get",
-      null
-    ).then((res) => {
-      if (res && res.data && !this.state.isUnmounting)
-        this.setState({ tours: res.data });
-      console.log("bgSearchBox", this.props.styleTour);
-    });
-  }
-
-  componentWillUnmount() {
-    this.setState({ isUnmounting: true });
-  }
 
   getDataAndDispatch = () => {
     let data = {
@@ -63,6 +38,7 @@ class BgSearchBox extends React.Component {
 
     return this.props.history.push("/tour");
   };
+
   render() {
     const dataSearch = dataSearchBoxs.map((item, index) => {
       return (

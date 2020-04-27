@@ -24,9 +24,9 @@ class FormSearch extends React.Component {
 
   handerKeyUpFormSearch = (e) => {
     console.log("props :", this.props.match.path);
-    let currentPath = this.props.match.path;
-    if (e.keyCode === 9 && (currentPath === "/" || currentPath === "/home"))
-      e.preventDefault();
+    // let currentPath = this.props.match.path;
+    // if (e.keyCode === 9 && (currentPath === "/" || currentPath === "/home"))
+    //   e.preventDefault();
   };
 
   componentDidMount() {

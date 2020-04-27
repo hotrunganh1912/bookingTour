@@ -5,6 +5,7 @@
   width: 100%;
   z-index: 3;
   opacity: 0.7;
+  background: linear-gradient(to top, #000000 42%, #ffffff 100%);
 }
 
 .warp-box {
@@ -22,19 +23,22 @@
 .border-search {
   padding: 25px;
   transition: all 1s;
+  transform: translate(0, -300px);
+  background-color: white;
 }
-.warp-box:hover .black-warp {
+/* .warp-box:hover .black-warp {
   background: linear-gradient(to top, #000000 42%, #ffffff 100%);
 }
-.warp-box:hover {
-  box-shadow: 0px 7px 9px black;
-}
+
 .warp-box:hover .box-search {
   transform: translate(0, -300px);
 }
-.warp-box:hover .border-search {
-  background-color: white;
+*/
+
+.warp-box:hover {
+  box-shadow: 0px 7px 9px black;
 }
+
 .image-bg {
   height: 500px;
   background-image: url("../../../image/lodging.png");

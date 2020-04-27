@@ -4,10 +4,12 @@ import "./slider.css";
 
 const Slider = (props) => {
   const data = [...props.data] || [];
-  let mytimeOut;
+  // let mytimeOut;
+  // 364
+  let widthCard = 364;
 
   const [currentMove, setCurrentMove] = useState(0);
-  const [maxMove] = useState(364 * (data.length - 3));
+  const [maxMove] = useState(widthCard * (data.length - 3));
   const [isHover, setIsHover] = useState(false);
   const [isToLeft, setIsLeft] = useState(true);
 
@@ -20,13 +22,13 @@ const Slider = (props) => {
           setIsLeft(false);
           return;
         }
-        setCurrentMove(currentMove - 364);
+        setCurrentMove(currentMove - widthCard);
       } else {
         if (currentMove >= 0) {
           setIsLeft(true);
           return;
         }
-        setCurrentMove(currentMove + 364);
+        setCurrentMove(currentMove + widthCard);
       }
     }, 2000);
     return () => clearInterval(interval);
@@ -42,19 +44,13 @@ const Slider = (props) => {
 
   const handerClickPrev = () => {
     if (currentMove <= -maxMove) return;
-    clearTimeout(mytimeOut);
-    mytimeOut = setTimeout(() => {
-      setCurrentMove(currentMove - 364);
-    }, 300);
+    setCurrentMove(currentMove - widthCard);
   };
 
   const handerClickNext = () => {
     console.log("currentMove :>> ", currentMove);
     if (currentMove >= 0) return;
-    clearTimeout(mytimeOut);
-    mytimeOut = setTimeout(() => {
-      setCurrentMove(currentMove + 364);
-    }, 300);
+    setCurrentMove(currentMove + 364);
   };
 
   return (

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import * as funcCommon from "../../../common/funcCommon";
+import './listTour.css';
 class FormBoxTour extends Component {
   renderTimeStart(array) {
     for (let i = 0; i < array.length; i++) {
@@ -56,7 +57,7 @@ class FormBoxTour extends Component {
 
           <div className="list-e-content rounded">
             <div className="content-infor-warp">
-              <div className="content-infor text-center my-0">
+              <div className="content-infor text-center my-0 text-uppercase">
                 <h2>{city}</h2>
                 <i className="fas fa-globe-africa"></i>
                 <h5 className="text-danger">{country}</h5>
@@ -80,12 +81,23 @@ class FormBoxTour extends Component {
                 <i className="fas fa-plane"></i> {transit.join(", ")}
               </div>
               <div className=" content-infor text-right">
-                <Link tabIndex="-1" to={`/detail/${id}`}>
-                  Chi Tiết...
+                <Link tabIndex="-1" to={`/detail/${id}`} className="btn btn-outline-info">
+                  Chi Tiết
                 </Link>
               </div>
             </div>
           </div>
+        </div>
+        <div className="content-price">
+          <a tabIndex="-1" href={`/detail/${id}`} className="link-price">
+            <div className="price-tour text-danger">
+              {' ' +
+                Number(price).toLocaleString('it-IT', {
+                  style: 'currency',
+                  currency: 'VND',
+                })}
+            </div>
+          </a>
         </div>
       </div>
     );

@@ -4,7 +4,7 @@ import BgSearchBox from "./bgSearchBox";
 
 class SearchBox extends React.Component {
   render() {
-    return <BgSearchBox {...this.props} />;
+    return <BgSearchBox {...this.props}  styleTour={this.props.styleTour} limit={this.props.limit}/>;
   }
 }
 

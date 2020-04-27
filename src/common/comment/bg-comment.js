@@ -121,8 +121,10 @@ const BgComment = (props) => {
   };
 
   const toggerWriteAndRedComment = () => {
-    console.log("props.islogin :>> ", props.islogin);
-    if (!props.islogin.users.loggedIn) {
+    if (
+      !props.islogin.users.loggedIn &&
+      localStorage.getItem("Token") === null
+    ) {
       setIsShowComment(false);
       props.history.push("/login");
     } else return setIsShowComment(!isShowComment);

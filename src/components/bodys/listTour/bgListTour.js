@@ -52,7 +52,6 @@ class BgListTour extends Component {
   render() {
     let datas = this.state.tours;
     const { titleName } = this.props;
-    console.log("titleName", titleName);
     let classTitle = "";
 
     // let classColor = '';

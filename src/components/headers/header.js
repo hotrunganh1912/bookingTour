@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { logOut } from "../../action/users";
+import { logOut, login } from "../../action/users";
 import ICON from "../../image/ICON.png";
 
 class Header extends React.Component {
@@ -93,6 +93,7 @@ class Header extends React.Component {
                 {this.props.dataLogin.users.loggedIn ||
                 localStorage.getItem("Token") !== null ? (
                   <li className="nav-item py-2 dropdown">
+                    {/* {this.props.dispatchLogin()} */}
                     <Link
                       className="nav-link text-center border-left border-right px-3  bg-light dropdown-toggle"
                       data-toggle="dropdown"
@@ -154,6 +155,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatchLogOut: () => dispatch(logOut()),
+    dispatchLogin: () => dispatch(login()),
   };
 };
 

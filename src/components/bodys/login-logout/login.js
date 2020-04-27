@@ -101,13 +101,10 @@ class Login extends Component {
   };
 
   render() {
-    console.log("hear :", this.props.dataLogin.loggedIn);
-
     if (
       this.props.dataLogin.users.loggedIn ||
       localStorage.getItem("Token") !== null
     ) {
-      window.console.log("props :", this.props);
       this.props.history.goBack();
       return null;
     }
@@ -160,7 +157,6 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("state  :", state);
   return {
     dataLogin: state,
   };

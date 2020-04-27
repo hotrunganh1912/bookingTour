@@ -20,12 +20,13 @@ class BgListTour extends Component {
     this.setState({ isUnmounting: false });
 
     callApi(
-      `tours?tag_like=${this.props.styleTour}&_limit=${this.props.limit}`,
+      `tours?style=${this.props.styleTour}&_limit=${this.props.limit}`,
       "Get",
       null
     ).then((res) => {
       if (res && res.data && !this.state.isUnmounting)
         this.setState({ tours: res.data });
+      console.log("resbgListTour", this.props.styleTour);
     });
     // callApi(`tours`, "Get", null).then((res) => {
     //   if (res && res.data && !this.state.isUnmounting)
@@ -50,25 +51,51 @@ class BgListTour extends Component {
 
   render() {
     let datas = this.state.tours;
+    const { titleName } = this.props;
+    console.log("titleName", titleName);
+    let classTitle = "";
+
+    // let classColor = '';
+    // if (titleName) {
+    //   if (titleName === 'Tour Hot') {
+    //     classTitle = 'bg-danger';
+    //     classColor = 'btn-danger';
+    //   }
+    //   if (titleName === 'Giảm Giá') {
+    //     classTitle = 'bg-success';
+    //     classColor = 'btn-success';
+    //   }
+    //   if (titleName === 'Nước Ngoài') {
+    //     classTitle = 'bg-info';
+    //     classColor = 'btn-info';
+    //   }
+    // }
+
     return (
+      // list tour
       <div className=" container px-0 my-5 p-2">
-        <div className="d-flex  justify-content-between title-and-seeMove">
-          <h5 className="bg-danger p-2 pb-3 rounded text-white">
-            {this.props.titleName}
+        <div className="d-flex justify-content-between title-and-seeMove">
+          <h5 className={`${classTitle} p-2 pb-3 rounded text-white`}>
+            {titleName}
           </h5>
+        </div>
+        <div>
+          {/* display  box  */}
+          {datas && datas.length > 0 ? <Slider data={datas} /> : <Waiting />}
+          {/* end display  box  */}
+        </div>
+        <div className="d-flex justify-content-center mt-3">
           <Link
-            className="text-right"
+            className="btn btn-danger"
             to={"#"}
             onClick={this.getDataAndDispatch}
             tabIndex="NULL"
           >
-            Xem Thêm ...
+            Xem Thêm
           </Link>
         </div>
-        <div>
-          {datas && datas.length > 0 ? <Slider data={datas} /> : <Waiting />}
-        </div>
       </div>
+      // end list tour
     );
   }
 }

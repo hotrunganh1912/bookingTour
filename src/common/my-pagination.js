@@ -12,6 +12,7 @@ const MyPagination = (props) => {
         marginLeft: "auto",
       }}
       aria-label="Page navigation example"
+      className=""
     >
       <ul className="pagination">
         <li className="page-item">

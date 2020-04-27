@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import pane from "../../../image/lodging.png";
+import pane from "../../../image/dulichvn1.png";
 import { connect } from "react-redux";
 import { setDataSearch } from "../../../action/search";
 
@@ -61,7 +61,7 @@ const TourSearch = (props) => {
       <div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src={pane} className="d-block w-100" alt="..." />
+            <img src={pane} className="" alt="..." />
           </div>
         </div>
       </div>

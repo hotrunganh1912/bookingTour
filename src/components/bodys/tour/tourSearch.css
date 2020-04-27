@@ -22,6 +22,10 @@
   height: calc(3rem + 2px) !important;
   border-radius: 0;
 }
+.carousel-item img {
+  height: 550px;
+  width: 100%;
+}
 @media (min-width: 770px) {
   .search-sec {
     position: relative;

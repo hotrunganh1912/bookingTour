@@ -96,7 +96,7 @@ const Slider = (props) => {
               : { overflow: "overlay" }
           }
           // justify-content-around
-          className={`mover-list bg-light p-3 rounded d-flex  ${
+          className={`mover-list bg-light p-3 rounded d-flex bg-white ${
             data.length >= 6 ? "" : "justify-content-between"
           }`}
         >

@@ -1,7 +1,7 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {setDataSearch} from '../../../action/search';
-import {withRouter} from 'react-router-dom';
+import React from "react";
+import { connect } from "react-redux";
+import { setDataSearch } from "../../../action/search";
+import { withRouter } from "react-router-dom";
 
 class FormSearch extends React.Component {
   constructor(props) {
@@ -11,14 +11,14 @@ class FormSearch extends React.Component {
     this.dateStart = React.createRef();
   }
   handleForcus = (e) => {
-    e.target.type = 'date';
+    e.target.type = "date";
   };
 
   handleUnforcus = (e) => {
-    if (e.target.value === '') {
-      e.target.type = 'text';
+    if (e.target.value === "") {
+      e.target.type = "text";
     } else {
-      e.target.type = 'date';
+      e.target.type = "date";
     }
   };
 
@@ -30,17 +30,17 @@ class FormSearch extends React.Component {
   };
 
   componentDidMount() {
-    window.addEventListener('keydown', this.handerKeyUpFormSearch);
+    window.addEventListener("keydown", this.handerKeyUpFormSearch);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('keydown', this.handerKeyUpFormSearch);
+    window.removeEventListener("keydown", this.handerKeyUpFormSearch);
   }
 
   getDataAndDispatch = () => {
     let date =
-      this.dateStart.current.value === ''
-        ? ''
+      this.dateStart.current.value === ""
+        ? ""
         : new Date(this.dateStart.current.value).getTime();
     let data = {
       q: this.inputSearch.current.value,
@@ -49,13 +49,16 @@ class FormSearch extends React.Component {
     };
     this.props.getDataSearch(data);
 
-    return this.props.history.push('/tour');
+    return this.props.history.push("/tour");
   };
 
   render() {
     return (
       <div className="">
-        <div className="row border-search mx-auto w-75 rounded">
+        <div
+          style={{ maxWidth: "1100px" }}
+          className="row border-search mx-auto w-75 rounded"
+        >
           <div className="col-12">
             <input
               type="text"

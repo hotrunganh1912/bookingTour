@@ -26,7 +26,7 @@ class BgListTour extends Component {
     ).then((res) => {
       if (res && res.data && !this.state.isUnmounting)
         this.setState({ tours: res.data });
-      console.log("resbgListTour", this.props.styleTour);
+      // console.log("resbgListTour", this.props.styleTour);
     });
     // callApi(`tours`, "Get", null).then((res) => {
     //   if (res && res.data && !this.state.isUnmounting)

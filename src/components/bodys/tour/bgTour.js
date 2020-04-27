@@ -115,7 +115,7 @@ const BgTour = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="container-fuild">
       <TourSearch
         statusGetData={rsGetData}
         wasGetDataFail={wasGetDataFail}
@@ -133,7 +133,7 @@ const BgTour = (props) => {
               position: "relative",
               top: "-113px",
             }}
-            className={`mover-list bg-light flex-wrap flex-grow p-3 rounded d-flex list-all-e-tour resize-flex ${
+            className={`container mover-list bg-light flex-wrap flex-grow p-3 rounded d-flex list-all-e-tour resize-flex ${
               data.length % 3 === 0
                 ? "justify-content-md-between"
                 : (data.length + 1) % 3 === 0

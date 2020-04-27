@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import pane from "../../../image/lodging.png";
+import pane from "../../../image/dulichvn1.png";
 import { connect } from "react-redux";
 import { setDataSearch } from "../../../action/search";
 

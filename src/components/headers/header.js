@@ -44,6 +44,7 @@ class Header extends React.Component {
   render() {
     return (
       <header
+        style={{ maxHeight: "100%" }}
         className={`main-header bg-light z-2 ${
           this.state.scrolled ? "shadow-lg" : ""
         }`}

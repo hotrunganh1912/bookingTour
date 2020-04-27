@@ -9,11 +9,12 @@ import { withRouter } from "react-router-dom";
 import "./comment.css";
 import ChartRating from "./Chart-rating";
 import MyPagination from "../my-pagination";
+import { connect } from "react-redux";
 
 const BgComment = (props) => {
   const _limit = 6;
   const scrollToRef = (ref) => {
-    window.scrollTo(0, ref.current.offsetTop -300);
+    window.scrollTo(0, ref.current.offsetTop - 300);
   };
   const [currentPage, setCurrentPage] = useState(1);
   const [indexDataRender, setIndexDataRender] = useState(0);
@@ -120,7 +121,11 @@ const BgComment = (props) => {
   };
 
   const toggerWriteAndRedComment = () => {
-    return setIsShowComment(!isShowComment);
+    console.log("props.islogin :>> ", props.islogin);
+    if (props.islogin.users.loggedIn) {
+      setIsShowComment(false);
+      props.history.push("/login");
+    } else return setIsShowComment(!isShowComment);
   };
 
   const nextPage = (number) => {
@@ -235,4 +240,10 @@ const BgComment = (props) => {
   );
 };
 
-export default withRouter(BgComment);
+const mapStateToProps = (state) => {
+  return {
+    islogin: state,
+  };
+};
+
+export default connect(mapStateToProps, null)(withRouter(BgComment));

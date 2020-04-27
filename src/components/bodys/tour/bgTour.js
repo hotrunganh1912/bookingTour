@@ -144,13 +144,15 @@ const BgTour = (props) => {
             {/* {console.log("pagination() :", )} */}
             <BosxRsSearch data={pagination()} />
           </div>
-          <MyPagination
-            nextPage={nextPage}
-            prePage={prePage}
-            data={data}
-            _limit={_limit}
-            currentPage={currentPage}
-          />
+          <div className="container">
+            <MyPagination
+              nextPage={nextPage}
+              prePage={prePage}
+              data={data}
+              _limit={_limit}
+              currentPage={currentPage}
+            />
+          </div>
         </>
       )}
       {rsGetData === "null" && (

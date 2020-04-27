@@ -26,7 +26,7 @@ class BgListTour extends Component {
     ).then((res) => {
       if (res && res.data && !this.state.isUnmounting)
         this.setState({tours: res.data});
-        console.log('resbgListTour', this.props.styleTour);
+        console.log('toursBg', this.state.tours);
     });
     // callApi(`tours`, "Get", null).then((res) => {
     //   if (res && res.data && !this.state.isUnmounting)
@@ -52,7 +52,6 @@ class BgListTour extends Component {
   render() {
     let datas = this.state.tours;
     const {titleName} = this.props;
-    console.log('titleName', titleName);
     let classTitle = '';
     let classColor = '';
     if (titleName) {

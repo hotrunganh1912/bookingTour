@@ -1,12 +1,9 @@
 import React from 'react';
 import FormSearch from './formSearch';
-import callApi from '../../../common/callAPI';
-import {connect} from 'react-redux';
-import {setDataSearch} from '../../../action/search';
-import {withRouter} from 'react-router-dom';
 import dulich1 from './../../../image/dulich1.png';
 import dulich2 from './../../../image/dulich2.jpg';
 import dulich3 from './../../../image/dulich3.png';
+import ShowTour from './showTour';
 
 const dataSearchBoxs = [
   {
@@ -27,49 +24,10 @@ const dataSearchBoxs = [
 ];
 
 class BgSearchBox extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      tours: [],
-      isUnmounting: false,
-    };
-  }
-
-  componentDidMount() {
-    this.setState({isUnmounting: false});
-    callApi(
-      `tours?style=${this.props.styleTour}&_limit=${this.props.limit}`,
-      'Get',
-      null
-    ).then((res) => {
-      if (res && res.data && !this.state.isUnmounting)
-        this.setState({tours: res.data});
-        console.log('bgSearchBox', this.props.styleTour);
-    });
-  }
-
-  componentWillUnmount() {
-    this.setState({isUnmounting: true});
-  }
-
-  getDataAndDispatch = () => {
-    let data = {
-      q: '',
-      typeTour: this.props.styleTour,
-      dateStart: '',
-    };
-    this.props.getDataSearch(data);
-
-    return this.props.history.push('/tour');
-  };
   render() {
     const dataSearch = dataSearchBoxs.map((item, index) => {
       return (
-        <div className="o-dl dltn" onClick={this.getDataAndDispatch} key={index}>
-          <img src={item.img} className="iconT-i-c1" />
-          <p className="text1">Tìm tour</p>
-          <p className={`text2 text-dltn ${item.textColor}`}>{item.title}</p>
-        </div>
+        <ShowTour key={index} dataShow={item} />
       );
     });
     return (
@@ -94,10 +52,5 @@ class BgSearchBox extends React.Component {
     );
   }
 }
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getDataSearch: (data) => dispatch(setDataSearch(data)),
-  };
-};
 
-export default connect(null, mapDispatchToProps)(withRouter(BgSearchBox));
+export default BgSearchBox;

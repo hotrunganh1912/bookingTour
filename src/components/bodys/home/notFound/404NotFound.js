@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Payment from "../../../payment/payment";
 
 class NotFound extends Component {
   render() {
@@ -10,6 +11,7 @@ class NotFound extends Component {
           <hr />
           <p className="mb-0">Vui lòng kiểm tra lại URL</p>
         </div>
+        <Payment />
       </div>
     );
   }

@@ -3,7 +3,7 @@ body {
   height: 100%;
   scroll-behavior: smooth;
   transition: all 0.1s;
-  background-image: url('./image/background4.jpg');
+  background-image: url("./image/background4.jpg");
 }
 
 .main-header {
@@ -67,4 +67,17 @@ ul li:first-child a.char-before::before {
   background-color: #0000001f;
   color: black;
   text-decoration: line-through;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.white-placeholder::placeholder {
+  color: white;
+}
+
+.CartBtnPayment:hover {
+  box-shadow: 0 0 4px black;
 }

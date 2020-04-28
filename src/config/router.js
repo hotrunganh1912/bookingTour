@@ -37,7 +37,7 @@ export default [
   },
   {
     title: "Payment |Booking",
-    component: "./headers/payment",
+    component: "./payment/payment",
     path: "/payment",
     isProtected: false,
   },

@@ -385,12 +385,12 @@
   "Users": [
     {
       "id": "5a0eab9e-6c73-4706-a434-725c9086a19f",
-      "firtName": "Anh",
-      "lastName": "Ho",
-      "usersName": "Anh.Ho",
-      "password": "anh123",
+      "firtName": "nguyen",
+      "lastName": "anh vu",
+      "usersName": "abc",
+      "password": "anhvu12",
       "role": "menber",
-      "gmail": "admin@gmail.com"
+      "gmail": "anhvu@gmail.com"
     },
     {
       "id": "ed83dc4b-0d5f-47cd-a26e-60565c3aeda4",

@@ -65,6 +65,12 @@ export default [
     isProtected: false,
   },
   {
+    title: "Edit Infomation |Booking",
+    component: "./bodys/login-logout/editInformation",
+    path: "/editInformation",
+    isProtected: false,
+  },
+  {
     title: "Not Found |Booking",
     component: "./bodys/home/notFound/404NotFound",
     path: "*",

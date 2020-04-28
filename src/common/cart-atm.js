@@ -1,131 +1,142 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { formCurencyVN } from "./funcCommon";
 
-const CartAtm = () => {
+const CartFront = {
+  position: "absolute",
+  backgroundColor: "#498ee4",
+  width: "390px",
+  height: " 250px",
+  borderRadius: "6px",
+  padding: " 20px 30px 0",
+  boxSizing: "border-box",
+  fontSize: "10px",
+  letterSpacing: "1px",
+  fontWeight: 300,
+  color: "white",
+};
+
+//   const imgCartConaiter = {
+//     position: "absolute",
+//     right: 0,
+//     width: "284px",
+//     height: "214px",
+//     top: "36px",
+//     backgroundColor: "#000",
+//     zIndex: -1,
+//     borderRadius: "8px",
+//     boxShadow: " 3px 3px 0 rgba(0, 0, 0, 0.1)",
+//     mozBoxShadow: "3px 3px 0 rgba(0, 0, 0, 0.1)",
+//     webkitBoxShadow: "3px 3px 0 rgba(0, 0, 0, 0.1)",
+//   };
+
+const imgCartConaiter = {
+  width: " 100%",
+  position: "relative",
+  height: "55px",
+  marginBottom: "5px",
+  lineHeight: "55px",
+};
+
+const inputCartNumber = {
+  border: "none",
+  outline: "none",
+  backgroundColor: "#5a9def",
+  height: "30px",
+  lineHeight: "30px",
+  padding: " 0 10px",
+  margin: "0 0 25px",
+  color: "white",
+  fontSize: "10px",
+  boxSizing: " border-box",
+  borderRadius: "4px",
+  fontFamily: "lato, 'helvetica-light', 'sans-serif'",
+  letterSpacing: ".7px",
+};
+
+const cardholderContainer = {
+  width: "60%",
+  display: "inline-block",
+};
+
+const expContainer = {
+  marginLeft: "10px",
+  width: "32%",
+  display: "inline-block",
+  float: "right",
+};
+
+const CartBack = {
+  right: 0,
+  zIndex: -2,
+  top: "40px",
+};
+const ContainerCarWarp = {
+  zIndex: 1072,
+  transition: " all 0.5s",
+  margin: "auto",
+  width: "500px",
+  height: "290px",
+  position: "relative",
+  top: "-211px",
+};
+
+const CartStripe = {
+  width: "100%",
+  height: "55px",
+  backgroundColor: "#3d5266",
+  position: "absolute",
+  right: 0,
+};
+
+const CartBtn = {
+  backgroundColor: "rgb(251, 251, 251)",
+  color: "#ffb242",
+  position: "absolute",
+  bottom: "-55px",
+  right: 0,
+  width: " 150px",
+  borderRadius: "8px",
+  height: " 42px",
+  fontSize: "12px",
+  fontFamily: "lato, 'helvetica-light', 'sans-serif'",
+  textTransform: "uppercase",
+  letterSpacing: "1px",
+  fontWeight: 900,
+  outline: "none",
+  border: "none",
+  cursor: "pointer",
+};
+
+const shaDowCard = {
+  position: "absolute",
+  right: 0,
+  width: "284px",
+  height: " 214px",
+  top: "36px",
+  backgroundColor: "#000",
+  zIndex: -1,
+  borderRadius: "8px",
+  boxShadow: "3px 3px 0 rgba(0, 0, 0, 0.1)",
+  MozBoxShadow: "3px 3px 0 rgba(0, 0, 0, 0.1)",
+  WebkitBoxShadow: "3px 3px 0 rgba(0, 0, 0, 0.1)",
+};
+
+const CartAtm = (props) => {
   const [showCart, setstasetShowCartte] = useState(false);
+  const [numberCart, setNumberCart] = useState("");
+  const [namebossCart, setNamebossCart] = useState("");
+  const [mm, setmm] = useState(0);
+  const [yy, setyy] = useState(0);
 
   useEffect(() => {
     setTimeout(() => {
       setstasetShowCartte(true);
-    }, 300);
+    }, 100);
   });
 
-  const CartFront = {
-    position: "absolute",
-    backgroundColor: "#498ee4",
-    width: "390px",
-    height: " 250px",
-    borderRadius: "6px",
-    padding: " 20px 30px 0",
-    boxSizing: "border-box",
-    fontSize: "10px",
-    letterSpacing: "1px",
-    fontWeight: 300,
-    color: "white",
-  };
-
-  //   const imgCartConaiter = {
-  //     position: "absolute",
-  //     right: 0,
-  //     width: "284px",
-  //     height: "214px",
-  //     top: "36px",
-  //     backgroundColor: "#000",
-  //     zIndex: -1,
-  //     borderRadius: "8px",
-  //     boxShadow: " 3px 3px 0 rgba(0, 0, 0, 0.1)",
-  //     mozBoxShadow: "3px 3px 0 rgba(0, 0, 0, 0.1)",
-  //     webkitBoxShadow: "3px 3px 0 rgba(0, 0, 0, 0.1)",
-  //   };
-
-  const imgCartConaiter = {
-    width: " 100%",
-    position: "relative",
-    height: "55px",
-    marginBottom: "5px",
-    lineHeight: "55px",
-  };
-
-  const inputCartNumber = {
-    border: "none",
-    outline: "none",
-    backgroundColor: "#5a9def",
-    height: "30px",
-    lineHeight: "30px",
-    padding: " 0 10px",
-    margin: "0 0 25px",
-    color: "white",
-    fontSize: "10px",
-    boxSizing: " border-box",
-    borderRadius: "4px",
-    fontFamily: "lato, 'helvetica-light', 'sans-serif'",
-    letterSpacing: ".7px",
-  };
-
-  const cardholderContainer = {
-    width: "60%",
-    display: "inline-block",
-  };
-
-  const expContainer = {
-    marginLeft: "10px",
-    width: "32%",
-    display: "inline-block",
-    float: "right",
-  };
-
-  const CartBack = {
-    right: 0,
-    zIndex: -2,
-    top: "40px",
-  };
-  const ContainerCarWarp = {
-    transition: " all 0.5s",
-    margin: "auto",
-    width: "500px",
-    height: "290px",
-    position: "relative",
-  };
-
-  const CartStripe = {
-    width: "100%",
-    height: "55px",
-    backgroundColor: "#3d5266",
-    position: "absolute",
-    right: 0,
-  };
-
-  const CartBtn = {
-    backgroundColor: "rgb(251, 251, 251)",
-    color: "#ffb242",
-    position: "absolute",
-    bottom: "-55px",
-    right: 0,
-    width: " 150px",
-    borderRadius: "8px",
-    height: " 42px",
-    fontSize: "12px",
-    fontFamily: "lato, 'helvetica-light', 'sans-serif'",
-    textTransform: "uppercase",
-    letterSpacing: "1px",
-    fontWeight: 400,
-    outline: "none",
-    border: "none",
-    cursor: "pointer",
-  };
-
-  const shaDowCard = {
-    position: "absolute",
-    right: 0,
-    width: "284px",
-    height: " 214px",
-    top: "36px",
-    backgroundColor: "#000",
-    zIndex: -1,
-    borderRadius: "8px",
-    boxShadow: "3px 3px 0 rgba(0, 0, 0, 0.1)",
-    "-moz-box-shadow": "3px 3px 0 rgba(0, 0, 0, 0.1)",
-    "-webkit-box-shadow": "3px 3px 0 rgba(0, 0, 0, 0.1)",
+  const formatNumberCartBank = (text) => {
+    return text.replace(/(\d{4})/g, "$1 ");
   };
 
   return (
@@ -140,7 +151,11 @@ const CartAtm = () => {
         <div style={shaDowCard}></div>
         <div style={imgCartConaiter}>
           <span style={{ fontSize: "12px" }}>
-            paying<strong style={{ fontSize: "14px" }}> 99$</strong>
+            paying
+            <strong style={{ fontSize: "14px" }}>
+              {" "}
+              {formCurencyVN(props.valueMoney && props.valueMoney)}
+            </strong>
           </span>
           <span style={{ float: "right" }}>
             <img
@@ -154,19 +169,36 @@ const CartAtm = () => {
           Card Number
         </span>
         <input
-          type="number"
+          onChange={(e) => {
+            setNumberCart(
+              e.target.value
+                .split(" ")
+                .filter((e) => e !== "")
+                .join("")
+                .replace(/[^0-9]/g, "")
+            );
+          }}
+          type="text"
           style={inputCartNumber}
           className="w-100 white-placeholder"
           placeholder="xxxx xxxx xxxx xxxx"
+          value={formatNumberCartBank(numberCart)}
         />
+        {console.log("numberCart >> ", numberCart)}
         <div style={cardholderContainer}>
           <label>Card Holder</label>
           <input
+            onChange={(e) => {
+              setNamebossCart(
+                e.target.value.replace(/[^a-zA-z ]/g, "").toLocaleUpperCase()
+              );
+            }}
             type="text"
             style={inputCartNumber}
             placeholder="HO TRUNG ANH"
             placeholderstype={{ color: "white" }}
             className="w-100 white-placeholder"
+            value={namebossCart}
           />
         </div>
         <div style={expContainer}>
@@ -174,16 +206,26 @@ const CartAtm = () => {
             Expiration
           </label>
           <input
+            onChange={(e) => {
+              if (e.target.value.length >= 3) return;
+              setmm(e.target.value.replace(/[^0-9]/g, ""));
+            }}
             type="number"
             style={{ ...inputCartNumber, width: "45% " }}
-            className="white-placeholder is-invalid"
+            className="white-placeholder text-center"
             placeholder="MM"
+            value={mm !== 0 && mm}
           />
           <input
+            onChange={(e) => {
+              if (e.target.value.length >= 3) return;
+              setyy(e.target.value.replace(/[^0-9]/g, ""));
+            }}
             type="number"
             style={{ ...inputCartNumber, width: "45% ", float: "right" }}
-            className="white-placeholder "
+            className="white-placeholder  text-center"
             placeholder="YY"
+            value={yy !== 0 && yy}
           />
         </div>
       </div>

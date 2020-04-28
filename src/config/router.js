@@ -48,6 +48,18 @@ export default [
     isProtected: false,
   },
   {
+    title: "Recover |Booking",
+    component: "./bodys/login-logout/recover",
+    path: "/recover",
+    isProtected: false,
+  },
+  {
+    title: "Recover |Booking",
+    component: "./bodys/login-logout/recoverRegister",
+    path: "/recover/re-register",
+    isProtected: false,
+  },
+  {
     title: "Not Found |Booking",
     component: "./bodys/home/notFound/404NotFound",
     path: "*",

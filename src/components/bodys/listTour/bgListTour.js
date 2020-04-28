@@ -53,22 +53,17 @@ class BgListTour extends Component {
     let datas = this.state.tours;
     const { titleName } = this.props;
     let classTitle = "";
-
-    // let classColor = '';
-    // if (titleName) {
-    //   if (titleName === 'Tour Hot') {
-    //     classTitle = 'bg-danger';
-    //     classColor = 'btn-danger';
-    //   }
-    //   if (titleName === 'Giảm Giá') {
-    //     classTitle = 'bg-success';
-    //     classColor = 'btn-success';
-    //   }
-    //   if (titleName === 'Nước Ngoài') {
-    //     classTitle = 'bg-info';
-    //     classColor = 'btn-info';
-    //   }
-    // }
+    if (titleName) {
+      if (titleName === 'Tour Hot') {
+        classTitle = 'bg-danger';
+      }
+      if (titleName === 'Giảm Giá') {
+        classTitle = 'bg-success';
+      }
+      if (titleName === 'Nước Ngoài') {
+        classTitle = 'bg-info';
+      }
+    }
 
     return (
       // list tour

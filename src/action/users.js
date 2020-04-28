@@ -8,3 +8,9 @@ export function logOut() {
     type: "LOGOUT"
   };
 }
+export function recover(email) {
+  return {
+    type: "RECOVER",
+    email
+  }
+}

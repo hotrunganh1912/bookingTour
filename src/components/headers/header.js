@@ -108,12 +108,18 @@ class Header extends React.Component {
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     >
+                      <Link
+                        to="/editInformation"
+                        className="dropdown-item"
+                      >
+                        Chỉnh sửa
+                      </Link>
                       <a
                         onClick={this.handerlerLogOut}
                         className="dropdown-item"
                         href="#LogOut"
                       >
-                        Log Out
+                        Đăng xuất
                       </a>
                     </div>
                   </li>

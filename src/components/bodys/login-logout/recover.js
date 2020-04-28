@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import callApi from '../../../common/callAPI';
 import {connect} from 'react-redux';
 import {recover} from '../../../action/users';
-// import FormError from "./FormError";
+import FormError from "./FormError";
 
 class Recover extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class Recover extends Component {
           alert('Email chưa đúng');
           return false;
         } else {
-          this.props.dispatchRecover(res.data[0].gmail);
+          this.props.dispatchRecover(res.data[0].id);
           this.props.history.push('/recover/re-register');
           return true;
         }
@@ -31,12 +31,35 @@ class Recover extends Component {
     );
   };
 
+  validateInput = (type, checkingText) => {
+    if (type === "email") {
+        const regexp = /\S+@\S+\.\S+/;
+        const checkingResult = regexp.exec(checkingText);
+        if (checkingResult !== null) {
+          return { errorMessage: "" };
+        } else {
+          return {
+            errorMessage: "email must be Ex:abc@abc.com",
+          };
+        }
+      }
+  };
+
+  handleInputValidation = (e) => {
+    const { name } = e.target;
+    const { errorMessage } = this.validateInput(name, this.inputEmail.current.value);
+    const newState = { ...this.state[name] };
+    newState.errorMessage = errorMessage;
+    this.setState({ [name]: newState });
+  };
+
   onCheckEmail = (e) => {
     e.preventDefault();
     const email = this.inputEmail.current.value;
-    console.log('email', email);
     if (email !== '') {
       this.checkEmaillicate();
+    } else {
+        alert('Chưa nhập thông tin');
     }
   };
   render() {
@@ -53,16 +76,15 @@ class Recover extends Component {
                 className="form-control"
                 placeholder="Enter email"
                 name="email"
-                // onChange={this.handleInput}
-                // onKeyUp={this.handleInputValidation}
+                onKeyUp={this.handleInputValidation}
               />
-              {/* <FormError errorMessage={this.state.email.errorMessage} /> */}
+              <FormError errorMessage={this.state.email.errorMessage} />
             </div>
             <button type="submit" className="btn btn-primary btn-block">
               Tiếp Tục
             </button>
             <p className="forgot-password text-right mt-3">
-              Chưa có tài khoản? <Link to="/login">Tạo tài khoản mới</Link>
+              Chưa có tài khoản? <Link to="/register">Tạo tài khoản mới</Link>
             </p>
             <p className="forgot-password text-right mt-3">
               <Link to="/login">Quay lại Đăng Nhập</Link>
@@ -75,7 +97,7 @@ class Recover extends Component {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchRecover: (email) => dispatch(recover(email)),
+    dispatchRecover: (id) => dispatch(recover(id)),
   };
 };
 

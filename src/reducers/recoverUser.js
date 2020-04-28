@@ -5,7 +5,7 @@ let recover = (state = initialState, action) => {
     switch (action.type) {
       case "RECOVER":
         console.log('action.recover', action);
-        new_state = action.email;
+        new_state = action.id;
         return new_state;
       default:
         return new_state;

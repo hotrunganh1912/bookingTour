@@ -121,7 +121,7 @@ class Login extends Component {
                 ref={this.inputUsersName}
                 type="text"
                 className="form-control"
-                placeholder="User email"
+                placeholder="User name"
                 name="username"
                 onChange={this.handleInput}
                 onKeyUp={this.handleInputValidation}

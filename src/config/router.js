@@ -51,6 +51,17 @@ export default [
     title: "Detail Booking Tour |Booking",
     component: "./booking/detail-booking",
     path: "/booking/:id",
+  },
+  {
+    title: "Recover |Booking",
+    component: "./bodys/login-logout/recover",
+    path: "/recover",
+    isProtected: false,
+  },
+  {
+    title: "Recover |Booking",
+    component: "./bodys/login-logout/recoverRegister",
+    path: "/recover/re-register",
     isProtected: false,
   },
   {

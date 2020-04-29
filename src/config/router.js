@@ -37,7 +37,7 @@ export default [
   },
   {
     title: "Payment |Booking",
-    component: "./headers/payment",
+    component: "./payment/payment",
     path: "/payment",
     isProtected: false,
   },
@@ -45,6 +45,12 @@ export default [
     title: "Detail Tour |Booking",
     component: "./bodys/home/detail/detail",
     path: "/detail/:id",
+    isProtected: false,
+  },
+  {
+    title: "Detail Booking Tour |Booking",
+    component: "./booking/detail-booking",
+    path: "/booking/:id",
     isProtected: false,
   },
   {

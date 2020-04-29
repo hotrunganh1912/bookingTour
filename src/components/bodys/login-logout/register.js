@@ -191,10 +191,12 @@ class Register extends Component {
       password !== "" &&
       confirmPassword !== ""
     ) {
-      this.checkEmaillicate();
-    } else {
-      alert("Phải nhập đầy đủ thông tin");
+    if (password !== confirmPassword) {
+      alert('Nhập lại password chưa đúng');
+      return false;
     }
+      this.checkEmaillicate();
+    } else alert("Phải nhập đầy đủ thông tin");
   };
 
   handleLogin = () => {
@@ -241,7 +243,6 @@ class Register extends Component {
                 className="form-control"
                 placeholder="Enter User Name"
                 name="username"
-                onChange={this.handleInput}
                 onKeyUp={this.handleInputValidation}
               />
               <FormError errorMessage={this.state.username.errorMessage} />
@@ -255,7 +256,6 @@ class Register extends Component {
                 className="form-control"
                 placeholder="Enter email"
                 name="email"
-                onChange={this.handleInput}
                 onKeyUp={this.handleInputValidation}
               />
               <FormError errorMessage={this.state.email.errorMessage} />
@@ -269,7 +269,6 @@ class Register extends Component {
                 className="form-control"
                 placeholder="Enter First Name"
                 name="firstname"
-                onChange={this.handleInput}
                 onKeyUp={this.handleInputValidation}
               />
               <FormError errorMessage={this.state.firstname.errorMessage} />
@@ -283,7 +282,6 @@ class Register extends Component {
                 className="form-control"
                 placeholder="Enter Last Name"
                 name="lastname"
-                onChange={this.handleInput}
                 onKeyUp={this.handleInputValidation}
               />
               <FormError errorMessage={this.state.lastname.errorMessage} />
@@ -297,7 +295,6 @@ class Register extends Component {
                 placeholder="Enter password"
                 ref={this.inputPassWord}
                 name="password"
-                onChange={this.handleInput}
                 onKeyUp={this.handleInputValidation}
               />
               <FormError errorMessage={this.state.password.errorMessage} />
@@ -311,7 +308,6 @@ class Register extends Component {
                 placeholder="Enter password"
                 ref={this.inputPassWordAgain}
                 name="confirmPassword"
-                onChange={this.handleInput}
                 onKeyUp={this.handleInputValidation}
               />
               <FormError

@@ -12,7 +12,6 @@ import Modal from "../../common/modal";
 
 // };
 const Payment = (props) => {
-  console.log("props :>> ", props);
   return (
     <>
       <Modal handlerCkickShowModal={props.handlerCkickShowModal} />

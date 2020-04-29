@@ -36,12 +36,6 @@ export default [
     isProtected: false,
   },
   {
-    title: "Payment |Booking",
-    component: "./payment/payment",
-    path: "/payment",
-    isProtected: false,
-  },
-  {
     title: "Detail Tour |Booking",
     component: "./bodys/home/detail/detail",
     path: "/detail/:id",
@@ -78,3 +72,9 @@ export default [
     isProtected: false,
   },
 ];
+// {
+//   title: "Payment |Booking",
+//   component: "./payment/payment",
+//   path: "/payment",
+//   isProtected: false,
+// },

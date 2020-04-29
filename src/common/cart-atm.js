@@ -132,13 +132,15 @@ const CartAtm = (props) => {
   const [yy, setyy] = useState(0);
 
   useEffect(() => {
+    let isUnmounting = false;
     !props.off
       ? setTimeout(() => {
-          setstasetShowCartte(true);
+          if (!isUnmounting) setstasetShowCartte(true);
         }, 100)
       : setTimeout(() => {
-          setstasetShowCartte(false);
+          if (!isUnmounting) setstasetShowCartte(false);
         }, 100);
+    return () => (isUnmounting = true);
   });
 
   const formatNumberCartBank = (text) => {
@@ -190,7 +192,7 @@ const CartAtm = (props) => {
           style={inputCartNumber}
           className="w-100 white-placeholder"
           placeholder="xxxx xxxx xxxx xxxx"
-          defaultValue="9704 3208 1234 6787"
+          // defaultValue="9704 3208 1234 6787"
           value={formatNumberCartBank(numberCart).trim()}
         />
         <div style={cardholderContainer}>

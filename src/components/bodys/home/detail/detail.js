@@ -58,6 +58,7 @@ class Detail extends Component {
         .currentPriceChildrenTicker,
       sumPrice: this.state.dataFromBooking.curentSumPrice,
       time: Date.now(),
+      timeChose: this.state.dataFromBooking.timeChose,
       status: "paid",
     };
 

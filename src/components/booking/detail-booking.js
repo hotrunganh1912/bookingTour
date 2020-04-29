@@ -46,8 +46,14 @@ const DetailBooking = (props) => {
             <div className="col-sm-6 ">
               Booking By : <strong>{getData.userName}</strong>
             </div>
-            <div className="col-sm-6 text-right">
+            <div className="col-sm-6 text-left">
               Tour : <strong>{getData.nameTour}</strong>
+            </div>
+            <div className="ml-auto col-sm-6 text-left ">
+              Start Day :{" "}
+              <strong>
+                {new Date(getData.timeChose).toLocaleDateString("en-GB")}
+              </strong>
             </div>
           </div>
 

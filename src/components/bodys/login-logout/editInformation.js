@@ -155,8 +155,7 @@ class EditInformation extends Component {
     const confirmPassword = this.inputPassWordAgain.current.value;
     if (password !== '' && confirmPassword !== '') {
       this.handleLogin();
-    }
-    alert('Chưa nhập password');
+    } else alert('Chưa nhập password');
   };
 
   handleLogin = () => {

@@ -49,9 +49,7 @@ class BgSearchBox extends React.Component {
 
           <h1
             style={{
-              minWidth:" 500px",
               transform: "translate(0px, -423px)",
-              width: "500px",
               fontSize: "32px",
               lineHeight: "40px",
               fontWeight: "600",

@@ -1,39 +1,32 @@
-import React, { Component } from "react";
-import "./login.css";
-import callApi from "../../../common/callAPI";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { login } from "../../../action/users";
-import FormError from "./FormError";
-// import { createHashHistory } from "history";
-import { v4 as uuidv4 } from "uuid";
+import React, {Component} from 'react';
+import FormError from './FormError';
+import {Link} from 'react-router-dom';
+import callApi from '../../../common/callAPI';
 
-class Register extends Component {
+class EditInformation extends Component {
   constructor(props) {
     super(props);
-    // this.textInput = React.createRef();
-    // this.state = { isLogin: false };
     this.state = {
       username: {
-        errorMessage: "",
+        errorMessage: '',
       },
       email: {
-        errorMessage: "",
+        errorMessage: '',
       },
       firstname: {
-        errorMessage: "",
+        errorMessage: '',
       },
       lastname: {
-        errorMessage: "",
+        errorMessage: '',
       },
       password: {
-        errorMessage: "",
+        errorMessage: '',
       },
       confirmPassword: {
-        errorMessage: "",
+        errorMessage: '',
       },
+      id: '',
     };
-
     this.inputUsersName = React.createRef();
     this.inputEmail = React.createRef();
     this.inputPassWord = React.createRef();
@@ -42,128 +35,106 @@ class Register extends Component {
     this.inputLastName = React.createRef();
   }
 
-  checkUsersNameDuplicate = () => {
-    callApi(
-      `users?usersName=${this.inputUsersName.current.value}`,
-      "Get",
-      null
-    ).then((res) => {
-      if (res.data.length === 0) {
-        this.handleLogin();
-        return false;
-      } else {
-        alert("User Name đã tồn tại");
-        return true;
-      }
-    });
-  };
-
-  checkEmaillicate = () => {
-    callApi(`users?gmail=${this.inputEmail.current.value}`, "Get", null).then(
-      (res) => {
-        if (res.data.length === 0) {
-          this.checkUsersNameDuplicate();
-          return false;
-        } else {
-          alert("Email đã tồn tại");
-          return true;
-        }
-      }
-    );
-  };
-
   validateInput = (type, checkingText) => {
-    // let dataUser = JSON.parse(localStorage.getItem(checkingText));
-    if (checkingText === "") {
-      return { errorMessage: "must enter information" };
+    if (checkingText === '') {
+      return {errorMessage: 'must enter information'};
     }
 
-    if (type === "username") {
+    if (type === 'username') {
       const regexp = /^[a-zA-Z0-9.]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return { errorMessage: "" };
+        return {errorMessage: ''};
       } else {
         return {
-          errorMessage: "The user only uses words and no special characters",
+          errorMessage: 'The user only uses words and no special characters',
         };
       }
     }
 
-    if (type === "email") {
+    if (type === 'email') {
       const regexp = /\S+@\S+\.\S+/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return { errorMessage: "" };
+        return {errorMessage: ''};
       } else {
         return {
-          errorMessage: "email must be Ex:abc@abc.com",
+          errorMessage: 'email must be Ex:abc@abc.com',
         };
       }
     }
 
-    if (type === "firstname") {
+    if (type === 'firstname') {
       const regexp = /^[a-zA-Z ]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return { errorMessage: "" };
+        return {errorMessage: ''};
       } else {
         return {
-          errorMessage: "First Name only uses words and no special characters",
+          errorMessage: 'First Name only uses words and no special characters',
         };
       }
     }
 
-    if (type === "lastname") {
+    if (type === 'lastname') {
       const regexp = /^[a-zA-Z ]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return { errorMessage: "" };
+        return {errorMessage: ''};
       } else {
         return {
-          errorMessage: "Last Name only uses words and no special characters",
+          errorMessage: 'Last Name only uses words and no special characters',
         };
       }
     }
 
-    if (type === "password") {
+    if (type === 'password') {
       const regexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return { errorMessage: "" };
+        return {errorMessage: ''};
       } else {
         return {
           errorMessage:
-            "password must be at least 6 characters long and be a letter",
+            'password must be at least 6 characters long and be a letter',
         };
       }
     }
 
-    if (type === "confirmPassword") {
+    if (type === 'confirmPassword') {
       const regexPass = this.inputPassWord.current.value;
       if (checkingText === regexPass) {
-        return { errorMessage: "" };
+        return {errorMessage: ''};
       } else {
         return {
-          errorMessage: "password is incorrect",
+          errorMessage: 'password is incorrect',
         };
       }
     }
   };
 
+  componentDidMount() {
+    const data = JSON.parse(localStorage.getItem('Token'));
+    console.log('dataToken', data);
+    this.inputUsersName.current.value = data.usersName;
+    this.inputEmail.current.value = data.gmail;
+    this.inputFirtName.current.value = data.firtName;
+    this.inputLastName.current.value = data.lastName;
+    this.setState({id: data.id});
+  }
   getValueInput = (name) => {
     switch (name) {
-      case "username":
+      case 'username':
         return this.inputUsersName.current.value;
-      case "email":
+      case 'email':
         return this.inputEmail.current.value;
-      case "firstname":
+      case 'firstname':
         return this.inputFirtName.current.value;
-      case "lastname":
+      case 'lastname':
         return this.inputLastName.current.value;
-      case "password":
+      case 'password':
         return this.inputPassWord.current.value;
-      case "confirmPassword":
+      case 'confirmPassword':
         return this.inputPassWordAgain.current.value;
       default:
         break;
@@ -171,69 +142,51 @@ class Register extends Component {
   };
 
   handleInputValidation = (e) => {
-    const { name } = e.target;
-    const { errorMessage } = this.validateInput(name, this.getValueInput(name));
-    const newState = { ...this.state[name] };
+    const {name} = e.target;
+    const {errorMessage} = this.validateInput(name, this.getValueInput(name));
+    const newState = {...this.state[name]};
     newState.errorMessage = errorMessage;
-    this.setState({ [name]: newState });
+    this.setState({[name]: newState});
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const username = this.inputUsersName.current.value;
-    const email = this.inputEmail.current.value;
     const password = this.inputPassWord.current.value;
     const confirmPassword = this.inputPassWordAgain.current.value;
-
-    if (
-      username !== "" &&
-      email !== "" &&
-      password !== "" &&
-      confirmPassword !== ""
-    ) {
-    if (password !== confirmPassword) {
-      alert('Nhập lại password chưa đúng');
-      return false;
-    }
-      this.checkEmaillicate();
-    } else alert("Phải nhập đầy đủ thông tin");
+    if (password !== '' && confirmPassword !== '') {
+      if (password !== confirmPassword) {
+        alert('Nhập lại password chưa đúng');
+        return false;
+      }
+      this.handleLogin();
+    } else alert('Chưa nhập password');
   };
 
   handleLogin = () => {
     const user = {
-      id: uuidv4(),
+      id: this.state.id,
       firtName: this.inputFirtName.current.value,
       lastName: this.inputLastName.current.value,
       usersName: this.inputUsersName.current.value,
       password: this.inputPassWord.current.value,
-      role: "menber",
+      role: 'menber',
       gmail: this.inputEmail.current.value,
     };
 
-    callApi(`users`, "Post", user).then((res) => {
-      if (res && res.status === 201) {
-        localStorage.setItem("Token", JSON.stringify(res.data));
-        alert("Tạo Tài Khoản Thành Công");
-        this.props.dispatchLogin();
-      } else alert("Tạo Tài Khoản Thất  Bại");
+    callApi(`users/${this.state.id}`, 'Put', user).then((res) => {
+      if (res && res.status === 200) {
+        localStorage.setItem('Token', JSON.stringify(res.data));
+        alert('Chỉnh sửa thành công');
+        this.props.history.push('/home');
+      } else alert('Chỉnh sửa thất bại');
     });
   };
-
   render() {
-    if (
-      this.props.dataLogin.users.loggedIn ||
-      localStorage.getItem("Token") !== null
-    ) {
-      window.console.log("props :", this.props);
-      this.props.history.goBack();
-      return null;
-    }
-
     return (
-      <div className="container ">
-        <div className="border p-3 w-75 mx-auto rounded-lg bg-white login-bg ">
+      <div className="container">
+        <div className="border p-3 w-50 mx-auto rounded-lg bg-white login-bg ">
           <form onSubmit={this.handleSubmit}>
-            <h3 className="text-center">Đăng Ký</h3>
+            <h3 className="text-center">Chỉnh Sửa Trang Cá Nhân</h3>
 
             <div className="form-group">
               <label>User Name: </label>
@@ -316,10 +269,10 @@ class Register extends Component {
             </div>
 
             <button type="submit" className="btn btn-primary btn-block">
-              Đăng Ký
+              Chỉnh Sửa
             </button>
             <p className="forgot-password text-right mt-3">
-              Đã Có Tài khoản <Link to="/login">Trang đăng nhập</Link>
+              <Link to="/home">Quay lại Trang Chủ</Link>
             </p>
           </form>
         </div>
@@ -328,15 +281,4 @@ class Register extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    dataLogin: state,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    dispatchLogin: () => dispatch(login()),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default EditInformation;

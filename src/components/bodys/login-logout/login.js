@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import "./login.css";
-import callApi from "../../../common/callAPI";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { login } from "../../../action/users";
-import FormError from "./FormError";
+import React, {Component} from 'react';
+import './login.css';
+import callApi from '../../../common/callAPI';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {login} from '../../../action/users';
+import FormError from './FormError';
 // import { createHashHistory } from "history";
 
 class Login extends Component {
@@ -14,10 +14,10 @@ class Login extends Component {
     // this.state = { isLogin: false };
     this.state = {
       username: {
-        errorMessage: "",
+        errorMessage: '',
       },
       password: {
-        errorMessage: "",
+        errorMessage: '',
       },
     };
     this.inputUsersName = React.createRef();
@@ -26,31 +26,31 @@ class Login extends Component {
 
   validateInput = (type, checkingText) => {
     // let dataUser = JSON.parse(localStorage.getItem(checkingText));
-    if (checkingText === "") {
-      return { errorMessage: "must enter information" };
+    if (checkingText === '') {
+      return {errorMessage: 'must enter information'};
     }
 
-    if (type === "username") {
+    if (type === 'username') {
       const regexp = /^[a-zA-Z0-9.]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return { errorMessage: "" };
+        return {errorMessage: ''};
       } else {
         return {
-          errorMessage: "The user only uses words and no special characters",
+          errorMessage: 'The user only uses words and no special characters',
         };
       }
     }
 
-    if (type === "password") {
+    if (type === 'password') {
       const regexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
-        return { errorMessage: "" };
+        return {errorMessage: ''};
       } else {
         return {
           errorMessage:
-            "password must be at least 6 characters long and be a letter",
+            'password must be at least 6 characters long and be a letter',
         };
       }
     }
@@ -58,9 +58,9 @@ class Login extends Component {
 
   getValueInput = (name) => {
     switch (name) {
-      case "username":
+      case 'username':
         return this.inputUsersName.current.value;
-      case "password":
+      case 'password':
         return this.inputPassWord.current.value;
       default:
         break;
@@ -68,33 +68,33 @@ class Login extends Component {
   };
 
   handleInputValidation = (e) => {
-    const { name } = e.target;
-    const { errorMessage } = this.validateInput(name, this.getValueInput(name));
-    const newState = { ...this.state[name] };
+    const {name} = e.target;
+    const {errorMessage} = this.validateInput(name, this.getValueInput(name));
+    const newState = {...this.state[name]};
     newState.errorMessage = errorMessage;
-    this.setState({ [name]: newState });
+    this.setState({[name]: newState});
   };
 
   handleSubmit = (e) => {
     callApi(
       `users?usersName=${this.inputUsersName.current.value}`,
-      "Get",
+      'Get',
       null
     ).then((res) => {
       if (
         res.data[0] &&
         res.data[0].password === this.inputPassWord.current.value
       ) {
-        localStorage.setItem("Token", JSON.stringify(res.data[0]));
+        localStorage.setItem('Token', JSON.stringify(res.data[0]));
         // this.setState({
         //   isLogin: true
         // });
-        alert("Đăng Nhập Thành Công");
+        alert('Đăng Nhập Thành Công');
         this.props.dispatchLogin();
       } else {
-        this.inputPassWord.current.value = "";
-        this.inputUsersName.current.value = "";
-        alert("Đăng Nhập Thất Bại");
+        this.inputPassWord.current.value = '';
+        this.inputUsersName.current.value = '';
+        alert('Đăng Nhập Thất Bại');
       }
     });
     e.preventDefault();
@@ -103,7 +103,7 @@ class Login extends Component {
   render() {
     if (
       this.props.dataLogin.users.loggedIn ||
-      localStorage.getItem("Token") !== null
+      localStorage.getItem('Token') !== null
     ) {
       this.props.history.goBack();
       return null;
@@ -121,7 +121,7 @@ class Login extends Component {
                 ref={this.inputUsersName}
                 type="text"
                 className="form-control"
-                placeholder="User email"
+                placeholder="User name"
                 name="username"
                 onChange={this.handleInput}
                 onKeyUp={this.handleInputValidation}
@@ -148,6 +148,9 @@ class Login extends Component {
             </button>
             <p className="forgot-password text-right mt-3">
               Chưa Có Tài khoản <Link to="/register">Tạo Tài Khoản</Link>
+            </p>
+            <p className="forgot-password text-right mt-3">
+              <Link to="/recover">Quên mật khẩu?</Link>
             </p>
           </form>
         </div>

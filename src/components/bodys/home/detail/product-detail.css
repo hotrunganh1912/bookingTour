@@ -19,6 +19,13 @@ body {
   /* margin-left: 15px; */
 }
 
+.img-capital img{
+  height: 400px;
+}
+
+.info-journeys span {
+  font-size: 1.2rem;
+}
 .detail-tour .img-overview .img-capital img {
   width: 100%;
   background-repeat: no-repeat;

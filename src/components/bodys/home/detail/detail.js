@@ -8,6 +8,8 @@ import Waiting from "../../../../common/waiting";
 import CheckConnect from "../../../../common/checkConnect";
 import BgComment from "../../../../common/comment/bg-comment";
 import NotFound from "../notFound/404NotFound";
+import Payment from "../../../payment/payment";
+import { v4 as uuidv4 } from "uuid";
 
 class Detail extends Component {
   constructor(props) {
@@ -15,8 +17,57 @@ class Detail extends Component {
     this.state = {
       dataTour: "",
       spaceTop: 175,
+      showModal: false,
+      off: false,
+      dataFromBooking: null,
     };
   }
+
+  setCurrenSumPrice = async (obj) => {
+    this.setState({
+      dataFromBooking: obj,
+    });
+  };
+
+  handlerCkickShowModal = () => {
+    if (this.state.showModal === true)
+      this.setState({
+        off: true,
+      });
+    setTimeout(() => {
+      this.setState({
+        showModal: !this.state.showModal,
+        off: false,
+      });
+    }, 300);
+  };
+
+  handlerPaymet = async () => {
+    const currentUser = JSON.parse(localStorage.getItem("Token"));
+    if (!currentUser) return;
+    const booking = {
+      id: uuidv4(),
+      userID: currentUser.id,
+      userName: currentUser.firtName + " " + currentUser.lastName,
+      tourID: this.props.match.params.id,
+      nameTour: `${this.state.dataTour[0].city} - ${this.state.dataTour[0].country} - ${this.state.dataTour[0].timeJoin}`,
+      numberOfTickerNormal: this.state.dataFromBooking.numberOfTicker,
+      numberOfChildrenTicker: this.state.dataFromBooking.numberOfChildrenTicker,
+      priceNormalTicker: this.state.dataFromBooking.currentPriceTicker,
+      priceNormalChildrenTicker: this.state.dataFromBooking
+        .currentPriceChildrenTicker,
+      sumPrice: this.state.dataFromBooking.curentSumPrice,
+      time: Date.now(),
+      status: "paid",
+    };
+
+    await callApi(`bookings_tour`, "Post", { ...booking }).then((res) => {
+      if (res && res.status === 201) {
+        alert("booking thành công");
+        this.props.history.push(`/booking/${res.data.id}`);
+      } else alert("booking thất  bại");
+    });
+  };
 
   async componentDidMount() {
     await callApi(`tours/?id=${this.props.match.params.id}`, "Get", null).then(
@@ -57,39 +108,64 @@ class Detail extends Component {
     ) : this.state.dataTour &&
       this.state.dataTour !== "0" &&
       this.state.dataTour !== "" ? (
-      <div className="container">
-        <div className="row">
-          <div className="title-tour col-12 mt-3">
-            <h2 className="page-title col-lg-8 text-center">
-              <b>
-                {this.state.dataTour[0] &&
-                  `${this.state.dataTour[0].city} - ${this.state.dataTour[0].country} - ${this.state.dataTour[0].timeJoin}`}
-              </b>
-            </h2>
+      <>
+        <div className="container">
+          <div className="row">
+            <div className="title-tour col-12 mt-3">
+              <h2 className="page-title col-lg-8 text-center">
+                <b>
+                  {this.state.dataTour[0] &&
+                    `${this.state.dataTour[0].city} - ${this.state.dataTour[0].country} - ${this.state.dataTour[0].timeJoin}`}
+                </b>
+              </h2>
+            </div>
           </div>
-        </div>
-        <div className="row  offSetTopFromBooking">
-          <div className="col-12">
-            <div className="row">
-              <div className="detail-tour col-lg-7 col-xl-8 col-12 pb-3 mb-2 border">
-                <div className="row img-overview">
-                  <ImageCap
-                    dataTour={this.state.dataTour[0] && this.state.dataTour[0]}
-                    {...this.props}
-                  />
-                  <BookingForm
-                    dataTour={this.state.dataTour[0] && this.state.dataTour[0]}
-                    spaceTop={this.state.spaceTop}
-                    {...this.props}
-                  />
-                  <TourDetailHeadLine {...this.props} />
+          <div className="row  offSetTopFromBooking">
+            <div className="col-12">
+              <div className="row">
+                <div className="detail-tour col-lg-7 col-xl-8 col-12 pb-3 mb-2 border">
+                  <div className="row img-overview">
+                    <ImageCap
+                      dataTour={
+                        this.state.dataTour[0] && this.state.dataTour[0]
+                      }
+                      {...this.props}
+                    />
+                    <BookingForm
+                      dataTour={
+                        this.state.dataTour[0] && this.state.dataTour[0]
+                      }
+                      spaceTop={this.state.spaceTop}
+                      {...this.props}
+                      handlerCkickShowModal={this.handlerCkickShowModal}
+                      setCurrenSumPrice={this.setCurrenSumPrice}
+                    />
+                    <TourDetailHeadLine {...this.props} />
+                  </div>
+                  <BgComment />
                 </div>
-                <BgComment />
               </div>
             </div>
           </div>
         </div>
-      </div>
+        {this.state.showModal ? (
+          <Payment
+            off={this.state.off}
+            data={
+              this.state.dataTour[0]
+                ? {
+                    ...this.state.dataFromBooking,
+                    nameTour: `${this.state.dataTour[0].city} - ${this.state.dataTour[0].country} - ${this.state.dataTour[0].timeJoin}`,
+                  }
+                : { ...this.state.dataFromBooking }
+            }
+            handlerPaymet={this.handlerPaymet}
+            handlerCkickShowModal={this.handlerCkickShowModal}
+          />
+        ) : (
+          ""
+        )}
+      </>
     ) : this.state.dataTour === "" ? (
       <div className="container">
         <Waiting />

@@ -1,33 +1,26 @@
 import React from "react";
 import CartAtm from "../../common/cart-atm";
+import Modal from "../../common/modal";
 
+// const typeCardPayment = {
+//   position: "absolute",
+//   display: "block",
+//   top: "150px",
+//   right: "25%",
+//   left: "25%",
+//   zIndex: 1050,
+
+// };
 const Payment = (props) => {
-  const typeModalPaymet = {
-    position: "absolute",
-    display: "block",
-    top: 0,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    // backgroundColor: "#6c757d73",
-    backgroundColor: "#000000b8",
-    zIndex: 1050,
-    transition: "all 0.5s ease 2s",
-  };
-
-  // const typeCardPayment = {
-  //   position: "absolute",
-  //   display: "block",
-  //   top: "150px",
-  //   right: "25%",
-  //   left: "25%",
-  //   zIndex: 1050,
-  // };
-
+  console.log("props :>> ", props);
   return (
     <>
-      <div onClick={props.handlerCkickShowModal} style={typeModalPaymet}></div>
-      <CartAtm valueMoney={200000} />
+      <Modal handlerCkickShowModal={props.handlerCkickShowModal} />
+      <CartAtm
+        handlerPaymet={props.handlerPaymet}
+        valueMoney={props.data.curentSumPrice}
+        off={props.off}
+      />
     </>
   );
 };

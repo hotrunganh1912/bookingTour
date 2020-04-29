@@ -77,8 +77,10 @@ const ContainerCarWarp = {
   margin: "auto",
   width: "500px",
   height: "290px",
-  position: "relative",
-  top: "-211px",
+  position: "fixed",
+  right: "5%",
+  left: "5%",
+  top: "5%",
 };
 
 const CartStripe = {
@@ -124,15 +126,19 @@ const shaDowCard = {
 
 const CartAtm = (props) => {
   const [showCart, setstasetShowCartte] = useState(false);
-  const [numberCart, setNumberCart] = useState("");
-  const [namebossCart, setNamebossCart] = useState("");
+  const [numberCart, setNumberCart] = useState("9704320812346787");
+  const [namebossCart, setNamebossCart] = useState("HO TRUNG ANH");
   const [mm, setmm] = useState(0);
   const [yy, setyy] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {
-      setstasetShowCartte(true);
-    }, 100);
+    !props.off
+      ? setTimeout(() => {
+          setstasetShowCartte(true);
+        }, 100)
+      : setTimeout(() => {
+          setstasetShowCartte(false);
+        }, 100);
   });
 
   const formatNumberCartBank = (text) => {
@@ -146,6 +152,7 @@ const CartAtm = (props) => {
           ? { ...ContainerCarWarp }
           : { ...ContainerCarWarp, transform: " translate(0, -999px)" }
       }
+      className="resize-warp-cart-payment"
     >
       <div style={{ ...CartFront }} className="mx-auto">
         <div style={shaDowCard}></div>
@@ -170,6 +177,7 @@ const CartAtm = (props) => {
         </span>
         <input
           onChange={(e) => {
+            if (e.target.value.length > 19) return;
             setNumberCart(
               e.target.value
                 .split(" ")
@@ -182,9 +190,9 @@ const CartAtm = (props) => {
           style={inputCartNumber}
           className="w-100 white-placeholder"
           placeholder="xxxx xxxx xxxx xxxx"
-          value={formatNumberCartBank(numberCart)}
+          defaultValue="9704 3208 1234 6787"
+          value={formatNumberCartBank(numberCart).trim()}
         />
-        {console.log("numberCart >> ", numberCart)}
         <div style={cardholderContainer}>
           <label>Card Holder</label>
           <input
@@ -229,7 +237,10 @@ const CartAtm = (props) => {
           />
         </div>
       </div>
-      <div style={{ ...CartFront, ...CartBack }}>
+      <div
+        style={{ ...CartFront, ...CartBack }}
+        className="resize-black-cart-payment"
+      >
         <div style={CartStripe}></div>
       </div>
       <button
@@ -237,6 +248,7 @@ const CartAtm = (props) => {
         // transform: "translate(-152px, -35px)"
         style={{ ...CartBtn }}
         className="CartBtnPayment"
+        onClick={props.handlerPaymet}
       >
         Thanh Toán
       </button>

@@ -48,6 +48,12 @@ export default [
     isProtected: false,
   },
   {
+    title: "Detail Booking Tour |Booking",
+    component: "./booking/detail-booking",
+    path: "/booking/:id",
+    isProtected: false,
+  },
+  {
     title: "Not Found |Booking",
     component: "./bodys/home/notFound/404NotFound",
     path: "*",

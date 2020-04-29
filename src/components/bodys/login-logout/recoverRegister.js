@@ -95,6 +95,10 @@ class RecoverRegister extends Component {
     const password = this.inputPassWord.current.value;
     const confirmPassword = this.inputPassWordAgain.current.value;
     if (password !== '' && confirmPassword !== '') {
+      if (password !== confirmPassword) {
+        alert('Nhập lại password chưa đúng');
+        return false;
+      }
         this.handleRegister();
     } else {
         alert('Nhập thông tin password cần thay đổi');
@@ -113,10 +117,10 @@ class RecoverRegister extends Component {
     callApi(`users/${this.props.id}`, 'PUT', user).then((res) => {
       if (res && res.status === 200) {
         localStorage.setItem('Token', JSON.stringify(res.data));
-        alert('Tạo Tài Khoản Thành Công');
+        alert('Thay đổi password thành công');
         this.props.dispatchLogin();
         this.props.history.push('/home');
-      } else alert('Tạo Tài Khoản Thất  Bại');
+      } else alert('Thay đổi password thất bại');
     });
   };
   render() {

@@ -81,12 +81,12 @@ class Header extends React.Component {
             >
               <ul className="navbar-nav ml-auto ">
                 <li className="nav-item py-2">
-                  <Link className="nav-link text-center  bg-light" to="/home">
+                  <Link className="nav-link text-center text-dark bg-light" to="/home">
                     Trang Chủ
                   </Link>
                 </li>
                 <li className="nav-item py-2">
-                  <Link className="nav-link text-center  bg-light" to="/tour">
+                  <Link className="nav-link text-center text-dark bg-light" to="/tour">
                     Tour
                   </Link>
                 </li>
@@ -114,6 +114,12 @@ class Header extends React.Component {
                       >
                         Chỉnh sửa
                       </Link>
+                      <Link
+                        to="/history-booking"
+                        className="dropdown-item"
+                      >
+                        Lịch sử giao dịch
+                      </Link>
                       <a
                         onClick={this.handerlerLogOut}
                         className="dropdown-item"
@@ -127,7 +133,7 @@ class Header extends React.Component {
                   <>
                     <li className="nav-item py-2">
                       <Link
-                        className="nav-link text-center  bg-light"
+                        className="nav-link text-center text-dark bg-light"
                         to="/register"
                       >
                         Đăng Ký
@@ -135,7 +141,7 @@ class Header extends React.Component {
                     </li>
                     <li className="nav-item py-2">
                       <Link
-                        className="nav-link text-center  bg-light"
+                        className="nav-link text-center text-dark bg-light"
                         to="/login"
                       >
                         Đăng Nhập

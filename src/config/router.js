@@ -66,6 +66,12 @@ export default [
     isProtected: false,
   },
   {
+    title: "History Exchange |Booking",
+    component: "./bodys/history-booking/HistoryBooking",
+    path: "/history-booking",
+    isProtected: false,
+  },
+  {
     title: "Not Found |Booking",
     component: "./bodys/home/notFound/404NotFound",
     path: "*",

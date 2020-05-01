@@ -27,7 +27,8 @@ class RecoverRegister extends Component {
   }
 
   componentDidMount() {
-    callApi(`users?id=${this.props.id}`, 'GET', null).then((res) => {
+    if (this.props.loggedIn === false) {
+      callApi(`users?id=${this.props.id}`, 'GET', null).then((res) => {
         console.log('res.data', res.data);
       if (res.data.length !== 0) {
         this.setState({
@@ -40,6 +41,7 @@ class RecoverRegister extends Component {
         });
       }
     });
+    } else this.props.history.push('/home');
   }
 
   validateInput = (type, checkingText) => {
@@ -172,9 +174,11 @@ class RecoverRegister extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state', state);
   const id = state.recoverUser;
-  return {id};
+  return {
+    id,
+    loggedIn: state.users.loggedIn
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

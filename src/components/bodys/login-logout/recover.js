@@ -45,6 +45,13 @@ class Recover extends Component {
       }
   };
 
+  componentDidMount() {
+    console.log('loggedIn', this.props.loggedIn);
+    if (this.props.loggedIn !== false) {
+      this.props.history.push('/home');
+    }
+  }
+
   handleInputValidation = (e) => {
     const { name } = e.target;
     const { errorMessage } = this.validateInput(name, this.inputEmail.current.value);
@@ -95,10 +102,16 @@ class Recover extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.users.loggedIn
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatchRecover: (id) => dispatch(recover(id)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(Recover);
+export default connect(mapStateToProps, mapDispatchToProps)(Recover);

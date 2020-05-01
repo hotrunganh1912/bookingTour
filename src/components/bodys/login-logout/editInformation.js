@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import FormError from './FormError';
 import {Link} from 'react-router-dom';
 import callApi from '../../../common/callAPI';
+import {connect} from 'react-redux';
 
 class EditInformation extends Component {
   constructor(props) {
@@ -114,13 +115,21 @@ class EditInformation extends Component {
   };
 
   componentDidMount() {
-    const data = JSON.parse(localStorage.getItem('Token'));
-    console.log('dataToken', data);
-    this.inputUsersName.current.value = data.usersName;
-    this.inputEmail.current.value = data.gmail;
-    this.inputFirtName.current.value = data.firtName;
-    this.inputLastName.current.value = data.lastName;
-    this.setState({id: data.id});
+    if (this.props.loggedIn !== false) {
+      const data = JSON.parse(localStorage.getItem('Token'));
+      console.log('dataToken', data);
+      this.inputUsersName.current.value = data.usersName;
+      this.inputEmail.current.value = data.gmail;
+      this.inputFirtName.current.value = data.firtName;
+      this.inputLastName.current.value = data.lastName;
+      this.setState({id: data.id});
+    }
+  }
+
+  componentDidUpdate() {
+    if(this.props.loggedIn === false) {
+      this.props.history.push('/home');
+    }
   }
   getValueInput = (name) => {
     switch (name) {
@@ -281,4 +290,11 @@ class EditInformation extends Component {
   }
 }
 
-export default EditInformation;
+const mapStateToProps = (state) => {
+  console.log('stateEditInfo', state);
+  return {
+    loggedIn: state.users.loggedIn,
+  };
+};
+
+export default connect(mapStateToProps, null)(EditInformation);

@@ -6,6 +6,7 @@ import { createStore } from "redux";
 import reducer from "./reducers/reducer.js";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import "react-notifications/lib/notifications.css";
 
 const store = createStore(
   reducer,

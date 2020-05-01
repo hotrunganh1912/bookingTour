@@ -114,6 +114,12 @@ class Header extends React.Component {
                       >
                         Chỉnh sửa
                       </Link>
+                      <Link
+                        to="/history-booking"
+                        className="dropdown-item"
+                      >
+                        Lịch sử giao dịch
+                      </Link>
                       <a
                         onClick={this.handerlerLogOut}
                         className="dropdown-item"

@@ -669,6 +669,21 @@
       "time": 1588233217028,
       "timeChose": 1611334800000,
       "status": "paid"
+    },
+    {
+      "id": "f5ca5384-71fa-494d-ab71-1d129855f2ef",
+      "userID": "ed83dc4b-0d5f-47cd-a26e-60565c3aeda4",
+      "userName": "anh anh",
+      "tourID": "9",
+      "nameTour": "PHUKET - Thái Lan - 4 ngày 3 đêm",
+      "numberOfTickerNormal": 1,
+      "numberOfChildrenTicker": 0,
+      "priceNormalTicker": 12000000,
+      "priceNormalChildrenTicker": 0,
+      "sumPrice": 12000000,
+      "time": 1588346717871,
+      "timeChose": 1609434000000,
+      "status": "paid"
     }
   ]
 }

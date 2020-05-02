@@ -199,14 +199,10 @@ class Register extends Component {
       confirmPassword !== ''
     ) {
       if (password !== confirmPassword) {
-<<<<<<< HEAD
-        alert("Nhập lại password chưa đúng");
-=======
         NotificationManager.warning(
           'Warning message',
           'Nhập Lại Mật Khẩu Chưa Đúng'
         );
->>>>>>> edit Notifly login-logout
         return false;
       }
       this.checkEmaillicate();
@@ -245,13 +241,8 @@ class Register extends Component {
       this.props.dataLogin.users.loggedIn ||
       localStorage.getItem('Token') !== null
     ) {
-<<<<<<< HEAD
-      window.console.log("props :", this.props);
-      this.props.history.push("/home");
-=======
       window.console.log('props :', this.props);
       this.props.history.goBack();
->>>>>>> edit Notifly login-logout
       return null;
     }
 

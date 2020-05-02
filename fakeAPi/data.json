@@ -418,6 +418,15 @@
       "password": "Anhvu22",
       "role": "menber",
       "gmail": "abc@gmail.com"
+    },
+    {
+      "id": "f1708e3b-3c24-4e33-abc0-9f3d07864b6b",
+      "firtName": "nguyen",
+      "lastName": "vu",
+      "usersName": "anhvu1",
+      "password": "anhvu11",
+      "role": "menber",
+      "gmail": "admin@gmail.com"
     }
   ],
   "Comments": [

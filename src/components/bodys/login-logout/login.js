@@ -159,7 +159,6 @@ class Login extends Component {
                 className="form-control"
                 placeholder="User name"
                 name="username"
-                onChange={this.handleInput}
                 onKeyUp={this.handleInputValidation}
               />
               <FormError errorMessage={this.state.username.errorMessage} />
@@ -173,7 +172,6 @@ class Login extends Component {
                 placeholder="Enter password"
                 ref={this.inputPassWord}
                 name="password"
-                onChange={this.handleInput}
                 onKeyUp={this.handleInputValidation}
               />
               <FormError errorMessage={this.state.password.errorMessage} />

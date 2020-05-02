@@ -9,6 +9,7 @@ import CheckConnect from "../../../../common/checkConnect";
 import BgComment from "../../../../common/comment/bg-comment";
 import NotFound from "../notFound/404NotFound";
 import Payment from "../../../payment/payment";
+import {NotificationManager} from 'react-notifications';
 import { v4 as uuidv4 } from "uuid";
 
 class Detail extends Component {
@@ -64,9 +65,12 @@ class Detail extends Component {
 
     await callApi(`bookings_tour`, "Post", { ...booking }).then((res) => {
       if (res && res.status === 201) {
-        alert("booking thành công");
+        NotificationManager.success(
+          "Success message",
+          "Booking Thành Công"
+        );
         this.props.history.push(`/booking/${res.data.id}`);
-      } else alert("booking thất  bại");
+      } else NotificationManager.error("Error message", "Booking Thất Bại");
     });
   };
 

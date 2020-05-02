@@ -22,7 +22,7 @@ class HistoryBooking extends Component {
         this.setState({
           userName: res.data.firtName + ' ' + res.data.lastName,
         });
-      }
+      } else this.setState({});
     });
     callApi(`bookings_tour?userID=${userID}`, 'GET', null).then((res) => {
       console.log('data', res.data);

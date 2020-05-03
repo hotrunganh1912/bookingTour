@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import callApi from '../../../common/callAPI';
 import {login} from '../../../action/users';
 import FormError from "./FormError";
+import {NotificationManager} from 'react-notifications';
 
 class RecoverRegister extends Component {
   constructor(props) {
@@ -29,7 +30,6 @@ class RecoverRegister extends Component {
   componentDidMount() {
     if (this.props.loggedIn === false) {
       callApi(`users?id=${this.props.id}`, 'GET', null).then((res) => {
-        console.log('res.data', res.data);
       if (res.data.length !== 0) {
         this.setState({
           data: {
@@ -98,12 +98,18 @@ class RecoverRegister extends Component {
     const confirmPassword = this.inputPassWordAgain.current.value;
     if (password !== '' && confirmPassword !== '') {
       if (password !== confirmPassword) {
-        alert('Nhập lại password chưa đúng');
+        NotificationManager.warning(
+          "Warning message",
+          "Nhập Lại Mật Khẩu Chưa Đúng"
+        );
         return false;
       }
         this.handleRegister();
     } else {
-        alert('Nhập thông tin password cần thay đổi');
+      NotificationManager.warning(
+        "Warning message",
+        "Nhập Thông Tin Mật Khẩu Cần Thay Đổi"
+      );
     }
   };
 
@@ -119,10 +125,13 @@ class RecoverRegister extends Component {
     callApi(`users/${this.props.id}`, 'PUT', user).then((res) => {
       if (res && res.status === 200) {
         localStorage.setItem('Token', JSON.stringify(res.data));
-        alert('Thay đổi password thành công');
+        NotificationManager.success(
+          "Success message",
+          "Thay Đổi Mật Khẩu Thành Công"
+        );
         this.props.dispatchLogin();
         this.props.history.push('/home');
-      } else alert('Thay đổi password thất bại');
+      } else NotificationManager.error("Error message", "Thay Đổi Mật Khẩu Thất Bại");
     });
   };
   render() {

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logOut, login } from "../../action/users";
 import ICON from "../../image/ICON.png";
+import { NotificationManager } from "react-notifications";
 
 class Header extends React.Component {
   constructor(props) {
@@ -19,9 +20,12 @@ class Header extends React.Component {
   };
 
   handerlerLogOut = (e) => {
-    if (window.confirm("Bạn Muốn Log Out")) {
+    if (window.confirm("Bạn Muốn Đăng Xuất")) {
       this.props.dispatchLogOut();
-      alert("Đăng Xuất Thành Công");
+      NotificationManager.success(
+        "Success message",
+        "Đăng Xuất Thành Công"
+      );
     }
     e.preventDefault();
   };

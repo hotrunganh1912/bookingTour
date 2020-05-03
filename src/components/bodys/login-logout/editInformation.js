@@ -3,6 +3,7 @@ import FormError from './FormError';
 import {Link} from 'react-router-dom';
 import callApi from '../../../common/callAPI';
 import {connect} from 'react-redux';
+import { NotificationManager } from "react-notifications";
 
 class EditInformation extends Component {
   constructor(props) {
@@ -164,11 +165,17 @@ class EditInformation extends Component {
     const confirmPassword = this.inputPassWordAgain.current.value;
     if (password !== '' && confirmPassword !== '') {
       if (password !== confirmPassword) {
-        alert('Nhập lại password chưa đúng');
+        NotificationManager.warning(
+          "Warning message",
+          "Nhập Lại Mật Khẩu Chưa Đúng"
+        );
         return false;
       }
       this.handleLogin();
-    } else alert('Chưa nhập password');
+    } else NotificationManager.warning(
+      "Warning message",
+      "Nhập Thông Tin Mật Khẩu Cần Thay Đổi"
+    );
   };
 
   handleLogin = () => {
@@ -185,9 +192,12 @@ class EditInformation extends Component {
     callApi(`users/${this.state.id}`, 'Put', user).then((res) => {
       if (res && res.status === 200) {
         localStorage.setItem('Token', JSON.stringify(res.data));
-        alert('Chỉnh sửa thành công');
+        NotificationManager.success(
+          "Success message",
+          "Chỉnh Sửa Thông Tin Thành Công"
+        );
         this.props.history.push('/home');
-      } else alert('Chỉnh sửa thất bại');
+      } else NotificationManager.error("Error message", "Chỉnh Sửa Thông Tin Thất Bại");
     });
   };
   render() {

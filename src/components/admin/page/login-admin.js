@@ -39,8 +39,9 @@ const LoginAdmin = (props) => {
     callApi(`users?usersName=${valueUserName}`, "Get", null).then((res) => {
       if (res && res.status === 200) {
         if (
-          res.data[0].role === "admin" &&
-          res.data[0].password === valuePassword
+          res.data[0] &&
+          res.data[0].password === valuePassword &&
+          res.data[0].role === "admin"
         ) {
           localStorage.setItem("TokenAdmin", JSON.stringify(res.data[0]));
           NotificationManager.success(

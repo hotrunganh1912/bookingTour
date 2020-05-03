@@ -4,6 +4,7 @@ import callApi from '../../../common/callAPI';
 import {connect} from 'react-redux';
 import {recover} from '../../../action/users';
 import FormError from "./FormError";
+import {NotificationManager} from 'react-notifications';
 
 class Recover extends Component {
   constructor(props) {
@@ -20,7 +21,10 @@ class Recover extends Component {
     callApi(`users?gmail=${this.inputEmail.current.value}`, 'Get', null).then(
       (res) => {
         if (res.data.length === 0) {
-          alert('Email chưa đúng');
+          NotificationManager.warning(
+            "Warning message",
+            "Email Chưa Đúng"
+          );
           return false;
         } else {
           this.props.dispatchRecover(res.data[0].id);
@@ -66,7 +70,10 @@ class Recover extends Component {
     if (email !== '') {
       this.checkEmaillicate();
     } else {
-        alert('Chưa nhập thông tin');
+      NotificationManager.warning(
+        "Warning message",
+        "Chưa Nhập Thông Tin"
+      );
     }
   };
   render() {

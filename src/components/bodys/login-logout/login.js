@@ -113,7 +113,8 @@ class Login extends Component {
       ).then((res) => {
         if (
           res.data[0] &&
-          res.data[0].password === this.inputPassWord.current.value
+          res.data[0].password === this.inputPassWord.current.value &&
+          res.data[0].role === "menber"
         ) {
           localStorage.setItem("Token", JSON.stringify(res.data[0]));
           // this.setState({

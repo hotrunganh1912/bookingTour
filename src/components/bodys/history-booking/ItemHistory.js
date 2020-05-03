@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 class ItemHistory extends Component {
   render() {
     const {data, index} = this.props;
-    console.log('dataItemHistory', data);
     return (
       <tr>
         <td>{index + 1}</td>

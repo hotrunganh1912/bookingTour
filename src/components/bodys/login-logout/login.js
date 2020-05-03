@@ -73,14 +73,12 @@ class Login extends Component {
     const newState = { ...this.state[name] };
     newState.errorMessage = errorMessage;
     this.setState({ [name]: newState });
-    console.log("this.state :>> ", this.state);
   };
 
   handleInputValidationSubmit = (name) => {
     const { errorMessage } = this.validateInput(name, this.getValueInput(name));
     const newState = { ...this.state[name] };
     newState.errorMessage = errorMessage;
-    console.log("newState :>> ", newState);
     this.setState({ [name]: newState });
   };
 
@@ -96,7 +94,6 @@ class Login extends Component {
     ) {
       return false;
     }
-    console.log("test");
     return true;
   };
 
@@ -141,7 +138,10 @@ class Login extends Component {
       this.props.dataLogin.users.loggedIn ||
       localStorage.getItem("Token") !== null
     ) {
-      this.props.history.goBack();
+      console.log("this.props.history :>> ", this.props.history);
+      this.props.history.length <= 2
+        ? this.props.history.push("/home")
+        : this.props.history.goBack();
       return null;
     }
 

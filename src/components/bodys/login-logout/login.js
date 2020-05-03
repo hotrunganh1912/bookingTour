@@ -113,7 +113,8 @@ class Login extends Component {
       ).then((res) => {
         if (
           res.data[0] &&
-          res.data[0].password === this.inputPassWord.current.value
+          res.data[0].password === this.inputPassWord.current.value &&
+          res.data[0].role === "menber"
         ) {
           localStorage.setItem("Token", JSON.stringify(res.data[0]));
           // this.setState({
@@ -159,7 +160,6 @@ class Login extends Component {
                 className="form-control"
                 placeholder="User name"
                 name="username"
-                onChange={this.handleInput}
                 onKeyUp={this.handleInputValidation}
               />
               <FormError errorMessage={this.state.username.errorMessage} />
@@ -173,7 +173,6 @@ class Login extends Component {
                 placeholder="Enter password"
                 ref={this.inputPassWord}
                 name="password"
-                onChange={this.handleInput}
                 onKeyUp={this.handleInputValidation}
               />
               <FormError errorMessage={this.state.password.errorMessage} />

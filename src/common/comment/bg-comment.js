@@ -10,6 +10,7 @@ import "./comment.css";
 import ChartRating from "./Chart-rating";
 import MyPagination from "../my-pagination";
 import { connect } from "react-redux";
+import { NotificationManager } from "react-notifications";
 
 const BgComment = (props) => {
   const _limit = 6;
@@ -102,7 +103,9 @@ const BgComment = (props) => {
     callApi(`Comments`, "Post", comment).then((res) => {
       setStatusSendComment("nomal");
       if (res && res.status === 201) {
-        alert("Comment Thành Công ");
+        NotificationManager.success(
+          "Comment Thành Công"
+        );
         let newDataComentt =
           dataComment === "begin"
             ? [{ ...res.data }]
@@ -112,7 +115,7 @@ const BgComment = (props) => {
         setIsShowComment(false);
         setCurrentPage(1);
         setIndexDataRender(0);
-      } else alert("Comment Thất Bại");
+      } else NotificationManager.error("Comment Thất Bại");
     });
   };
 

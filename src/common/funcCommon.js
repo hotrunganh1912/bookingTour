@@ -25,6 +25,15 @@ export function priceForChildren(price) {
     currency: "VND",
   });
 }
+
+export function checkTokenLogin() {
+  return localStorage.getItem("Token") ? true : false;
+}
+
+export function checkTokenLoginAdmin() {
+  let admin = JSON.parse(localStorage.getItem("TokenAdmin"));
+  return admin && admin.role === "admin" ? true : false;
+}
 export function removeAccents(str) {
   var AccentsMap = [
     "aàảãáạăằẳẵắặâầẩẫấậ",

@@ -63,13 +63,13 @@ export default [
     title: "Edit Infomation |Booking",
     component: "./bodys/login-logout/editInformation",
     path: "/editInformation",
-    isProtected: false,
+    isProtected: true,
   },
   {
     title: "History Exchange |Booking",
     component: "./bodys/history-booking/HistoryBooking",
     path: "/history-booking",
-    isProtected: false,
+    isProtected: true,
   },
   {
     title: "Not Found |Booking",
@@ -78,9 +78,3 @@ export default [
     isProtected: false,
   },
 ];
-// {
-//   title: "Payment |Booking",
-//   component: "./payment/payment",
-//   path: "/payment",
-//   isProtected: false,
-// },

@@ -191,10 +191,10 @@ class Register extends Component {
       password !== "" &&
       confirmPassword !== ""
     ) {
-    if (password !== confirmPassword) {
-      alert('Nhập lại password chưa đúng');
-      return false;
-    }
+      if (password !== confirmPassword) {
+        alert("Nhập lại password chưa đúng");
+        return false;
+      }
       this.checkEmaillicate();
     } else alert("Phải nhập đầy đủ thông tin");
   };
@@ -225,7 +225,7 @@ class Register extends Component {
       localStorage.getItem("Token") !== null
     ) {
       window.console.log("props :", this.props);
-      this.props.history.goBack();
+      this.props.history.push("/home");
       return null;
     }
 

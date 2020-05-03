@@ -2,7 +2,6 @@ import React from "react";
 
 const MyPagination = (props) => {
   let maxPage = Math.ceil(props.data.length / props._limit);
-
   return maxPage === 1 ? (
     ""
   ) : (

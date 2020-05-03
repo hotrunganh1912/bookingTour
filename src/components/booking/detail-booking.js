@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import callApi from "../../common/callAPI";
 import { useState } from "react";
 import { formCurencyVN } from "../../common/funcCommon";
+import NotFound from "../bodys/home/notFound/404NotFound";
+import Waiting from "../../common/waiting";
 
 const DetailBooking = (props) => {
   const [getData, setGetData] = useState();
@@ -12,7 +14,13 @@ const DetailBooking = (props) => {
     let isUnmounting = false;
     callApi(`bookings_tour?id=${props.match.params.id}`, "Get", null).then(
       (res) => {
-        if (!isUnmounting && res && res.status === 200 && res.data) {
+        if (
+          res &&
+          res.data[0] &&
+          !isUnmounting &&
+          res.status === 200 &&
+          res.data
+        ) {
           setGetData(res.data[0]);
           setStatusGetData("finish");
         } else setStatusGetData("error");
@@ -146,8 +154,10 @@ const DetailBooking = (props) => {
         </div>
       </div>
     </div>
+  ) : statusGetData === "error" ? (
+    <NotFound />
   ) : (
-    ""
+    <Waiting/>
   );
 };
 

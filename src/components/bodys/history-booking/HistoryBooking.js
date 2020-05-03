@@ -22,14 +22,14 @@ class HistoryBooking extends Component {
   componentDidMount() {
     const userID = JSON.parse(localStorage.getItem("Token")).id;
     callApi(`Users/${userID}`, "GET", null).then((res) => {
-      if (res.status === 200 && res) {
+      if (res && res.status === 200) {
         this.setState({
           userName: res.data.firtName + " " + res.data.lastName,
         });
       }
     });
     callApi(`bookings_tour?userID=${userID}`, "GET", null).then((res) => {
-      if (res.status === 200 && res && !this.state.isUnmounting) {
+      if (res && res.status === 200 && !this.state.isUnmounting) {
         this.setState({
           bookingTour: res.data,
           isExchanged: res.data.length === 0 ? "" : res.data[0].id,

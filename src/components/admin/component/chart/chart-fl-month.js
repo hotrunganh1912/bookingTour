@@ -75,6 +75,9 @@ const ChartFlMonth = () => {
 
   return (
     <div className="p-2">
+      <h6 style={{ color: "#4e73df", fontWeight: 700 }}>
+        Doanh Thu Theo Tháng
+      </h6>
       <AreaChart
         className="mx-auto"
         width={widthChart}

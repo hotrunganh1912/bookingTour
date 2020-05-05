@@ -384,15 +384,6 @@
   ],
   "Users": [
     {
-      "id": "5a0eab9e-6c73-4706-a434-725c9086a19f",
-      "firtName": "nguyen",
-      "lastName": "anh vu",
-      "usersName": "anhvu",
-      "password": "vu1234",
-      "role": "menber",
-      "gmail": "anhvu@abc.com"
-    },
-    {
       "id": "ed83dc4b-0d5f-47cd-a26e-60565c3aeda4",
       "firtName": "anh",
       "lastName": "anh",
@@ -405,19 +396,10 @@
       "id": "bbd337b1-3e37-44ee-b929-7ceb1e15ed1a",
       "firtName": "nguyen",
       "lastName": "vu",
-      "usersName": "anhvunguyen",
-      "password": "anhvu11",
+      "usersName": "vunguyen",
+      "password": "anhvu22",
       "role": "menber",
-      "gmail": "abc@abc.com"
-    },
-    {
-      "id": "d92391e3-fef5-48b3-b73c-82589450598e",
-      "firtName": "nguyen",
-      "lastName": "vu",
-      "usersName": "abc",
-      "password": "Anhvu22",
-      "role": "menber",
-      "gmail": "abc@gmail.com"
+      "gmail": "anhvu@abc.com"
     },
     {
       "id": "d92391e3-fef5-48b3-b73c-82589450598e",
@@ -427,6 +409,15 @@
       "password": "admin123",
       "role": "admin",
       "gmail": "admin111@gmail.com"
+    },
+    {
+      "id": "8e515ee1-a15f-474b-be04-1660cb17b96f",
+      "firtName": "anh ",
+      "lastName": "vu",
+      "usersName": "anhvu",
+      "password": "anhvu22",
+      "role": "menber",
+      "gmail": "anhvu@gmail.com"
     }
   ],
   "Comments": [
@@ -702,21 +693,6 @@
       "sumPrice": 12000000,
       "time": 1588346717871,
       "timeChose": 1609434000000,
-      "status": "paid"
-    },
-    {
-      "id": "40a215bf-a5ea-4b43-a0e2-ee498a196471",
-      "userID": "d92391e3-fef5-48b3-b73c-82589450598e",
-      "userName": "nguyen vu",
-      "tourID": "7",
-      "nameTour": "CAO HÙNG - Đài Loan  - 4 ngày 2 đêm",
-      "numberOfTickerNormal": 2,
-      "numberOfChildrenTicker": 1,
-      "priceNormalTicker": 24000000,
-      "priceNormalChildrenTicker": 9000000,
-      "sumPrice": 33000000,
-      "time": 1588459710384,
-      "timeChose": 1590796800000,
       "status": "paid"
     },
     {

@@ -38,7 +38,6 @@ const DashboardAdmin = (props) => {
           return <BgTag key={"dataTag" + i} data={e} />;
         })}
       </div>
-      <h1 style={{ color: "#5a5c69" }}>Doanh Thu Theo Tháng</h1>
       <div className="p-3 shadow bg-white mb-5">
         <ChartFlMonth />
       </div>

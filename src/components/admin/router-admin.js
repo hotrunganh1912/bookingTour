@@ -12,6 +12,12 @@ export default [
     isProtected: true,
   },
   {
+    title: "Dashboard | Booking",
+    component: "./page/dashboard-admin",
+    path: "/admin/dashboard",
+    isProtected: true,
+  },
+  {
     title: "Admin Login | Booking",
     component: "./page/login-admin",
     path: "/admin/login-admin",

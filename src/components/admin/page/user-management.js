@@ -1,11 +1,7 @@
 import React from "react";
 
 const UserManagement = () => {
-  return (
-    <div>
-      <h1>UserManagement</h1>
-    </div>
-  );
+  return <h1>UserManagement</h1>  ;
 };
 
 export default UserManagement;

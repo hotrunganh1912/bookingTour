@@ -9,6 +9,9 @@ import {
 
 import routes from "./router-admin";
 import { checkTokenLoginAdmin } from "../../common/funcCommon";
+import MenuAdmin from "./component/menu-for-admin/menu-admin";
+import EndPage from "./page/end-page";
+import "./css/adminStype.css";
 
 const IsProtected = ({ component: Component, ...rest }) => (
   <Route
@@ -30,7 +33,7 @@ const NoIsProtected = ({ component: Component, ...rest }) => (
       return !checkTokenLoginAdmin() ? (
         (document.title = rest.title) && <Component {...props} />
       ) : (
-        <Redirect to="/admin/user-management" />
+        <Redirect to="/admin/dashboard" />
       );
     }}
   />
@@ -43,33 +46,36 @@ const ConfiRouterAdmin = () => {
     >
       <Router>
         <div className="my-body">
-          {/* <Header /> */}
           <div className="content">
-            {/* <Link to="./tour-management">aaa</Link> */}
-            {/* <Link to="./user-management">bbb</Link> */}
-            <Switch>
-              {routes.map((e, i) => {
-                const component = lazy(() => import(`${e.component}`));
-                return e.isProtected ? (
-                  <IsProtected
-                    key={"routes-admin" + i}
-                    exact
-                    title={e.title}
-                    path={e.path}
-                    component={component}
-                  />
-                ) : (
-                  <NoIsProtected
-                    key={"routes-admin" + i}
-                    exact
-                    title={e.title}
-                    path={e.path}
-                    component={component}
-                  />
-                );
-              })}
-            </Switch>
+            <div className="d-flex">
+              <MenuAdmin />
+              <div className="container-fluid px-5">
+                <Switch>
+                  {routes.map((e, i) => {
+                    const component = lazy(() => import(`${e.component}`));
+                    return e.isProtected ? (
+                      <IsProtected
+                        key={"routes-admin" + i}
+                        exact
+                        title={e.title}
+                        path={e.path}
+                        component={component}
+                      />
+                    ) : (
+                      <NoIsProtected
+                        key={"routes-admin" + i}
+                        exact
+                        title={e.title}
+                        path={e.path}
+                        component={component}
+                      />
+                    );
+                  })}
+                </Switch>
+              </div>
+            </div>
           </div>
+          <EndPage />
         </div>
       </Router>
     </Suspense>

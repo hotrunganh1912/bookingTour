@@ -8,7 +8,7 @@ import {showForm} from '../../../../action/adminManager';
 import {closeForm} from '../../../../action/adminManager';
 import {actAddData} from '../../../../action/adminManager';
 import {updateData} from '../../../../action/adminManager';
-import FormError from '../../../bodys/login-logout/FormError';
+import SearchUser from './searchUser';
 
 class AddItemUser extends Component {
   constructor() {
@@ -52,7 +52,9 @@ class AddItemUser extends Component {
       null
     ).then((res) => {
       if (res.data.length === 0) {
-        this.handleLogin();
+        if (this.checkPassword()){
+          this.handleLogin();
+        }
         return false;
       } else {
         NotificationManager.warning('Warning message', 'User Đã Tồn Tại');
@@ -65,6 +67,15 @@ class AddItemUser extends Component {
     callApi(`Users?gmail=${this.inputEmail.current.value}`, 'Get', null).then(
       (res) => {
         if (res.data.length === 0) {
+          const regexp = /\S+@\S+\.\S+/;
+          const checkingResult = regexp.exec(this.inputEmail.current.value);
+          if (checkingResult === null) {
+            NotificationManager.warning(
+              'Warning message',
+              'Email phải có dạng Ex:abc@abc.com'
+            );
+            return false;
+          }
           this.checkUsersNameDuplicate();
           return false;
         } else {
@@ -73,6 +84,18 @@ class AddItemUser extends Component {
         }
       }
     );
+  };
+
+  checkPassword = () => {
+    const regexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    const checkingResult = regexp.exec(this.inputPassWord.current.value);
+    if (checkingResult === null) {
+      NotificationManager.warning(
+        'Warning message',
+        'Mật Khẩu phải có 6 ký tự chữ và số và bắt đầu bằng ký tự chữ'
+      );
+      return false;
+    } else return true;
   };
 
   handleSubmit = (e) => {
@@ -157,10 +180,11 @@ class AddItemUser extends Component {
   render() {
     return (
       <>
-        <div className="d-flex justify-content-start mb-3">
+        <div className="d-flex justify-content-between mb-3">
           <Button variant="secondary" onClick={() => this.handleShow()}>
             <i className="fas fa-user-plus"></i> Add User
           </Button>
+          <SearchUser />
         </div>
 
         <Modal show={this.props.show} onHide={() => this.handleClose()}>
@@ -176,7 +200,6 @@ class AddItemUser extends Component {
                   type="text"
                   className="form-control"
                   placeholder="User Name"
-                  name="username"
                 />
               </div>
 
@@ -187,7 +210,6 @@ class AddItemUser extends Component {
                   type="text"
                   className="form-control"
                   placeholder="Email"
-                  name="email"
                 />
               </div>
 
@@ -198,7 +220,6 @@ class AddItemUser extends Component {
                   type="text"
                   className="form-control"
                   placeholder="First Name"
-                  name="firstname"
                 />
               </div>
 
@@ -209,7 +230,6 @@ class AddItemUser extends Component {
                   type="text"
                   className="form-control"
                   placeholder="Last Name"
-                  name="lastname"
                 />
               </div>
 

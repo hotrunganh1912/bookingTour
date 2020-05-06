@@ -44,3 +44,11 @@ export const updateData = (data) => {
         data
     };
 }
+
+export const searchData = (keyword, data) => {
+  return {
+    type: 'SEARCH_DATA',
+    keyword,
+    data
+  };
+};

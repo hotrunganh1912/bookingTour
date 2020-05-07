@@ -33,14 +33,11 @@ const adminItems = (state = initialState, action) => {
     case 'SEARCH_DATA':
       console.log('actionSearch', action);
       let arrFilter = [];
-      let count = 0;
       const keyWord = action.keyword;
       if (keyWord !== '') {
         action.data.filter(item => {
           let arrCharState = item.usersName.toUpperCase().split(' ');
           let arrCharKeyword = keyWord.toUpperCase().split(' ');
-        console.log('arrCharStae', arrCharState);
-        console.log('arrCharKeyword', arrCharKeyword);
           for (let i = 0; i < arrCharKeyword.length; i++) {
             let strFind = arrCharState.find(item => item === arrCharKeyword[i]);
             console.log('strFind', strFind);

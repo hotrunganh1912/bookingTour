@@ -393,15 +393,6 @@
       "gmail": "admin111@gmail.com"
     },
     {
-      "id": "57522965-86d5-4286-b90a-4325df0706d4",
-      "firtName": "nguyen",
-      "lastName": "vu",
-      "usersName": "anh vu",
-      "password": "anhvu22",
-      "role": "menber",
-      "gmail": "anhvu@gmail.com"
-    },
-    {
       "id": "d572070e-20c8-44d8-b7fb-c241d0b1190b",
       "firtName": "nguyen ",
       "lastName": "bao",
@@ -418,15 +409,6 @@
       "password": "anhvu22",
       "role": "menber",
       "gmail": "nguyencuong@gmail.com"
-    },
-    {
-      "id": "25dda673-5bc1-4834-ac90-6a27e1af64e9",
-      "firtName": "nguyen",
-      "lastName": "anh vu",
-      "usersName": "anhvu",
-      "password": "anhvu22",
-      "role": "menber",
-      "gmail": "anhvu@abc.com"
     },
     {
       "id": "577a8b63-355b-4a4f-a10c-ee8c416227a9",

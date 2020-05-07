@@ -9,9 +9,11 @@ const editingItem = (state=initialState, action) => {
             return {...newState};
         case "SHOW_FORM":
             newState.show = true;
+            newState.id = '';
             return {...newState};
         case "CLOSE_FORM":
             newState.show = false;
+            newState.id = '';
             return {...newState};
         case "UPDATE_DATA":
             newState.id = '';

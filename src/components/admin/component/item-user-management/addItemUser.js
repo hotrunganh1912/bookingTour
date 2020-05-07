@@ -8,11 +8,22 @@ import {showForm} from '../../../../action/adminManager';
 import {closeForm} from '../../../../action/adminManager';
 import {actAddData} from '../../../../action/adminManager';
 import {updateData} from '../../../../action/adminManager';
+import {editAdminItem} from '../../../../action/adminManager';
 import SearchUser from './searchUser';
 
 class AddItemUser extends Component {
   constructor() {
     super();
+    this.state = {
+      id: '',
+      usersName: '',
+      text: '',
+      gmail: '',
+      firstName: '',
+      lastName: '',
+      password: '',
+      confirmPassword: '',
+    };
 
     this.id = '';
     this.inputUsersName = React.createRef();
@@ -31,11 +42,17 @@ class AddItemUser extends Component {
     this.props.handleShow();
   };
 
+  componentDidMount(){
+    console.log('componetDismount');
+  }
+
   componentDidUpdate() {
-    if (this.props.idEdit) {
+    console.log('componentDisupdate');
+    if(this.props.idEdit) {
+      console.log('componentDisupdate idEdit');
       callApi(`Users/${this.props.idEdit}`, 'GET', null).then((res) => {
         console.log('dataEdit', res);
-        if (res.status === 200) {
+        if (res.status === 200 && res.data) {
           this.id = res.data.id;
           this.inputUsersName.current.value = res.data.usersName;
           this.inputEmail.current.value = res.data.gmail;
@@ -52,9 +69,7 @@ class AddItemUser extends Component {
       null
     ).then((res) => {
       if (res.data.length === 0) {
-        if (this.checkPassword()){
-          this.handleLogin();
-        }
+        this.checkPassword();
         return false;
       } else {
         NotificationManager.warning('Warning message', 'User Đã Tồn Tại');
@@ -87,6 +102,8 @@ class AddItemUser extends Component {
   };
 
   checkPassword = () => {
+    const password = this.inputPassWord.current.value;
+    const confirmPassword = this.inputPassWordAgain.current.value;
     const regexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
     const checkingResult = regexp.exec(this.inputPassWord.current.value);
     if (checkingResult === null) {
@@ -95,7 +112,13 @@ class AddItemUser extends Component {
         'Mật Khẩu phải có 6 ký tự chữ và số và bắt đầu bằng ký tự chữ'
       );
       return false;
-    } else return true;
+    } else if (password !== confirmPassword) {
+      NotificationManager.warning(
+        'Warning message',
+        'Nhập Lại Mật Khẩu Chưa Đúng'
+      );
+      return false;
+    } else return this.handleLogin();
   };
 
   handleSubmit = (e) => {
@@ -111,14 +134,9 @@ class AddItemUser extends Component {
       password !== '' &&
       confirmPassword !== ''
     ) {
-      if (password !== confirmPassword) {
-        NotificationManager.warning(
-          'Warning message',
-          'Nhập Lại Mật Khẩu Chưa Đúng'
-        );
-        return false;
-      }
-      this.checkEmaillicate();
+      if (this.id){
+        this.checkPassword();
+      } else this.checkEmaillicate();
     } else {
       NotificationManager.warning(
         'Warning message',
@@ -178,6 +196,8 @@ class AddItemUser extends Component {
   };
 
   render() {
+    let titleModal = this.props.idEdit ? 'EDIT USER' : 'ADD USER';
+    const disabled = this.props.idEdit ? 'disabled' : '';
     return (
       <>
         <div className="d-flex justify-content-between mb-3">
@@ -189,7 +209,7 @@ class AddItemUser extends Component {
 
         <Modal show={this.props.show} onHide={() => this.handleClose()}>
           <Modal.Header closeButton>
-            <Modal.Title>ADD USER</Modal.Title>
+            <Modal.Title>{titleModal}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form>
@@ -210,6 +230,7 @@ class AddItemUser extends Component {
                   type="text"
                   className="form-control"
                   placeholder="Email"
+                  disabled={disabled}
                 />
               </div>
 
@@ -286,6 +307,7 @@ const mapDispatchToProps = (dispatch) => {
     handleShow: () => dispatch(showForm()),
     handleClose: () => dispatch(closeForm()),
     handleUpdate: (data) => dispatch(updateData(data)),
+    handleEdit: (id) => dispatch(editAdminItem(id)),
   };
 };
 

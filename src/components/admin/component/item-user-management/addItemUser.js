@@ -42,22 +42,19 @@ class AddItemUser extends Component {
     this.props.handleShow();
   };
 
-  componentDidMount(){
-    console.log('componetDismount');
-  }
-
   componentDidUpdate() {
-    console.log('componentDisupdate');
-    if(this.props.idEdit) {
+    if (this.props.idEdit) {
       console.log('componentDisupdate idEdit');
       callApi(`Users/${this.props.idEdit}`, 'GET', null).then((res) => {
         console.log('dataEdit', res);
         if (res.status === 200 && res.data) {
-          this.id = res.data.id;
+          this.id = this.props.idEdit;
           this.inputUsersName.current.value = res.data.usersName;
           this.inputEmail.current.value = res.data.gmail;
           this.inputFirtName.current.value = res.data.firtName;
           this.inputLastName.current.value = res.data.lastName;
+          this.inputPassWord.current.value = res.data.password;
+          this.inputPassWordAgain.current.value = res.data.password;
         }
       });
     }
@@ -69,6 +66,29 @@ class AddItemUser extends Component {
       null
     ).then((res) => {
       if (res.data.length === 0) {
+        this.checkPassword();
+        return false;
+      } else {
+        NotificationManager.warning('Warning message', 'User Đã Tồn Tại');
+        return true;
+      }
+    });
+  };
+  checkUsersNameUpdate = () => {
+    callApi(
+      `Users?usersName=${this.inputUsersName.current.value}`,
+      'Get',
+      null
+    ).then((res) => {
+      console.log('res.data checkkuser update', res.data);
+      if (res.data.length === 0 ) {
+        this.checkPassword();
+        return false;
+      } else if (
+        res.data[0].usersName === this.inputUsersName.current.value &&
+        this.props.idEdit === res.data[0].id
+        ) {
+        console.log('testcheck userupdate', this.props.idEdit);
         this.checkPassword();
         return false;
       } else {
@@ -134,8 +154,8 @@ class AddItemUser extends Component {
       password !== '' &&
       confirmPassword !== ''
     ) {
-      if (this.id){
-        this.checkPassword();
+      if (this.id) {
+        this.checkUsersNameUpdate();
       } else this.checkEmaillicate();
     } else {
       NotificationManager.warning(
@@ -146,7 +166,7 @@ class AddItemUser extends Component {
   };
 
   handleLogin = () => {
-    if (this.id) {
+    if (this.props.idEdit) {
       const data = {
         id: this.id,
         firtName: this.inputFirtName.current.value,

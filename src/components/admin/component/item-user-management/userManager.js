@@ -4,7 +4,7 @@ import callApi from '../../../../common/callAPI';
 import AddItemUser from './addItemUser';
 import {connect} from 'react-redux';
 import {actFetchData} from '../../../../action/adminManager';
-import MyPagination from '../../../../common/my-pagination';
+// import MyPagination from '../../../../common/my-pagination';
 
 class UserManager extends Component {
   constructor(props) {
@@ -25,33 +25,33 @@ class UserManager extends Component {
     });
   }
 
-  nextPage = (number) => {
-    this.setState({
-      indexDataRender: number * this._limit,
-      currentPage: this.state.currentPage + 1,
-    });
-  };
+  // nextPage = (number) => {
+  //   this.setState({
+  //     indexDataRender: number * this._limit,
+  //     currentPage: this.state.currentPage + 1,
+  //   });
+  // };
 
-  prePage = (number) => {
-    this.setState({
-      indexDataRender: (number - 2) * this._limit,
-      currentPage: this.state.currentPage - 1,
-    });
-  };
-  pagination = () => {
-    let datanew = [];
-    if (this.props.dataUsers.length <= 0) return;
-    let end =
-      this.state.indexDataRender + this._limit >= this.props.dataUsers.length
-        ? this.props.dataUsers.length
-        : this.state.indexDataRender + this._limit;
+  // prePage = (number) => {
+  //   this.setState({
+  //     indexDataRender: (number - 2) * this._limit,
+  //     currentPage: this.state.currentPage - 1,
+  //   });
+  // };
+  // pagination = () => {
+  //   let datanew = [];
+  //   if (this.props.dataUsers.length <= 0) return;
+  //   let end =
+  //     this.state.indexDataRender + this._limit >= this.props.dataUsers.length
+  //       ? this.props.dataUsers.length
+  //       : this.state.indexDataRender + this._limit;
 
-    if (this.props.dataUsers.length === 1) return this.props.dataUsers.length;
-    for (let i = this.state.indexDataRender; i < end; i++) {
-      datanew.push(this.props.dataUsers[i]);
-    }
-    return datanew;
-  };
+  //   if (this.props.dataUsers.length === 1) return this.props.dataUsers.length;
+  //   for (let i = this.state.indexDataRender; i < end; i++) {
+  //     datanew.push(this.props.dataUsers[i]);
+  //   }
+  //   return datanew;
+  // };
   render() {
     // const {dataUsers} = this.props;
     // let dataUsers = this.pagination();
@@ -78,7 +78,7 @@ class UserManager extends Component {
               })}
             </tbody>
           </table>
-          <div className="container">
+          {/* <div className="container">
             <MyPagination
               nextPage={this.nextPage}
               prePage={this.prePage}
@@ -86,7 +86,7 @@ class UserManager extends Component {
               _limit={this._limit}
               currentPage={this.state.currentPage}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     )

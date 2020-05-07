@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import BtnClickShowMenu from "./btn-click-show-menu";
 import ShowInformationAdmin from "./show-information-admin";
 import ItemMenuAdmin from "./item-menu-admin";
+import LogoutAdmin from "../logout-admin";
 
 const timeMove = 0.8;
 const divBackend = {
@@ -32,7 +33,7 @@ const divWarpMenu = {
 
   transition: `${timeMove}s all`,
   transform: `translate(0, 0)`,
-  zIndex:3
+  zIndex: 3,
 };
 const divWarpMenuHiden = {
   position: "fixed",
@@ -97,6 +98,7 @@ const MenuAdmin = (props) => {
             />
           ))}
         </div>
+        <LogoutAdmin />
       </div>
     </>
   );

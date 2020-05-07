@@ -33,9 +33,6 @@ const LoginAdmin = (props) => {
   const handerOnsubmit = (e) => {
     e.preventDefault();
 
-    console.log("valueUserName :>> ", valueUserName);
-    console.log("valuePassword :>> ", valuePassword);
-
     callApi(`users?usersName=${valueUserName}`, "Get", null).then((res) => {
       if (res && res.status === 200) {
         if (
@@ -48,7 +45,7 @@ const LoginAdmin = (props) => {
             "Success message",
             "Đăng Nhập Thành Công"
           );
-          props.history.push("/admin/user-management");
+          props.history.push("/admin/dashboard");
         } else
           NotificationManager.error("Error message", "Đăng Nhập Bị Từ Chôi");
       }

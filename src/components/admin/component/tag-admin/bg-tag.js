@@ -1,7 +1,7 @@
 import React from "react";
 
 const BgTag = (props) => {
-  const { color, title, value, icon } = props.data;
+  const { color, title, value } = props.data;
 
   const divWarpTag = {
     height: "100px",
@@ -28,7 +28,7 @@ const BgTag = (props) => {
     <div style={layoutDiv} className="pb-2 m-0">
       <div style={divWarpTag} className="m-0 p-3 shadow height-100">
         <div style={rowCus} className="row">
-          <div className="m-0 col">
+          <div className="m-0 col text-center">
             <div style={tagName}>{title}</div>
             <div
               style={{
@@ -40,9 +40,9 @@ const BgTag = (props) => {
               {value}
             </div>
           </div>
-          <div className="col-auto">
+          {/* <div className="col-auto">
             <i style={{ color: "#dddfeb" }} className={`fa ${icon} fa-2x`}></i>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

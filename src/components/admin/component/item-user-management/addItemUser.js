@@ -66,6 +66,15 @@ class AddItemUser extends Component {
       null
     ).then((res) => {
       if (res.data.length === 0) {
+        const regexp = /\S+@\S+\.\S+/;
+        const checkingResult = regexp.exec(this.inputUsersName.current.value);
+        if (checkingResult === null) {
+          NotificationManager.warning(
+            'Warning message',
+            'User Name chỉ gồm ký tự chữ và số không gồm ký tự đặt biệt'
+          );
+          return false;
+        }
         this.checkPassword();
         return false;
       } else {
@@ -81,14 +90,22 @@ class AddItemUser extends Component {
       null
     ).then((res) => {
       console.log('res.data checkkuser update', res.data);
-      if (res.data.length === 0 ) {
+      if (res.data.length === 0) {
+        const regexp = /\S+@\S+\.\S+/;
+        const checkingResult = regexp.exec(this.inputUsersName.current.value);
+        if (checkingResult === null) {
+          NotificationManager.warning(
+            'Warning message',
+            'User Name chỉ gồm ký tự chữ và số không gồm ký tự đặt biệt'
+          );
+          return false;
+        }
         this.checkPassword();
         return false;
       } else if (
         res.data[0].usersName === this.inputUsersName.current.value &&
         this.props.idEdit === res.data[0].id
-        ) {
-        console.log('testcheck userupdate', this.props.idEdit);
+      ) {
         this.checkPassword();
         return false;
       } else {

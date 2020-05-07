@@ -1,32 +1,92 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BgTag from "../component/tag-admin/bg-tag";
 import ChartFlMonth from "../component/chart/chart-fl-month";
+import callApi from "../../../common/callAPI";
+import { formCurencyVN } from "../../../common/funcCommon";
 
 const DashboardAdmin = (props) => {
+  const [data, setData] = useState();
+  // const [startGetData, setStartGetData] = useState("pending");
+
+  useEffect(() => {
+    let isUnmounting = false;
+    // setStartGetData("pending");
+    callApi(`bookings_tour?status=paid`, "Get", null).then((res) => {
+      if (!isUnmounting && res && res.status === 200 && res.data.length > 0) {
+        setData(res.data);
+      }
+    });
+
+    return () => (isUnmounting = true);
+  }, []);
+
+  let dateNow = new Date();
+
+  let getDateNow = new Date(
+    dateNow.getFullYear(),
+    dateNow.getMonth(),
+    dateNow.getDate()
+  ).getTime();
+
+  let getMonthNow = new Date(
+    dateNow.getFullYear(),
+    dateNow.getMonth(),
+    1
+  ).getTime();
+
+  const getBookingIndate = () => {
+    if (!data || data.length === 0) return 0;
+    let rs = data.filter((ele) => ele.time >= getDateNow);
+    return rs.length;
+  };
+
+  const getRevenueflDay = () => {
+    if (!data || data.length === 0) return 0;
+    let rs = data
+      .filter((ele) => ele.time >= getDateNow)
+      .reduce((ac, cur) => ac + cur.sumPrice, 0);
+    return formCurencyVN(rs);
+  };
+
+  const getRevenueAll = () => {
+    if (!data || data.length === 0) return 0;
+    let rs = data.reduce((ac, cur) => ac + cur.sumPrice, 0);
+    return formCurencyVN(rs);
+  };
+
+  const getRevenueMonth = () => {
+    if (!data || data.length === 0) return 0;
+    let rs = data
+      .filter((ele) => ele.time >= getMonthNow)
+      .reduce((ac, cur) => ac + cur.sumPrice, 0);
+    return formCurencyVN(rs);
+  };
+
   const datatg = [
     {
       color: "#4e73df",
-      title: "Số booking trong  ngày",
-      value: 100000,
-      icon: "fa-ticket-alt",
+      title: "Số booking trong ngày",
+      value: getBookingIndate(),
+      // icon: "fa-ticket-alt",
     },
     {
       color: "#4e73df",
       title: "Doanh Thu Ngày",
-      value: 100000000000,
-      icon: "fa-dollar-sign",
+      value: getRevenueflDay(),
+      // icon: "fa-dollar-sign",
+    },
+
+    {
+      color: "#4e73df",
+      title: "Danh Thu Tháng",
+      value: getRevenueMonth(),
+      // icon: "fa-dollar-sign",
     },
     {
       color: "#4e73df",
       title: "Tổng Doanh Thu",
-      value: 100000,
-      icon: "fa-dollar-sign",
-    },
-    {
-      color: "#4e73df",
-      title: "Danh Thu Tháng",
-      value: 100000,
-      icon: "fa-dollar-sign",
+      value: getRevenueAll(),
+      // icon: "fa-dollar-sign",
     },
   ];
 
@@ -38,8 +98,12 @@ const DashboardAdmin = (props) => {
           return <BgTag key={"dataTag" + i} data={e} />;
         })}
       </div>
-      <div className="p-3 shadow bg-white mb-5">
-        <ChartFlMonth />
+      <div
+        style={{ borderRadius: "1rem" }}
+        className="p-3 shadow bg-white mb-5"
+      >
+        <ChartFlMonth data={data !== undefined ? data : []} />
+        
       </div>
     </>
   );

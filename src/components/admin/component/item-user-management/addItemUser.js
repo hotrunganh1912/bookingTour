@@ -66,7 +66,7 @@ class AddItemUser extends Component {
       null
     ).then((res) => {
       if (res.data.length === 0) {
-        const regexp = /\S+@\S+\.\S+/;
+        const regexp = /^[a-zA-Z0-9. ]+$/;
         const checkingResult = regexp.exec(this.inputUsersName.current.value);
         if (checkingResult === null) {
           NotificationManager.warning(
@@ -91,7 +91,7 @@ class AddItemUser extends Component {
     ).then((res) => {
       console.log('res.data checkkuser update', res.data);
       if (res.data.length === 0) {
-        const regexp = /\S+@\S+\.\S+/;
+        const regexp = /^[a-zA-Z0-9. ]+$/;
         const checkingResult = regexp.exec(this.inputUsersName.current.value);
         if (checkingResult === null) {
           NotificationManager.warning(

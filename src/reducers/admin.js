@@ -32,29 +32,27 @@ const adminItems = (state = initialState, action) => {
       return [...newState];
     case 'SEARCH_DATA':
       console.log('actionSearch', action);
-      newState = action.data;
       let arrFilter = [];
       let count = 0;
       const keyWord = action.keyword;
       if (keyWord !== '') {
         action.data.filter(item => {
-          let arrCharState = item.usersName.toUpperCase().split('');
-          let arrCharKeyword = keyWord.toUpperCase().split('');
+          let arrCharState = item.usersName.toUpperCase().split(' ');
+          let arrCharKeyword = keyWord.toUpperCase().split(' ');
+        console.log('arrCharStae', arrCharState);
+        console.log('arrCharKeyword', arrCharKeyword);
           for (let i = 0; i < arrCharKeyword.length; i++) {
-            for (let j = 0; j < arrCharState.length; j++) {
-              if (arrCharKeyword[i] === arrCharState[j]) {
-                count++;
-                if (count >= 2) {
-                  console.log('item', item);
-                  arrFilter.push(item);
-                  return arrFilter;
-                }
-              }
+            let strFind = arrCharState.find(item => item === arrCharKeyword[i]);
+            console.log('strFind', strFind);
+            if (strFind) {
+              arrFilter.push(item);
+              return arrFilter;
             }
+            console.log('arrFilter', arrFilter);
           }
           return newState = [...arrFilter];
         });
-      } else return (newState = [...action.data]);
+      } else return newState = [...action.data];
       return [...newState];
     default:
       return [...newState];

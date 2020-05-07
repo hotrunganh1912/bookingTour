@@ -40,7 +40,7 @@ class EditInformation extends Component {
     }
 
     if (type === 'username') {
-      const regexp = /^[a-zA-Z0-9.]+$/;
+      const regexp = /^[a-zA-Z0-9. ]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
         return {errorMessage: ''};

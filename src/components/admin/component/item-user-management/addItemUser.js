@@ -332,7 +332,6 @@ class AddItemUser extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log('stateEdit', state);
   return {
     idEdit: state.editingItem.id,
     show: state.editingItem.show,

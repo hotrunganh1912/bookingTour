@@ -4,6 +4,7 @@ import search from "./search";
 import recoverUser from './recoverUser';
 import adminItems from './admin';
 import editingItem from './editItemAdmin';
+import searchUser from './searchUsers';
 import { combineReducers } from "redux";
 
 const reducer = combineReducers({
@@ -11,7 +12,8 @@ const reducer = combineReducers({
   search,
   recoverUser,
   adminItems,
-  editingItem
+  editingItem,
+  searchUser
 });
 
 export default reducer;

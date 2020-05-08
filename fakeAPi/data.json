@@ -432,7 +432,7 @@
       "id": "73430bf4-f9b6-4872-92aa-3f32bd7cf0fe",
       "firtName": "gia bao",
       "lastName": "nguyen",
-      "usersName": "giabao",
+      "usersName": "gia bao",
       "password": "anhvu22",
       "role": "menber",
       "gmail": "giabao@gmail.com"
@@ -454,6 +454,15 @@
       "password": "anhvu22",
       "role": "menber",
       "gmail": "anhvu22@gmail.com"
+    },
+    {
+      "id": "62f75bb4-4551-44ed-8189-008bfe78744b",
+      "firtName": "nguyen",
+      "lastName": "bao loc",
+      "usersName": "bao loc",
+      "password": "anhvu22",
+      "role": "menber",
+      "gmail": "nguyenbaoloc@gmail.com"
     }
   ],
   "Comments": [

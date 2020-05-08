@@ -36,20 +36,15 @@ const adminItems = (state = initialState, action) => {
       const keyWord = action.keyword;
       if (keyWord !== '') {
         action.data.filter(item => {
-          let arrCharState = item.usersName.toUpperCase().split(' ');
-          let arrCharKeyword = keyWord.toUpperCase().split(' ');
-          for (let i = 0; i < arrCharKeyword.length; i++) {
-            let strFind = arrCharState.find(item => item === arrCharKeyword[i]);
-            console.log('strFind', strFind);
-            if (strFind) {
-              arrFilter.push(item);
-              return arrFilter;
-            }
-            console.log('arrFilter', arrFilter);
+          let arrCharState = item.usersName.toUpperCase().split(' ').filter(x => x !== '').join('');
+          let arrCharKeyword = keyWord.toUpperCase().split(' ').filter(x => x !== '').join('');
+          if (arrCharState.includes(arrCharKeyword)) {
+            arrFilter.push(item);
           }
           return newState = [...arrFilter];
         });
-      } else return newState = [...action.data];
+      }
+      else return newState = [...action.data];
       return [...newState];
     default:
       return [...newState];

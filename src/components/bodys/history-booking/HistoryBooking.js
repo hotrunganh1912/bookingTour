@@ -44,13 +44,6 @@ class HistoryBooking extends Component {
     }
   }
 
-  componentWillUnmount() {
-    this.setState({
-      isUnmounting: true,
-      isExchanged: false,
-    });
-  }
-
   nextPage = (number) => {
     this.setState({
       indexDataRender: number * this._limit,

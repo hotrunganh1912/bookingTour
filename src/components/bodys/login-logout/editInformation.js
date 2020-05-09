@@ -12,9 +12,6 @@ class EditInformation extends Component {
       username: {
         errorMessage: '',
       },
-      email: {
-        errorMessage: '',
-      },
       firstname: {
         errorMessage: '',
       },
@@ -43,25 +40,13 @@ class EditInformation extends Component {
     }
 
     if (type === 'username') {
-      const regexp = /^[a-zA-Z0-9.]+$/;
+      const regexp = /^[a-zA-Z0-9. ]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
         return {errorMessage: ''};
       } else {
         return {
           errorMessage: 'The user only uses words and no special characters',
-        };
-      }
-    }
-
-    if (type === 'email') {
-      const regexp = /\S+@\S+\.\S+/;
-      const checkingResult = regexp.exec(checkingText);
-      if (checkingResult !== null) {
-        return {errorMessage: ''};
-      } else {
-        return {
-          errorMessage: 'email must be Ex:abc@abc.com',
         };
       }
     }
@@ -136,8 +121,6 @@ class EditInformation extends Component {
     switch (name) {
       case 'username':
         return this.inputUsersName.current.value;
-      case 'email':
-        return this.inputEmail.current.value;
       case 'firstname':
         return this.inputFirtName.current.value;
       case 'lastname':
@@ -228,9 +211,8 @@ class EditInformation extends Component {
                 className="form-control"
                 placeholder="Enter email"
                 name="email"
-                onKeyUp={this.handleInputValidation}
+                disabled
               />
-              <FormError errorMessage={this.state.email.errorMessage} />
             </div>
 
             <div className="form-group">

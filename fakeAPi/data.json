@@ -10,7 +10,7 @@
       "calendar": "Tháng 3",
       "transit": [
         "Máy Bay",
-        "xe Hơi"
+        "Xe Hơi"
       ],
       "timeStart": [
         1578502800000,
@@ -37,7 +37,7 @@
       "calendar": "Tháng 4",
       "transit": [
         "Máy Bay",
-        "xe Hơi"
+        "Xe Hơi"
       ],
       "timeStart": [
         1579798800000,
@@ -64,7 +64,7 @@
       "calendar": "Tháng 5",
       "transit": [
         "Máy Bay",
-        "xe Hơi"
+        "Xe Hơi"
       ],
       "timeStart": [
         1584896400000,
@@ -91,7 +91,7 @@
       "calendar": "Tháng 8",
       "transit": [
         "Máy Bay",
-        "xe Hơi"
+        "Xe Hơi"
       ],
       "timeStart": [
         1586883600000,
@@ -118,7 +118,7 @@
       "calendar": "Tháng 8",
       "transit": [
         "Máy Bay",
-        "xe Hơi"
+        "Xe Hơi"
       ],
       "timeStart": [
         1588784400000,
@@ -145,7 +145,7 @@
       "calendar": "Tháng 8",
       "transit": [
         "Máy Bay",
-        "xe Hơi"
+        "Xe Hơi"
       ],
       "timeStart": [
         1629565200000,
@@ -172,7 +172,7 @@
       "calendar": "Tháng 5",
       "transit": [
         "Máy Bay",
-        "xe Hơi"
+        "Xe Hơi"
       ],
       "timeStart": [
         1587859200000,
@@ -199,7 +199,7 @@
       "calendar": "Tháng 2",
       "transit": [
         "Máy Bay",
-        "xe Hơi"
+        "Xe Hơi"
       ],
       "timeStart": [
         1587747600000,
@@ -227,7 +227,7 @@
       "calendar": "Tháng 3",
       "transit": [
         "Máy Bay",
-        "xe Hơi"
+        "Xe Hơi"
       ],
       "timeStart": [
         1595610000000,
@@ -255,7 +255,7 @@
       "calendar": "Tháng 8",
       "transit": [
         "Máy Bay",
-        "xe Hơi"
+        "Xe Hơi"
       ],
       "timeStart": [
         1582304400000,
@@ -283,7 +283,7 @@
       "calendar": "Tháng 6",
       "transit": [
         "Máy Bay",
-        "xe Hơi"
+        "Xe Hơi"
       ],
       "timeStart": [
         1582304400000,
@@ -309,8 +309,8 @@
       "price": 4000000,
       "calendar": "Tháng 6",
       "transit": [
-        "xe Hơi",
-        "xe khách"
+        "Xe Hơi",
+        "Xe Khách"
       ],
       "timeStart": [
         1584896400000,
@@ -336,8 +336,8 @@
       "price": 4000000,
       "calendar": "Tháng 8",
       "transit": [
-        "xe Hơi",
-        "xe khách"
+        "Xe Hơi",
+        "Xe Khách"
       ],
       "timeStart": [
         1584896400000,
@@ -363,8 +363,8 @@
       "price": 4000000,
       "calendar": "Tháng 7",
       "transit": [
-        "xe Hơi",
-        "xe khách"
+        "Xe Hơi",
+        "Xe Khách"
       ],
       "timeStart": [
         1584896400000,

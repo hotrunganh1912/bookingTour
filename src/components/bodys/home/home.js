@@ -6,7 +6,7 @@ class Home extends React.Component {
     return (
       <div>
         <SearchBox {...this.props} />
-        <ListBoxTour limit={10} titleName="Tour Hot" styleTour="hot" />
+        <ListBoxTour limit={3} titleName="Tour Hot" styleTour="hot" />
         <ListBoxTour limit={10} titleName="Giảm Giá" styleTour="discount" />
         <ListBoxTour limit={10} titleName="Nước Ngoài" styleTour="foreign" />
       </div>

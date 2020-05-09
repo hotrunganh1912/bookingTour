@@ -81,6 +81,13 @@ const TourManagement = () => {
     return datanew;
   };
 
+  const getIdAfterDeleted = (id) => {
+    
+    setIndexDataRender(0);
+    setCurrentPage(1);
+  };
+
+  console.log('dataTour :>> ', dataTour);
   const curentDataRender = pagination();
   return (
     <div
@@ -144,6 +151,7 @@ const TourManagement = () => {
                   {curentDataRender && curentDataRender.length > 0 ? (
                     curentDataRender.map((e, i) => (
                       <IteamTourManage
+                        sendIdTourDeleted={getIdAfterDeleted}
                         key={"dataTour" + i}
                         data={{ ...e, index: i + _limit * (currentPage - 1) }}
                       />

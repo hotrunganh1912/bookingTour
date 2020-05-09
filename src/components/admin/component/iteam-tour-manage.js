@@ -48,6 +48,7 @@ const IteamTourManage = (props) => {
       if (res && res.data) {
         console.log("res  Delete Dtail :>> ", res);
         NotificationManager.success("Xóa Thành Công");
+        props.sendIdTourDeleted(id);
       } else return NotificationManager.error("Xảy Ra Lỗi Trong Quá Trình Xóa");
     });
   };

@@ -1,10 +1,30 @@
 import React from "react";
 import IteamTime from "./iteam-time";
 import { NotificationManager } from "react-notifications";
+import { withRouter } from "react-router-dom";
+import callApi from "../../../../common/callAPI";
 
 const StoreForTime = (props) => {
+  console.log("props.matcher.params.id :>> ", props.match.params.id);
+  console.log("props store :>> ", props);
   const { messError } = props;
   const getIndexTime = (index) => {
+    if (props.match.path === "/admin/tour-management/edit-tour/:id") {
+      callApi(
+        `bookings_tour?tourID=${props.match.params.id}&timeChose=${props.dataArrayTime[index]}`,
+        "Get",
+        null
+      ).then((res) => {
+        if (res && res.status === 200 && res.data) {
+          if (res.data <= 0) return handerDelete(index);
+          else
+            NotificationManager.error("Bạn Không Thể Xóa Vì Có Người Booking");
+        } else NotificationManager.error("Vui Lòng Thử Lại");
+      });
+    } else handerDelete(index);
+  };
+
+  const handerDelete = (index) => {
     let newArrayTime = [...props.dataArrayTime];
     newArrayTime.splice(index, 1);
     props.handerUpdateNewTimeStart(newArrayTime);
@@ -55,4 +75,4 @@ const StoreForTime = (props) => {
   );
 };
 
-export default StoreForTime;
+export default withRouter(StoreForTime);

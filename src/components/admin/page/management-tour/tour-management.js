@@ -18,6 +18,7 @@ const TourManagement = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [dataAfterSearch, setDataAfterSearch] = useState([]);
   const _limit = 10;
+  let clearTimeOut = null;
 
   useEffect(() => {
     let mounting = true;
@@ -44,16 +45,14 @@ const TourManagement = () => {
     setCurrentPage(currentPage - 1);
   };
 
-  const getDataAfterSearch = (e) => {
-    const text = convertStrToTag(e.target.value);
+  const getDataAfterSearch = (str) => {
+    const text = convertStrToTag(str);
+    console.log("text :>> ", text);
     if (dataTour.length <= 0) return setDataAfterSearch([]);
-    if (text === "") return setDataAfterSearch(dataTour);
+    if (text === "") return setDataAfterSearch([...dataTour]);
     const dataAfterSearch = dataTour.filter((e) => {
       const idElement = `${e.id}`;
-      console.log("idElement :>> ", idElement);
       if (idElement.indexOf(text) !== -1) return true;
-
-      console.log("e.id :>> ", e.id);
       for (const element of e.tag) {
         if (element.indexOf(text) !== -1) return true;
       }
@@ -65,8 +64,8 @@ const TourManagement = () => {
   };
 
   const pagination = () => {
-    // const [indexDataRender, setindexDataRender] = useState(0);
-    // const [data, setData] = useState(0);
+    console.log("run pagination");
+    console.log("dataAfterSearch :>> ", dataAfterSearch);
     let datanew = [];
     if (dataAfterSearch.length <= 0) return;
     let end =
@@ -82,13 +81,22 @@ const TourManagement = () => {
   };
 
   const getIdAfterDeleted = (id) => {
-    
+    console.log("id Dlete  :>> ", id);
+    let indexDelte = dataTour.findIndex((e) => e.id === id);
+    console.log("indexDelte :>> ", indexDelte);
+    const newDataTour = [...dataTour];
+    newDataTour.splice(indexDelte, 1);
+    console.log("newDataTour :>> ", newDataTour);
+
     setIndexDataRender(0);
     setCurrentPage(1);
+
+    setDataTour(newDataTour);
+    setDataAfterSearch(newDataTour);
   };
 
-  console.log('dataTour :>> ', dataTour);
   const curentDataRender = pagination();
+  console.log("curentDataRender :>> ", curentDataRender);
   return (
     <div
       style={{
@@ -112,7 +120,13 @@ const TourManagement = () => {
             className="form-control pl-5"
             type="search"
             placeholder="Search..."
-            onKeyUp={getDataAfterSearch}
+            onChange={(e) => {
+              if (clearTimeOut) clearTimeOut(clearTimeOut);
+              const data = e.target.value;
+              setTimeout(() => {
+                getDataAfterSearch(data);
+              }, 300);
+            }}
           />
         </div>
       </div>

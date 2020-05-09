@@ -24,7 +24,7 @@ class HistoryBooking extends Component {
     callApi(`Users/${userID}`, "GET", null).then((res) => {
       if (res && res.status === 200) {
         this.setState({
-          userName: res.data.firtName + " " + res.data.lastName,
+          userName: res.data.usersName,
         });
       } else this.setState({});
     });
@@ -37,10 +37,48 @@ class HistoryBooking extends Component {
         console.log("stateHistory", this.state);
       } else this.setState({ isExchanged: "" });
     });
+    this.setDataToursBooked();
+
+  }
+  getRandomColor = () => {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  setDataToursBooked = () => {
+    if (this.state.bookingTour.length > 0) {
+      let dataPrice = [];
+      let total = 0;
+      let tourBooked = this.state.bookingTour.length;
+      this.state.bookingTour.forEach(item => {
+        dataPrice.push(item.sumPrice);
+        return;
+      });
+      if (dataPrice.length === 1) total = dataPrice[0];
+      dataPrice.reduce((a,b) => total = a+b);
+      console.log('this.total :>> ', total + ' ' + tourBooked);
+      let dataTours = {
+        id: this.state.bookingTour[0].userID,
+        userName: this.state.bookingTour[0].userName,
+        tourBooked: tourBooked,
+        total: total,
+        color: this.getRandomColor()
+      };
+      return {...dataTours};
+    }
   }
   componentDidUpdate() {
     if (this.props.loggedIn === false) {
       return this.props.history.push("/home");
+    }
+    if (this.state.bookingTour.length > 0) {
+      if(this.state.bookingTour.length === 1) {
+        callApi(`data_tours_booked`, 'Post', this.setDataToursBooked()).then(res => {});
+      } else callApi(`data_tours_booked/${this.state.bookingTour[0].userID}`, 'Put', this.setDataToursBooked()).then(res => {});
     }
   }
 
@@ -66,7 +104,7 @@ class HistoryBooking extends Component {
         : this.state.indexDataRender + this._limit;
 
     if (this.state.bookingTour.length === 1)
-      return this.state.bookingTour.length;
+      return this.state.bookingTour;
     for (let i = this.state.indexDataRender; i < end; i++) {
       datanew.push(this.state.bookingTour[i]);
     }
@@ -79,11 +117,11 @@ class HistoryBooking extends Component {
         <div className="card card-primary mt-3 text-center">
           <div className="card-header bg-info">
             <h3 className="card-title text-white text-uppercase mt-3">
-              Lịch Sử Giao Dịch
+            <i className="far fa-calendar-alt"></i> Lịch Sử Giao Dịch
             </h3>
             <div className="row">
               <div className="col-6 text-left text-white">
-                Booking By :{" "}
+                Người Đặt :{" "}
                 <strong className="text-uppercase">
                   {this.state.userName}
                 </strong>

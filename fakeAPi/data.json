@@ -681,34 +681,80 @@
   ],
   "bookings_tour": [
     {
-      "id": "11a51966-4000-4cd4-82a9-1ec826fba169",
-      "userID": "9a33abaf-8049-4ff4-87a5-84f49db677e0",
-      "userName": "nguyen anh vu",
-      "tourID": "12",
-      "nameTour": "Đà Lạt - Việt Nam - 5 ngày 4 đêm",
-      "numberOfTickerNormal": 1,
-      "numberOfChildrenTicker": 0,
-      "priceNormalTicker": 4000000,
-      "priceNormalChildrenTicker": 0,
-      "sumPrice": 4000000,
-      "time": 1588925711853,
-      "timeChose": 1611334800000,
-      "status": "paid"
-    },
-    {
-      "id": "40df3a45-68f3-4b0e-bf3f-99c4fb5aacfa",
+      "id": "78f0a4cd-ae3d-45be-ad26-bd527fce0f21",
       "userID": "d572070e-20c8-44d8-b7fb-c241d0b1190b",
       "userName": "nguyen  bao",
-      "tourID": "9",
-      "nameTour": "PHUKET - Thái Lan - 4 ngày 3 đêm",
+      "tourID": "6",
+      "nameTour": "Sentosa - SINGAPORE - 7 ngày 2 đêm",
       "numberOfTickerNormal": 1,
       "numberOfChildrenTicker": 0,
       "priceNormalTicker": 12000000,
       "priceNormalChildrenTicker": 0,
       "sumPrice": 12000000,
-      "time": 1588939543971,
-      "timeChose": 1609434000000,
+      "time": 1589039602748,
+      "timeChose": 1624554000000,
       "status": "paid"
+    },
+    {
+      "id": "5792d7c6-f5f3-41d8-8821-aea1b29ad605",
+      "userID": "d572070e-20c8-44d8-b7fb-c241d0b1190b",
+      "userName": "nguyen  bao",
+      "tourID": "10",
+      "nameTour": "BALI - INDONESIA - 5 ngày 4 đêm",
+      "numberOfTickerNormal": 2,
+      "numberOfChildrenTicker": 0,
+      "priceNormalTicker": 30000000,
+      "priceNormalChildrenTicker": 0,
+      "sumPrice": 30000000,
+      "time": 1589039618932,
+      "timeChose": 1603213200000,
+      "status": "paid"
+    },
+    {
+      "id": "ce468c70-ab49-44cc-b6ce-455c3e059e71",
+      "userID": "2e2500a0-7770-4015-bd98-7649e1727184",
+      "userName": "nguyen cuong",
+      "tourID": "8",
+      "nameTour": "INCHEON - Hàn Quốc - 4 ngày 2 đêm",
+      "numberOfTickerNormal": 1,
+      "numberOfChildrenTicker": 1,
+      "priceNormalTicker": 18000000,
+      "priceNormalChildrenTicker": 13500000,
+      "sumPrice": 31500000,
+      "time": 1589039651901,
+      "timeChose": 1635958800000,
+      "status": "paid"
+    },
+    {
+      "id": "b7271383-e6de-4041-be49-3313d7e624a2",
+      "userID": "2e2500a0-7770-4015-bd98-7649e1727184",
+      "userName": "nguyen cuong",
+      "tourID": "11",
+      "nameTour": "Huế - Việt Nam - 5 ngày 3 đêm",
+      "numberOfTickerNormal": 4,
+      "numberOfChildrenTicker": 2,
+      "priceNormalTicker": 1000000,
+      "priceNormalChildrenTicker": 375000,
+      "sumPrice": 1375000,
+      "time": 1589039677582,
+      "timeChose": 1612976400000,
+      "status": "paid"
+    }
+  ],
+  "data_tours_booked": [
+    {
+      "id": "d572070e-20c8-44d8-b7fb-c241d0b1190b",
+      "userName": "nguyen  bao",
+      "tourBooked": 2,
+      "total": 42000000,
+      "color": "#2356D6"
+    },
+    {
+      "id": "2e2500a0-7770-4015-bd98-7649e1727184",
+      "userName": "nguyen cuong",
+      "tourBooked": 2,
+      "total": 32875000,
+      "color": "#CE69B8"
     }
   ]
 }

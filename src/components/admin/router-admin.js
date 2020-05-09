@@ -24,6 +24,18 @@ export default [
     isProtected: false,
   },
   {
+    title: "Booking Management | Booking",
+    component: "./page/booking-management",
+    path: "/admin/booking-management",
+    isProtected: true,
+  },
+  {
+    title: "Booking Management | Booking",
+    component: "./page/detail-item-booking",
+    path: "/admin/booking-management/detail",
+    isProtected: true,
+  },
+  {
     title: "Admin Login | Booking",
     component: "./page/login-admin",
     path: "/admin",

@@ -60,6 +60,11 @@ let dataItemMenu = [
     text: "quản lý tour",
     icon: "fa-globe-africa",
   },
+  {
+    to: "/admin/booking-management",
+    text: "quản lý booking",
+    icon: "fa-calendar-check",
+  },
 ];
 
 const MenuAdmin = (props) => {

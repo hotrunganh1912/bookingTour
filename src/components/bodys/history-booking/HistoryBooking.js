@@ -20,6 +20,7 @@ class HistoryBooking extends Component {
   }
 
   componentDidMount() {
+    this.setState({ pageStatus: "pending" });
     const userID = JSON.parse(localStorage.getItem("Token")).id;
     callApi(`Users/${userID}`, "GET", null).then((res) => {
       if (res && res.status === 200) {
@@ -28,14 +29,18 @@ class HistoryBooking extends Component {
         });
       } else this.setState({});
     });
+
     callApi(`bookings_tour?userID=${userID}`, "GET", null).then((res) => {
       if (res && res.status === 200 && !this.state.isUnmounting) {
         this.setState({
           bookingTour: res.data,
           isExchanged: res.data.length === 0 ? "" : res.data[0].id,
+          pageStatus: "finish",
         });
         console.log("stateHistory", this.state);
-      } else this.setState({ isExchanged: "" });
+      } else {
+        this.setState({ isExchanged: "" });
+      }
     });
   }
   componentDidUpdate() {
@@ -65,8 +70,7 @@ class HistoryBooking extends Component {
         ? this.state.bookingTour.length
         : this.state.indexDataRender + this._limit;
 
-    if (this.state.bookingTour.length === 1)
-      return this.state.bookingTour.length;
+    if (this.state.bookingTour.length === 1) return this.state.bookingTour;
     for (let i = this.state.indexDataRender; i < end; i++) {
       datanew.push(this.state.bookingTour[i]);
     }
@@ -74,7 +78,7 @@ class HistoryBooking extends Component {
   };
 
   render() {
-    return this.state.bookingTour.length !== 0 ? (
+    return this.state.pageStatus === "finish" ? (
       <div className="container">
         <div className="card card-primary mt-3 text-center">
           <div className="card-header bg-info">
@@ -109,11 +113,17 @@ class HistoryBooking extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.pagination().map((item, index) => {
-                  return <ItemHistory key={index} data={item} index={index} />;
-                })}
+                {this.pagination() &&
+                  this.pagination().map((item, index) => {
+                    return (
+                      <ItemHistory key={index} data={item} index={index} />
+                    );
+                  })}
               </tbody>
             </table>
+            {
+              console.log('his.state.bookingTour :>> ', this.state.bookingTour)
+            }
             <div className="container">
               <MyPagination
                 nextPage={this.nextPage}

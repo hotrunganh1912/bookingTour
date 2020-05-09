@@ -3,10 +3,11 @@ import BgTag from "../component/tag-admin/bg-tag";
 import ChartFlMonth from "../component/chart/chart-fl-month";
 import callApi from "../../../common/callAPI";
 import { formCurencyVN } from "../../../common/funcCommon";
+import Waiting from "../../../common/waiting";
 
 const DashboardAdmin = (props) => {
   const [data, setData] = useState();
-  // const [startGetData, setStartGetData] = useState("pending");
+  const [startGetData, setStartGetData] = useState("pending");
 
   useEffect(() => {
     let isUnmounting = false;
@@ -14,6 +15,7 @@ const DashboardAdmin = (props) => {
     callApi(`bookings_tour?status=paid`, "Get", null).then((res) => {
       if (!isUnmounting && res && res.status === 200 && res.data.length > 0) {
         setData(res.data);
+        setStartGetData("finish");
       }
     });
 
@@ -90,7 +92,7 @@ const DashboardAdmin = (props) => {
     },
   ];
 
-  return (
+  return startGetData === "finish" ? (
     <>
       <h1 style={{ color: "#5a5c69" }}>Dashboard</h1>
       <div className="d-flex mx-0 mt-0 mb-5 flex-wrap  justify-content-around">
@@ -103,9 +105,10 @@ const DashboardAdmin = (props) => {
         className="p-3 shadow bg-white mb-5"
       >
         <ChartFlMonth data={data !== undefined ? data : []} />
-        
       </div>
     </>
+  ) : (
+    <Waiting />
   );
 };
 

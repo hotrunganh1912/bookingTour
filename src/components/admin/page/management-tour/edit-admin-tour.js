@@ -21,7 +21,7 @@ const EditAdminTour = (props) => {
         ID: {props.match.params.id}
       </p>
       <Link style={{ float: "right" }} to="/admin/tour-management">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i> Quay Lại
+        <i className="fa fa-chevron-left" aria-hidden="true"></i> Quay Lại
       </Link>
       <h5
         style={{

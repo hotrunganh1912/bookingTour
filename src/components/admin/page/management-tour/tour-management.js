@@ -84,6 +84,7 @@ const TourManagement = () => {
     console.log("id Dlete  :>> ", id);
     let indexDelte = dataTour.findIndex((e) => e.id === id);
     console.log("indexDelte :>> ", indexDelte);
+    if (indexDelte === -1) return;
     const newDataTour = [...dataTour];
     newDataTour.splice(indexDelte, 1);
     console.log("newDataTour :>> ", newDataTour);
@@ -96,7 +97,6 @@ const TourManagement = () => {
   };
 
   const curentDataRender = pagination();
-  console.log("curentDataRender :>> ", curentDataRender);
   return (
     <div
       style={{
@@ -171,7 +171,11 @@ const TourManagement = () => {
                       />
                     ))
                   ) : (
-                    <tr></tr>
+                    <tr>
+                      <td colspan="5">
+                        <h1>Không Tìm Thấy Dữ Liệu</h1>
+                      </td>
+                    </tr>
                   )}
                 </tbody>
               </table>

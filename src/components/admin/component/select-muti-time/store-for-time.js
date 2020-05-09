@@ -10,15 +10,18 @@ const StoreForTime = (props) => {
   const { messError } = props;
   const getIndexTime = (index) => {
     if (props.match.path === "/admin/tour-management/edit-tour/:id") {
+      if (props.dataArrayTime[index] < Date.now()) return handerDelete(index);
+
       callApi(
-        `bookings_tour?tourID=${props.match.params.id}&timeChose=${props.dataArrayTime[index]}`,
+        `bookings_tour?tourID=${props.match.params.id}&timeChose=${props.dataArrayTime[index]}&status=paid`,
         "Get",
         null
       ).then((res) => {
         if (res && res.status === 200 && res.data) {
           if (res.data <= 0) return handerDelete(index);
-          else
+          else {
             NotificationManager.error("Bạn Không Thể Xóa Vì Có Người Booking");
+          }
         } else NotificationManager.error("Vui Lòng Thử Lại");
       });
     } else handerDelete(index);

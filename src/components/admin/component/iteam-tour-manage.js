@@ -38,17 +38,17 @@ const IteamTourManage = (props) => {
   const getIdDetail = (idTour) => {
     callApi(`Detail?idTour=${idTour}`, "Get", null).then((res) => {
       if (res && res.status === 200 && res.data[0]) {
-        handerDeleteDetail(res.data[0].id);
+        handerDeleteDetail(res.data[0].id, idTour);
       } else return NotificationManager.error("Xảy Ra Lỗi Trong Quá Trình Xóa");
     });
   };
 
-  const handerDeleteDetail = (id) => {
+  const handerDeleteDetail = (id, idTour) => {
     callApi(`Detail/${id}`, "Delete", null).then((res) => {
-      if (res && res.data) {
+      if (res && res.status === 200 && res.data) {
         console.log("res  Delete Dtail :>> ", res);
         NotificationManager.success("Xóa Thành Công");
-        props.sendIdTourDeleted(id);
+        props.sendIdTourDeleted(idTour);
       } else return NotificationManager.error("Xảy Ra Lỗi Trong Quá Trình Xóa");
     });
   };
@@ -59,16 +59,20 @@ const IteamTourManage = (props) => {
       <td>{id}</td>
       <td>{formCurencyVN(price)}</td>
       <td>{city + " - " + country} </td>
-      <td>
-        <Link to={`/admin/tour-management/edit-tour/${id}`}>
-          <i className="fa fa-edit text-primary"></i>
+      <td style={{ width: "250px" }}>
+        <Link
+          className="btn btn-primary"
+          to={`/admin/tour-management/edit-tour/${id}`}
+        >
+          <i className="fa fa-edit "></i> Edit
         </Link>{" "}
-        <Link to="#">
-          <i
-            data-idtour={id}
-            onClick={handerClickDelete}
-            className="fa fa-trash-alt text-danger"
-          ></i>
+        <Link
+          data-idtour={id}
+          onClick={handerClickDelete}
+          className="btn btn-danger"
+          to="#"
+        >
+          <i className="fa fa-trash-alt"></i> Delete
         </Link>
       </td>
     </tr>

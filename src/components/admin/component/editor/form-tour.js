@@ -14,7 +14,7 @@ const FormTour = (props) => {
     { label: "Xe Hơi", value: "Xe Hơi" },
     { label: "Máy Bay", value: "Máy Bay" },
     { label: "Tàu Hỏa", value: "Tàu Lữa" },
-    { label: "Tàu Thủy", value: "Tàu Thủy" },
+    { label: "Xe Khách", value: "Xe Khách" },
   ];
 
   const datas = [
@@ -67,6 +67,29 @@ const FormTour = (props) => {
   const validateMuilSelectTransit = (data) => {
     // gán data
     props.setSelectedTransit(data);
+    console.log("data :>> ", data);
+    const message = props.validateInput("transit", data);
+    props.getMessErrorFormChild({
+      ...props.messError,
+      transit: message,
+    });
+  };
+  const handerValidate = (e) => {
+    console.log("e.target.name :>> ", e.target.name);
+    let textChecking =
+      e.target.name === "price"
+        ? e.target.value
+            .split(" ")
+            .filter((e) => e !== "")
+            .join("")
+            .replace(/[^0-9]/g, "")
+        : e.target.value;
+
+    let message = props.validateInput(e.target.name, textChecking);
+    props.getMessErrorFormChild({
+      ...props.messError,
+      [e.target.name]: message,
+    });
   };
 
   return (
@@ -79,16 +102,31 @@ const FormTour = (props) => {
             value={props.selected}
             onChange={validateMuilSelect}
             labelledBy={"Select"}
+            overrideStrings={{
+              selectSomeItems: "Chọn...",
+              allItemsAreSelected: "Chọn Tất Cả",
+              selectAll: "Chọn Tất Cả ",
+              search: "Tìm Kiếm",
+            }}
           />
         </div>
 
         <div className="form-group col-md-6">
-          <label htmlFor="price">Phương Tiện Di Chuyển</label>
+          <label htmlFor="price">Phương Tiện Di Chuyển</label>{" "}
+          <label style={{ display: "inline" }} className="invalid-feedback">
+            {props.messError.transit}
+          </label>
           <MultiSelect
             options={optionsTransit}
             value={props.selectedTransit}
             onChange={validateMuilSelectTransit}
             labelledBy={"Select"}
+            overrideStrings={{
+              selectSomeItems: "Chọn...",
+              allItemsAreSelected: "Chọn Tất Cả",
+              selectAll: "Chọn Tất Cả ",
+              search: "Tìm Kiếm",
+            }}
           />
         </div>
 
@@ -98,12 +136,18 @@ const FormTour = (props) => {
               key={index + "IteamInputt"}
               data={data}
               handerOnChangeDataTour={props.handerOnChangeDataTour}
+              validateInput={props.validateInput}
+              getMessErrorFormChild={props.getMessErrorFormChild}
+              messError={props.messError}
             />
           );
         })}
 
         <div className="form-group col-md-6">
-          <label htmlFor="price">Giá</label>
+          <label htmlFor="price">Giá </label>{" "}
+          <label style={{ display: "inline" }} className="invalid-feedback">
+            {props.messError.price}
+          </label>
           <input
             onChange={(e) => {
               if (e.target.value.length > 19) return;
@@ -115,7 +159,9 @@ const FormTour = (props) => {
                   .join("")
                   .replace(/[^0-9]/g, ""),
               });
+              handerValidate(e);
             }}
+            // onBlur={handerValidate}
             type="text"
             name="price"
             className="form-control"
@@ -126,6 +172,7 @@ const FormTour = (props) => {
           />
         </div>
         <StoreForTime
+          messError={props.messError}
           handerUpdateNewTimeStart={props.handerUpdateNewTimeStart}
           dataArrayTime={props.tourData.timeStart}
         />

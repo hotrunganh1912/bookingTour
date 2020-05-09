@@ -19,7 +19,7 @@ body {
   /* margin-left: 15px; */
 }
 
-.img-capital img{
+.img-capital img {
   height: 400px;
 }
 
@@ -53,7 +53,7 @@ body {
 }
 
 .detail-tour .img-overview img {
-  width: 100%;
+  width: 100% !important;
 }
 
 .detail-tour .img-overview .info-journeys {

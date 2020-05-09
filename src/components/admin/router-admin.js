@@ -1,8 +1,20 @@
 export default [
   {
     title: "Tour Management | Booking",
-    component: "./page/tour-management",
+    component: "./page/management-tour/tour-management",
     path: "/admin/tour-management",
+    isProtected: true,
+  },
+  {
+    title: "Admin New Tour | Booking",
+    component: "./page/management-tour/add-new-tour",
+    path: "/admin/tour-management/new-tour",
+    isProtected: true,
+  },
+  {
+    title: "Admin EditTour | Booking",
+    component: "./page/management-tour/edit-admin-tour",
+    path: "/admin/tour-management/edit-tour/:id",
     isProtected: true,
   },
   {

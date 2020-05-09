@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FormBoxTour from "../../components/bodys/listTour/formBoxTour";
 import "./slider.css";
+import { Link } from "react-router-dom";
 
 const Slider = (props) => {
   const data = [...props.data] || [];
@@ -66,10 +67,10 @@ const Slider = (props) => {
         {data.length < 6 ? (
           ""
         ) : (
-          <a
+          <Link
+          to="#"
             onClick={handerClickNext}
             className="carousel-control-prev my-auto hover-next-prev"
-            href="#prev"
             style={{
               height: "80%",
               transform: "translate(-72px, 0)",
@@ -83,7 +84,7 @@ const Slider = (props) => {
               aria-hidden="true"
             ></span>
             <span className="sr-only">Previous</span>
-          </a>
+          </Link>
         )}
 
         <div
@@ -116,10 +117,10 @@ const Slider = (props) => {
         {data.length < 6 ? (
           ""
         ) : (
-          <a
+          <Link
+          to="#"
             onClick={handerClickPrev}
             className="carousel-control-next my-auto hover-next-prev"
-            href="#next"
             style={{
               height: "80%",
               transform: "translate(72px, 0)",
@@ -133,7 +134,7 @@ const Slider = (props) => {
               aria-hidden="true"
             ></span>
             <span className="sr-only">Previous</span>
-          </a>
+          </Link>
         )}
       </div>
     </>

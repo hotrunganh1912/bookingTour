@@ -29,6 +29,7 @@ class BookingManagement extends Component {
     const keyword = this.inputSearch.current.value;
     let arrFilter = [];
     if (keyword !== '') {
+      console.log('this.state.bookingTours :>> ', this.state.bookingTours);
       this.state.bookingTours.filter((item) => {
         let arrCharState = item.id
           .slice(0, 8)
@@ -41,19 +42,31 @@ class BookingManagement extends Component {
           .split(' ')
           .filter((x) => x !== '')
           .join('');
+        let arrCharUserName = item.userName
+          .toUpperCase()
+          .split(' ')
+          .filter((x) => x !== '')
+          .join('');
+          let arrCharStatus = item.status
+          .toUpperCase()
+          .split(' ')
+          .filter((x) => x !== '')
+          .join('');
         if (arrCharState.includes(arrCharKeyword)) arrFilter.push(item);
+        if (arrCharUserName.includes(arrCharKeyword)) arrFilter.push(item);
+        if (arrCharStatus.includes(arrCharKeyword)) arrFilter.push(item);
         return [...arrFilter];
       });
       this.setState({
         bookingTours: arrFilter,
-        keyword
+        keyword,
       });
     } else {
       callApi(`bookings_tour`, 'get', null).then((res) => {
         if (res && res.status === 200) {
           this.setState({
             bookingTours: res.data,
-            keyword: ''
+            keyword: '',
           });
         }
       });
@@ -95,7 +108,7 @@ class BookingManagement extends Component {
       if (res.data.length > 0) {
         this.setState({
           bookingTours: res.data,
-          keyword: ''
+          keyword: '',
         });
       }
     });
@@ -109,7 +122,9 @@ class BookingManagement extends Component {
           <ItemBookingManagement key={index} dataBooking={item} index={index} />
         );
       });
-      let styleButtonBack = this.state.keyword ? {display: 'block'} : {display: 'none'};
+    let styleButtonBack = this.state.keyword
+      ? {display: 'block'}
+      : {display: 'none'};
     return (
       <div className="card text-center">
         <h5 className="card-header bg-info text-light">
@@ -117,14 +132,14 @@ class BookingManagement extends Component {
         </h5>
         <div className="card-body">
           <div className="form-inline my-2 float-right">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={this.onBack}
-                style={styleButtonBack}
-              >
-                <i className="fas fa-arrow-circle-left"></i>
-              </button>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={this.onBack}
+              style={styleButtonBack}
+            >
+              <i className="fas fa-arrow-circle-left"></i>
+            </button>
             <input
               type="text"
               ref={this.inputSearch}

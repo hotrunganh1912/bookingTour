@@ -57,18 +57,18 @@ class UserManager extends Component {
     return (
       <div className="card text-center">
         <h5 className="card-header bg-secondary text-light">
-          <i className="fas fa-users"></i> USER MANAGEMENT
+          <i className="fas fa-users"></i> QUẢN LÝ NGƯỜI DÙNG
         </h5>
         <div className="card-body">
           <AddItemUser />
           <table className="table table-bordered table-striped">
             <thead>
               <tr className="bg-light">
-                <th>User Name</th>
+                <th>Tên Người Dùng</th>
                 <th>Email</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Action</th>
+                <th>Họ</th>
+                <th>Tên</th>
+                <th>Hành Động</th>
               </tr>
             </thead>
             <tbody>

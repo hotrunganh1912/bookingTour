@@ -49,7 +49,7 @@ class Detail extends Component {
     const booking = {
       id: uuidv4(),
       userID: currentUser.id,
-      userName: currentUser.firtName + " " + currentUser.lastName,
+      userName: currentUser.usersName,
       tourID: this.props.match.params.id,
       nameTour: `${this.state.dataTour[0].city} - ${this.state.dataTour[0].country} - ${this.state.dataTour[0].timeJoin}`,
       numberOfTickerNormal: this.state.dataFromBooking.numberOfTicker,

@@ -32,7 +32,13 @@ export default [
   {
     title: "Booking Management | Booking",
     component: "./page/detail-item-booking",
-    path: "/admin/booking-management/detail",
+    path: "/admin/booking-management/detail/:id",
+    isProtected: true,
+  },
+  {
+    title: "Booking Management | Booking",
+    component: "./component/item-booking-management/detailBooked",
+    path: "/admin/detail-booked-bill/:id",
     isProtected: true,
   },
   {

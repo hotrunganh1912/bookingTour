@@ -37,48 +37,11 @@ class HistoryBooking extends Component {
         console.log("stateHistory", this.state);
       } else this.setState({ isExchanged: "" });
     });
-    this.setDataToursBooked();
-
-  }
-  getRandomColor = () => {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
   }
 
-  setDataToursBooked = () => {
-    if (this.state.bookingTour.length > 0) {
-      let dataPrice = [];
-      let total = 0;
-      let tourBooked = this.state.bookingTour.length;
-      this.state.bookingTour.forEach(item => {
-        dataPrice.push(item.sumPrice);
-        return;
-      });
-      if (dataPrice.length === 1) total = dataPrice[0];
-      dataPrice.reduce((a,b) => total = a+b);
-      console.log('this.total :>> ', total + ' ' + tourBooked);
-      let dataTours = {
-        id: this.state.bookingTour[0].userID,
-        userName: this.state.bookingTour[0].userName,
-        tourBooked: tourBooked,
-        total: total,
-        color: this.getRandomColor()
-      };
-      return {...dataTours};
-    }
-  }
   componentDidUpdate() {
     if (this.props.loggedIn === false) {
       return this.props.history.push("/home");
-    }
-    if (this.state.bookingTour.length > 0) {
-      if(this.state.bookingTour.length === 1) {
-        callApi(`data_tours_booked`, 'Post', this.setDataToursBooked()).then(res => {});
-      } else callApi(`data_tours_booked/${this.state.bookingTour[0].userID}`, 'Put', this.setDataToursBooked()).then(res => {});
     }
   }
 
@@ -143,6 +106,8 @@ class HistoryBooking extends Component {
                   <th>Tên Tour</th>
                   <th>Giá</th>
                   <th>Thời Gian Giao Dịch</th>
+                  <th>Thời Gian Đi</th>
+                  <th>Trạng Thái</th>
                   <th>Chi Tiết</th>
                 </tr>
               </thead>

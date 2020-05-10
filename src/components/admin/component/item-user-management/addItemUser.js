@@ -233,25 +233,25 @@ class AddItemUser extends Component {
   };
 
   render() {
-    let titleModal = this.props.idEdit ? 'EDIT USER' : 'ADD USER';
+    let titleModal = this.props.idEdit ? 'CHỈNH SỬA' : 'THÊM MỚI';
     const disabled = this.props.idEdit ? 'disabled' : '';
     return (
       <>
         <div className="d-flex justify-content-between mb-3">
           <Button variant="secondary" onClick={() => this.handleShow()}>
-            <i className="fas fa-user-plus"></i> Add User
+            <i className="fas fa-user-plus"></i> Thêm Người Dùng
           </Button>
           <SearchUser />
         </div>
 
         <Modal show={this.props.show} onHide={() => this.handleClose()}>
           <Modal.Header closeButton>
-            <Modal.Title>{titleModal}</Modal.Title>
+            <Modal.Title className="d-flex justify-content-center">{titleModal}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form>
               <div className="form-group">
-                <label>User Name: </label>
+                <label>Tên Người Dùng: </label>
                 <input
                   ref={this.inputUsersName}
                   type="text"
@@ -261,7 +261,7 @@ class AddItemUser extends Component {
               </div>
 
               <div className="form-group">
-                <label>Gmail: </label>
+                <label>Email: </label>
                 <input
                   ref={this.inputEmail}
                   type="text"
@@ -272,7 +272,7 @@ class AddItemUser extends Component {
               </div>
 
               <div className="form-group">
-                <label>First Name : </label>
+                <label>Họ : </label>
                 <input
                   ref={this.inputFirtName}
                   type="text"
@@ -282,7 +282,7 @@ class AddItemUser extends Component {
               </div>
 
               <div className="form-group">
-                <label>Last Name: </label>
+                <label>Tên: </label>
                 <input
                   ref={this.inputLastName}
                   type="text"
@@ -292,7 +292,7 @@ class AddItemUser extends Component {
               </div>
 
               <div className="form-group">
-                <label>Password: </label>
+                <label>Mật Khẩu: </label>
                 <input
                   type="password"
                   className="form-control"
@@ -303,7 +303,7 @@ class AddItemUser extends Component {
               </div>
 
               <div className="form-group">
-                <label>Password Again: </label>
+                <label>Nhập Lại Mật Khẩu: </label>
                 <input
                   type="password"
                   className="form-control"
@@ -316,14 +316,14 @@ class AddItemUser extends Component {
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={() => this.handleClose()}>
-              Close
+              Đóng
             </Button>
             <button
               className="btn btn-primary"
               onClick={this.handleSubmit}
               type="submit"
             >
-              Save
+              Lưu Lại
             </button>
           </Modal.Footer>
         </Modal>

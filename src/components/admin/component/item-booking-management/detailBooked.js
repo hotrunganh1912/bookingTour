@@ -1,15 +1,15 @@
 import React, {useEffect} from 'react';
-import callApi from '../../common/callAPI';
+import callApi from '../../../../common/callAPI';
 import {useState} from 'react';
-import {formCurencyVN} from '../../common/funcCommon';
-import NotFound from '../bodys/home/notFound/404NotFound';
-import Waiting from '../../common/waiting';
-import ItemHistory from '../bodys/history-booking/ItemHistory';
+import NotFound from '../../../bodys/home/notFound/404NotFound';
+import Waiting from '../../../../common/waiting';
+import {formCurencyVN} from '../../../../common/funcCommon';
 
-const DetailBooking = (props) => {
+const DetailBooked = (props) => {
   const [getData, setGetData] = useState();
+  const [status, setStatus] = useState();
   const [statusGetData, setStatusGetData] = useState('pending');
-  const [bookingTour, setBookingTour] = useState([]);
+
   useEffect(() => {
     setStatusGetData('pending');
     let isUnmounting = false;
@@ -24,6 +24,7 @@ const DetailBooking = (props) => {
         ) {
           setGetData(res.data[0]);
           setStatusGetData('finish');
+          setStatus(res.data[0].status);
         } else setStatusGetData('error');
       }
     );
@@ -32,78 +33,45 @@ const DetailBooking = (props) => {
     };
   }, [props.match.params.id]);
 
-  useEffect(() => {
-    callApi(`bookings_tour`, 'Get', null).then((res) => {
-      if (res && res.data && res.status === 200) {
-        console.log('res.data :>> ', res.data);
-        setBookingTour(res.data);
-      } else setBookingTour([]);
-    });
-    console.log('bookingTour :>> ', bookingTour);
-  }, []);
-
-  useEffect(() => {
-    console.log('bookingTour :>> ', bookingTour);
-    if (bookingTour.length > 0) {
-      if (bookingTour.length === 1) {
-        callApi(
-          `data_tours_booked`,
-          'Post',
-          setDataToursBooked(bookingTour[0].userID)
-        ).then((res) => {});
-      }
-      if (bookingTour.length > 1) {
-        if (
-          bookingTour[bookingTour.length - 1].userID ===
-          bookingTour[bookingTour.length - 2].userID
-        ) {
-          callApi(
-            `data_tours_booked/${bookingTour[bookingTour.length - 2].userID}`,
-            'Put',
-            setDataToursBooked(bookingTour[bookingTour.length - 2].userID)
-          ).then((res) => {});
-        } else
-          callApi(
-            `data_tours_booked`,
-            'Post',
-            setDataToursBooked(bookingTour[bookingTour.length - 1].userID)
-          ).then((res) => {});
-      }
-    }
-  });
-
-  function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+  function handleCancelBill(id) {
+    console.log('id :>> ', id);
+    let dataEdit = {
+      id: getData.id,
+      userID: getData.userID,
+      userName: getData.userName,
+      tourID: getData.tourID,
+      nameTour: getData.nameTour,
+      numberOfTickerNormal: getData.numberOfTickerNormal,
+      numberOfChildrenTicker: getData.numberOfChildrenTicker,
+      priceNormalTicker: getData.priceNormalTicker,
+      priceNormalChildrenTicker: getData.priceNormalChildrenTicker,
+      sumPrice: getData.sumPrice,
+      time: getData.time,
+      timeChose: getData.timeChose,
+      status: 'cancelled'
+    };
+    callApi(`bookings_tour/${id}`, 'Put', {...dataEdit}).then(res => {});
+    setStatus(dataEdit.status);
   }
 
-  function setDataToursBooked(id) {
-    console.log('bookingTour :>> ', bookingTour);
-    let arrDatas = bookingTour.filter((item) => {
-      if (item.userID === id) return item;
-    });
-    console.log('arrDatas :>> ', arrDatas);
-    let total = 0;
-    let tourBooked = arrDatas.length;
-    let dataPrice = arrDatas.map((item) => item.sumPrice);
-    console.log('dataPrice :>> ', dataPrice);
-    if (dataPrice.length === 1) total = dataPrice[0];
-    if (dataPrice.length > 1) total = dataPrice.reduce((a, b) =>  a + b);
-    console.log('this.total :>> ', total + ' ' + tourBooked);
-    let dataTours = {
-      id: id,
-      userName: arrDatas[0]&&arrDatas[0].userName,
-      tourBooked: tourBooked,
-      total: total,
-      color: getRandomColor(),
-      status: arrDatas[0]&&arrDatas[0].status,
+  function handleRepair(id) {
+    let dataEdit = {
+      id: getData.id,
+      userID: getData.userID,
+      userName: getData.userName,
+      tourID: getData.tourID,
+      nameTour: getData.nameTour,
+      numberOfTickerNormal: getData.numberOfTickerNormal,
+      numberOfChildrenTicker: getData.numberOfChildrenTicker,
+      priceNormalTicker: getData.priceNormalTicker,
+      priceNormalChildrenTicker: getData.priceNormalChildrenTicker,
+      sumPrice: getData.sumPrice,
+      time: getData.time,
+      timeChose: getData.timeChose,
+      status: 'paid'
     };
-    console.log('dataTours :>> ', dataTours);
-    return {...dataTours};
+    callApi(`bookings_tour/${id}`, 'Put', {...dataEdit}).then(res => {});
+    setStatus(dataEdit.status);
   }
 
   return statusGetData === 'finish' ? (
@@ -117,7 +85,7 @@ const DetailBooking = (props) => {
             <strong>Status:</strong>{' '}
             <span style={{textTransform: 'uppercase'}} className="text-success">
               {' '}
-              {getData.status}
+              {status}
             </span>
           </span>
         </div>
@@ -221,6 +189,18 @@ const DetailBooking = (props) => {
                   </tr>
                 </tbody>
               </table>
+              <div className="text-right">
+                <button
+                  className="btn btn-success mr-2"
+                  onClick={() => handleRepair(getData.id)}
+                >Repair</button>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => handleCancelBill(getData.id)}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -233,4 +213,4 @@ const DetailBooking = (props) => {
   );
 };
 
-export default DetailBooking;
+export default DetailBooked;

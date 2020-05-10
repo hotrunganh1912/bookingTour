@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
-import {formCurencyVN} from '../../../common/funcCommon';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { formCurencyVN } from '../../../../common/funcCommon';
+import callApi from '../../../../common/callAPI';
 
-class ItemHistory extends Component {
+class ItemDetailBooking extends Component {
   render() {
     const {data, index} = this.props;
-    let statusName = data.status ? 'Đã thanh toán' : 'Đã hủy';
-    let statusClass = data.status
+    let statusName = data.status === 'paid' ? 'Đã Thanh Toán' : 'Hủy Bỏ';
+    let statusClass = data.status === 'paid'
       ? 'bg-warning p-2 text-white'
-      : 'bg-info p-2 text-white';
+      : 'bg-danger p-2 text-white';
     return (
       <tr>
         <td>{index + 1}</td>
@@ -20,12 +21,12 @@ class ItemHistory extends Component {
         </td>
         <td>{new Date(data.time).toLocaleDateString('en-GB')}</td>
         <td>{new Date(data.timeChose).toLocaleDateString('en-GB')}</td>
-        <td>
+        <td className="my-auto">
           <span className={statusClass}>{statusName}</span>
         </td>
         <td>
-          <Link to={`/booking/${data.id}`} className="btn btn-info ml-2">
-            Chi tiết
+          <Link to={`/admin/detail-booked-bill/${data.id}`} className="btn btn-info ml-2">
+            Chi Tiết
           </Link>
         </td>
       </tr>
@@ -33,4 +34,4 @@ class ItemHistory extends Component {
   }
 }
 
-export default ItemHistory;
+export default ItemDetailBooking;

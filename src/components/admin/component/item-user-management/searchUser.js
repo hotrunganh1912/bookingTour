@@ -49,7 +49,7 @@ class SearchUser extends Component {
           className="form-control btn btn-secondary"
           onClick={this.handleSearch}
         >
-          <i className="fas fa-search"></i> Search
+          <i className="fas fa-search"></i> Tìm Kiếm
         </button>
       </div>
     );

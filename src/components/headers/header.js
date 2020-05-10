@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logOut, login } from "../../action/users";
 import ICON from "../../image/ICON.png";
@@ -22,10 +22,8 @@ class Header extends React.Component {
   handerlerLogOut = (e) => {
     if (window.confirm("Bạn Muốn Đăng Xuất")) {
       this.props.dispatchLogOut();
-      NotificationManager.success(
-        "Success message",
-        "Đăng Xuất Thành Công"
-      );
+      this.props.history.push("/");
+      NotificationManager.success("Success message", "Đăng Xuất Thành Công");
     }
     e.preventDefault();
   };
@@ -85,12 +83,18 @@ class Header extends React.Component {
             >
               <ul className="navbar-nav ml-auto ">
                 <li className="nav-item py-2">
-                  <Link className="nav-link text-center text-dark bg-light" to="/home">
+                  <Link
+                    className="nav-link text-center text-dark bg-light"
+                    to="/home"
+                  >
                     Trang Chủ
                   </Link>
                 </li>
                 <li className="nav-item py-2">
-                  <Link className="nav-link text-center text-dark bg-light" to="/tour">
+                  <Link
+                    className="nav-link text-center text-dark bg-light"
+                    to="/tour"
+                  >
                     Tour
                   </Link>
                 </li>
@@ -112,16 +116,10 @@ class Header extends React.Component {
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     >
-                      <Link
-                        to="/editInformation"
-                        className="dropdown-item"
-                      >
+                      <Link to="/editInformation" className="dropdown-item">
                         Chỉnh sửa
                       </Link>
-                      <Link
-                        to="/history-booking"
-                        className="dropdown-item"
-                      >
+                      <Link to="/history-booking" className="dropdown-item">
                         Lịch sử giao dịch
                       </Link>
                       <a
@@ -175,4 +173,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));

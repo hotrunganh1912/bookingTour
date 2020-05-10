@@ -5,12 +5,11 @@ import { withRouter } from "react-router-dom";
 import callApi from "../../../../common/callAPI";
 
 const StoreForTime = (props) => {
-  console.log("props.matcher.params.id :>> ", props.match.params.id);
-  console.log("props store :>> ", props);
   const { messError } = props;
-  const getIndexTime = (index) => {
+  const getIndexTime = (e) => {
+    const index = e.target.dataset.index;
     if (props.match.path === "/admin/tour-management/edit-tour/:id") {
-      if (props.dataArrayTime[index] < Date.now()) return handerDelete(index);
+      if (props.dataArrayTime[index] < Date.now()) return handerDelete(e);
 
       callApi(
         `bookings_tour?tourID=${props.match.params.id}&timeChose=${props.dataArrayTime[index]}&status=paid`,
@@ -18,26 +17,33 @@ const StoreForTime = (props) => {
         null
       ).then((res) => {
         if (res && res.status === 200 && res.data) {
-          if (res.data <= 0) return handerDelete(index);
+          if (res.data <= 0) return handerDelete(e);
           else {
             NotificationManager.error("Bạn Không Thể Xóa Vì Có Người Booking");
           }
         } else NotificationManager.error("Vui Lòng Thử Lại");
       });
-    } else handerDelete(index);
+    } else handerDelete(e);
   };
 
-  const handerDelete = (index) => {
+  const handerDelete = (e) => {
+    const index = e.target.dataset.index;
+    // e.target.parentElement.style.transform = "translate(0, -999px)";
+    // e.target.parentElement.style.padding = "0";
     let newArrayTime = [...props.dataArrayTime];
     newArrayTime.splice(index, 1);
     props.handerUpdateNewTimeStart(newArrayTime);
+    // e.target.parentElement.style.transform = "translate(0, 0)";
   };
 
   const handerAddtime = (e) => {
     if (e.target.value === "") return;
+
     const newDate = new Date(e.target.value).getTime();
+
     if (newDate <= Date.now())
       return NotificationManager.error("không Thể Chọn ngày này");
+
     if (props.dataArrayTime.indexOf(newDate) === -1) {
       props.handerUpdateNewTimeStart([...props.dataArrayTime, newDate]);
     } else NotificationManager.warning("Ngày Đã Tồn  Tại");
@@ -56,18 +62,21 @@ const StoreForTime = (props) => {
             style={{
               height: "unset",
               minHeight: " calc(1.5em + .75rem + 2px)",
+              transition: "all 0.8s",
             }}
             className="form-control p-0 border-0"
             id="timeStart"
           >
-            {props.dataArrayTime.map((e, i) => (
-              <IteamTime
-                key={"time" + i}
-                time={e}
-                index={i}
-                getIndexTime={getIndexTime}
-              />
-            ))}
+            {props.dataArrayTime
+              .sort((a, b) => a - b)
+              .map((e, i) => (
+                <IteamTime
+                  key={"time" + i}
+                  time={e}
+                  index={i}
+                  getIndexTime={getIndexTime}
+                />
+              ))}
           </span>
         ) : (
           ""

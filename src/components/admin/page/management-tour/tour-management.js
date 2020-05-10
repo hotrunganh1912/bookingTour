@@ -77,6 +77,7 @@ const TourManagement = () => {
     for (let i = indexDataRender; i < end; i++) {
       datanew.push(dataAfterSearch[i]);
     }
+    console.log('indexDataRender :>> ', indexDataRender);
     return datanew;
   };
 

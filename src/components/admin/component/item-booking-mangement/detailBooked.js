@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
-import callApi from "../../common/callAPI";
 import { useState } from "react";
-import { formCurencyVN } from "../../common/funcCommon";
-import NotFound from "../bodys/home/notFound/404NotFound";
-import Waiting from "../../common/waiting";
+import NotFound from "../../../bodys/home/notFound/404NotFound";
+import Waiting from "../../../../common/waiting";
+import { formCurencyVN } from "../../../../common/funcCommon";
+import callApi from "../../../../common/callAPI";
+import { withRouter } from "react-router";
 
-const DetailBooking = (props) => {
+const DetailBooked = (props) => {
   const [getData, setGetData] = useState();
+  const [status, setStatus] = useState();
   const [statusGetData, setStatusGetData] = useState("pending");
 
   useEffect(() => {
@@ -23,6 +25,7 @@ const DetailBooking = (props) => {
         ) {
           setGetData(res.data[0]);
           setStatusGetData("finish");
+          setStatus(res.data[0].status);
         } else setStatusGetData("error");
       }
     );
@@ -30,6 +33,47 @@ const DetailBooking = (props) => {
       isUnmounting = true;
     };
   }, [props.match.params.id]);
+
+  function handleCancelBill(id) {
+    console.log("id :>> ", id);
+    let dataEdit = {
+      id: getData.id,
+      userID: getData.userID,
+      userName: getData.userName,
+      tourID: getData.tourID,
+      nameTour: getData.nameTour,
+      numberOfTickerNormal: getData.numberOfTickerNormal,
+      numberOfChildrenTicker: getData.numberOfChildrenTicker,
+      priceNormalTicker: getData.priceNormalTicker,
+      priceNormalChildrenTicker: getData.priceNormalChildrenTicker,
+      sumPrice: getData.sumPrice,
+      time: getData.time,
+      timeChose: getData.timeChose,
+      status: "cancelled",
+    };
+    callApi(`bookings_tour/${id}`, "Put", { ...dataEdit }).then((res) => {});
+    setStatus(dataEdit.status);
+  }
+
+  function handleRepair(id) {
+    let dataEdit = {
+      id: getData.id,
+      userID: getData.userID,
+      userName: getData.userName,
+      tourID: getData.tourID,
+      nameTour: getData.nameTour,
+      numberOfTickerNormal: getData.numberOfTickerNormal,
+      numberOfChildrenTicker: getData.numberOfChildrenTicker,
+      priceNormalTicker: getData.priceNormalTicker,
+      priceNormalChildrenTicker: getData.priceNormalChildrenTicker,
+      sumPrice: getData.sumPrice,
+      time: getData.time,
+      timeChose: getData.timeChose,
+      status: "paid",
+    };
+    callApi(`bookings_tour/${id}`, "Put", { ...dataEdit }).then((res) => {});
+    setStatus(dataEdit.status);
+  }
 
   return statusGetData === "finish" ? (
     <div className="container">
@@ -42,10 +86,10 @@ const DetailBooking = (props) => {
             <strong>Status:</strong>{" "}
             <span
               style={{ textTransform: "uppercase" }}
-              className={getData.status === "paid" ? "text-success" : "text-danger"}
+              className={status === "paid" ? "text-success" : "text-danger"}
             >
               {" "}
-              {getData.status}
+              {status}
             </span>
           </span>
         </div>
@@ -56,9 +100,6 @@ const DetailBooking = (props) => {
             </div>
             <div className="col-sm-6 text-left">
               Tour : <strong>{getData.nameTour}</strong>
-            </div>
-            <div className="col-sm-6 ">
-              ID Booking : <strong>{props.match.params.id}</strong>
             </div>
             <div className="ml-auto col-sm-6 text-left ">
               Start Day :{" "}
@@ -152,6 +193,20 @@ const DetailBooking = (props) => {
                   </tr>
                 </tbody>
               </table>
+              <div className="text-right">
+                <button
+                  className="btn btn-success mr-2"
+                  onClick={() => handleRepair(getData.id)}
+                >
+                  Repair
+                </button>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => handleCancelBill(getData.id)}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -164,4 +219,4 @@ const DetailBooking = (props) => {
   );
 };
 
-export default DetailBooking;
+export default withRouter(DetailBooked);

@@ -71,7 +71,7 @@ class BookingManagement extends Component {
                 <th>STT</th>
                 <th><i className="far fa-user"></i> Tên Người Dùng</th>
                 <th><i className="far fa-calendar-check"></i> Tour Đã Đặt</th>
-                <th><i className="fas fa-money-check-alt"></i> Tổng Số Tour</th>
+                <th><i className="fas fa-money-check-alt"></i> Tổng Tiền</th>
                 <th>Chi Tiết</th>
               </tr>
             </thead>

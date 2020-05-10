@@ -57,6 +57,9 @@ const DetailBooking = (props) => {
             <div className="col-sm-6 text-left">
               Tour : <strong>{getData.nameTour}</strong>
             </div>
+            <div className="col-sm-6 ">
+              ID Booking : <strong>{props.match.params.id}</strong>
+            </div>
             <div className="ml-auto col-sm-6 text-left ">
               Start Day :{" "}
               <strong>
@@ -157,7 +160,7 @@ const DetailBooking = (props) => {
   ) : statusGetData === "error" ? (
     <NotFound />
   ) : (
-    <Waiting/>
+    <Waiting />
   );
 };
 

@@ -42,7 +42,7 @@ const DetailBooking = (props) => {
             <strong>Status:</strong>{" "}
             <span
               style={{ textTransform: "uppercase" }}
-              className="text-success"
+              className={getData.status === "paid" ? "text-success" : "text-danger"}
             >
               {" "}
               {getData.status}

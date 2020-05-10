@@ -1,20 +1,20 @@
-import React, {useEffect} from 'react';
-import {useState} from 'react';
-import NotFound from '../../../bodys/home/notFound/404NotFound';
-import Waiting from '../../../../common/waiting';
-import {formCurencyVN} from '../../../../common/funcCommon';
-import callApi from '../../../../common/callAPI';
+import React, { useEffect } from "react";
+import { useState } from "react";
+import NotFound from "../../../bodys/home/notFound/404NotFound";
+import Waiting from "../../../../common/waiting";
+import { formCurencyVN } from "../../../../common/funcCommon";
+import callApi from "../../../../common/callAPI";
 import { withRouter } from "react-router";
 
 const DetailBooked = (props) => {
   const [getData, setGetData] = useState();
   const [status, setStatus] = useState();
-  const [statusGetData, setStatusGetData] = useState('pending');
+  const [statusGetData, setStatusGetData] = useState("pending");
 
   useEffect(() => {
-    setStatusGetData('pending');
+    setStatusGetData("pending");
     let isUnmounting = false;
-    callApi(`bookings_tour?id=${props.match.params.id}`, 'Get', null).then(
+    callApi(`bookings_tour?id=${props.match.params.id}`, "Get", null).then(
       (res) => {
         if (
           res &&
@@ -24,9 +24,9 @@ const DetailBooked = (props) => {
           res.data
         ) {
           setGetData(res.data[0]);
-          setStatusGetData('finish');
+          setStatusGetData("finish");
           setStatus(res.data[0].status);
-        } else setStatusGetData('error');
+        } else setStatusGetData("error");
       }
     );
     return () => {
@@ -35,7 +35,7 @@ const DetailBooked = (props) => {
   }, [props.match.params.id]);
 
   function handleCancelBill(id) {
-    console.log('id :>> ', id);
+    console.log("id :>> ", id);
     let dataEdit = {
       id: getData.id,
       userID: getData.userID,
@@ -49,9 +49,9 @@ const DetailBooked = (props) => {
       sumPrice: getData.sumPrice,
       time: getData.time,
       timeChose: getData.timeChose,
-      status: 'cancelled'
+      status: "cancelled",
     };
-    callApi(`bookings_tour/${id}`, 'Put', {...dataEdit}).then(res => {});
+    callApi(`bookings_tour/${id}`, "Put", { ...dataEdit }).then((res) => {});
     setStatus(dataEdit.status);
   }
 
@@ -69,23 +69,26 @@ const DetailBooked = (props) => {
       sumPrice: getData.sumPrice,
       time: getData.time,
       timeChose: getData.timeChose,
-      status: 'paid'
+      status: "paid",
     };
-    callApi(`bookings_tour/${id}`, 'Put', {...dataEdit}).then(res => {});
+    callApi(`bookings_tour/${id}`, "Put", { ...dataEdit }).then((res) => {});
     setStatus(dataEdit.status);
   }
 
-  return statusGetData === 'finish' ? (
+  return statusGetData === "finish" ? (
     <div className="container">
       <div className="card">
         <div className="card-header">
           Invoice:
-          <strong> {new Date(getData.time).toLocaleString('en-GB')}</strong>
+          <strong> {new Date(getData.time).toLocaleString("en-GB")}</strong>
           <span className="float-right">
-            {' '}
-            <strong>Status:</strong>{' '}
-            <span style={{textTransform: 'uppercase'}} className="text-success">
-              {' '}
+            {" "}
+            <strong>Status:</strong>{" "}
+            <span
+              style={{ textTransform: "uppercase" }}
+              className={status === "paid" ? "text-success" : "text-danger"}
+            >
+              {" "}
               {status}
             </span>
           </span>
@@ -99,9 +102,9 @@ const DetailBooked = (props) => {
               Tour : <strong>{getData.nameTour}</strong>
             </div>
             <div className="ml-auto col-sm-6 text-left ">
-              Start Day :{' '}
+              Start Day :{" "}
               <strong>
-                {new Date(getData.timeChose).toLocaleDateString('en-GB')}
+                {new Date(getData.timeChose).toLocaleDateString("en-GB")}
               </strong>
             </div>
           </div>
@@ -194,7 +197,9 @@ const DetailBooked = (props) => {
                 <button
                   className="btn btn-success mr-2"
                   onClick={() => handleRepair(getData.id)}
-                >Repair</button>
+                >
+                  Repair
+                </button>
                 <button
                   className="btn btn-secondary"
                   onClick={() => handleCancelBill(getData.id)}
@@ -207,7 +212,7 @@ const DetailBooked = (props) => {
         </div>
       </div>
     </div>
-  ) : statusGetData === 'error' ? (
+  ) : statusGetData === "error" ? (
     <NotFound />
   ) : (
     <Waiting />

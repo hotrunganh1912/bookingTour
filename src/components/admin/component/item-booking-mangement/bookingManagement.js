@@ -32,7 +32,6 @@ class BookingManagement extends Component {
       console.log('this.state.bookingTours :>> ', this.state.bookingTours);
       this.state.bookingTours.filter((item) => {
         let arrCharState = item.id
-          .slice(0, 8)
           .toUpperCase()
           .split(' ')
           .filter((x) => x !== '')

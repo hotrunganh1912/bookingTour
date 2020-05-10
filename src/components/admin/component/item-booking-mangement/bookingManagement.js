@@ -8,6 +8,7 @@ class BookingManagement extends Component {
     super(props);
     this.state = {
       bookingTours: [],
+      keyword: '',
       indexDataRender: 0,
       currentPage: 1,
     };
@@ -25,28 +26,39 @@ class BookingManagement extends Component {
     });
   }
   handleSearch = () => {
-      const keyword = this.inputSearch.current.value;
-      let arrFilter = [];
-      if (keyword !== '') {
-        this.state.bookingTours.filter(item => {
-          let arrCharState = item.id.slice(0,8).toUpperCase().split(' ').filter(x => x !== '').join('');
-          let arrCharKeyword = keyword.toUpperCase().split(' ').filter(x => x !== '').join('');
-          if (arrCharState.includes(arrCharKeyword)) arrFilter.push(item);
-          return [...arrFilter];
-        });
-        this.setState({
-          bookingTours: arrFilter
-        });
-      } else {
-        callApi(`bookings_tour`, 'get', null).then(res => {
-          if (res && res.status === 200) {
-            this.setState({
-              bookingTours: res.data
-            });
-          }
-        })
-       return;
-      }
+    const keyword = this.inputSearch.current.value;
+    let arrFilter = [];
+    if (keyword !== '') {
+      this.state.bookingTours.filter((item) => {
+        let arrCharState = item.id
+          .slice(0, 8)
+          .toUpperCase()
+          .split(' ')
+          .filter((x) => x !== '')
+          .join('');
+        let arrCharKeyword = keyword
+          .toUpperCase()
+          .split(' ')
+          .filter((x) => x !== '')
+          .join('');
+        if (arrCharState.includes(arrCharKeyword)) arrFilter.push(item);
+        return [...arrFilter];
+      });
+      this.setState({
+        bookingTours: arrFilter,
+        keyword
+      });
+    } else {
+      callApi(`bookings_tour`, 'get', null).then((res) => {
+        if (res && res.status === 200) {
+          this.setState({
+            bookingTours: res.data,
+            keyword: ''
+          });
+        }
+      });
+      return;
+    }
   };
 
   nextPage = (number) => {
@@ -77,6 +89,18 @@ class BookingManagement extends Component {
     return datanew;
   };
 
+  onBack = () => {
+    this.inputSearch.current.value = '';
+    callApi(`bookings_tour`, 'get', null).then((res) => {
+      if (res.data.length > 0) {
+        this.setState({
+          bookingTours: res.data,
+          keyword: ''
+        });
+      }
+    });
+  };
+
   render() {
     let itemBookingManager =
       this.pagination() &&
@@ -85,6 +109,7 @@ class BookingManagement extends Component {
           <ItemBookingManagement key={index} dataBooking={item} index={index} />
         );
       });
+      let styleButtonBack = this.state.keyword ? {display: 'block'} : {display: 'none'};
     return (
       <div className="card text-center">
         <h5 className="card-header bg-info text-light">
@@ -92,15 +117,23 @@ class BookingManagement extends Component {
         </h5>
         <div className="card-body">
           <div className="form-inline my-2 float-right">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={this.onBack}
+                style={styleButtonBack}
+              >
+                <i className="fas fa-arrow-circle-left"></i>
+              </button>
             <input
               type="text"
               ref={this.inputSearch}
               className="form-control"
             />
             <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={this.handleSearch}
+              type="button"
+              className="btn btn-secondary"
+              onClick={this.handleSearch}
             >
               <i className="fas fa-search"></i> Search
             </button>

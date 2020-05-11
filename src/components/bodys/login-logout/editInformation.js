@@ -185,12 +185,12 @@ class EditInformation extends Component {
             <h3 className="text-center">Chỉnh Sửa Trang Cá Nhân</h3>
 
             <div className="form-group">
-              <label>User Name: </label>
+              <label>Tên Người Dùng: </label>
               <input
                 ref={this.inputUsersName}
                 type="text"
                 className="form-control"
-                placeholder="Enter User Name"
+                placeholder="Nhập Tên Người Dùng"
                 name="username"
                 onKeyUp={this.handleInputValidation}
               />
@@ -198,24 +198,24 @@ class EditInformation extends Component {
             </div>
 
             <div className="form-group">
-              <label>Gmail: </label>
+              <label>Email: </label>
               <input
                 ref={this.inputEmail}
                 type="text"
                 className="form-control"
-                placeholder="Enter email"
+                placeholder="Nhập Email"
                 name="email"
                 disabled
               />
             </div>
 
             <div className="form-group">
-              <label>First Name : </label>
+              <label>Họ: </label>
               <input
                 ref={this.inputFirtName}
                 type="text"
                 className="form-control"
-                placeholder="Enter First Name"
+                placeholder="Nhập Họ Người Dùng"
                 name="firstname"
                 onKeyUp={this.handleInputValidation}
               />
@@ -223,12 +223,12 @@ class EditInformation extends Component {
             </div>
 
             <div className="form-group">
-              <label>Last Name: </label>
+              <label>Tên: </label>
               <input
                 ref={this.inputLastName}
                 type="text"
                 className="form-control"
-                placeholder="Enter Last Name"
+                placeholder="Nhập Tên Người Dùng"
                 name="lastname"
                 onKeyUp={this.handleInputValidation}
               />
@@ -236,11 +236,11 @@ class EditInformation extends Component {
             </div>
 
             <div className="form-group">
-              <label>Password: </label>
+              <label>Mật Khẩu: </label>
               <input
                 type="password"
                 className="form-control"
-                placeholder="Enter password"
+                placeholder="Nhập Mật Khẩu"
                 ref={this.inputPassWord}
                 name="password"
                 onKeyUp={this.handleInputValidation}
@@ -249,11 +249,11 @@ class EditInformation extends Component {
             </div>
 
             <div className="form-group">
-              <label>Password Again: </label>
+              <label>Lấy Lại Mật Khẩu: </label>
               <input
                 type="password"
                 className="form-control"
-                placeholder="Enter password"
+                placeholder="Nhập Lại Mật Khẩu"
                 ref={this.inputPassWordAgain}
                 name="confirmPassword"
                 onKeyUp={this.handleInputValidation}
@@ -264,7 +264,7 @@ class EditInformation extends Component {
             </div>
 
             <button type="submit" className="btn btn-primary btn-block">
-              Chỉnh Sửa
+              Lưu Lại
             </button>
             <p className="forgot-password text-right mt-3">
               <Link to="/home">Quay lại Trang Chủ</Link>

@@ -28,7 +28,7 @@ class RecoverRegister extends Component {
   }
 
   componentDidMount() {
-    if (this.props.loggedIn === false) {
+    console.log('this.props.loggedIn :>> ', this.props.loggedIn);
       callApi(`users?id=${this.props.id}`, 'GET', null).then((res) => {
       if (res.data.length !== 0) {
         this.setState({
@@ -41,7 +41,6 @@ class RecoverRegister extends Component {
         });
       }
     });
-    } else this.props.history.push('/home');
   }
 
   validateInput = (type, checkingText) => {
@@ -142,11 +141,11 @@ class RecoverRegister extends Component {
             <h3 className="text-center mb-4">Lấy Lại Mật Khẩu</h3>
 
             <div className="form-group">
-              <label>Password: </label>
+              <label>Mật Khẩu: </label>
               <input
                 type="password"
                 className="form-control"
-                placeholder="Enter password"
+                placeholder="Nhập Mật Khẩu"
                 ref={this.inputPassWord}
                 name="password"
                 onKeyUp={this.handleInputValidation}
@@ -155,11 +154,11 @@ class RecoverRegister extends Component {
             </div>
 
             <div className="form-group">
-              <label>Password Again: </label>
+              <label>Nhập Lại Mật Khẩu: </label>
               <input
                 type="password"
                 className="form-control"
-                placeholder="Enter password"
+                placeholder="Nhập Lại Mật Khẩu"
                 ref={this.inputPassWordAgain}
                 name="confirmPassword"
                 onKeyUp={this.handleInputValidation}
@@ -167,7 +166,7 @@ class RecoverRegister extends Component {
               <FormError errorMessage={this.state.confirmPassword.errorMessage}/>
             </div>
             <button type="submit" className="btn btn-primary btn-block">
-              Đăng Ký
+              Lưu Lại
             </button>
             <p className="forgot-password text-right mt-3">
               Chưa có tài khoản? <Link to="/login">Tạo tài khoản mới</Link>

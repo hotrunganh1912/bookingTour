@@ -76,12 +76,12 @@ class Recover extends Component {
           <form onSubmit={this.onCheckEmail}>
             <h3 className="text-center mb-4">Lấy Lại Mật Khẩu</h3>
             <div className="form-group">
-              <label>Gmail: </label>
+              <label>Email: </label>
               <input
                 ref={this.inputEmail}
                 type="text"
                 className="form-control"
-                placeholder="Enter email"
+                placeholder="Nhập Email"
                 name="email"
                 onKeyUp={this.handleInputValidation}
               />

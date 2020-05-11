@@ -49,13 +49,6 @@ class Recover extends Component {
       }
   };
 
-  componentDidMount() {
-    console.log('loggedIn', this.props.loggedIn);
-    if (this.props.loggedIn !== false) {
-      this.props.history.push('/home');
-    }
-  }
-
   handleInputValidation = (e) => {
     const { name } = e.target;
     const { errorMessage } = this.validateInput(name, this.inputEmail.current.value);

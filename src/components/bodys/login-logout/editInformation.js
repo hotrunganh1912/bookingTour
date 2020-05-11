@@ -111,12 +111,6 @@ class EditInformation extends Component {
       this.setState({id: data.id});
     }
   }
-
-  componentDidUpdate() {
-    if(this.props.loggedIn === false) {
-      this.props.history.push('/home');
-    }
-  }
   getValueInput = (name) => {
     switch (name) {
       case 'username':

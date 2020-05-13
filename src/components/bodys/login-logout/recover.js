@@ -69,6 +69,13 @@ class Recover extends Component {
       );
     }
   };
+
+  componentDidMount() {
+    const token = localStorage.getItem('Token');
+    if (token) {
+      this.props.history.push('/');
+    }
+  }
   render() {
     return (
       <div className="container">
@@ -102,16 +109,10 @@ class Recover extends Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    loggedIn: state.users.loggedIn
-  };
-};
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatchRecover: (id) => dispatch(recover(id)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Recover);
+export default connect(null, mapDispatchToProps)(Recover);

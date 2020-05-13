@@ -31,16 +31,13 @@ const adminItems = (state = initialState, action) => {
       newState[indexUpdate] = action.data;
       return [...newState];
     case 'SEARCH_DATA':
-      console.log('actionSearch', action);
       let arrFilter = [];
       const keyWord = action.keyword;
       if (keyWord !== '') {
         action.data.filter(item => {
           let arrCharState = item.usersName.toUpperCase().split(' ').filter(x => x !== '').join('');
           let arrCharKeyword = keyWord.toUpperCase().split(' ').filter(x => x !== '').join('');
-          if (arrCharState.includes(arrCharKeyword)) {
-            arrFilter.push(item);
-          }
+          if (arrCharState.includes(arrCharKeyword)) arrFilter.push(item);
           return newState = [...arrFilter];
         });
       }

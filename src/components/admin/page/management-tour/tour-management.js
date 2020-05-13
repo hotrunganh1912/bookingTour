@@ -134,7 +134,7 @@ const TourManagement = () => {
       <div className="card card-primary mt-3 text-center">
         <div style={bgMaTour} className="card-header">
           <h3 className="card-title text-white text-uppercase mt-3">
-            Quản Lý Tour
+            <i className={`fa fa-globe-africa`}></i> Quản Lý Tour
           </h3>
           <div className="row">
             <div className="col-6 text-left text-white">

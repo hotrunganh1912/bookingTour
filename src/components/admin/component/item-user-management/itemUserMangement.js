@@ -26,6 +26,7 @@ class ItemUserMangement extends Component {
           <button 
             type="button" 
             className="btn btn-primary ml-2"
+            style={{width: '80px'}}
             onClick={() => this.onEdit(dataUser.id)}
             >
             <i className="fas fa-edit"></i> Edit
@@ -33,6 +34,7 @@ class ItemUserMangement extends Component {
           <button 
             type="button" 
             className="btn btn-danger ml-2"
+            style={{width: '100px'}}
             onClick={() => this.onDelete(dataUser.id)}
             >
             <i className="fas fa-trash-alt"></i> Delete

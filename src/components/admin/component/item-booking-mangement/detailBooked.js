@@ -51,8 +51,10 @@ const DetailBooked = (props) => {
       timeChose: getData.timeChose,
       status: "cancelled",
     };
-    callApi(`bookings_tour/${id}`, "Put", { ...dataEdit }).then((res) => {});
-    setStatus(dataEdit.status);
+    if (window.confirm('Bạn có chắc chắn hủy bỏ hóa đơn này?')) {
+      callApi(`bookings_tour/${id}`, "Put", { ...dataEdit }).then((res) => {});
+      setStatus(dataEdit.status);
+    }
   }
 
   function handleRepair(id) {
@@ -71,8 +73,10 @@ const DetailBooked = (props) => {
       timeChose: getData.timeChose,
       status: "paid",
     };
-    callApi(`bookings_tour/${id}`, "Put", { ...dataEdit }).then((res) => {});
-    setStatus(dataEdit.status);
+    if (window.confirm('Bạn muốn lấy lại hóa đơn này?')){
+      callApi(`bookings_tour/${id}`, "Put", { ...dataEdit }).then((res) => {});
+      setStatus(dataEdit.status);
+    }
   }
 
   return statusGetData === "finish" ? (

@@ -436,6 +436,24 @@
       "password": "anhvu22",
       "role": "menber",
       "gmail": "nguyenvu22@gmail.com"
+    },
+    {
+      "id": "3086fd30-d804-4984-8d49-4b1632084d75",
+      "firtName": "nguyen",
+      "lastName": "anh vu",
+      "usersName": "anhvu22",
+      "password": "anhvu22",
+      "role": "menber",
+      "gmail": "anhvu@gmail.com"
+    },
+    {
+      "id": "d19ebd4d-aed8-4fbe-afc4-ee39af28b6bc",
+      "firtName": "nguyễn ",
+      "lastName": "bảo",
+      "usersName": "nguyen bao",
+      "password": "anhvu22",
+      "role": "menber",
+      "gmail": "nguyenbao@gamil.com"
     }
   ],
   "Comments": [

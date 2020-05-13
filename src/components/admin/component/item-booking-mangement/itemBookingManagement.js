@@ -22,7 +22,7 @@ class ItemBookingManagement extends Component {
             className="btn btn-info ml-2"
             style={{width: '80px'}}
           >
-            Detail
+            Chi tiết
           </Link>
         </td>
       </tr>

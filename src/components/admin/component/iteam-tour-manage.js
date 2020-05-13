@@ -64,7 +64,7 @@ const IteamTourManage = (props) => {
           className="btn btn-primary"
           to={`/admin/tour-management/edit-tour/${id}`}
         >
-          <i className="fa fa-edit "></i> Edit
+          <i className="fa fa-edit "></i> Sửa
         </Link>{" "}
         <Link
           data-idtour={id}
@@ -72,7 +72,7 @@ const IteamTourManage = (props) => {
           className="btn btn-danger"
           to="#"
         >
-          <i className="fa fa-trash-alt"></i> Delete
+          <i className="fa fa-trash-alt"></i> Xóa
         </Link>
       </td>
     </tr>

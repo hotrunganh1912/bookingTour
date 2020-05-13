@@ -198,13 +198,13 @@ const DetailBooked = (props) => {
                   className="btn btn-success mr-2"
                   onClick={() => handleRepair(getData.id)}
                 >
-                  Repair
+                  Sửa lại
                 </button>
                 <button
                   className="btn btn-secondary"
                   onClick={() => handleCancelBill(getData.id)}
                 >
-                  Cancel
+                  Hủy bỏ
                 </button>
               </div>
             </div>

@@ -12,7 +12,7 @@ class ItemHistory extends Component {
         <td>{formCurencyVN(data.sumPrice)}</td>
         <td>{new Date(data.time).toLocaleDateString("en-GB")}</td>
         <td>
-          <Link to={`/booking/${data.id}`} className="btn btn-info ml-2">
+          <Link to={`/booking/${data.id}`} className="btn btn-info ml-2" style={{width: '80px'}}>
             Chi tiết
           </Link>
         </td>

@@ -138,9 +138,9 @@ class BookingManagement extends Component {
                 <th>
                   <i className="far fa-user"></i> Tên Người Dùng
                 </th>
-                <th>Tên Tour</th>
-                <th>Giá</th>
-                <th>Trạng Thái</th>
+                <th><i className="fas fa-plane-departure"></i> Tên Tour</th>
+                <th><i className="fas fa-money-bill-wave"></i> Giá</th>
+                <th><i className="fas fa-shopping-cart"></i> Trạng Thái</th>
                 <th>Chi Tiết</th>
               </tr>
             </thead>

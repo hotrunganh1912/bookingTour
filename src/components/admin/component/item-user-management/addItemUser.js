@@ -238,9 +238,9 @@ class AddItemUser extends Component {
     return (
       <>
         <div className="d-flex justify-content-between mb-3">
-          <Button variant="secondary" onClick={() => this.handleShow()}>
+          <span className="btn btn-outline-secondary" onClick={() => this.handleShow()}>
             <i className="fas fa-user-plus"></i> Thêm USER
-          </Button>
+          </span>
           <SearchUser />
         </div>
 

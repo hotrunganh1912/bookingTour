@@ -20,6 +20,7 @@ class ItemBookingManagement extends Component {
           <Link
             to={`/admin/booking-management/detail/${dataBooking.id}`}
             className="btn btn-info ml-2"
+            style={{width: '80px'}}
           >
             Detail
           </Link>

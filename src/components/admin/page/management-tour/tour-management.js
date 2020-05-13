@@ -156,9 +156,9 @@ const TourManagement = () => {
                 <thead>
                   <tr className="bg-light">
                     <th style={{ width: "100px" }}>STT</th>
-                    <th style={{ width: "300px" }}>ID Tour</th>
-                    <th>Giá</th>
-                    <th>Thành Phố - Đất Nước</th>
+                    <th style={{ width: "300px" }}><i className="far fa-id-card"></i> ID Tour</th>
+                    <th><i className="fas fa-money-bill-wave"></i> Giá</th>
+                    <th><i className="fas fa-map-marker"></i> Thành Phố - Đất Nước</th>
                     <th>Action</th>
                   </tr>
                 </thead>

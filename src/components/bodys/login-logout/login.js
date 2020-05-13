@@ -37,7 +37,7 @@ class Login extends Component {
         return { errorMessage: "" };
       } else {
         return {
-          errorMessage: "The user only uses words and no special characters",
+          errorMessage: "Tên người dùng chỉ sử dụng chữ cái, số và không có ký tự đặc biệt",
         };
       }
     }
@@ -50,7 +50,7 @@ class Login extends Component {
       } else {
         return {
           errorMessage:
-            "password must be at least 6 characters long and be a letter",
+            "Mật khẩu ít nhất 6 ký tự, phải có ký tự số và không chứa ký tự đặc biệt",
         };
       }
     }

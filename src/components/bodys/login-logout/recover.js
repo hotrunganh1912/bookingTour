@@ -43,7 +43,7 @@ class Recover extends Component {
           return { errorMessage: "" };
         } else {
           return {
-            errorMessage: "email must be Ex:abc@abc.com",
+            errorMessage: "Email phải là Ex:abc@abc.com",
           };
         }
       }

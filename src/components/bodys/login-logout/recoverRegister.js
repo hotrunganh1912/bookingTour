@@ -55,7 +55,7 @@ class RecoverRegister extends Component {
       } else {
         return {
           errorMessage:
-            "password must be at least 6 characters long and be a letter",
+            "Mật khẩu ít nhất 6 ký tự, phải có ký tự số và không chứa ký tự đặc biệt",
         };
       }
     }
@@ -66,7 +66,7 @@ class RecoverRegister extends Component {
         return { errorMessage: "" };
       } else {
         return {
-          errorMessage: "password is incorrect",
+          errorMessage: "Nhập lại mật khẩu chưa khớp",
         };
       }
     }

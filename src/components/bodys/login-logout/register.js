@@ -110,7 +110,7 @@ class Register extends Component {
     }
 
     if (type === 'firstname') {
-      const regexp = /^[a-zA-Z ]+$/;
+      const regexp = /^[a-zA-Zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ ]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
         return {errorMessage: ''};
@@ -122,7 +122,7 @@ class Register extends Component {
     }
 
     if (type === 'lastname') {
-      const regexp = /^[a-zA-Z ]+$/;
+      const regexp = /^[a-zA-Zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ ]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
         return {errorMessage: ''};

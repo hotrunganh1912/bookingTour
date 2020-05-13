@@ -173,7 +173,7 @@ const TourManagement = () => {
                     ))
                   ) : (
                     <tr>
-                      <td colspan="5">
+                      <td colSpan="5">
                         <h1>Không Tìm Thấy Dữ Liệu</h1>
                       </td>
                     </tr>

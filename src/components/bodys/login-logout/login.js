@@ -116,7 +116,10 @@ class Login extends Component {
           res.data[0].password === this.inputPassWord.current.value &&
           res.data[0].role === "menber"
         ) {
-          localStorage.setItem("Token", JSON.stringify(res.data[0]));
+          localStorage.setItem(
+            "Token",
+            JSON.stringify({ ...res.data[0], password: "****" })
+          );
           // this.setState({
           //   isLogin: true
           // });

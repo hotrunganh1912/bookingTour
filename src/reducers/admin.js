@@ -35,9 +35,11 @@ const adminItems = (state = initialState, action) => {
       const keyWord = action.keyword;
       if (keyWord !== '') {
         action.data.filter(item => {
-          let arrCharState = item.usersName.toUpperCase().split(' ').filter(x => x !== '').join('');
+          let arrCharUserName = item.usersName.toUpperCase().split(' ').filter(x => x !== '').join('');
+          let arrCharEmail = item.gmail.toUpperCase().split(' ').filter(x => x !== '').join('');
           let arrCharKeyword = keyWord.toUpperCase().split(' ').filter(x => x !== '').join('');
-          if (arrCharState.includes(arrCharKeyword)) arrFilter.push(item);
+          if (arrCharUserName.includes(arrCharKeyword)) arrFilter.push(item);
+          if (arrCharEmail.includes(arrCharKeyword)) arrFilter.push(item);
           return newState = [...arrFilter];
         });
       }

@@ -1,9 +1,9 @@
-import React from 'react';
-import {Link, withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {logOut, login} from '../../action/users';
-import ICON from '../../image/ICON.png';
-import {NotificationManager} from 'react-notifications';
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { logOut, login } from "../../action/users";
+import ICON from "../../image/ICON.png";
+import { NotificationManager } from "react-notifications";
 
 class Header extends React.Component {
   constructor(props) {
@@ -20,41 +20,42 @@ class Header extends React.Component {
   };
 
   handerlerLogOut = (e) => {
-    if (window.confirm('Bạn Muốn Đăng Xuất')) {
+    if (window.confirm("Bạn Muốn Đăng Xuất")) {
       this.props.dispatchLogOut();
-      this.props.history.push('/');
-      NotificationManager.success('Success message', 'Đăng Xuất Thành Công');
+      this.props.history.push("/");
+      NotificationManager.success("Success message", "Đăng Xuất Thành Công");
     }
     e.preventDefault();
   };
 
   handerScrollAtHeader = () => {
     const isTop = window.scrollY > 80;
-    isTop ? this.setState({scrolled: true}) : this.setState({scrolled: false});
+    isTop
+      ? this.setState({ scrolled: true })
+      : this.setState({ scrolled: false });
   };
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handerScrollAtHeader);
+    window.addEventListener("scroll", this.handerScrollAtHeader);
   }
 
-
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handerScrollAtHeader);
+    window.removeEventListener("scroll", this.handerScrollAtHeader);
   }
 
   render() {
     return (
       <header
-        style={{maxHeight: '100%'}}
+        style={{ maxHeight: "100%" }}
         className={`main-header bg-light z-2 ${
-          this.state.scrolled ? 'shadow-lg' : ''
+          this.state.scrolled ? "shadow-lg" : ""
         }`}
       >
         <div className="container p-0 ">
           <nav className="navbar navbar-expand-lg navbar-light p-2 ">
             <Link className="navbar-brand py-3" to="/home">
               <img
-                style={{maxWidth: '31px'}}
+                style={{ maxWidth: "31px" }}
                 className="m-0 p-0"
                 src={ICON}
                 alt="iconas"
@@ -76,7 +77,7 @@ class Header extends React.Component {
             <div
               data-menu="menu"
               className={`collapse navbar-collapse  bg-light${
-                this.state.isOpne ? ' show' : ''
+                this.state.isOpne ? " show" : ""
               }`}
               id="navbarSupportedContent"
             >
@@ -98,7 +99,7 @@ class Header extends React.Component {
                   </Link>
                 </li>
                 {this.props.dataLogin.users.loggedIn ||
-                localStorage.getItem('Token') !== null ? (
+                localStorage.getItem("Token") !== null ? (
                   <li className="nav-item py-2 dropdown">
                     {/* {this.props.dispatchLogin()} */}
                     <Link
@@ -128,12 +129,16 @@ class Header extends React.Component {
                       >
                         Đăng xuất
                       </a>
-                      <span
+                      <a
+                        style={{
+                          whiteSpace: "pre-wrap",
+                        }}
                         className="dropdown-item"
-                        style={{fontSize: '1.2rem'}}
                       >
-                        <i className="fas fa-user"></i> | {JSON.parse(localStorage.getItem('Token')).usersName}
-                      </span>
+                        <i className="fas fa-user"></i>
+                        {"  "}
+                        {JSON.parse(localStorage.getItem("Token")).usersName}
+                      </a>
                     </div>
                   </li>
                 ) : (

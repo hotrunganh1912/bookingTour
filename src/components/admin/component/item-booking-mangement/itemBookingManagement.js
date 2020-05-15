@@ -10,12 +10,12 @@ class ItemBookingManagement extends Component {
     return (
       <tr>
         <td>{index + 1}</td>
-        <td className="card w-75 mx-auto mt-1 text-white bg-success">
+        <td className="card w-80 mx-auto mt-1 text-white bg-success">
           {dataBooking.id.slice(0, 8)}
         </td>
         <td>{dataBooking.userName}</td>
         <td style={{fontSize: '0.9rem'}}>{dataBooking.nameTour}</td>
-        <td style={{fontSize: '1.2rem', color: '#ff6084eb'}}>
+        <td style={{color: '#ff6084eb'}}>
           {formCurencyVN(dataBooking.sumPrice)}
         </td>
         <td

@@ -90,9 +90,12 @@ class BookingManagement extends Component {
               arrFilter.push(item);
               return [...arrFilter];
             }
+            return [...arrFilter];
           });
           this.setState({
-            bookingTours: arrFilter
+            bookingTours: arrFilter,
+            currentPage: 1,
+            indexDataRender: 0,
           });
         }
       });

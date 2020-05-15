@@ -384,15 +384,6 @@
   ],
   "Users": [
     {
-      "id": "5a0eab9e-6c73-4706-a434-725c9086a19f",
-      "firtName": "nguyen",
-      "lastName": "anh vu",
-      "usersName": "anhvu",
-      "password": "vu1234",
-      "role": "menber",
-      "gmail": "anhvu@abc.com"
-    },
-    {
       "id": "ed83dc4b-0d5f-47cd-a26e-60565c3aeda4",
       "firtName": "anh",
       "lastName": "anh",
@@ -438,15 +429,6 @@
       "gmail": "nguyenvu22@gmail.com"
     },
     {
-      "id": "3086fd30-d804-4984-8d49-4b1632084d75",
-      "firtName": "nguyen",
-      "lastName": "anh vu",
-      "usersName": "anhvu22",
-      "password": "anhvu22",
-      "role": "menber",
-      "gmail": "anhvu@gmail.com"
-    },
-    {
       "id": "d19ebd4d-aed8-4fbe-afc4-ee39af28b6bc",
       "firtName": "nguyễn ",
       "lastName": "bảo",
@@ -454,6 +436,15 @@
       "password": "anhvu22",
       "role": "menber",
       "gmail": "nguyenbao@gamil.com"
+    },
+    {
+      "id": "dbc28c3c-9cbe-4473-a009-8de75a1f8acb",
+      "firtName": "nguyễn ",
+      "lastName": "anh vũ",
+      "usersName": "anhvu",
+      "password": "anhvu22",
+      "role": "menber",
+      "gmail": "anhvu@gmail.com"
     }
   ],
   "Comments": [

@@ -43,18 +43,11 @@ class Recover extends Component {
           return { errorMessage: "" };
         } else {
           return {
-            errorMessage: "email must be Ex:abc@abc.com",
+            errorMessage: "Email phải là Ex:abc@abc.com",
           };
         }
       }
   };
-
-  componentDidMount() {
-    console.log('loggedIn', this.props.loggedIn);
-    if (this.props.loggedIn !== false) {
-      this.props.history.push('/home');
-    }
-  }
 
   handleInputValidation = (e) => {
     const { name } = e.target;
@@ -76,6 +69,13 @@ class Recover extends Component {
       );
     }
   };
+
+  componentDidMount() {
+    const token = localStorage.getItem('Token');
+    if (token) {
+      this.props.history.push('/');
+    }
+  }
   render() {
     return (
       <div className="container">
@@ -83,12 +83,12 @@ class Recover extends Component {
           <form onSubmit={this.onCheckEmail}>
             <h3 className="text-center mb-4">Lấy Lại Mật Khẩu</h3>
             <div className="form-group">
-              <label>Gmail: </label>
+              <label>Email: </label>
               <input
                 ref={this.inputEmail}
                 type="text"
                 className="form-control"
-                placeholder="Enter email"
+                placeholder="Nhập Email"
                 name="email"
                 onKeyUp={this.handleInputValidation}
               />
@@ -109,16 +109,10 @@ class Recover extends Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    loggedIn: state.users.loggedIn
-  };
-};
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatchRecover: (id) => dispatch(recover(id)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Recover);
+export default connect(null, mapDispatchToProps)(Recover);

@@ -82,7 +82,7 @@ class Register extends Component {
   validateInput = (type, checkingText) => {
     // let dataUser = JSON.parse(localStorage.getItem(checkingText));
     if (checkingText === '') {
-      return {errorMessage: 'must enter information'};
+      return {errorMessage: 'Phải nhập thông tin'};
     }
 
     if (type === 'username') {
@@ -92,7 +92,7 @@ class Register extends Component {
         return {errorMessage: ''};
       } else {
         return {
-          errorMessage: 'The user only uses words and no special characters',
+          errorMessage: 'Tên người dùng chỉ sử dụng chữ cái, số và không có ký tự đặc biệt',
         };
       }
     }
@@ -104,31 +104,31 @@ class Register extends Component {
         return {errorMessage: ''};
       } else {
         return {
-          errorMessage: 'email must be Ex:abc@abc.com',
+          errorMessage: 'Email phải là Ex:abc@abc.com',
         };
       }
     }
 
     if (type === 'firstname') {
-      const regexp = /^[a-zA-Z ]+$/;
+      const regexp = /^[a-zA-Zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ ]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
         return {errorMessage: ''};
       } else {
         return {
-          errorMessage: 'First Name only uses words and no special characters',
+          errorMessage: 'Họ chỉ gồm chữ cái và không có ký tự đặc biệt',
         };
       }
     }
 
     if (type === 'lastname') {
-      const regexp = /^[a-zA-Z ]+$/;
+      const regexp = /^[a-zA-Zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ ]+$/;
       const checkingResult = regexp.exec(checkingText);
       if (checkingResult !== null) {
         return {errorMessage: ''};
       } else {
         return {
-          errorMessage: 'Last Name only uses words and no special characters',
+          errorMessage: 'Tên chỉ gồm chữ cái và không có ký tự đặc biệt',
         };
       }
     }
@@ -141,7 +141,7 @@ class Register extends Component {
       } else {
         return {
           errorMessage:
-            'password must be at least 6 characters long and be a letter',
+            'Mật khẩu ít nhất 6 ký tự, phải có ký tự số và không chứa ký tự đặc biệt',
         };
       }
     }
@@ -152,7 +152,7 @@ class Register extends Component {
         return {errorMessage: ''};
       } else {
         return {
-          errorMessage: 'password is incorrect',
+          errorMessage: 'Nhập lại mật khẩu chưa khớp',
         };
       }
     }
@@ -253,12 +253,12 @@ class Register extends Component {
             <h3 className="text-center">Đăng Ký</h3>
 
             <div className="form-group">
-              <label>User Name: </label>
+              <label>Tên Người Dùng: </label>
               <input
                 ref={this.inputUsersName}
                 type="text"
                 className="form-control"
-                placeholder="Enter User Name"
+                placeholder="Nhập tên Người Dùng"
                 name="username"
                 onKeyUp={this.handleInputValidation}
               />
@@ -266,12 +266,12 @@ class Register extends Component {
             </div>
 
             <div className="form-group">
-              <label>Gmail: </label>
+              <label>Email: </label>
               <input
                 ref={this.inputEmail}
                 type="text"
                 className="form-control"
-                placeholder="Enter email"
+                placeholder="Nhập Email"
                 name="email"
                 onKeyUp={this.handleInputValidation}
               />
@@ -279,12 +279,12 @@ class Register extends Component {
             </div>
 
             <div className="form-group">
-              <label>First Name : </label>
+              <label>Họ: </label>
               <input
                 ref={this.inputFirtName}
                 type="text"
                 className="form-control"
-                placeholder="Enter First Name"
+                placeholder="Nhập Họ Người Dùng"
                 name="firstname"
                 onKeyUp={this.handleInputValidation}
               />
@@ -292,12 +292,12 @@ class Register extends Component {
             </div>
 
             <div className="form-group">
-              <label>Last Name: </label>
+              <label>Tên: </label>
               <input
                 ref={this.inputLastName}
                 type="text"
                 className="form-control"
-                placeholder="Enter Last Name"
+                placeholder="Nhập Tên Người Dùng"
                 name="lastname"
                 onKeyUp={this.handleInputValidation}
               />
@@ -305,11 +305,11 @@ class Register extends Component {
             </div>
 
             <div className="form-group">
-              <label>Password: </label>
+              <label>Mật Khẩu: </label>
               <input
                 type="password"
                 className="form-control"
-                placeholder="Enter password"
+                placeholder="Nhập Mật Khẩu"
                 ref={this.inputPassWord}
                 name="password"
                 onKeyUp={this.handleInputValidation}
@@ -318,11 +318,11 @@ class Register extends Component {
             </div>
 
             <div className="form-group">
-              <label>Password Again: </label>
+              <label>Nhập Lại Mật Khẩu: </label>
               <input
                 type="password"
                 className="form-control"
-                placeholder="Enter password"
+                placeholder="Nhập Lại Mật Khẩu"
                 ref={this.inputPassWordAgain}
                 name="confirmPassword"
                 onKeyUp={this.handleInputValidation}

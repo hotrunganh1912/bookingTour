@@ -83,7 +83,7 @@ class HistoryBooking extends Component {
         <div className="card card-primary mt-3 text-center">
           <div className="card-header bg-info">
             <h3 className="card-title text-white text-uppercase mt-3">
-              Lịch Sử Giao Dịch
+            <i className="fas fa-history"></i> Lịch Sử Giao Dịch
             </h3>
             <div className="row">
               <div className="col-6 text-left text-white">
@@ -106,9 +106,9 @@ class HistoryBooking extends Component {
               <thead>
                 <tr className="bg-light">
                   <th>STT</th>
-                  <th>Tên Tour</th>
-                  <th>Giá</th>
-                  <th>Thời Gian Giao Dịch</th>
+                  <th><i className="fas fa-plane-departure"></i> Tên Tour</th>
+                  <th><i className="fas fa-money-bill-wave"></i> Giá</th>
+                  <th><i className="fas fa-calendar-times"></i> Thời Gian Giao Dịch</th>
                   <th>Chi Tiết</th>
                 </tr>
               </thead>

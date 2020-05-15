@@ -37,7 +37,7 @@ class Login extends Component {
         return { errorMessage: "" };
       } else {
         return {
-          errorMessage: "The user only uses words and no special characters",
+          errorMessage: "Tên người dùng chỉ sử dụng chữ cái, số và không có ký tự đặc biệt",
         };
       }
     }
@@ -50,7 +50,7 @@ class Login extends Component {
       } else {
         return {
           errorMessage:
-            "password must be at least 6 characters long and be a letter",
+            "Mật khẩu ít nhất 6 ký tự, phải có ký tự số và không chứa ký tự đặc biệt",
         };
       }
     }
@@ -116,7 +116,10 @@ class Login extends Component {
           res.data[0].password === this.inputPassWord.current.value &&
           res.data[0].role === "menber"
         ) {
-          localStorage.setItem("Token", JSON.stringify(res.data[0]));
+          localStorage.setItem(
+            "Token",
+            JSON.stringify({ ...res.data[0], password: "****" })
+          );
           // this.setState({
           //   isLogin: true
           // });
@@ -153,12 +156,12 @@ class Login extends Component {
             <h3 className="text-center">Đăng Nhập</h3>
 
             <div className="form-group">
-              <label>Users Name: </label>
+              <label>Tên Người Dùng: </label>
               <input
                 ref={this.inputUsersName}
                 type="text"
                 className="form-control"
-                placeholder="User name"
+                placeholder="Nhập Tên Người Dùng"
                 name="username"
                 onKeyUp={this.handleInputValidation}
               />
@@ -166,11 +169,11 @@ class Login extends Component {
             </div>
 
             <div className="form-group">
-              <label>Password: </label>
+              <label>Mật Khẩu: </label>
               <input
                 type="password"
                 className="form-control"
-                placeholder="Enter password"
+                placeholder="Nhập Mật Khẩu"
                 ref={this.inputPassWord}
                 name="password"
                 onKeyUp={this.handleInputValidation}
@@ -179,7 +182,7 @@ class Login extends Component {
             </div>
 
             <button type="submit" className="btn btn-primary btn-block">
-              Login
+              Đăng Nhập
             </button>
             <p className="forgot-password text-right mt-3">
               Chưa Có Tài khoản <Link to="/register">Tạo Tài Khoản</Link>

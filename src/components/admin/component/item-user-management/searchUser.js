@@ -18,39 +18,19 @@ class SearchUser extends Component {
     });
   };
 
-  onBack = () => {
-    this.inputSearch.current.value = '';
-    let keyWord = this.inputSearch.current.value;
-    callApi(`Users`, 'GET', null).then((res) => {
-      if (res.data.length > 0) {
-        this.props.handleSearch(keyWord, res.data);
-      }
-    });
-  };
   render() {
-    let styleButtonBack = this.props.keyword ? {display: 'block'} : {display: 'none'};
     return (
       <div className="d-flex">
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={this.onBack}
-          style={styleButtonBack}
-        >
-          <i className="fas fa-arrow-circle-left"></i>
-        </button>
+        <span className="btn" style={{ transform: "translate(39px, 0)" }}>
+        <i className="fas fa-search"></i>
+        </span>
         <input
-          className="form-control mr-2"
-          type="text"
+          className="form-control pl-5"
+          type="search"
+          placeholder="Search..."
           ref={this.inputSearch}
+          onKeyUp={this.handleSearch}
         />
-        <button
-          type="button"
-          className="form-control btn btn-secondary"
-          onClick={this.handleSearch}
-        >
-          <i className="fas fa-search"></i> Search
-        </button>
       </div>
     );
   }

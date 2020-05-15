@@ -40,7 +40,7 @@ const LoginAdmin = (props) => {
           res.data[0].password === valuePassword &&
           res.data[0].role === "admin"
         ) {
-          localStorage.setItem("TokenAdmin", JSON.stringify(res.data[0]));
+          localStorage.setItem("TokenAdmin", JSON.stringify({...res.data[0],password:"****"}));
           NotificationManager.success(
             "Success message",
             "Đăng Nhập Thành Công"

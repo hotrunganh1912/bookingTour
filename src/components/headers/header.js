@@ -117,7 +117,7 @@ class Header extends React.Component {
                       aria-labelledby="dropdownMenuButton"
                     >
                       <Link to="/editInformation" className="dropdown-item">
-                        Chỉnh sửa
+                        Chỉnh sửa trang cá nhân
                       </Link>
                       <Link to="/history-booking" className="dropdown-item">
                         Lịch sử giao dịch
@@ -129,6 +129,17 @@ class Header extends React.Component {
                       >
                         Đăng xuất
                       </a>
+                      <span
+                        href="#"
+                        style={{
+                          whiteSpace: "pre-wrap",
+                        }}
+                        className="dropdown-item"
+                      >
+                        <i className="fas fa-user"></i>
+                        {"  "}
+                        {JSON.parse(localStorage.getItem("Token")).usersName}
+                      </span>
                     </div>
                   </li>
                 ) : (

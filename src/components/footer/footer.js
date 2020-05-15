@@ -11,7 +11,7 @@ class Footer extends Component {
             <div className="row m-0">
               <div className="col-md-6 p-0 m-0">
                 <nav className="navbar navbar-expand-lg p-0 m-0">
-                  <ul className="navbar-nav mr-auto">
+                  <ul className="navbar-nav mr-auto " id="fooderUl">
                     <li className="nav-item">
                       <Link
                         className="nav-link text-center text-light"
@@ -41,7 +41,7 @@ class Footer extends Component {
               </div>
               <div className="col-md-6 p-0 m-0">
                 <nav className="navbar navbar-expand-lg p-0 m-0">
-                  <ul className="navbar-nav ml-auto">
+                  <ul className="navbar-nav ml-auto " id="fooderUl" >
                     <li className="nav-item">
                       <Link
                         className="nav-link text-center text-light"

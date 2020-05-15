@@ -6,6 +6,12 @@ export default [
     isProtected: false,
   },
   {
+    title: "Payment Page | Booking",
+    component: "./payment/bg-payment",
+    path: "/Payment",
+    isProtected: false,
+  },
+  {
     title: "Register Page | Booking",
     component: "./bodys/login-logout/register",
     path: "/register",

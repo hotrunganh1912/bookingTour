@@ -36,7 +36,7 @@ class EditInformation extends Component {
 
   validateInput = (type, checkingText) => {
     if (checkingText === '') {
-      return {errorMessage: 'must enter information'};
+      return {errorMessage: 'Phải nhập thông tin'};
     }
 
     if (type === 'username') {
@@ -46,7 +46,7 @@ class EditInformation extends Component {
         return {errorMessage: ''};
       } else {
         return {
-          errorMessage: 'The user only uses words and no special characters',
+          errorMessage: 'Tên người dùng chỉ sử dụng chữ cái, số và không có ký tự đặc biệt',
         };
       }
     }
@@ -58,7 +58,7 @@ class EditInformation extends Component {
         return {errorMessage: ''};
       } else {
         return {
-          errorMessage: 'First Name only uses words and no special characters',
+          errorMessage: 'Họ chỉ gồm chữ cái và không có ký tự đặc biệt',
         };
       }
     }
@@ -70,7 +70,7 @@ class EditInformation extends Component {
         return {errorMessage: ''};
       } else {
         return {
-          errorMessage: 'Last Name only uses words and no special characters',
+          errorMessage: 'Tên chỉ gồm chữ cái và không có ký tự đặc biệt',
         };
       }
     }
@@ -83,7 +83,7 @@ class EditInformation extends Component {
       } else {
         return {
           errorMessage:
-            'password must be at least 6 characters long and be a letter',
+            'Mật khẩu ít nhất 6 ký tự, phải có ký tự số và không chứa ký tự đặc biệt',
         };
       }
     }
@@ -94,7 +94,7 @@ class EditInformation extends Component {
         return {errorMessage: ''};
       } else {
         return {
-          errorMessage: 'password is incorrect',
+          errorMessage: 'Nhập lại mật khẩu chưa khớp',
         };
       }
     }
@@ -109,12 +109,6 @@ class EditInformation extends Component {
       this.inputFirtName.current.value = data.firtName;
       this.inputLastName.current.value = data.lastName;
       this.setState({id: data.id});
-    }
-  }
-
-  componentDidUpdate() {
-    if(this.props.loggedIn === false) {
-      this.props.history.push('/home');
     }
   }
   getValueInput = (name) => {
@@ -174,7 +168,10 @@ class EditInformation extends Component {
 
     callApi(`users/${this.state.id}`, 'Put', user).then((res) => {
       if (res && res.status === 200) {
-        localStorage.setItem('Token', JSON.stringify(res.data));
+        localStorage.setItem(
+          "Token",
+          JSON.stringify({ ...res.data, password: "****" })
+        );
         NotificationManager.success(
           "Success message",
           "Chỉnh Sửa Thông Tin Thành Công"
@@ -191,12 +188,12 @@ class EditInformation extends Component {
             <h3 className="text-center">Chỉnh Sửa Trang Cá Nhân</h3>
 
             <div className="form-group">
-              <label>User Name: </label>
+              <label>Tên Người Dùng: </label>
               <input
                 ref={this.inputUsersName}
                 type="text"
                 className="form-control"
-                placeholder="Enter User Name"
+                placeholder="Nhập Tên Người Dùng"
                 name="username"
                 onKeyUp={this.handleInputValidation}
               />
@@ -204,24 +201,24 @@ class EditInformation extends Component {
             </div>
 
             <div className="form-group">
-              <label>Gmail: </label>
+              <label>Email: </label>
               <input
                 ref={this.inputEmail}
                 type="text"
                 className="form-control"
-                placeholder="Enter email"
+                placeholder="Nhập Email"
                 name="email"
                 disabled
               />
             </div>
 
             <div className="form-group">
-              <label>First Name : </label>
+              <label>Họ: </label>
               <input
                 ref={this.inputFirtName}
                 type="text"
                 className="form-control"
-                placeholder="Enter First Name"
+                placeholder="Nhập Họ Người Dùng"
                 name="firstname"
                 onKeyUp={this.handleInputValidation}
               />
@@ -229,12 +226,12 @@ class EditInformation extends Component {
             </div>
 
             <div className="form-group">
-              <label>Last Name: </label>
+              <label>Tên: </label>
               <input
                 ref={this.inputLastName}
                 type="text"
                 className="form-control"
-                placeholder="Enter Last Name"
+                placeholder="Nhập Tên Người Dùng"
                 name="lastname"
                 onKeyUp={this.handleInputValidation}
               />
@@ -242,11 +239,11 @@ class EditInformation extends Component {
             </div>
 
             <div className="form-group">
-              <label>Password: </label>
+              <label>Mật Khẩu: </label>
               <input
                 type="password"
                 className="form-control"
-                placeholder="Enter password"
+                placeholder="Nhập Mật Khẩu"
                 ref={this.inputPassWord}
                 name="password"
                 onKeyUp={this.handleInputValidation}
@@ -255,11 +252,11 @@ class EditInformation extends Component {
             </div>
 
             <div className="form-group">
-              <label>Password Again: </label>
+              <label>Lấy Lại Mật Khẩu: </label>
               <input
                 type="password"
                 className="form-control"
-                placeholder="Enter password"
+                placeholder="Nhập Lại Mật Khẩu"
                 ref={this.inputPassWordAgain}
                 name="confirmPassword"
                 onKeyUp={this.handleInputValidation}
@@ -270,7 +267,7 @@ class EditInformation extends Component {
             </div>
 
             <button type="submit" className="btn btn-primary btn-block">
-              Chỉnh Sửa
+              Lưu Lại
             </button>
             <p className="forgot-password text-right mt-3">
               <Link to="/home">Quay lại Trang Chủ</Link>

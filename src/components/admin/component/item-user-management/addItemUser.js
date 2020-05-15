@@ -233,14 +233,14 @@ class AddItemUser extends Component {
   };
 
   render() {
-    let titleModal = this.props.idEdit ? 'EDIT USER' : 'ADD USER';
+    let titleModal = this.props.idEdit ? 'CHỈNH SỬA USER' : 'THÊM USER';
     const disabled = this.props.idEdit ? 'disabled' : '';
     return (
       <>
         <div className="d-flex justify-content-between mb-3">
-          <Button variant="secondary" onClick={() => this.handleShow()}>
-            <i className="fas fa-user-plus"></i> Add User
-          </Button>
+          <span className="btn btn-outline-secondary" onClick={() => this.handleShow()}>
+            <i className="fas fa-user-plus"></i> Thêm USER
+          </span>
           <SearchUser />
         </div>
 
@@ -251,63 +251,63 @@ class AddItemUser extends Component {
           <Modal.Body>
             <form>
               <div className="form-group">
-                <label>User Name: </label>
+                <label>Tên Người Dùng: </label>
                 <input
                   ref={this.inputUsersName}
                   type="text"
                   className="form-control"
-                  placeholder="User Name"
+                  placeholder="Nhập tên người dùng"
                 />
               </div>
 
               <div className="form-group">
-                <label>Gmail: </label>
+                <label>Email: </label>
                 <input
                   ref={this.inputEmail}
                   type="text"
                   className="form-control"
-                  placeholder="Email"
+                  placeholder="Nhập email"
                   disabled={disabled}
                 />
               </div>
 
               <div className="form-group">
-                <label>First Name : </label>
+                <label>Họ : </label>
                 <input
                   ref={this.inputFirtName}
                   type="text"
                   className="form-control"
-                  placeholder="First Name"
+                  placeholder="Nhập Họ"
                 />
               </div>
 
               <div className="form-group">
-                <label>Last Name: </label>
+                <label>Tên: </label>
                 <input
                   ref={this.inputLastName}
                   type="text"
                   className="form-control"
-                  placeholder="Last Name"
+                  placeholder="Nhập Tên"
                 />
               </div>
 
               <div className="form-group">
-                <label>Password: </label>
+                <label>Mật Khẩu: </label>
                 <input
                   type="password"
                   className="form-control"
-                  placeholder="Password"
+                  placeholder="Nhập mật khẩu"
                   ref={this.inputPassWord}
                   name="password"
                 />
               </div>
 
               <div className="form-group">
-                <label>Password Again: </label>
+                <label>Nhập Lại Mật Khẩu: </label>
                 <input
                   type="password"
                   className="form-control"
-                  placeholder="Password again"
+                  placeholder="Nhập lại mật khẩu"
                   ref={this.inputPassWordAgain}
                   name="confirmPassword"
                 />

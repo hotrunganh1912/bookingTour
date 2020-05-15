@@ -8,7 +8,6 @@ class BookingManagement extends Component {
     super(props);
     this.state = {
       bookingTours: [],
-      keyword: '',
       indexDataRender: 0,
       currentPage: 1,
     };
@@ -30,42 +29,44 @@ class BookingManagement extends Component {
     let arrFilter = [];
     if (keyword !== '') {
       console.log('this.state.bookingTours :>> ', this.state.bookingTours);
-      this.state.bookingTours.filter((item) => {
-        let arrCharState = item.id
-          .toUpperCase()
-          .split(' ')
-          .filter((x) => x !== '')
-          .join('');
-        let arrCharKeyword = keyword
-          .toUpperCase()
-          .split(' ')
-          .filter((x) => x !== '')
-          .join('');
-        let arrCharUserName = item.userName
-          .toUpperCase()
-          .split(' ')
-          .filter((x) => x !== '')
-          .join('');
-          let arrCharStatus = item.status
-          .toUpperCase()
-          .split(' ')
-          .filter((x) => x !== '')
-          .join('');
-        if (arrCharState.includes(arrCharKeyword)) arrFilter.push(item);
-        if (arrCharUserName.includes(arrCharKeyword)) arrFilter.push(item);
-        if (arrCharStatus.includes(arrCharKeyword)) arrFilter.push(item);
-        return [...arrFilter];
-      });
-      this.setState({
-        bookingTours: arrFilter,
-        keyword,
+      callApi(`bookings_tour`, 'get', null).then(res => {
+        if (res && res.data.length > 0) {
+          res.data.filter((item) => {
+            let arrCharId = item.id
+              .toUpperCase()
+              .split(' ')
+              .filter((x) => x !== '')
+              .join('');
+            let arrCharKeyword = keyword
+              .toUpperCase()
+              .split(' ')
+              .filter((x) => x !== '')
+              .join('');
+            let arrCharUserName = item.userName
+              .toUpperCase()
+              .split(' ')
+              .filter((x) => x !== '')
+              .join('');
+            let arrCharStatus = item.status
+              .toUpperCase()
+              .split(' ')
+              .filter((x) => x !== '')
+              .join('');
+            if (arrCharId.includes(arrCharKeyword)) arrFilter.push(item);
+            if (arrCharUserName.includes(arrCharKeyword)) arrFilter.push(item);
+            if (arrCharStatus.includes(arrCharKeyword)) arrFilter.push(item);
+            return [...arrFilter];
+          });
+          this.setState({
+            bookingTours: arrFilter
+          });
+        }
       });
     } else {
       callApi(`bookings_tour`, 'get', null).then((res) => {
         if (res && res.status === 200) {
           this.setState({
-            bookingTours: res.data,
-            keyword: '',
+            bookingTours: res.data
           });
         }
       });
@@ -101,18 +102,6 @@ class BookingManagement extends Component {
     return datanew;
   };
 
-  onBack = () => {
-    this.inputSearch.current.value = '';
-    callApi(`bookings_tour`, 'get', null).then((res) => {
-      if (res.data.length > 0) {
-        this.setState({
-          bookingTours: res.data,
-          keyword: '',
-        });
-      }
-    });
-  };
-
   render() {
     let itemBookingManager =
       this.pagination() &&
@@ -121,9 +110,6 @@ class BookingManagement extends Component {
           <ItemBookingManagement key={index} dataBooking={item} index={index} />
         );
       });
-    let styleButtonBack = this.state.keyword
-      ? {display: 'block'}
-      : {display: 'none'};
     return (
       <div className="card text-center">
         <h5 className="card-header bg-info text-light">
@@ -131,41 +117,31 @@ class BookingManagement extends Component {
         </h5>
         <div className="card-body">
           <div className="form-inline my-2 float-right">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={this.onBack}
-              style={styleButtonBack}
-            >
-              <i className="fas fa-arrow-circle-left"></i>
-            </button>
+            <span className="btn" style={{transform: 'translate(39px, 0)'}}>
+              <i className="fas fa-search"></i>
+            </span>
             <input
               type="text"
               ref={this.inputSearch}
-              className="form-control"
+              className="form-control pl-5"
+              placeholder="Search..."
+              onKeyUp={this.handleSearch}
             />
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={this.handleSearch}
-            >
-              <i className="fas fa-search"></i> Search
-            </button>
           </div>
           <table className="table table-bordered table-striped">
             <thead>
               <tr className="bg-secondary text-light">
                 <th>STT</th>
                 <th>
-                  <i className="fas fa-id-badge"></i> Booking Code
+                  <i className="fas fa-id-badge"></i> Mã Đặt Chỗ
                 </th>
                 <th>
-                  <i className="far fa-user"></i> User Name
+                  <i className="far fa-user"></i> Tên Người Dùng
                 </th>
-                <th>Tour Name</th>
-                <th>Price</th>
-                <th>Status</th>
-                <th>Detail</th>
+                <th><i className="fas fa-plane-departure"></i> Tên Tour</th>
+                <th><i className="fas fa-money-bill-wave"></i> Giá</th>
+                <th><i className="fas fa-shopping-cart"></i> Trạng Thái</th>
+                <th>Chi Tiết</th>
               </tr>
             </thead>
             <tbody>{itemBookingManager}</tbody>

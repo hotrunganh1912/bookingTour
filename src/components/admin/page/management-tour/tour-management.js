@@ -134,7 +134,7 @@ const TourManagement = () => {
       <div className="card card-primary mt-3 text-center">
         <div style={bgMaTour} className="card-header">
           <h3 className="card-title text-white text-uppercase mt-3">
-            Quản Lý Tour
+            <i className={`fa fa-globe-africa`}></i> Quản Lý Tour
           </h3>
           <div className="row">
             <div className="col-6 text-left text-white">
@@ -156,9 +156,9 @@ const TourManagement = () => {
                 <thead>
                   <tr className="bg-light">
                     <th style={{ width: "100px" }}>STT</th>
-                    <th style={{ width: "300px" }}>ID Tour</th>
-                    <th>Giá</th>
-                    <th>Thành Phố - Đất Nước</th>
+                    <th style={{ width: "300px" }}><i className="far fa-id-card"></i> ID Tour</th>
+                    <th><i className="fas fa-money-bill-wave"></i> Giá</th>
+                    <th><i className="fas fa-map-marker"></i> Thành Phố - Đất Nước</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -173,7 +173,7 @@ const TourManagement = () => {
                     ))
                   ) : (
                     <tr>
-                      <td colspan="5">
+                      <td colSpan="5">
                         <h1>Không Tìm Thấy Dữ Liệu</h1>
                       </td>
                     </tr>

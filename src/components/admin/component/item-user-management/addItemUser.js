@@ -256,7 +256,7 @@ class AddItemUser extends Component {
                   ref={this.inputUsersName}
                   type="text"
                   className="form-control"
-                  placeholder="User Name"
+                  placeholder="Nhập tên người dùng"
                 />
               </div>
 
@@ -266,7 +266,7 @@ class AddItemUser extends Component {
                   ref={this.inputEmail}
                   type="text"
                   className="form-control"
-                  placeholder="Email"
+                  placeholder="Nhập email"
                   disabled={disabled}
                 />
               </div>
@@ -277,7 +277,7 @@ class AddItemUser extends Component {
                   ref={this.inputFirtName}
                   type="text"
                   className="form-control"
-                  placeholder="First Name"
+                  placeholder="Nhập Họ"
                 />
               </div>
 
@@ -287,7 +287,7 @@ class AddItemUser extends Component {
                   ref={this.inputLastName}
                   type="text"
                   className="form-control"
-                  placeholder="Last Name"
+                  placeholder="Nhập Tên"
                 />
               </div>
 
@@ -296,7 +296,7 @@ class AddItemUser extends Component {
                 <input
                   type="password"
                   className="form-control"
-                  placeholder="Password"
+                  placeholder="Nhập mật khẩu"
                   ref={this.inputPassWord}
                   name="password"
                 />
@@ -307,7 +307,7 @@ class AddItemUser extends Component {
                 <input
                   type="password"
                   className="form-control"
-                  placeholder="Password again"
+                  placeholder="Nhập lại mật khẩu"
                   ref={this.inputPassWordAgain}
                   name="confirmPassword"
                 />

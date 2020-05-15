@@ -168,7 +168,10 @@ class EditInformation extends Component {
 
     callApi(`users/${this.state.id}`, 'Put', user).then((res) => {
       if (res && res.status === 200) {
-        localStorage.setItem('Token', JSON.stringify(res.data));
+        localStorage.setItem(
+          "Token",
+          JSON.stringify({ ...res.data, password: "****" })
+        );
         NotificationManager.success(
           "Success message",
           "Chỉnh Sửa Thông Tin Thành Công"

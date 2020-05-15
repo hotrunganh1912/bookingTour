@@ -24,6 +24,32 @@ class BookingManagement extends Component {
       }
     });
   }
+
+  removeAccents = (str) => {
+    let AccentsMap = [
+      "aàảãáạăằẳẵắặâầẩẫấậ",
+      "AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬ",
+      "dđ",
+      "DĐ",
+      "eèẻẽéẹêềểễếệ",
+      "EÈẺẼÉẸÊỀỂỄẾỆ",
+      "iìỉĩíị",
+      "IÌỈĨÍỊ",
+      "oòỏõóọôồổỗốộơờởỡớợ",
+      "OÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢ",
+      "uùủũúụưừửữứự",
+      "UÙỦŨÚỤƯỪỬỮỨỰ",
+      "yỳỷỹýỵ",
+      "YỲỶỸÝỴ",
+    ];
+    for (let i = 0; i < AccentsMap.length; i++) {
+      let re = new RegExp("[" + AccentsMap[i].substr(1) + "]", "g");
+      let char = AccentsMap[i][0];
+      str = str.replace(re, char);
+    }
+    return str;
+  }
+
   handleSearch = () => {
     const keyword = this.inputSearch.current.value;
     let arrFilter = [];
@@ -37,12 +63,12 @@ class BookingManagement extends Component {
               .split(' ')
               .filter((x) => x !== '')
               .join('');
-            let arrCharKeyword = keyword
+            let arrCharKeyword = this.removeAccents(keyword)
               .toUpperCase()
               .split(' ')
               .filter((x) => x !== '')
               .join('');
-            let arrCharUserName = item.userName
+            let arrCharUserName = this.removeAccents(item.userName)
               .toUpperCase()
               .split(' ')
               .filter((x) => x !== '')
@@ -52,10 +78,18 @@ class BookingManagement extends Component {
               .split(' ')
               .filter((x) => x !== '')
               .join('');
-            if (arrCharId.includes(arrCharKeyword)) arrFilter.push(item);
-            if (arrCharUserName.includes(arrCharKeyword)) arrFilter.push(item);
-            if (arrCharStatus.includes(arrCharKeyword)) arrFilter.push(item);
-            return [...arrFilter];
+            if (arrCharId.includes(arrCharKeyword)) {
+              arrFilter.push(item);
+              return [...arrFilter];
+            }
+            if (arrCharUserName.includes(arrCharKeyword)) {
+              arrFilter.push(item);
+              return [...arrFilter];
+            }
+            if (arrCharStatus.includes(arrCharKeyword)) {
+              arrFilter.push(item);
+              return [...arrFilter];
+            }
           });
           this.setState({
             bookingTours: arrFilter

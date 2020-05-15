@@ -147,7 +147,7 @@ const BgPayment = () => {
             &#8203;
             <ul className="list-image">
               <li>
-                <a href="http://www.vietcombank.com.vn" target="_blank">
+                <a href="http://www.vietcombank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/vietcom_bank_logo.png"
@@ -158,7 +158,7 @@ const BgPayment = () => {
               <li>
                 <a
                   href="https://www.vietinbank.vn/web/home/vn/index.html"
-                  target="_blank"
+                  rel="noopener"
                 >
                   <img
                     alt=""
@@ -168,7 +168,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.bidv.com.vn" target="_blank">
+                <a href="http://www.bidv.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/bidv.png"
@@ -177,7 +177,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.agribank.com.vn" target="_blank">
+                <a href="http://www.agribank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/agribank_bank_logo.png"
@@ -186,7 +186,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.acb.com.vn" target="_blank">
+                <a href="http://www.acb.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/acb_bank_logo.png"
@@ -195,7 +195,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.sacombank.com.vn" target="_blank">
+                <a href="http://www.sacombank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/Khac/sacombank_bank_logoNEW.png"
@@ -204,7 +204,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="https://www.techcombank.com.vn" target="_blank">
+                <a href="https://www.techcombank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/techcombank_bank_logo.png"
@@ -213,7 +213,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.dongabank.com.vn" target="_blank">
+                <a href="http://www.dongabank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/donga_bank_logo.png"
@@ -222,7 +222,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.eximbank.com.vn" target="_blank">
+                <a href="http://www.eximbank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/exim_bank_logo.png"
@@ -231,7 +231,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.vpbank.com.vn" target="_blank">
+                <a href="http://www.vpbank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/vp_bank_logo.png"
@@ -240,7 +240,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.mbbank.com.vn" target="_blank">
+                <a href="http://www.mbbank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/Khac/mb_bank_logo.png"
@@ -249,7 +249,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.msb.com.vn" target="_blank">
+                <a href="http://www.msb.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/Khac/logo_MSBupdate.png"
@@ -258,7 +258,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.vib.com.vn" target="_blank">
+                <a href="http://www.vib.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/vib_bank_logo.png"
@@ -267,7 +267,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.shb.com.vn" target="_blank">
+                <a href="http://www.shb.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/shb_bank_logo.png"
@@ -276,7 +276,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.tpb.vn" target="_blank">
+                <a href="http://www.tpb.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/Tp_bank_logo.png"
@@ -285,7 +285,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.baca-bank.vn" target="_blank">
+                <a href="http://www.baca-bank.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/baca_bank_logo.png"
@@ -294,7 +294,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.hdbank.com.vn" target="_blank">
+                <a href="http://www.hdbank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/hd_bank_logo.png"
@@ -303,7 +303,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.scb.com.vn" target="_blank">
+                <a href="http://www.scb.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/scb_bank_logo.png"
@@ -312,7 +312,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.abbank.vn" target="_blank">
+                <a href="http://www.abbank.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/ab_bank_logo.png"
@@ -321,7 +321,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.ocb.com.vn" target="_blank">
+                <a href="http://www.ocb.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/ocb_bank_logo.png"
@@ -330,7 +330,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.oceanbank.vn" target="_blank">
+                <a href="http://www.oceanbank.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/ocean_bank_logo.png"
@@ -339,7 +339,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.seabank.com.vn" target="_blank">
+                <a href="http://www.seabank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/sea_bank_logo.png"
@@ -348,7 +348,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.saigonbank.com.vn" target="_blank">
+                <a href="http://www.saigonbank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/saigon_bank_logo.png"
@@ -357,7 +357,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.ncb-bank.vn" target="_blank">
+                <a href="http://www.ncb-bank.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/ncb_bank_logo.png"
@@ -366,7 +366,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.baovietbank.vn" target="_blank">
+                <a href="http://www.baovietbank.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/bao_viet_bank_logo.png"
@@ -375,7 +375,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.gpbank.com.vn" target="_blank">
+                <a href="http://www.gpbank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/gb_bank_logo.png"
@@ -384,7 +384,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.namabank.com.vn" target="_blank">
+                <a href="http://www.namabank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/nama_bank_logo.png"
@@ -393,7 +393,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.pgbank.com.vn" target="_blank">
+                <a href="http://www.pgbank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/pg_bank_logo.png"
@@ -402,7 +402,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.vrbank.com.vn" target="_blank">
+                <a href="http://www.vrbank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/Khac/VRB.png"
@@ -411,7 +411,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.vietabank.com.vn" target="_blank">
+                <a href="http://www.vietabank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/viet_a_bank_logo.png"
@@ -420,7 +420,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.kienlongbank.com" target="_blank">
+                <a href="http://www.kienlongbank.com" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/kienlong_bank_logo.png"
@@ -429,7 +429,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.lienvietpostbank.com.vn" target="_blank">
+                <a href="http://www.lienvietpostbank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/lienviet_bank_logo.png"
@@ -438,7 +438,7 @@ const BgPayment = () => {
               </li>
 
               <li>
-                <a href="http://www.pvcombank.com.vn" target="_blank">
+                <a href="http://www.pvcombank.com.vn" rel="noopener">
                   <img
                     alt=""
                     src="https://napas.com.vn/PublishingImages/pv_bank_logo.png"
@@ -449,7 +449,7 @@ const BgPayment = () => {
               <li>
                 <a
                   href="http://www.publicbank.com.vn/index.aspx"
-                  target="_blank"
+                  rel="noopener"
                 >
                   <img
                     alt=""
@@ -473,7 +473,7 @@ const BgPayment = () => {
               <h3 className="title title-center">VẬN TẢI – HÀNG KHÔNG</h3>
               <ul className="list-image">
                 <li>
-                  <a href="http://www.vietnamairlines.com" target="_blank">
+                  <a href="http://www.vietnamairlines.com" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/vietnamailine_logo.png"
@@ -482,7 +482,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="http://dsvn.vn" target="_blank">
+                  <a href="http://dsvn.vn" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/dsvn_logo.png"
@@ -493,7 +493,7 @@ const BgPayment = () => {
                 <li>
                   <a
                     href="http://www.vietjetair.com/Sites/Web/vi-VN/Home"
-                    target="_blank"
+                    rel="noopener"
                   >
                     <img
                       alt=""
@@ -505,7 +505,7 @@ const BgPayment = () => {
                 <li>
                   <a
                     href="http://www.airasia.com/vn/vi/home.page"
-                    target="_blank"
+                    rel="noopener"
                   >
                     <img
                       alt=""
@@ -515,7 +515,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://www.vetc.com.vn/" target="_blank">
+                  <a href="https://www.vetc.com.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/vetc.png"
@@ -524,7 +524,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://mailinh.vn/" target="_blank">
+                  <a href="https://mailinh.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/mailinh_logo.png"
@@ -533,7 +533,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="http://taxigroup.com.vn/" target="_blank">
+                  <a href="http://taxigroup.com.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/taxi_group.png"
@@ -547,7 +547,7 @@ const BgPayment = () => {
               <h3 className="title title-center">BÁN LẺ</h3>
               <ul className="list-image">
                 <li>
-                  <a href="https://www.adayroi.com/" target="_blank">
+                  <a href="https://www.adayroi.com/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/adayroi_logo.png"
@@ -556,7 +556,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="http://www.lazada.vn/" target="_blank">
+                  <a href="http://www.lazada.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/lazzada_logo.png"
@@ -565,7 +565,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://aeoneshop.com/" target="_blank">
+                  <a href="https://aeoneshop.com/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/aeon_logo.png"
@@ -581,7 +581,7 @@ const BgPayment = () => {
                 <li>
                   <a
                     href="http://www.mobifone.vn/wps/portal/public/ho-tro-khach-hang/thanh-toan-cuoc-nap-tien/truc-tuyen/bang-the-ngan-hang"
-                    target="_blank"
+                    rel="noopener"
                   >
                     <img
                       alt=""
@@ -593,7 +593,7 @@ const BgPayment = () => {
                 <li>
                   <a
                     href="http://vinaphone.com.vn/payonline.do"
-                    target="_blank"
+                    rel="noopener"
                   >
                     <img
                       alt=""
@@ -603,7 +603,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://pay.viettel.vn/Index.do" target="_blank">
+                  <a href="https://pay.viettel.vn/Index.do" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/viettel_logo.png"
@@ -612,7 +612,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="http://webpay.gmobile.vn/" target="_blank">
+                  <a href="http://webpay.gmobile.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/gmobile_logo.png"
@@ -626,7 +626,7 @@ const BgPayment = () => {
               <h3 className="title title-center">BẢO HIỂM</h3>
               <ul className="list-image">
                 <li>
-                  <a href="https://www.dai-ichi-life.com.vn/" target="_blank">
+                  <a href="https://www.dai-ichi-life.com.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/dai_ichi_logo.png"
@@ -635,7 +635,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://emic.vn/" target="_blank">
+                  <a href="https://emic.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/emic_logo.png"
@@ -644,7 +644,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://www2.chubb.com/" target="_blank">
+                  <a href="https://www2.chubb.com/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/chubb_logo.png"
@@ -653,7 +653,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://www.epti.vn/" target="_blank">
+                  <a href="https://www.epti.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/epti_logo.png"
@@ -664,7 +664,7 @@ const BgPayment = () => {
                 <li>
                   <a
                     href="https://khachhang.prudential.com.vn/customer-portal/"
-                    target="_blank"
+                    rel="noopener"
                   >
                     <img
                       alt=""
@@ -674,7 +674,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="http://ipjico.vn/" target="_blank">
+                  <a href="http://ipjico.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/ipjico_logo.png"
@@ -688,7 +688,7 @@ const BgPayment = () => {
               <h3 className="title title-center">GAME</h3>
               <ul className="list-image">
                 <li>
-                  <a href="http://www.garena.vn/" target="_blank">
+                  <a href="http://www.garena.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/garena_logo.png"
@@ -697,7 +697,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://vtcgame.vn/" target="_blank">
+                  <a href="https://vtcgame.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/vtc_game_logo.png"
@@ -706,7 +706,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="http://www.vgg.vn/" target="_blank">
+                  <a href="http://www.vgg.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/vgg_logo.png"
@@ -715,7 +715,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="http://www.vega.vn/" target="_blank">
+                  <a href="http://www.vega.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/vega_logo.png"
@@ -729,7 +729,7 @@ const BgPayment = () => {
               <h3 className="title title-center">NỘI DUNG SỐ</h3>
               <ul className="list-image">
                 <li>
-                  <a href="https://sohapay.vn/" target="_blank">
+                  <a href="https://sohapay.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/sohapay_logo.png"
@@ -738,7 +738,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="http://intecom.vtc.vn/" target="_blank">
+                  <a href="http://intecom.vtc.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/vtc_intecom_logo.png"
@@ -747,7 +747,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="http://nexttech.asia/" target="_blank">
+                  <a href="http://nexttech.asia/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/nexxttech_logo.png"
@@ -756,7 +756,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://coccoc.com/" target="_blank">
+                  <a href="https://coccoc.com/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/coccoc_logo.png"
@@ -765,7 +765,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="http://www.nhaccuatui.com/" target="_blank">
+                  <a href="http://www.nhaccuatui.com/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/nct_logo.png"
@@ -779,7 +779,7 @@ const BgPayment = () => {
               <h3 className="title title-center">VÍ ĐIỆN TỬ - TIỆN ÍCH</h3>
               <ul className="list-image">
                 <li>
-                  <a href="https://zalopay.vn/" target="_blank">
+                  <a href="https://zalopay.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/zalo_pay_logo.png"
@@ -790,7 +790,7 @@ const BgPayment = () => {
                 <li>
                   <a
                     href="https://www.nganluong.vn/nganluong/home.html"
-                    target="_blank"
+                    rel="noopener"
                   >
                     <img
                       alt=""
@@ -800,7 +800,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://www.baokim.vn/" target="_blank">
+                  <a href="https://www.baokim.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/bao_kim_logo.png"
@@ -809,7 +809,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://momo.vn/" target="_blank">
+                  <a href="https://momo.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/momo_logo.png"
@@ -818,7 +818,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="http://www.ecpay.vn/" target="_blank">
+                  <a href="http://www.ecpay.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/ecpay_logo.png"
@@ -827,7 +827,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://pay.zing.vn/" target="_blank">
+                  <a href="https://pay.zing.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/zing_pay_logo.png"
@@ -843,7 +843,7 @@ const BgPayment = () => {
               </h3>
               <ul className="list-image">
                 <li>
-                  <a href="https://ticketbox.vn" target="_blank">
+                  <a href="https://ticketbox.vn" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/ticket_box_logo.png"
@@ -852,7 +852,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://homepay.vn/" target="_blank">
+                  <a href="https://homepay.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/home_pay_logo.png"
@@ -861,7 +861,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://canifa.com/" target="_blank">
+                  <a href="https://canifa.com/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/canifa_logo.png"
@@ -870,7 +870,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="http://www.bhdstar.vn/" target="_blank">
+                  <a href="http://www.bhdstar.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/bhd_logo.png"
@@ -879,7 +879,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="http://www.tripi.vn" target="_blank">
+                  <a href="http://www.tripi.vn" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/tripi_logo.png"
@@ -888,7 +888,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://thefaceshop.com.vn/" target="_blank">
+                  <a href="https://thefaceshop.com.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/thefaceshop_logo.png"
@@ -897,7 +897,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://www.vntrip.vn/" target="_blank">
+                  <a href="https://www.vntrip.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/vntrip_logo.png"
@@ -906,7 +906,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://www.dealtoday.vn/" target="_blank">
+                  <a href="https://www.dealtoday.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/dealtoday_logo.png"
@@ -915,7 +915,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://muaban.net/" target="_blank">
+                  <a href="https://muaban.net/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/mua_ban_logo.png"
@@ -924,7 +924,7 @@ const BgPayment = () => {
                 </li>
 
                 <li>
-                  <a href="https://juno.vn/" target="_blank">
+                  <a href="https://juno.vn/" rel="noopener">
                     <img
                       alt=""
                       src="https://napas.com.vn/PublishingImages/juno_logo.png"

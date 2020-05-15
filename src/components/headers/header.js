@@ -129,7 +129,8 @@ class Header extends React.Component {
                       >
                         Đăng xuất
                       </a>
-                      <a
+                      <span
+                        href="#"
                         style={{
                           whiteSpace: "pre-wrap",
                         }}
@@ -138,7 +139,7 @@ class Header extends React.Component {
                         <i className="fas fa-user"></i>
                         {"  "}
                         {JSON.parse(localStorage.getItem("Token")).usersName}
-                      </a>
+                      </span>
                     </div>
                   </li>
                 ) : (

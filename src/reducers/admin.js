@@ -36,7 +36,6 @@ const adminItems = (state = initialState, action) => {
       if (keyWord !== '') {
         action.data.filter(item => {
           let arrCharUserName = item.usersName.toUpperCase().split(' ').filter(x => x !== '').join('');
-          let arrCharEmail = item.gmail.toUpperCase().split(' ').filter(x => x !== '').join('');
           let arrCharKeyword = keyWord.toUpperCase().split(' ').filter(x => x !== '').join('');
           if (arrCharUserName.includes(arrCharKeyword)) arrFilter.push(item);
           return newState = [...arrFilter];

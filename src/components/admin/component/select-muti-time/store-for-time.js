@@ -9,7 +9,7 @@ const StoreForTime = (props) => {
   const getIndexTime = (e) => {
     const index = e.target.dataset.index;
     if (props.match.path === "/admin/tour-management/edit-tour/:id") {
-      if (props.dataArrayTime[index] < Date.now()) return handerDelete(e);
+      if (props.dataArrayTime[index] < Date.now()) return handerDelete(index);
 
       callApi(
         `bookings_tour?tourID=${props.match.params.id}&timeChose=${props.dataArrayTime[index]}&status=paid`,
@@ -17,17 +17,16 @@ const StoreForTime = (props) => {
         null
       ).then((res) => {
         if (res && res.status === 200 && res.data) {
-          if (res.data <= 0) return handerDelete(e);
+          if (res.data <= 0) return handerDelete(index);
           else {
             NotificationManager.error("Bạn Không Thể Xóa Vì Có Người Booking");
           }
         } else NotificationManager.error("Vui Lòng Thử Lại");
       });
-    } else handerDelete(e);
+    } else handerDelete(index);
   };
 
-  const handerDelete = (e) => {
-    const index = e.target.dataset.index;
+  const handerDelete = (index) => {
     // e.target.parentElement.style.transform = "translate(0, -999px)";
     // e.target.parentElement.style.padding = "0";
     let newArrayTime = [...props.dataArrayTime];

@@ -122,7 +122,8 @@ const PostTour = () => {
 
     console.log("validate :>> ", validate);
     if (validate) {
-      callApi(`tours`, "Post", { ...newTour }).then((res) => {
+      const now = Date.now();
+      callApi(`tours`, "Post", { ...newTour, time: now }).then((res) => {
         if (res.status === 201) {
           postDetail(res.data.id);
           return true;

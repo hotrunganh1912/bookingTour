@@ -16,7 +16,7 @@ class BookingManagement extends Component {
   }
 
   componentDidMount() {
-    callApi(`bookings_tour`, 'get', null).then((res) => {
+    callApi(`bookings_tour?_sort=time&_order=desc`, 'get', null).then((res) => {
       if (res.status === 200) {
         this.setState({
           bookingTours: res.data,

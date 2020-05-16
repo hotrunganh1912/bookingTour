@@ -16,7 +16,7 @@ const ShowOtherComment = (props) => {
       ></div>
       {/* <div className="w-100 border-top mx-auto"></div> */}
       <div className="card border-0">
-        <div className="custome-card-body">
+        <div className="custome-card-body" style={{ marginBottom: "1rem" }}>
           <div>
             <BgRating
               custome={{ position: " absolute", top: "10px", right: "15px" }}

@@ -30,7 +30,7 @@ class HistoryBooking extends Component {
       } else this.setState({});
     });
 
-    callApi(`bookings_tour?userID=${userID}`, "GET", null).then((res) => {
+    callApi(`bookings_tour?userID=${userID}&_sort=time&_order=desc`, "GET", null).then((res) => {
       if (res && res.status === 200 && !this.state.isUnmounting) {
         this.setState({
           bookingTour: res.data,

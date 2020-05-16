@@ -23,7 +23,7 @@ const TourManagement = () => {
   useEffect(() => {
     let mounting = true;
 
-    callApi(`tours`, "Get", null).then((res) => {
+    callApi(`tours?_sort=time&_order=desc`, "Get", null).then((res) => {
       console.log("res :>> ", res);
       if (mounting && res && res.status === 200 && res.data) {
         setPageStatus("finish");
@@ -49,13 +49,18 @@ const TourManagement = () => {
     const text = convertStrToTag(str);
     console.log("text :>> ", text);
     if (dataTour.length <= 0) return setDataAfterSearch([]);
+
     if (text === "") return setDataAfterSearch([...dataTour]);
+
     const dataAfterSearch = dataTour.filter((e) => {
       const idElement = `${e.id}`;
+
       if (idElement.indexOf(text) !== -1) return true;
+
       for (const element of e.tag) {
         if (element.indexOf(text) !== -1) return true;
       }
+      
       return false;
     });
     setIndexDataRender(0);

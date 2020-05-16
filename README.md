@@ -4,4 +4,4 @@
 
 vào fake Api 
 bật cmd 
-- json-server -p 4000 --watch data.json
+- json-server -p 3500 --watch data.json

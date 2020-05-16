@@ -4,6 +4,7 @@ import { useState } from "react";
 import { formCurencyVN } from "../../common/funcCommon";
 import NotFound from "../bodys/home/notFound/404NotFound";
 import Waiting from "../../common/waiting";
+import { Link } from "react-router-dom";
 
 const DetailBooking = (props) => {
   const [getData, setGetData] = useState();
@@ -42,7 +43,9 @@ const DetailBooking = (props) => {
             <strong>Status:</strong>{" "}
             <span
               style={{ textTransform: "uppercase" }}
-              className={getData.status === "paid" ? "text-success" : "text-danger"}
+              className={
+                getData.status === "paid" ? "text-success" : "text-danger"
+              }
             >
               {" "}
               {getData.status}
@@ -52,13 +55,22 @@ const DetailBooking = (props) => {
         <div className="card-body">
           <div className="row mb-4">
             <div className="col-sm-6 ">
+              ID Booking : <strong>{props.match.params.id}</strong>
+            </div>
+            <div className="col-sm-6 ">
+              Đi Đến Tour :{" "}
+              <strong>
+                <Link to={`/detail/${getData.tourID}`}>Đi Đến Tour </Link>
+              </strong>
+            </div>
+            <div className="ml-auto col-sm-6 text-left ">
+              ID Tour : <strong>{getData.tourID}</strong>
+            </div>
+            <div className="col-sm-6 ">
               Booking By : <strong>{getData.userName}</strong>
             </div>
             <div className="col-sm-6 text-left">
               Tour : <strong>{getData.nameTour}</strong>
-            </div>
-            <div className="col-sm-6 ">
-              ID Booking : <strong>{props.match.params.id}</strong>
             </div>
             <div className="ml-auto col-sm-6 text-left ">
               Start Day :{" "}
